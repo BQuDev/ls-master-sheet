@@ -11,7 +11,7 @@ class AdmissionsController extends \BaseController {
 	public function index()
 	{
 		//
-        return View::make('admissions.index');
+        return View::make('admissions.index')->with('admissions',Admission::all());
 	}
 
 	/**
@@ -108,5 +108,11 @@ class AdmissionsController extends \BaseController {
 	{
 		//
 	}
+/*
+    public function dataTablesAdmissions(){
+        $admissions = DB::table('admissions')
+            ->select(array('admissions.id','admissions.name','admissions.email','admissions.mobile','admissions.origin_country'));
+        return Datatables::of($admissions)->add_column('action', '<span class="btn btn-danger"  onclick="deleteUser({{ $id }});">Delete</span>&nbsp;<a href="{{ URL::to(\'admissions\') }}/{{ $id }}" class="btn btn-default">More<a>&nbsp; <a class="btn btn-small btn-info" href="{{ URL::to(\'admissions\') }}/{{ $id }}/edit">Edit</a> ', 11)->make();
+    }*/
 
 }

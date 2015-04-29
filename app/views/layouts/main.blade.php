@@ -286,7 +286,7 @@
 				<!-- Navigation -->
 				<nav><ul class="collapsible accordion">
 
-					<li class="current"><a href="#"><img src="{{ URL::asset('img/icons/packs/fugue/16x16/dashboard.png')}}" alt="" height=16 width=16>Home</a></li>
+					<li class="current"><a href="{{ URL::to('/admissions') }}"><img src="{{ URL::asset('img/icons/packs/fugue/16x16/dashboard.png')}}" alt="" height=16 width=16>Admissions</a></li>
 					 @section('sidebar')
 
                       @show
@@ -338,6 +338,8 @@
 	<script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 	<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 	<![endif]-->
+			@section('script')
 
+            @show
 </body>
 </html>

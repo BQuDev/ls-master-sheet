@@ -122,6 +122,10 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Bllim\Datatables\DatatablesServiceProvider',
+        'Barryvdh\DomPDF\ServiceProvider',
+        'Cartalyst\Sentry\SentryServiceProvider',
+        'Way\Generators\GeneratorsServiceProvider',
 	),
 
 	/*
@@ -188,7 +192,9 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
-
+        'Datatables'        => 'Bllim\Datatables\Facade\Datatables',
+        'PDF' 				=> 'Barryvdh\DomPDF\Facade',
+        'Sentry'			=> 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 	),
 
 );
