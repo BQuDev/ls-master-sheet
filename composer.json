@@ -9,7 +9,9 @@
 		"barryvdh/laravel-ide-helper": "~1.11",
         "bllim/datatables": "*",
         "barryvdh/laravel-dompdf": "0.4.*",
-        "cartalyst/sentry": "2.1.*"
+        "cartalyst/sentry": "2.1.*",
+        "fzaninotto/faker": "1.5.*@dev"
+
 	},
     "require-dev": {
     "way/generators": "~2.0",
