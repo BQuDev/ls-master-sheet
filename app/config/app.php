@@ -125,7 +125,6 @@ return array(
         'Bllim\Datatables\DatatablesServiceProvider',
         'Barryvdh\DomPDF\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
-        'Way\Generators\GeneratorsServiceProvider',
 	),
 
 	/*
