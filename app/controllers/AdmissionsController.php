@@ -11,6 +11,7 @@ class AdmissionsController extends \BaseController {
 	public function index()
 	{
 		//
+        return View::make('admissions.index');
 	}
 
 	/**
@@ -34,7 +35,31 @@ class AdmissionsController extends \BaseController {
 	public function store()
 	{
 		//
-	}
+        // create the data for our duck
+  /*      $admission = new Admission();
+        $admission->title = Input::get('title');
+        $admission->first_name = Input::get('first_name');
+        $admission->name_2 = Input::get('name_2');
+        $admission->comments = Input::get('comments');
+
+
+        // save our duck
+        $admission->save();
+*/
+       // return json_encode(Input::all());
+        $rules = array(
+            //'password' => 'pass|required',
+            // more stuff here
+        );
+
+        $v = Validator::make(Input::all(), $rules);
+
+        if ($v->passes())
+        {Admission::create(Input::all());
+
+        }
+
+    }
 
 	/**
 	 * Display the specified resource.

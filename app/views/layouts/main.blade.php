@@ -243,7 +243,7 @@
 
 	<!-- The header containing the logo -->
 	<header class="container_12">
-		<a href="#"><img src="{{ URL::asset('img/Education-Group2.PNG')}}" alt="Mango" width="191" height="60"></a>
+		<a href="{{ URL::to('/') }}"><img src="{{ URL::asset('img/Education-Group2.PNG')}}" alt="Mango" width="191" height="60"></a>
 		<a class="phone-title" href="#"><img src="{{ URL::asset('img/logo-mobile.png')}}" alt="Mango" height="22" width="70" /></a>
 
 		<div class="buttons">
@@ -262,7 +262,7 @@
 			<div class="user">
 				<div class="avatar">
 					<img src="{{ URL::asset('img/layout/content/toolbar/user/avatar.png')}}">
-					<span>3</span>
+					<!--<span>3</span>-->
 				</div>
 				<span>BQu User</span>
 				<!--<ul>

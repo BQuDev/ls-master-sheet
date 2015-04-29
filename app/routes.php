@@ -10,11 +10,12 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+/*
 Route::get('/', function()
 {
 	return View::make('hello');
 });
-
+*/
 
 Route::resource('admissions','AdmissionsController');
+Route::get('/','AdmissionsController@create');
