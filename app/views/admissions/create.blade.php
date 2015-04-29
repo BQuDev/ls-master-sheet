@@ -9,6 +9,15 @@
 
    					<div class="content">
 
+   						<div class="row">
+   							<label for="first_name">
+   								<strong>Student ID</strong>
+   							</label>
+   							<div>
+   								<input class="required" type="text" name="student_id" id="student_id" data-error-type="inline"/>
+   							</div>
+   						</div>
+
                        <div class="row">
    						<label>
    							<strong>Title</strong>
@@ -18,23 +27,23 @@
                            <div class="row">
    							<p class="_25">
    								<label for="f4_rb1">Mr</label>
-   								<input type="radio" name="title" id="title1" value="Mr.">
+   								<input type="radio" name="title" id="title1" value="Mr." data-error-type="inline">
    							</p>
    							<p class="_25">
    							<label for="f4_rb2">Mrs</label>
-   								<input type="radio" name="title" id="title2" value="Mrs.">
+   								<input type="radio" name="title" id="title2" value="Mrs." data-error-type="inline">
    							</p>
    							<p class="_25">
    								<label for="f4_rb4">Ms</label>
-   								<input type="radio" name="title" id="title3" value="Ms.">
+   								<input type="radio" name="title" id="title3" value="Ms." data-error-type="inline">
    							</p>
    							<p class="_25">
    								<label for="f4_rb4">Dr</label>
-   								<input type="radio" name="title" id="title5" value="Dr.">
+   								<input type="radio" name="title" id="title5" value="Dr." data-error-type="inline">
    							</p>
    							<p class="_25">
    							<label for="f4_rb6">Other</label>
-   							<input type="radio" name="title" id="title5" value="Other">
+   							<input type="radio" name="title" id="title5" value="Other" data-error-type="inline">
    							</p>
 
 
@@ -49,7 +58,7 @@
    								<strong>First Name</strong>
    							</label>
    							<div>
-   								<input class="required" type="text" name="first_name" id="first_name" />
+   								<input class="required" type="text" name="first_name" id="first_name"  data-error-type="inline"/>
    							</div>
    						</div>
 
@@ -58,7 +67,7 @@
    								<strong>Name 2</strong>
    							</label>
    							<div>
-   								<input class="required" type="text" name="name_2" id="name_2" />
+   								<input class="required" type="text" name="name_2" id="name_2"  data-error-type="inline"/>
    							</div>
    						</div>
                            <div class="row">
@@ -67,7 +76,7 @@
    							</label>
    							<div>
 
-   								<input class="required" type="text" name="surname" id="surname" />
+   								<input class="required" type="text" name="surname" id="surname"  data-error-type="inline"/>
    							</div>
    						</div>
                            <div class="row">
@@ -82,7 +91,7 @@
    							</label>
    							<div>
 
-   								<input class="required" type="text" name="uk_street" id="uk_street" />
+   								<input class="required" type="text" name="uk_street" id="uk_street" data-error-type="inline" />
    							</div>
    						</div>
                            <div class="row">
@@ -91,7 +100,7 @@
    							</label>
    							<div>
 
-   								<input class="required" type="text" name="uk_city" id="uk_city" />
+   								<input class="required" type="text" name="uk_city" id="uk_city"  data-error-type="inline"/>
    							</div>
    						</div>
                            <div class="row">
@@ -100,10 +109,29 @@
    							</label>
    							<div>
 
-   								<input class="required" type="text" name="uk_postel_code" id="uk_postel_code" />
+   								<input class="required" type="text" name="uk_postel_code" id="uk_postel_code" data-error-type="inline" />
    							</div>
    						</div>
+   							<div>
+   								<div class="row">
+   							<label for="uk_mobile">
+   								<strong>Mobile</strong>
 
+   							</label>
+   							<div>
+   								<input class="maskIntPhone" name="uk_mobile" id="uk_mobile" type=text  data-error-type="inline"/>
+   							</div>
+   						</div>
+                        <div class="row">
+   							<label for="uk_landline">
+   								<strong>Landline</strong>
+
+   							</label>
+   							<div>
+   								<input class="maskIntPhone" name="uk_landline" id="uk_landline" type=text data-error-type="inline" />
+   							</div>
+   						</div>
+   							</div>
    						</div>
    					</div>
                        <div class="row">
@@ -111,7 +139,7 @@
    								<strong>Nationality</strong>
    							</label>
    							<div>
-   								<select name="nationality" id="nationality" class="search required" data-placeholder="Choose a Name">
+   								<select name="nationality" id="nationality" class="search required" data-placeholder="Choose a Name" data-error-type="inline">
    									<option value=""></option>
    									<option value="afghan">Afghan</option>
                                       <option value="albanian">Albanian</option>
@@ -320,7 +348,7 @@
    							</label>
    							<div>
 
-   								<input class="required" type="text" name="origin_street" id="origin_street" />
+   								<input class="required" type="text" name="origin_street" id="origin_street"  data-error-type="inline"/>
    							</div>
    						</div>
                            <div class="row">
@@ -329,7 +357,7 @@
    							</label>
    							<div>
 
-   								<input class="required" type="text" name="origin_city" id="origin_city" />
+   								<input class="required" type="text" name="origin_city" id="origin_city"  data-error-type="inline"/>
    							</div>
    						</div>
                            <div class="row">
@@ -338,7 +366,7 @@
    							</label>
    							<div>
 
-   								<input class="required" type="text" name="origin_postal_code" id="origin_postal_code" />
+   								<input class="required" type="text" name="origin_postal_code" id="origin_postal_code" data-error-type="inline"/>
    							</div>
    						</div>
                            <div class="row">
@@ -347,7 +375,7 @@
    							</label>
    							<div>
 
-   								<input class="required" type="text" name="origin_country" id="origin_country" />
+   								<input class="required" type="text" name="origin_country" id="origin_country"  data-error-type="inline"/>
    							</div>
    						</div>
    						</div>
@@ -358,7 +386,7 @@
 
    							</label>
    							<div>
-   								<input data-error-type=inline class="maskDate" name="date_of_birth" id="date_of_birth" type=text />
+   								<input data-error-type=inline class="maskDate" name="date_of_birth" id="date_of_birth" type=text data-error-type="inline" />
    							</div>
    						</div>
                            <div class="row">
@@ -373,16 +401,16 @@
 
    							</label>
    							<div>
-   								<input class="maskIntPhone" name="mobile" id="mobile" type=text />
+   								<input class="maskIntPhone" name="mobile" id="mobile" type=text data-error-type="inline" />
    							</div>
    						</div>
-                           <div class="row">
+                        <div class="row">
    							<label for="landline">
    								<strong>Landline</strong>
 
    							</label>
    							<div>
-   								<input class="maskIntPhone" name="land_line" id="land_line" type=text />
+   								<input class="maskIntPhone" name="land_line" id="land_line" type=text  data-error-type="inline"/>
    							</div>
    						</div>
    							</div>
@@ -392,7 +420,7 @@
    								<strong>Email Address</strong>
    							</label>
    							<div>
-   								<input class="required" email=true type="text" name="email" id="email" />
+   								<input class="required" email=true type="text" name="email" id="email" data-error-type="inline" />
    							</div>
    						</div>
 
@@ -404,22 +432,22 @@
    							 <div class="row">
    							<p class="_50">
    								<label>Facebook</label>
-   								<input type="text" />
+   								<input type="text" name="facebook" id="facebook"  data-error-type="inline"/>
    							</p>
    							<p class="_50">
    								<label>Twitter</label>
-   								<input type="text" />
+   								<input type="text"  name="twitter" id="twitter" data-error-type="inline"/>
    							</p>
    						</div>
 
                            <div class="row">
    							<p class="_50">
    								<label>Linkedin</label>
-   								<input type="text" />
+   								<input type="text" name="linkdin" id="linkdin" data-error-type="inline" />
    							</p>
    							<p class="_50">
    								<label>Other</label>
-   								<input type="text" />
+   								<input type="text" name="other" id="other" data-error-type="inline" />
    							</p>
    						</div>
    							</div>

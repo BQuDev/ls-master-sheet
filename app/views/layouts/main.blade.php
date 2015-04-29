@@ -284,9 +284,24 @@
 			<div class="top">
 
 				<!-- Navigation -->
-				<nav><ul class="collapsible accordion">
+				<nav>
+				<ul class="collapsible accordion">
 
-					<li class="current"><a href="{{ URL::to('/admissions') }}"><img src="{{ URL::asset('img/icons/packs/fugue/16x16/dashboard.png')}}" alt="" height=16 width=16>Admissions</a></li>
+
+					<li><a @if(Request::url() === URL::to('/admissions')) class="open" @endif  class="open" href="#"><img src="{{ URL::asset('img/icons/packs/fugue/16x16/dashboard.png')}}" alt="" height=16 width=16>Admissions</a>
+					<ul>
+                        <li @if(Request::url() === URL::to('/admissions/create')) class="current" @endif><a href="{{ URL::to('/admissions/create') }}"><span class="icon icon-list"></span>New Admission</a></li>
+                        <li @if(Request::url() === URL::to('/admissions')) class="current" @endif><a href="{{ URL::to('/admissions') }}"><span class="icon icon-table"></span>All Admissions</a></li>
+                    </ul>
+					</li>
+
+
+
+
+
+
+
+
 					 @section('sidebar')
 
                       @show

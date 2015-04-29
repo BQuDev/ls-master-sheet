@@ -6,7 +6,6 @@
 @section('content')
 
 
-<br><br>
 <div class="box">
 
 					<div class="header">
@@ -18,7 +17,7 @@
 						<table class="dynamic styled"  id="dataTablesAdmissions" data-filter-Bar="always" data-table-tools='{"display":false}'>
 							<thead>
 						 <tr>
-                                                  <th>#</th>
+                                                  <th>Student ID</th>
                                                   <th>Name</th>
                                                   <th>Email</th>
                                                   <th>Mobile</th>
@@ -30,15 +29,20 @@
 
                                               @foreach ($admissions as $admission)
                                               <tr>
-                                                 <td>{{ $admission->id }}</td>
-                                                 <td>{{ $admission->name }}</td>
+                                                 <td>{{ $admission->student_id }}</td>
+                                                 <td>{{ $admission->first_name }}</td>
                                                  <td>{{ $admission->email }}</td>
                                                  <td>{{ $admission->mobile }}</td>
-                                                 <td>{{ $admission->country }}</td>
-                                                 <td>Actions</td>
+                                                 <td>{{ $admission->origin_country }}</td>
+                                                 <td>
+                                                    <a href="{{ URL::to('/').'/admissions/'.$admission->id.'/edit' }}"><input type="button" class="badge block green" value="Update"/></a>
+                                                    {{ Form::open(array('route' => array('admissions.destroy', $admission->id), 'method' => 'delete')) }}
+                                                            <button type="submit" class="badge block red">Delete</button>
+                                                    {{ Form::close() }}
+
+                                                 </td>
                                                  </tr>
                                               @endforeach
-
 
 
 							</tbody>

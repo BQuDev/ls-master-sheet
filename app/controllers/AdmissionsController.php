@@ -11,7 +11,21 @@ class AdmissionsController extends \BaseController {
 	public function index()
 	{
 		//
-        return View::make('admissions.index')->with('admissions',Admission::all());
+
+        $queries = DB::table('admissions')
+            ->select(DB::raw('max(id) as id'))
+            ->orderBy('id', 'asc')
+            ->groupBy('student_id')
+            ->get();
+        //return $queries;
+        $results = [];
+        foreach($queries as $query) {
+            $results[] = Admission::find($query->id);
+        }
+
+        //return $results;
+        //$query = DB::table('admissions')->groupBy('student_id')->get(['*', DB::raw('MAX(id) as asd')]);return $query;
+        return View::make('admissions.index')->with('admissions',$results);
 	}
 
 	/**
@@ -55,7 +69,9 @@ class AdmissionsController extends \BaseController {
         $v = Validator::make(Input::all(), $rules);
 
         if ($v->passes())
-        {Admission::create(Input::all());
+        {
+            Admission::create(Input::all());
+            return Redirect::to("admissions");
 
         }
 
@@ -83,6 +99,8 @@ class AdmissionsController extends \BaseController {
 	public function edit($id)
 	{
 		//
+        $admission = Admission::find($id);
+        return View::make('admissions.edit')->with('admission',$admission);
 	}
 
 	/**
@@ -95,6 +113,8 @@ class AdmissionsController extends \BaseController {
 	public function update($id)
 	{
 		//
+        Admission::create(Input::all());
+        return Redirect::to("admissions");
 	}
 
 	/**
@@ -107,6 +127,9 @@ class AdmissionsController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+        $admission = Admission::find($id);
+        $admission->delete();
+        return Redirect::to("admissions");
 	}
 /*
     public function dataTablesAdmissions(){
