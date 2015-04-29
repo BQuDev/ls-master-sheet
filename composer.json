@@ -7,11 +7,14 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"barryvdh/laravel-ide-helper": "~1.11",
-        "way/generators": "~2.0",
         "bllim/datatables": "*",
         "barryvdh/laravel-dompdf": "0.4.*",
         "cartalyst/sentry": "2.1.*"
 	},
+    "require-dev": {
+    "way/generators": "~2.0",
+    "fzaninotto/faker": "1.5.*@dev"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",
