@@ -6,6 +6,7 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
+		"cartalyst/sentry": "dev-feature/laravel-5",
 		"barryvdh/laravel-ide-helper": "~2.0"
 	},
 	"require-dev": {
@@ -22,7 +23,8 @@
 	},
 	"autoload-dev": {
 		"classmap": [
-			"tests/TestCase.php"
+			"tests/TestCase.php",
+			"app/Http/Controllers"
 		]
 	},
 	"scripts": {
