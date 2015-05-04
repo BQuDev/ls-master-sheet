@@ -421,7 +421,7 @@
                       <label class="col-sm-1 control-label">Telephone</label>
                       <label class="col-sm-2 control-label">Mobile</label>
                       <div class="col-sm-9">
-                        +44<input type="text" class="form-control">
+                        <input type="text" class="form-control">
                       </div>
                     </div>
                 <div class="form-group">
@@ -1054,6 +1054,16 @@
                                                                                                                   {!! Form::label('forename_1', 'Grade', array('class' => 'col-sm-3 control-label'));  !!}
                                                                                                                   <div class="col-sm-9">{!! Form::text('forename_1', '',['placeholder'=>'Pass','class'=>'form-control']); !!}</div>
                                                                                                                 </div>
+                                                                                     <div class="form-group">
+
+                                                                                                                  <div class="col-sm-3"></div>
+                                                                                                                  <div class="col-sm-9"><p>
+                                                                                                                                        		                <a href="#" class="btn btn-default btn-sm">Add More Qualifications</a>
+                                                                                                                                        		              </p></div>
+                                                                                                                </div>
+
+
+
 
                                                 </div>
 
