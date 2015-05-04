@@ -130,16 +130,16 @@
                             </div>
 
                             <div class="form-group">
-                              {!! Form::label('forename_1', 'Forename 1', array('class' => 'col-sm-3 control-label'));  !!}
-                              <div class="col-sm-9">{!! Form::text('forename_1', '',['placeholder'=>'Forename 1','class'=>'form-control']); !!}</div>
-                            </div>
-                            <div class="form-group">
                               {!! Form::label('forename_1', 'Initials', array('class' => 'col-sm-3 control-label'));  !!}
                               <div class="form-inline">
-                              <div class="col-sm-1">{!! Form::text('forename_1', '',['placeholder'=>'','class'=>'form-control']); !!}</div>&nbsp;&nbsp;&nbsp;&nbsp;
-                              <div class="col-sm-1">{!! Form::text('forename_1', '',['placeholder'=>'','class'=>'form-control']); !!}</div>&nbsp;&nbsp;&nbsp;&nbsp;
-                              <div class="col-sm-1">{!! Form::text('forename_1', '',['placeholder'=>'','class'=>'form-control']); !!}</div>
+                              <div class="col-sm-1">{!! Form::text('forename_1', '',['placeholder'=>'','class'=>'form-control']); !!}</div><div class="col-sm-2"></div>
+                              <div class="col-sm-1">{!! Form::text('forename_1', '',['placeholder'=>'','class'=>'form-control']); !!}</div><div class="col-sm-2"></div>
+                              <div class="col-sm-1">{!! Form::text('forename_1', '',['placeholder'=>'','class'=>'form-control']); !!}</div><div class="col-sm-2"></div>
                               </div>
+                            </div>
+                            <div class="form-group">
+                              {!! Form::label('forename_1', 'Forename 1', array('class' => 'col-sm-3 control-label'));  !!}
+                              <div class="col-sm-9">{!! Form::text('forename_1', '',['placeholder'=>'Forename 1','class'=>'form-control']); !!}</div>
                             </div>
                             <div class="form-group">
                               {!! Form::label('forename_2', 'Forename 2', array('class' => 'col-sm-3 control-label'));  !!}
@@ -398,14 +398,14 @@
                         <div class="panel-body">
                 <div class="form-group">
                       <label class="col-sm-1 control-label">Address</label>
-                      <label class="col-sm-2 control-label">Town/Street</label>
+                      <label class="col-sm-2 control-label">Street</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control">
                       </div>
                     </div>
                 <div class="form-group">
                       <label class="col-sm-1 control-label"></label>
-                      <label class="col-sm-2 control-label">City</label>
+                      <label class="col-sm-2 control-label">Town/City</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control">
                       </div>
@@ -452,7 +452,7 @@
                                         </div>
                                     <div class="form-group">
                                           <label class="col-sm-1 control-label"></label>
-                                          <label class="col-sm-2 control-label">City</label>
+                                          <label class="col-sm-2 control-label">Town/City</label>
                                           <div class="col-sm-9">
                                             <input type="text" class="form-control">
                                           </div>
@@ -833,8 +833,7 @@
                                                           <div class="col-sm-9">{!! Form::text('surname', '',['placeholder'=>'Surname','class'=>'form-control']); !!}</div>
                                                         </div>
                             <div class="form-group">
-                                                  <label class="col-sm-1 control-label"></label>
-                                                  <label class="col-sm-2 control-label">Telephone</label>
+                                                  <label class="col-sm-3 control-label">Telephone</label>
                                                   <div class="col-sm-9">
                                                      <input type="text" class="form-control">
                                                   </div>
