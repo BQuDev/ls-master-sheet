@@ -18,14 +18,61 @@
 <div class="form-group">
                             <div class="form-inline">
                                                           {!! Form::label('date_of_birth', 'App Date', array('class' => 'col-sm-3 control-label'));  !!}
-                                                         <div class="col-sm-3"> {!! Form::text('date_of_birth', '',['placeholder'=>'Date of birth','class'=>'datepicker-input form-control','data-date-format'=>'dd-mm-yyyy']); !!}</div>
+                                                         <div class="col-sm-3"> {!! Form::text('date_of_birth', '',['placeholder'=>'App Date','class'=>'datepicker-input form-control','data-date-format'=>'dd-mm-yyyy']); !!}</div>
 
 
                                                           {!! Form::label('date_of_birth', 'AMS Date', array('class' => 'col-sm-2 control-label'));  !!}
-                                                         <div class="col-sm-3"> {!! Form::text('date_of_birth', '',['placeholder'=>'Date of birth','class'=>'datepicker-input form-control','data-date-format'=>'dd-mm-yyyy']); !!}</div>
+                                                         <div class="col-sm-3"> {!! Form::text('date_of_birth', '',['placeholder'=>'AMS Date','class'=>'datepicker-input form-control','data-date-format'=>'dd-mm-yyyy']); !!}</div>
 
                                                         </div>
                                                         </div>
+
+                                                         <section class="panel panel-default">
+                                                                                                        <header class="panel-heading font-bold">AGENT/ ADMISSION MANAGER INFORMATION</header>
+
+
+                                                                                                        <div class="panel-body">
+
+                                                                                                        {!! Form::label('nationality', 'Agent Type', array('class' => 'col-sm-1 control-label'));  !!}
+                                                                                                                                                                                     <div class="col-sm-4">
+                                                                                                                                                                                     <select style="width:260px" class="chosen-select">
+                                                                                                                                                                                                                 <optgroup label="Select One">
+                                                                                                                                                                                                                     <option value="LAP">LAP</option>
+
+                                                                                                                                                                                                                 </optgroup>
+                                                                                                                                                                                                             </select>
+                                                                                                                                                                                     </div>
+
+
+
+
+                                                                                                       {!! Form::label('nationality', 'Name', array('class' => 'col-sm-1 control-label'));  !!}
+                                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                                                                                                    <select style="width:260px" class="chosen-select">
+                                                                                                                                                                                                                <optgroup label="Select One">
+                                                                                                                                                                                                                    <option value="Bob Dyson">Bob Dyson</option>
+
+                                                                                                                                                                                                                </optgroup>
+                                                                                                                                                                                                            </select>
+                                                                                                                                                                                    </div>
+                                                                                                       {!! Form::label('nationality', 'Admssion manager', array('class' => 'col-sm-1 control-label'));  !!}
+                                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                                                                                                    <select style="width:260px" class="chosen-select">
+                                                                                                                                                                                                                <optgroup label="Select One">
+                                                                                                                                                                                                                    <option value="Bob Dyson">LAP</option>
+
+                                                                                                                                                                                                                </optgroup>
+                                                                                                                                                                                                            </select>
+                                                                                                                                                                                    </div>
+                                                                                                        </div>
+
+
+
+
+
+                                                                                                        </section>
+
+
                       <section class="panel panel-default">
                         <header class="panel-heading font-bold">PERSONAL DETAILS</header>
                         <div class="panel-body">
@@ -321,6 +368,14 @@
 
                             </div>
 
+
+                            <div class="form-group">
+                              {!! Form::label('date_of_birth', 'Passport number', array('class' => 'col-sm-3 control-label'));  !!}
+                             <div class="col-sm-9"> {!! Form::text('date_of_birth', '',['placeholder'=>'Passport number','class'=>'datepicker-input form-control','data-date-format'=>'dd-mm-yyyy']); !!}</div>
+
+                            </div>
+
+
                         </div>
                       </section>
 <section class="panel panel-default">
@@ -420,11 +475,11 @@
                                         </div>
 
                             <div class="form-group">
-                              {!! Form::label('forename_3', 'Email 1', array('class' => 'col-sm-3 control-label'));  !!}
+                              {!! Form::label('forename_3', 'Email ', array('class' => 'col-sm-3 control-label'));  !!}
                               <div class="col-sm-9">{!! Form::text('Email_1', '',['placeholder'=>'Forename 3','class'=>'form-control']); !!}</div>
                             </div>
                             <div class="form-group">
-                              {!! Form::label('forename_3', 'Email 2', array('class' => 'col-sm-3 control-label'));  !!}
+                              {!! Form::label('forename_3', 'Alternative Email', array('class' => 'col-sm-3 control-label'));  !!}
                               <div class="col-sm-9">{!! Form::text('Email_2', '',['placeholder'=>'Forename 3','class'=>'form-control']); !!}</div>
                             </div>
 
@@ -489,7 +544,7 @@
 
                             <div class="form-group">
                               {!! Form::label('date_of_birth', 'Start date', array('class' => 'col-sm-3 control-label'));  !!}
-                             <div class="col-sm-9"> {!! Form::text('date_of_birth', '',['placeholder'=>'Date of birth','class'=>'datepicker-input form-control','data-date-format'=>'dd-mm-yyyy']); !!}</div>
+                             <div class="col-sm-9"> {!! Form::text('date_of_birth', '',['placeholder'=>'Start date','class'=>'datepicker-input form-control','data-date-format'=>'dd-mm-yyyy']); !!}</div>
 
                             </div>
 
@@ -659,41 +714,7 @@
 
                                                 </div>
                                                 </section>
-                        <section class="panel panel-default">
-                                                <header class="panel-heading font-bold">AGENT INFORMATION</header>
 
-
-                                                <div class="panel-body">
-
-                                                {!! Form::label('nationality', 'Name', array('class' => 'col-sm-1 control-label'));  !!}
-                                                                                                                             <div class="col-sm-4">
-                                                                                                                             <select style="width:260px" class="chosen-select">
-                                                                                                                                                         <optgroup label="Select One">
-                                                                                                                                                             <option value="LAP">LAP</option>
-
-                                                                                                                                                         </optgroup>
-                                                                                                                                                     </select>
-                                                                                                                             </div>
-
-
-
-
-                                               {!! Form::label('nationality', 'Name', array('class' => 'col-sm-1 control-label'));  !!}
-                                                                                                                            <div class="col-sm-4">
-                                                                                                                            <select style="width:260px" class="chosen-select">
-                                                                                                                                                        <optgroup label="Select One">
-                                                                                                                                                            <option value="Bob Dyson">Bob Dyson</option>
-
-                                                                                                                                                        </optgroup>
-                                                                                                                                                    </select>
-                                                                                                                            </div>
-                                                </div>
-
-
-
-
-
-                                                </section>
                         <section class="panel panel-default">
                                                 <header class="panel-heading font-bold">BQu only</header>
 

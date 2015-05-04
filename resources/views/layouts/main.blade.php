@@ -150,7 +150,7 @@
             <span class="thumb-sm avatar pull-left">
               <img src="images/a0.png" alt="...">
             </span>
-            John.Smith <b class="caret"></b>
+            Jacques.deCock <b class="caret"></b>
           </a>
           <ul class="dropdown-menu animated fadeInRight">
             <!--<li>
@@ -193,14 +193,14 @@
                       </span>
                       <span class="hidden-nav-xs clear">
                         <span class="block m-t-xs">
-                          <strong class="font-bold text-lt">John.Smith</strong>
+                          <strong class="font-bold text-lt">Jacques.deCock</strong>
                           <b class="caret"></b>
                         </span>
-                        <span class="text-muted text-xs block">Art Director</span>
+                        <span class="text-muted text-xs block">CEO</span>
                       </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                      <li>
+                      <!--<li>
                         <span class="arrow top hidden-nav-xs"></span>
                         <a href="#">Settings</a>
                       </li>
@@ -212,7 +212,7 @@
                           <span class="badge bg-danger pull-right">3</span>
                           Notifications
                         </a>
-                      </li>
+                      </li>-->
                       <li>
                         <a href="docs.html">Help</a>
                       </li>
