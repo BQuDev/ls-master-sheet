@@ -32,9 +32,9 @@
 
 
                                                                                                         <div class="panel-body">
-
-                                                                                                        {!! Form::label('nationality', 'Agent Type', array('class' => 'col-sm-1 control-label'));  !!}
-                                                                                                                                                                                     <div class="col-sm-4">
+<div class="form-group">
+                                                                                                        {!! Form::label('nationality', 'Agent Type', array('class' => 'col-sm-3 control-label'));  !!}
+                                                                                                                                                                                     <div class="col-sm-9">
                                                                                                                                                                                      <select style="width:260px" class="chosen-select">
                                                                                                                                                                                                                  <optgroup label="Select One">
                                                                                                                                                                                                                      <option value="LAP">LAP</option>
@@ -43,11 +43,11 @@
                                                                                                                                                                                                              </select>
                                                                                                                                                                                      </div>
 
+ </div><div class="form-group">
 
 
-
-                                                                                                       {!! Form::label('nationality', 'Name', array('class' => 'col-sm-1 control-label'));  !!}
-                                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                       {!! Form::label('nationality', 'Name', array('class' => 'col-sm-3 control-label'));  !!}
+                                                                                                                                                                                    <div class="col-sm-9">
                                                                                                                                                                                     <select style="width:260px" class="chosen-select">
                                                                                                                                                                                                                 <optgroup label="Select One">
                                                                                                                                                                                                                     <option value="Bob Dyson">Bob Dyson</option>
@@ -55,8 +55,11 @@
                                                                                                                                                                                                                 </optgroup>
                                                                                                                                                                                                             </select>
                                                                                                                                                                                     </div>
-                                                                                                       {!! Form::label('nationality', 'Admssion manager', array('class' => 'col-sm-1 control-label'));  !!}
-                                                                                                                                                                                    <div class="col-sm-4">
+
+                                                                                                                                                                                     </div><div class="form-group">
+                                                                                                       {!! Form::label('nationality', 'Admssion manager', array('class' => 'col-sm-3 control-label'));  !!}
+                                                                                                                                                                                    <div class="col-sm-9
+                                                                                                                                                                                    ">
                                                                                                                                                                                     <select style="width:260px" class="chosen-select">
                                                                                                                                                                                                                 <optgroup label="Select One">
                                                                                                                                                                                                                     <option value="Bob Dyson">LAP</option>
@@ -66,6 +69,7 @@
                                                                                                                                                                                     </div>
                                                                                                         </div>
 
+ </div>
 
 
 
