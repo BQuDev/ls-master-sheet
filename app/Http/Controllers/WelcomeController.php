@@ -1,5 +1,11 @@
 <?php namespace App\Http\Controllers;
 
+use App\Admission_manager;
+use App\Agent_lap;
+use App\ApplicationStatus;
+use App\AwardingBody;
+use App\CourseDetails;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +36,12 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('admissions.create');
+		return view('admissions.create')
+            ->with('agent_names',Agent_lap::lists('name', 'id'))
+            ->with('admission_managers',Admission_manager::lists('name','id'))
+            ->with('course_names',CourseDetails::lists('name','id'))
+            ->with('awarding_bodies',AwardingBody::lists('acronym','id'))
+            ->with('application_status',ApplicationStatus::lists('name','id'));
 		//return view('welcome');
 	}
 
