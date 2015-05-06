@@ -55,9 +55,9 @@ return [
 		'mysql' => [
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'ls_master_sheet',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'forge',
+			'username'  => 'forge',
+			'password'  => 'O7MqYSYcXioBE4ixvnmR',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
