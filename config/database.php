@@ -57,11 +57,10 @@ return [
 			'host'      => 'localhost',
 			'database'  => 'forge',
 			'username'  => 'forge',
-			'password'  => 'O7MqYSYcXioBE4ixvnmR',
+			'password'  => 'yoirTnzbBjFujHT5j5UE',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-			'strict'    => false,
 		],
 
 		'pgsql' => [
