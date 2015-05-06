@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\BquApplicationData;
 use App\ContactInformation;
 use App\CourseDetails;
 use App\CourseEnrolment;
@@ -8,6 +9,9 @@ use App\EnglishLangLevel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\PaymentInfo;
+use App\PaymentInfoMetadata;
+use App\WorkExperience;
 use Input;
 use App\Student;
 use Illuminate\Http\Request;
@@ -56,7 +60,10 @@ class StudentController extends Controller {
         {
             return redirect()->back()->withErrors($v->errors());
         }*/
-
+            //return Input::all();
+        //$profilebox = implode(',', Input::get('intake'));
+        //return json_encode(Input::get('payment_status'));
+        //return json_encode(Input::get('course_fees'));
             // Saving Student
             $student = new Student();
             $student->title = Input::get('title');
@@ -114,7 +121,10 @@ class StudentController extends Controller {
             $course_enrolment = new CourseEnrolment();
             $course_enrolment->course_name = Input::get('course_name');
             $course_enrolment->awarding_body = Input::get('awarding_body');
-            $course_enrolment->intake = Input::get('intake');
+        // TO-Do
+        //   $course_enrolment->intake = '2';
+
+           $course_enrolment->intake =  json_encode(Input::get('intake'));
             $course_enrolment->study_mode = Input::get('study_mode');
 
             $course_enrolment->san = Input::get('san');
@@ -153,6 +163,120 @@ class StudentController extends Controller {
         $educational_qualifications2->save();
 
         $english_language_level = new EnglishLangLevel();
+        //To -Do
+        $english_language_level->english_language_level = json_encode(Input::get('english_language_level'));
+        $english_language_level->english_language_level_other = Input::get('english_language_level_other');
+        $english_language_level->san = Input::get('san');
+        $english_language_level->student_id = $student_id;
+        $english_language_level->save();
+
+        $work_experience_1 = new WorkExperience();
+        $work_experience_2 = $work_experience_1->replicate();
+        $work_experience_3 = $work_experience_1->replicate();
+
+        $work_experience_1->occupation = Input::get('occupation_1');
+        $work_experience_1->institution = Input::get('institution_1');
+        $work_experience_1->occupation_start_date = Input::get('occupation_start_date_1').'-'.Input::get('occupation_start_month_1').'-'.Input::get('occupation_start_year_1');
+        $work_experience_1->occupation_end_date = Input::get('occupation_end_date_1').'-'.Input::get('occupation_end_month_1').'-'.Input::get('occupation_end_year_1');
+        //To-do
+        //$work_experience_1->currently_working = Input::get('currently_working_1');
+        $work_experience_1->currently_working = 'currently_working';
+        $work_experience_1->san = Input::get('san');
+        $work_experience_1->student_id = $student_id;
+        $work_experience_1->save();
+
+        $work_experience_2->occupation = Input::get('occupation_2');
+        $work_experience_2->institution = Input::get('institution_2');
+        $work_experience_2->occupation_start_date = Input::get('occupation_start_date_2').'-'.Input::get('occupation_start_month_2').'-'.Input::get('occupation_start_year_2');
+        $work_experience_2->occupation_end_date = Input::get('occupation_end_date_2').'-'.Input::get('occupation_end_month_2').'-'.Input::get('occupation_end_year_2');
+        //To-do
+        //$work_experience_2->currently_working = Input::get('currently_working_1');
+        $work_experience_2->currently_working = 'currently_working';
+        $work_experience_2->san = Input::get('san');
+        $work_experience_2->student_id = $student_id;
+        $work_experience_2->save();
+
+        $work_experience_3->occupation = Input::get('occupation_3');
+        $work_experience_3->institution = Input::get('institution_3');
+        $work_experience_3->occupation_start_date = Input::get('occupation_start_date_3').'-'.Input::get('occupation_start_month_3').'-'.Input::get('occupation_start_year_3');
+        $work_experience_3->occupation_end_date = Input::get('occupation_end_date_3').'-'.Input::get('occupation_end_month_3').'-'.Input::get('occupation_end_year_3');
+        //To-do
+        //$work_experience_3->currently_working = Input::get('currently_working_1');
+        $work_experience_3->currently_working = 'currently_working';
+        $work_experience_3->san = Input::get('san');
+        $work_experience_3->student_id = $student_id;
+        $work_experience_3->save();
+
+        $payment_info_metadata = new PaymentInfoMetadata();
+        //To-Do
+        $payment_info_metadata->course_fees = json_encode(Input::get('course_fees'));
+        //$payment_info_metadata->course_fees = 'course_fees';
+        //To-Do
+        $payment_info_metadata->payment_status = json_encode(Input::get('payment_status'));
+        //$payment_info_metadata->payment_status ='payment_status';
+
+        $payment_info_metadata->total_fee = Input::get('total_fee');
+        $payment_info_metadata->save();
+
+        $payment_info_metadata_id = $payment_info_metadata->id;
+
+        $payment_info = new PaymentInfo();
+
+        $payment_info_installment_1 = $payment_info->replicate();
+        $payment_info_installment_2 = $payment_info->replicate();
+        $payment_info_installment_3 = $payment_info->replicate();
+
+
+        $payment_info->payment_amount = Input::get('deposit');
+        $payment_info->date = Input::get('deposit_date').'-'.Input::get('deposit_month').'-'.Input::get('deposit_year');
+        $payment_info->method = Input::get('deposit');
+        $payment_info->san = Input::get('san');
+        $payment_info->student_id = $student_id;
+        //To-Do
+        $payment_info->payment_info_type = 1;
+        $payment_info->save();
+
+
+        $payment_info_installment_1->payment_amount = Input::get('instalment_1');
+        $payment_info_installment_1->date = Input::get('instalment_1_date').'-'.Input::get('instalment_1_month').'-'.Input::get('instalment_1_year');
+        $payment_info_installment_1->method = Input::get('instalment_payment_method_1');
+        $payment_info_installment_1->san = Input::get('san');
+        $payment_info_installment_1->student_id = $student_id;
+        //To-Do
+        $payment_info_installment_1->payment_info_type = 2;
+        $payment_info_installment_1->save();
+
+
+        $payment_info_installment_2->payment_amount = Input::get('instalment_2');
+        $payment_info_installment_2->date = Input::get('instalment_2_date').'-'.Input::get('instalment_2_month').'-'.Input::get('instalment_2_year');
+        $payment_info_installment_2->method = Input::get('instalment_payment_method_2');
+        $payment_info_installment_2->san = Input::get('san');
+        $payment_info_installment_2->student_id = $student_id;
+        //To-Do
+        $payment_info_installment_2->payment_info_type = 2;
+        $payment_info_installment_2->save();
+
+
+        $payment_info_installment_3->payment_amount = Input::get('instalment_3');
+        $payment_info_installment_3->date = Input::get('instalment_3_date').'-'.Input::get('instalment_3_month').'-'.Input::get('instalment_3_year');
+        $payment_info_installment_3->method = Input::get('instalment_payment_method_3');
+        $payment_info_installment_3->san = Input::get('san');
+        $payment_info_installment_3->student_id = $student_id;
+        //To-Do
+        $payment_info_installment_3->payment_info_type = 2;
+        $payment_info_installment_3->save();
+
+        $bqu_application_data = new BquApplicationData();
+        $bqu_application_data->application_received_date =  Input::get('application_received_to_bqu_date').'-'.Input::get('application_received_to_bqu_month').'-'.Input::get('application_received_to_bqu_year');
+        $bqu_application_data->application_input_by =Input::get('application_input_by');
+        $bqu_application_data->supervisor =Input::get('supervisor');
+        $bqu_application_data->verified_date =Input::get('applicant_verified_by_bqu_date').'-'.Input::get('applicant_verified_by_bqu_month').'-'.Input::get('applicant_verified_by_bqu_year');
+        $bqu_application_data->status =Input::get('admission_status');
+        $bqu_application_data->san = Input::get('san');
+        $bqu_application_data->student_id = $student_id;
+        $bqu_application_data->save();
+
+
 
 
 

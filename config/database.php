@@ -55,12 +55,13 @@ return [
 		'mysql' => [
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'forge',
-			'username'  => 'forge',
-			'password'  => 'yoirTnzbBjFujHT5j5UE',
+			'database'  => 'ls_master_sheet',
+			'username'  => 'root',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
+			'strict'    => false,
 		],
 
 		'pgsql' => [

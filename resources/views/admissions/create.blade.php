@@ -30,14 +30,14 @@
          <header class="panel-heading font-bold">AGENT/ ADMISSION MANAGER INFORMATION</header>
          <div class="panel-body">
             <div class="form-group">
-               {!! Form::label('agent_type', 'Agent Type', array('class' => 'col-sm-3 control-label'));  !!}
+               {!! Form::label('agent_type', 'Source', array('class' => 'col-sm-3 control-label'));  !!}
                <div class="col-sm-9">
                {!! Form::select('agent_type', array('LAP' => 'LAP', 'Agent' => 'Agent', 'Direct' => 'Direct'),'',['class'=>'chosen-select col-sm-4']);  !!}
 
                </div>
             </div>
             <div class="form-group">
-               {!! Form::label('agent_names', 'Name', array('class' => 'col-sm-3 control-label'));  !!}
+               {!! Form::label('agent_names', 'Agent/LAP', array('class' => 'col-sm-3 control-label'));  !!}
                <div class="col-sm-9">
 
                   {!! Form::select('agent_names', $agent_names,'',['class'=>'chosen-select col-sm-4']);  !!}
@@ -854,14 +854,14 @@
             </div>
          </div>
          <div class="form-group">
-            {!! Form::label('intake', 'Intake', array('class' => 'col-sm-3 control-label'));  !!}
+            {!! Form::label('intake1', 'Intake', array('class' => 'col-sm-3 control-label'));  !!}
             <div class="col-sm-9">
                <div class="form-group">
                   <div class="form-inline">
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '1',false); !!}
+                           <input type="checkbox" value="1" name="intake[]">
                            <i></i>
                            Jan
                            </label>
@@ -870,7 +870,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '2',false); !!}
+                           <input type="checkbox" value="2" name="intake[]">
                            <i></i>
                            Feb
                            </label>
@@ -879,7 +879,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '3',false); !!}
+                           <input type="checkbox" value="3" name="intake[]">
                            <i></i>
                            Mar
                            </label>
@@ -888,7 +888,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '4',false); !!}
+                           <input type="checkbox" value="4" name="intake[]">
                            <i></i>
                            Apr
                            </label>
@@ -897,7 +897,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '5',false); !!}
+                           <input type="checkbox" value="5" name="intake[]">
                            <i></i>
                            May
                            </label>
@@ -906,7 +906,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '6',false); !!}
+                           <input type="checkbox" value="6" name="intake[]">
                            <i></i>
                            Jun
                            </label>
@@ -919,7 +919,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '7',false); !!}
+                           <input type="checkbox" value="7" name="intake[]">
                            <i></i>
                            July
                            </label>
@@ -928,7 +928,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '8',false); !!}
+                           <input type="checkbox" value="8" name="intake[]">
                            <i></i>
                            Aug
                            </label>
@@ -937,7 +937,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '9',false); !!}
+                           <input type="checkbox" value="9" name="intake[]">
                            <i></i>
                            Sep
                            </label>
@@ -946,7 +946,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '10',false); !!}
+                           <input type="checkbox" value="10" name="intake[]">
                            <i></i>
                            Oct
                            </label>
@@ -955,7 +955,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '11',false); !!}
+                           <input type="checkbox" value="11" name="intake[]">
                            <i></i>
                            Nov
                            </label>
@@ -964,7 +964,7 @@
                      <div class="col-sm-2">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('intake', '12',false); !!}
+                           <input type="checkbox" value="12" name="intake[]">
                            <i></i>
                            Dec
                            </label>
@@ -1005,14 +1005,13 @@
          <header class="panel-heading font-bold">EDUCATIONAL QUALIFICATIONS</header>
          <div class="panel-body">
             <div class="form-group">
-               {!! Form::label('english_language_level', 'English language level', array('class' => 'col-sm-3 control-label'));  !!}
+               {!! Form::label('english_language_level1', 'English language level', array('class' => 'col-sm-3 control-label'));  !!}
                <div class="col-sm-9 ">
                   <div class="form-inline">
                      <div class="col-sm-3 ">
                         <div class="checkbox i-checks">
                            <label>
-                           <input type="checkbox" value="" >
-                           {!! Form::checkbox('english_language_level', 'CITY & GUILDS',false); !!}
+                           {!! Form::checkbox('english_language_level[]', 'CITY & GUILDS',false); !!}
                            <i></i>
                            CITY & GUILDS
                            </label>
@@ -1021,7 +1020,7 @@
                      <div class="col-sm-2 ">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('english_language_level', 'IELTS',false); !!}
+                           {!! Form::checkbox('english_language_level[]', 'IELTS',false); !!}
                            <i></i>
                            IELTS
                            </label>
@@ -1030,7 +1029,7 @@
                      <div class="col-sm-2 ">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('english_language_level', 'ESOL',false); !!}
+                           {!! Form::checkbox('english_language_level[]', 'ESOL',false); !!}
                            <i></i>
                            ESOL
                            </label>
@@ -1040,7 +1039,7 @@
                      <div class="form-inline">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('english_language_level', 'Other',false); !!}
+                           {!! Form::checkbox('english_language_level[]', 'Other',false); !!}
                            <i></i>
                            Other
                            </label>
@@ -1056,7 +1055,7 @@
 
 
             <div class="form-group">
-               {!! Form::label('qualification_1', 'Qualification', array('class' => 'col-sm-3 control-label'));  !!}
+               {!! Form::label('qualification_1', 'Qualification 1', array('class' => 'col-sm-3 control-label'));  !!}
                <div class="col-sm-9">{!! Form::text('qualification_1', '',['placeholder'=>'Qualification','class'=>'form-control']); !!}</div>
             </div>
             <div class="form-group">
@@ -1360,7 +1359,7 @@
                      <div class="col-sm-2 ">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('course_fees', 'Self funded',false); !!}
+                           {!! Form::checkbox('course_fees[]', 'Self funded',false); !!}
                            <i></i>
                            Self funded
                            </label>
@@ -1369,7 +1368,7 @@
                      <div class="col-sm-4 ">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('course_fees', 'Sponsored by the Company',false); !!}
+                           {!! Form::checkbox('course_fees[]', 'Sponsored by the Company',false); !!}
                            <i></i>
                            Sponsored by the Company
                            </label>
@@ -1378,18 +1377,9 @@
                      <div class="col-sm-2 ">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('course_fees', 'Bank Loan',false); !!}
+                           {!! Form::checkbox('course_fees[]', 'Bank Loan',false); !!}
                            <i></i>
                            Bank Loan
-                           </label>
-                        </div>
-                     </div>
-                     <div class="col-sm-3 ">
-                        <div class="checkbox i-checks">
-                           <label>
-                           {!! Form::checkbox('course_fees', 'Local Access Points',false); !!}
-                           <i></i>
-                           Local Access Points
                            </label>
                         </div>
                      </div>
@@ -1403,7 +1393,7 @@
                      <div class="col-sm-2 ">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('payment_status', 'Paid in full',false); !!}
+                           {!! Form::checkbox('payment_status[]', 'Paid in full',false); !!}
                            <i></i>
                            Paid in full
                            </label>
@@ -1412,7 +1402,7 @@
                      <div class="col-sm-2 ">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('payment_status', 'Unpaid',false); !!}
+                           {!! Form::checkbox('payment_status[]', 'Unpaid',false); !!}
                            <i></i>
                            Unpaid
                            </label>
@@ -1421,7 +1411,7 @@
                      <div class="col-sm-2 ">
                         <div class="checkbox i-checks">
                            <label>
-                           {!! Form::checkbox('payment_status', 'Deposit paid',false); !!}
+                           {!! Form::checkbox('payment_status[]', 'Deposit paid',false); !!}
                            <i></i>
                            Deposit paid
                            </label>
@@ -1448,7 +1438,7 @@
                                              </div>{!! Form::label('nationality', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
                   <div class="col-sm-2">
 
-                     {!! Form::select('deposit_payment_method_1', array('Credit card/debit card'=>'Credit/Debit card'),'',['class'=>'chosen-select col-sm-12']);  !!}
+                     {!! Form::select('deposit_payment_method_1', $method_of_payment,'',['class'=>'chosen-select col-sm-12']);  !!}
                   </div>
                   <div class="line line-dashed b-b line-lg pull-in"></div>
                </div>
@@ -1465,7 +1455,7 @@
                                              </div>
                                              </div>{!! Form::label('nationality', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
                   <div class="col-sm-2">
-                     {!! Form::select('instalment_payment_method_1', array('Credit card/debit card'=>'Credit/Debit card'),'',['class'=>'chosen-select col-sm-12']);  !!}
+                     {!! Form::select('instalment_payment_method_1', $method_of_payment,'',['class'=>'chosen-select col-sm-12']);  !!}
 
                   </div>
                   <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -1483,7 +1473,7 @@
                                              </div>
                                              </div>{!! Form::label('nationality', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
                   <div class="col-sm-2">
-                     {!! Form::select('instalment_payment_method_2', array('Credit card/debit card'=>'Credit/Debit card'),'',['class'=>'chosen-select col-sm-12']);  !!}
+                     {!! Form::select('instalment_payment_method_2', $method_of_payment,'',['class'=>'chosen-select col-sm-12']);  !!}
 
                   </div>
                   <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -1492,16 +1482,16 @@
             <div class="form-group">
                <div class="form-inline">
                   {!! Form::label('forename_3', 'Instalment 3', array('class' => 'col-sm-2 control-label'));  !!}
-                  <div class="col-sm-2">{!! Form::text('instalment_3', '',['placeholder'=>'Deposit','class'=>'form-control']); !!}</div>
+                  <div class="col-sm-2">{!! Form::text('instalment_3', '',['placeholder'=>'Instalment 3','class'=>'form-control']); !!}</div>
                   {!! Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  !!}
                   <div class="col-sm-3"><div class="form-inline">
                                                 {!! Form::text('instalment_3_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
                                                 {!! Form::text('instalment_3_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
                                                 {!! Form::text('instalment_3_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
                                              </div>
-                                             </div>{!! Form::label('nationality', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
+                                             </div>{!! Form::label('instalment_payment_method_3', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
                   <div class="col-sm-2">
-                     {!! Form::select('instalment_payment_method_3', array('Credit card/debit card'=>'Credit/Debit card'),'',['class'=>'chosen-select col-sm-12']);  !!}
+                     {!! Form::select('instalment_payment_method_3', $method_of_payment,'',['class'=>'chosen-select col-sm-12']);  !!}
 
                   </div>
                   <div class="line line-dashed b-b line-lg pull-in"></div>

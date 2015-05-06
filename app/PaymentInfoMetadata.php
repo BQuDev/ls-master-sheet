@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Agent_lap extends Model {
+class PaymentInfoMetadata extends Model {
 
 	//
 
