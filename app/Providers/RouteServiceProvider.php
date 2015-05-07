@@ -1,7 +1,6 @@
 <?php namespace App\Providers;
 
 
-use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
@@ -32,12 +31,12 @@ class RouteServiceProvider extends ServiceProvider {
 		/***** Larave sentry ****/
 		
 		// Check if someone is already logged in
-        Route::filter('members_auth',function(){
+        /*Route::filter('members_auth',function(){
         //If already logged in go to dashboard or else login
             if(!Sentry::check()){
                 return Redirect::to('/student');
             }
-        });
+        });*/
 		
 		/***** Larave sentry ****/
 	}
