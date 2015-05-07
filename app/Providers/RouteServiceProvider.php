@@ -1,5 +1,6 @@
 <?php namespace App\Providers;
 
+use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
@@ -26,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider {
 		//
 		
 		parent::boot($router);
-		
+	
 		/***** Larave sentry ****/
 		
 		// Check if someone is already logged in
