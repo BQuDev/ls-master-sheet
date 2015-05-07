@@ -1,6 +1,6 @@
 <?php namespace App\Providers;
 
-use Cartalyst\Sentry\Facades\Laravel\Sentry;
+
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
