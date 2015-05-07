@@ -1,9 +1,11 @@
 <?php namespace App\Providers;
 
 
-use Illuminate\Routing\Router;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Cartalyst\Sentry\Facades\Laravel\Sentry;
+ use Cartalyst\Sentry\Facades\Laravel\Sentry;
+ use Illuminate\Routing\Router;
+ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+ use Illuminate\Support\Facades\Route;
+
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -34,7 +36,7 @@ class RouteServiceProvider extends ServiceProvider {
         Route::filter('members_auth',function(){
         //If already logged in go to dashboard or else login
             if(!Sentry::check()){
-                return Redirect::to('/student');
+               // return Redirect::to('/student');
             }
         });
 		
