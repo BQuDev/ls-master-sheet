@@ -20,3 +20,13 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/*
+Route::get('agent_type/dropdown', function(){
+
+    /*$models = $maker->models();
+    return Response::eloquent($models->get(['id','name']));
+});*/
+
+Route::get('agent_type/dropdown', 'WelcomeController@agents_laps');
+Route::get('intake_month/dropdown', 'WelcomeController@intake_month');

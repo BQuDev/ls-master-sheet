@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEducationalQualificationsTable extends Migration {
+class CreateStudentContactInformationTypesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,10 @@ class CreateEducationalQualificationsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('educational_qualifications', function(Blueprint $table)
+		Schema::create('student_contact_information_types', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name');
-			$table->string('aru');
+            $table->string('name');
 			$table->timestamps();
 		});
 	}
@@ -28,7 +27,7 @@ class CreateEducationalQualificationsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('educational_qualifications');
+		Schema::drop('student_contact_information_types');
 	}
 
 }

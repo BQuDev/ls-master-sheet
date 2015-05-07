@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContactInformation extends Model {
+class StudentContactInformationKinDetailes extends Model {
 
 	//
 

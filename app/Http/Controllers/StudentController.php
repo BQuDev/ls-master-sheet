@@ -11,6 +11,11 @@ use App\Http\Controllers\Controller;
 
 use App\PaymentInfo;
 use App\PaymentInfoMetadata;
+use App\StudentContactInformation;
+use App\StudentContactInformationKinDetailes;
+use App\StudentContactInformationOnline;
+use App\StudentContactInformationType;
+use App\StudentEducationalQualification;
 use App\WorkExperience;
 use Input;
 use App\Student;
@@ -81,7 +86,7 @@ class StudentController extends Controller {
             $student->save();
 
             $student_id = $student->id;
-
+/*
             // Saving contact details
             $contact_details = new ContactInformation();
             $contact_details->uk_street = Input::get('uk_street');
@@ -89,6 +94,7 @@ class StudentController extends Controller {
             $contact_details->uk_post_code = Input::get('uk_post_code');
             $contact_details->uk_mobile = Input::get('uk_mobile');
             $contact_details->uk_landline = Input::get('uk_landline');
+
 
             $contact_details->address_1 = Input::get('address_1');
             $contact_details->address_2 = Input::get('address_2');
@@ -116,26 +122,79 @@ class StudentController extends Controller {
             $contact_details->student_id = $student_id;
 
             $contact_details->save();
+*/
+
+        $contact_details = new StudentContactInformation();
+        $contact_details_1 = $contact_details->replicate();
+
+        $contact_details->address_1 = Input::get('tt_address_1');
+        $contact_details->address_2 = Input::get('tt_address_2');
+        $contact_details->city = Input::get('tt_city');
+        $contact_details->post_code = Input::get('tt_post_code');
+        $contact_details->country = Input::get('tt_country');
+        $contact_details->mobile = Input::get('tt_mobile_1').Input::get('tt_mobile_2').Input::get('tt_mobile_3').Input::get('tt_mobile');
+        $contact_details->landline = Input::get('tt_landline_1').Input::get('tt_landline_2').Input::get('tt_landline_3').Input::get('tt_landline');
+        $contact_details->student_contact_information_type = 1;
+        $contact_details->san = Input::get('san');
+        $contact_details->student_id = $student_id;
+        $contact_details->save();
+
+        $contact_details_1->address_1 = Input::get('address_1');
+        $contact_details_1->address_2 = Input::get('address_2');
+        $contact_details_1->city = Input::get('city');
+        $contact_details_1->post_code = Input::get('post_code');
+        $contact_details_1->country = Input::get('country');
+        $contact_details_1->mobile = Input::get('mobile_1').Input::get('mobile_2').Input::get('mobile_3').Input::get('mobile');
+        $contact_details_1->landline = Input::get('landline_1').Input::get('landline_2').Input::get('landline_3').Input::get('landline');
+        $contact_details_1->student_contact_information_type = 2;
+        $contact_details_1->san = Input::get('san');
+        $contact_details_1->student_id = $student_id;
+        $contact_details_1->save();
+
+        $contact_details_online = new StudentContactInformationOnline();
+        $contact_details_online->email = Input::get('email');
+        $contact_details_online->alternative_email = Input::get('alternative_email');
+        $contact_details_online->facebook = Input::get('facebook');
+        $contact_details_online->linkedin = Input::get('linkedin');
+        $contact_details_online->twitter = Input::get('twitter');
+        $contact_details_online->other_social = Input::get('other_social');
+        $contact_details_online->san = Input::get('san');
+        $contact_details_online->student_id = $student_id;
+        $contact_details_online->save();
+
+        $contact_details_kin = new StudentContactInformationKinDetailes();
+        $contact_details_kin->next_of_kin_title = Input::get('next_of_kin_title');
+        $contact_details_kin->next_of_kin_forename = Input::get('next_of_kin_forename');
+        $contact_details_kin->next_of_kin_surname = Input::get('next_of_kin_surname');
+        $contact_details_kin->next_of_kin_telephone = Input::get('next_of_kin_telephone_1').Input::get('next_of_kin_telephone_2').Input::get('next_of_kin_telephone_3').Input::get('next_of_kin_telephone');
+        $contact_details_kin->next_of_kin_email = Input::get('next_of_kin_email');
+        $contact_details_kin->san = Input::get('san');
+        $contact_details_kin->student_id = $student_id;
+        $contact_details_kin->save();
 
 
-            $course_enrolment = new CourseEnrolment();
+        $course_enrolment = new CourseEnrolment();
             $course_enrolment->course_name = Input::get('course_name');
             $course_enrolment->awarding_body = Input::get('awarding_body');
         // TO-Do
         //   $course_enrolment->intake = '2';
 
-           $course_enrolment->intake =  json_encode(Input::get('intake'));
+           $course_enrolment->intake =  Input::get('intake_month'); //intake_month = intake
             $course_enrolment->study_mode = Input::get('study_mode');
 
             $course_enrolment->san = Input::get('san');
             $course_enrolment->student_id = $student_id;
             $course_enrolment->save();
 
-        $educational_qualifications = new EducationalQualifications();
+        $educational_qualifications = new StudentEducationalQualification();
         $educational_qualifications1 = $educational_qualifications->replicate();
         $educational_qualifications2 = $educational_qualifications->replicate();
 
-        $educational_qualifications->qualification = Input::get('qualification_1');
+        if(Input::get('qualification_1') == '0'){$educational_qualifications->qualification = Input::get('qualification_1_other');}else{$educational_qualifications->qualification = Input::get('qualification_1');}
+        if(Input::get('qualification_2') == '0'){$educational_qualifications1->qualification = Input::get('qualification_2_other');}else{$educational_qualifications1->qualification = Input::get('qualification_2');}
+        if(Input::get('qualification_3') == '0'){$educational_qualifications2->qualification = Input::get('qualification_3_other');}else{$educational_qualifications2->qualification = Input::get('qualification_3');}
+
+        //$educational_qualifications->qualification = Input::get('qualification_1_other');
         $educational_qualifications->institution = Input::get('institution_1');
         $educational_qualifications->qualification_start_date = Input::get('qualification_start_date_1').'-'.Input::get('qualification_start_month_1').'-'.Input::get('qualification_start_year_1');
         $educational_qualifications->qualification_end_date = Input::get('qualification_end_date_1').'-'.Input::get('qualification_end_month_1').'-'.Input::get('qualification_end_year_1');
@@ -144,7 +203,7 @@ class StudentController extends Controller {
         $educational_qualifications->student_id = $student_id;
         $educational_qualifications->save();
 
-        $educational_qualifications1->qualification = Input::get('qualification_2');
+        //$educational_qualifications1->qualification = Input::get('qualification_2');
         $educational_qualifications1->institution = Input::get('institution_2');
         $educational_qualifications1->qualification_start_date = Input::get('qualification_start_date_2').'-'.Input::get('qualification_start_month_2').'-'.Input::get('qualification_start_year_2');
         $educational_qualifications1->qualification_end_date = Input::get('qualification_end_date_2').'-'.Input::get('qualification_end_month_2').'-'.Input::get('qualification_end_year_2');
@@ -153,7 +212,7 @@ class StudentController extends Controller {
         $educational_qualifications1->student_id = $student_id;
         $educational_qualifications1->save();
 
-        $educational_qualifications2->qualification = Input::get('qualification_3');
+        //$educational_qualifications2->qualification = Input::get('qualification_3');
         $educational_qualifications2->institution = Input::get('institution_3');
         $educational_qualifications2->qualification_start_date = Input::get('qualification_start_date_3').'-'.Input::get('qualification_start_month_3').'-'.Input::get('qualification_start_year_3');
         $educational_qualifications2->qualification_end_date = Input::get('qualification_end_date_3').'-'.Input::get('qualification_end_month_3').'-'.Input::get('qualification_end_year_3');
