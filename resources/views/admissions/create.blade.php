@@ -5,24 +5,28 @@
 <div class="row" style="min-height: 50px;"></div>
 <div class="row">
    <div class="col-sm-12">
-      {!! Form::open(array('url' =>URL::to("/").'/index.php/student',  'class'=>'form-horizontal','method' => 'post')) !!}
+      {!! Form::open(array('url' =>URL::to("/").'/index.php/student',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) !!}
       <div class="form-group">
          {!! Form::label('san', 'Student Application Number (SAN)', array('class' => 'col-sm-3 control-label'));  !!}
-         <div class="col-sm-9">{!! Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control']); !!}</div>
+         <div class="col-sm-9">{!! Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true']); !!}</div>
+      </div>
+      <div class="form-group">
+         {!! Form::label('ls_student_number', 'LS Student Number', array('class' => 'col-sm-3 control-label'));  !!}
+         <div class="col-sm-9">{!! Form::text('ls_student_number', '',['placeholder'=>'LS Student Number','class'=>'form-control']); !!}</div>
       </div>
       <div class="form-group">
          <div class="form-inline">
             {!! Form::label('app_date', 'App Date', array('class' => 'col-sm-3 control-label'));  !!}
             <div class="col-sm-3">
-               {!! Form::text('app_date_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-               {!! Form::text('app_date_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-               {!! Form::text('app_date_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+               {!! Form::text('app_date_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); !!}
+               {!! Form::text('app_date_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); !!}
+               {!! Form::text('app_date_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>"4",'data-parsley-type'=>'digits']); !!}
             </div>
             {!! Form::label('ams_date', 'AMS Date', array('class' => 'col-sm-2 control-label'));  !!}
             <div class="col-sm-3">
-               {!! Form::text('ams_date_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-               {!! Form::text('ams_date_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-               {!! Form::text('ams_date_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+               {!! Form::text('ams_date_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); !!}
+               {!! Form::text('ams_date_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); !!}
+               {!! Form::text('ams_date_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>"4",'data-parsley-type'=>'digits']); !!}
             </div>
          </div>
       </div>
@@ -153,9 +157,9 @@
             <div class="form-group">
                {!! Form::label('date_of_birth', 'Date of birth', array('class' => 'col-sm-3 control-label'));  !!}
                <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('date_of_birth_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('date_of_birth_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('date_of_birth_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('date_of_birth_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('date_of_birth_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('date_of_birth_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>"4",'data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                </div>
@@ -665,10 +669,10 @@
                           <div class="col-sm-9">
                              <div class="form-inline">
                                +&nbsp;&nbsp;
-                               {!! Form::text('tt_mobile_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                               {!! Form::text('tt_mobile_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                               {!! Form::text('tt_mobile_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                               {!! Form::text('tt_mobile', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important']); !!}
+                               {!! Form::text('tt_mobile_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                               {!! Form::text('tt_mobile_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                               {!! Form::text('tt_mobile_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                               {!! Form::text('tt_mobile', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); !!}
                              </div>
                           </div>
                        </div>
@@ -678,10 +682,10 @@
                           <div class="col-sm-9">
                              <div class="form-inline">
                                                  +&nbsp;&nbsp;
-                                                 {!! Form::text('tt_landline_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                                 {!! Form::text('tt_landline_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                                 {!! Form::text('tt_landline_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                                 {!! Form::text('tt_landline', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important']); !!}
+                                                 {!! Form::text('tt_landline_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                 {!! Form::text('tt_landline_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                 {!! Form::text('tt_landline_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                 {!! Form::text('tt_landline', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); !!}
                                                </div>
                           </div>
 
@@ -984,10 +988,10 @@
                <div class="col-sm-9">
                   <div class="form-inline">
                     +&nbsp;&nbsp;
-                    {!! Form::text('mobile_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                    {!! Form::text('mobile_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                    {!! Form::text('mobile_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                    {!! Form::text('mobile', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important']); !!}
+                    {!! Form::text('mobile_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                    {!! Form::text('mobile_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                    {!! Form::text('mobile_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                    {!! Form::text('mobile', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); !!}
                   </div>
                </div>
             </div>
@@ -997,20 +1001,20 @@
                <div class="col-sm-9">
                   <div class="form-inline">
                                       +&nbsp;&nbsp;
-                                      {!! Form::text('landline_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                      {!! Form::text('landline_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                      {!! Form::text('landline_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                      {!! Form::text('landline', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important']); !!}
+                                      {!! Form::text('landline_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                                      {!! Form::text('landline_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                                      {!! Form::text('landline_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                                      {!! Form::text('landline', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); !!}
                                     </div>
                </div>
             </div>
             <div class="form-group">
                {!! Form::label('email', 'Email ', array('class' => 'col-sm-3 control-label'));  !!}
-               <div class="col-sm-9">{!! Form::text('email', '',['placeholder'=>'Email','class'=>'form-control']); !!}</div>
+               <div class="col-sm-9">{!! Form::text('email', '',['placeholder'=>'Email','class'=>'form-control','data-parsley-type'=>'email']); !!}</div>
             </div>
             <div class="form-group">
                {!! Form::label('alternative_email', 'Alternative Email', array('class' => 'col-sm-3 control-label'));  !!}
-               <div class="col-sm-9">{!! Form::text('alternative_email', '',['placeholder'=>'Alternative Email','class'=>'form-control']); !!}</div>
+               <div class="col-sm-9">{!! Form::text('alternative_email', '',['placeholder'=>'Alternative Email','class'=>'form-control','data-parsley-type'=>'email']); !!}</div>
             </div>
             <div class="form-group">
                <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -1095,10 +1099,10 @@
                  <div class="col-sm-9">
                                 <div class="form-inline">
                                                     +&nbsp;&nbsp;
-                                                    {!! Form::text('next_of_kin_telephone_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                                    {!! Form::text('next_of_kin_telephone_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                                    {!! Form::text('next_of_kin_telephone_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important']); !!}
-                                                    {!! Form::text('next_of_kin_telephone', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important']); !!}
+                                                    {!! Form::text('next_of_kin_telephone_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                                                    {!! Form::text('next_of_kin_telephone_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                                                    {!! Form::text('next_of_kin_telephone_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); !!}
+                                                    {!! Form::text('next_of_kin_telephone', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); !!}
                                                   </div>
                              </div>
             </div>
@@ -1249,18 +1253,18 @@
                {!! Form::label('qualification_start_date', 'Start date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3">
                 <div class="form-inline">
-                              {!! Form::text('qualification_start_date_1', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_start_month_1', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_start_year_1', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('qualification_start_date_1', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_start_month_1', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_start_year_1', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
             <div class="form-group">
                {!! Form::label('date_of_birth', 'End date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('qualification_end_date_1', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_end_month_1', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_end_year_1', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('qualification_end_date_1', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_end_month_1', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_end_year_1', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
@@ -1296,18 +1300,18 @@
                {!! Form::label('qualification_start_date', 'Start date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3">
                 <div class="form-inline">
-                              {!! Form::text('qualification_start_date_2', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_start_month_2', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_start_year_2', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('qualification_start_date_2', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_start_month_2', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_start_year_2', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
             <div class="form-group">
                {!! Form::label('date_of_birth', 'End date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('qualification_end_date_2', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_end_month_2', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_end_year_2', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('qualification_end_date_2', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_end_month_2', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_end_year_2', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
@@ -1342,18 +1346,18 @@
                {!! Form::label('qualification_start_date', 'Start date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3">
                 <div class="form-inline">
-                              {!! Form::text('qualification_start_date_3', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_start_month_3', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_start_year_3', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('qualification_start_date_3', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_start_month_3', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_start_year_3', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
             <div class="form-group">
                {!! Form::label('date_of_birth', 'End date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('qualification_end_date_3', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_end_month_3', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('qualification_end_year_3', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('qualification_end_date_3', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_end_month_3', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('qualification_end_year_3', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
@@ -1390,18 +1394,18 @@
             <div class="form-group">
                {!! Form::label('date_of_birth', 'Start date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('occupation_start_date_1', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_start_month_1', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_start_year_1', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('occupation_start_date_1', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_start_month_1', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_start_year_1', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
             <div class="form-group">
                {!! Form::label('date_of_birth', 'End date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('occupation_end_date_1', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_end_month_1', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_end_year_1', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('occupation_end_date_1', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_end_month_1', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_end_year_1', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
@@ -1444,18 +1448,18 @@
             <div class="form-group">
                {!! Form::label('date_of_birth', 'Start date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('occupation_start_date_2', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_start_month_2', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_start_year_2', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('occupation_start_date_2', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_start_month_2', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_start_year_2', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
             <div class="form-group">
                {!! Form::label('date_of_birth', 'End date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('occupation_end_date_2', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_end_month_2', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_end_year_2', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('occupation_end_date_2', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_end_month_2', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_end_year_2', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
@@ -1499,18 +1503,18 @@
             <div class="form-group">
                {!! Form::label('date_of_birth', 'Start date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('occupation_start_date_3', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_start_month_3', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_start_year_3', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('occupation_start_date_3', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_start_month_3', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_start_year_3', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
             <div class="form-group">
                {!! Form::label('date_of_birth', 'End date', array('class' => 'col-sm-3 control-label'));  !!}
                 <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('occupation_end_date_3', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_end_month_3', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('occupation_end_year_3', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('occupation_end_date_3', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_end_month_3', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('occupation_end_year_3', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
@@ -1616,9 +1620,9 @@
                   <div class="col-sm-2">{!! Form::text('deposit', '',['placeholder'=>'Deposit','class'=>'form-control']); !!}</div>
                   {!! Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  !!}
                   <div class="col-sm-3"><div class="form-inline">
-                                                {!! Form::text('deposit_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                                                {!! Form::text('deposit_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                                                {!! Form::text('deposit_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                                                {!! Form::text('deposit_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                {!! Form::text('deposit_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                {!! Form::text('deposit_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                                              </div>
                                              </div>{!! Form::label('nationality', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
                   <div class="col-sm-2">
@@ -1634,9 +1638,9 @@
                   <div class="col-sm-2">{!! Form::text('instalment_1', '',['placeholder'=>'Instalment 1','class'=>'form-control']); !!}</div>
                   {!! Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  !!}
                   <div class="col-sm-3"><div class="form-inline">
-                                                {!! Form::text('instalment_1_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                                                {!! Form::text('instalment_1_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                                                {!! Form::text('instalment_1_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                                                {!! Form::text('instalment_1_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                {!! Form::text('instalment_1_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                {!! Form::text('instalment_1_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                                              </div>
                                              </div>{!! Form::label('nationality', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
                   <div class="col-sm-2">
@@ -1652,9 +1656,9 @@
                   <div class="col-sm-2">{!! Form::text('instalment_2', '',['placeholder'=>'Instalment 2','class'=>'form-control']); !!}</div>
                   {!! Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  !!}
                   <div class="col-sm-3"><div class="form-inline">
-                                                {!! Form::text('instalment_2_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                                                {!! Form::text('instalment_2_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                                                {!! Form::text('instalment_2_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                                                {!! Form::text('instalment_2_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                {!! Form::text('instalment_2_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                {!! Form::text('instalment_2_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                                              </div>
                                              </div>{!! Form::label('nationality', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
                   <div class="col-sm-2">
@@ -1670,9 +1674,9 @@
                   <div class="col-sm-2">{!! Form::text('instalment_3', '',['placeholder'=>'Instalment 3','class'=>'form-control']); !!}</div>
                   {!! Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  !!}
                   <div class="col-sm-3"><div class="form-inline">
-                                                {!! Form::text('instalment_3_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                                                {!! Form::text('instalment_3_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                                                {!! Form::text('instalment_3_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                                                {!! Form::text('instalment_3_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                {!! Form::text('instalment_3_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                                                {!! Form::text('instalment_3_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                                              </div>
                                              </div>{!! Form::label('instalment_payment_method_3', 'Method of payment', array('class' => 'col-sm-2 control-label'));  !!}
                   <div class="col-sm-2">
@@ -1699,9 +1703,9 @@
             <div class="form-group">
                {!! Form::label('date_of_birth', 'Application received to BQu date', array('class' => 'col-sm-3 control-label'));  !!}
               <div class="col-sm-3"><div class="form-inline">
-                             {!! Form::text('application_received_to_bqu_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                             {!! Form::text('application_received_to_bqu_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                             {!! Form::text('application_received_to_bqu_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                             {!! Form::text('application_received_to_bqu_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                             {!! Form::text('application_received_to_bqu_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                             {!! Form::text('application_received_to_bqu_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                           </div>
                           </div>
                           </div>
@@ -1716,9 +1720,9 @@
             <div class="form-group">
                {!! Form::label('date_of_birth', 'Applicant verified by BQu date', array('class' => 'col-sm-3 control-label'));  !!}
                <div class="col-sm-3"><div class="form-inline">
-                              {!! Form::text('applicant_verified_by_bqu_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('applicant_verified_by_bqu_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number']); !!}
-                              {!! Form::text('applicant_verified_by_bqu_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number']); !!}
+                              {!! Form::text('applicant_verified_by_bqu_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('applicant_verified_by_bqu_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); !!}
+                              {!! Form::text('applicant_verified_by_bqu_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); !!}
                            </div>
                            </div>
                            </div>
@@ -1876,4 +1880,7 @@ $( "#add_more_occupations_2" ).click(function() {
 
 </script>
 
+  <!-- parsley -->
+<script src="js/parsley/parsley.min.js"></script>
+<script src="js/parsley/parsley.extend.js"></script>
 @stop
