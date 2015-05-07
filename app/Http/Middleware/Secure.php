@@ -22,9 +22,8 @@ class Secure implements Middleware
 	}
 	
 	public function handle($request, Closure $next)
-	{
+	{	$request->setTrustedProxies( [ $request->getClientIp() ] ); 
 		if (!$request->secure() && $this->app->environment() === 'production') {
-				$request->setTrustedProxies( [ $request->getClientIp() ] ); 
 	    		return redirect()->secure($request->getRequestUri());
 		}
 	
