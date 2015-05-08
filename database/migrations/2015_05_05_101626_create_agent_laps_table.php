@@ -16,12 +16,11 @@ class CreateAgentLapsTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name');
-            $table->string('ref');
-            $table->string('active_date');
-            $table->string('region');
+            $table->string('abbreviations');
+            $table->string('city');
             $table->string('country');
-            $table->string('town');
-            $table->string('post_code');
+            $table->string('is_uk_based');
+            $table->string('other');
 			$table->timestamps();
 		});
 	}
