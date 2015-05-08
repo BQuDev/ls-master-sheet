@@ -1825,8 +1825,11 @@ $( "#san" ).keypress(function() {
 });*/
 
 
-$('[name="agent_names"]').prepend("<option value=''>Not Applicable</option>");
+$('[name="agent_names"]').prepend("<option value='0'>Not Applicable</option>");
  $('[name="agent_names"]').trigger("chosen:updated");
+
+$('[name="admssion_manager"]').prepend("<option value='0'>Not Applicable</option>");
+ $('[name="admssion_manager"]').trigger("chosen:updated");
 
 $('[name="qualification_1"]').append("<option value='0'>Other</option>");
 $('[name="qualification_1"]').trigger("chosen:updated");
