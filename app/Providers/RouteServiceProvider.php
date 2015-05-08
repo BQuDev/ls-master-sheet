@@ -33,14 +33,14 @@ class RouteServiceProvider extends ServiceProvider {
 		/***** Larave sentry ****/
 		
 		// Check if someone is already logged in
-        Route::filter('members_auth',function(){
+        /*Route::filter('members_auth',function(){
 			
         //If already logged in go to dashboard or else login
             if(!Sentry::check()){
             	//new
                 return Redirect::to('/student');
             }
-        });
+        });*/
 		
 		/***** Larave sentry ****/
 	}
