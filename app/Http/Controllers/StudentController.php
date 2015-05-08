@@ -16,6 +16,7 @@ use App\StudentContactInformationKinDetailes;
 use App\StudentContactInformationOnline;
 use App\StudentContactInformationType;
 use App\StudentEducationalQualification;
+use App\StudentSource;
 use App\WorkExperience;
 use Input;
 use App\Student;
@@ -124,6 +125,18 @@ class StudentController extends Controller {
             $contact_details->save();
 */
 
+        //Student Source
+        $student_source = new StudentSource();
+        $student_source->app_date =  Input::get('app_date_date') . '-' . Input::get('app_date_month') . '-' . Input::get('app_date_year');
+        $student_source->ams_date =  Input::get('ams_date_date') . '-' . Input::get('ams_date_month') . '-' . Input::get('ams_date_year');
+        $student_source->source = Input::get('agent_type');
+        $student_source->agent_lap = Input::get('agent_names');
+        $student_source->admission_manager = Input::get('admssion_manager');
+        $student_source->san = Input::get('san');
+        $student_source->student_id = $student_id;
+        $student_source->save();
+
+        // Saving contact details
         $contact_details = new StudentContactInformation();
         $contact_details_1 = $contact_details->replicate();
 
@@ -175,7 +188,9 @@ class StudentController extends Controller {
 
         $course_enrolment = new CourseEnrolment();
             $course_enrolment->course_name = Input::get('course_name');
+            $course_enrolment->course_level = Input::get('course_level');
             $course_enrolment->awarding_body = Input::get('awarding_body');
+
         // TO-Do
         //   $course_enrolment->intake = '2';
 

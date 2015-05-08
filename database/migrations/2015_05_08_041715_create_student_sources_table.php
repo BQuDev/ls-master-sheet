@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCourseEnrolmentsTable extends Migration {
+class CreateStudentSourcesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,14 @@ class CreateCourseEnrolmentsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('course_enrolments', function(Blueprint $table)
+		Schema::create('student_sources', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->integer('course_name');
-            $table->string('course_level');
-            $table->integer('awarding_body');
-            $table->string('intake');
-            $table->string('study_mode');
+			$table->string('app_date');
+			$table->string('ams_date');
+			$table->string('source');
+			$table->string('agent_lap');
+			$table->string('admission_manager');
             $table->string('san');
             $table->integer('student_id');
 			$table->timestamps();
@@ -33,7 +33,7 @@ class CreateCourseEnrolmentsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('course_enrolments');
+		Schema::drop('student_sources');
 	}
 
 }

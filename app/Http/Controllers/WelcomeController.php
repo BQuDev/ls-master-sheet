@@ -56,7 +56,9 @@ class WelcomeController extends Controller {
             ->with('intake_year',Year::lists('name','id'))
             ->with('education_qualifications',EducationalQualifications::lists('name','id'))
             ->with('intake_year',DB::table('student_intakes')->join('years', 'years.id', '=', 'student_intakes.year')->select('years.id', 'years.name')->groupBy('years.name')->lists( 'years.name','years.id'))
-            ->with('intake_month',Month::lists('name','id'));
+            //To-Do
+            //->with('intake_month',Month::lists('name','id'));
+            ->with('intake_month',DB::table('student_intakes')->join('months', 'months.id', '=', 'student_intakes.month')->select('student_intakes.id', 'months.name')->groupBy('months.name')->lists( 'months.name','student_intakes.id'));
 		//return view('welcome');
         //DB::
 	}

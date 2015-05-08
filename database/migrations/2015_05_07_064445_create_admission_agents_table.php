@@ -16,6 +16,11 @@ class CreateAdmissionAgentsTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name');
+            $table->string('abbreviations');
+            $table->string('city');
+            $table->string('country');
+            $table->string('email');
+            $table->integer('admission_manager_id');
 			$table->timestamps();
 		});
 	}

@@ -49,7 +49,7 @@
                </div>
             </div>
             <div class="form-group">
-               {!! Form::label('admssion_manager', 'Admssion manager', array('class' => 'col-sm-3 control-label'));  !!}
+               {!! Form::label('admssion_manager', 'Admission manager', array('class' => 'col-sm-3 control-label'));  !!}
                <div class="col-sm-9 ">
 
                    {!! Form::select('admssion_manager', $admission_managers,'',['class'=>'chosen-select col-sm-4']);  !!}
@@ -1121,9 +1121,33 @@
                     <div class="form-inline">
                     {!! Form::select('course_name', $course_names,'',['class'=>'chosen-select col-sm-4']);  !!}
 
+
+
+
                </div>
                </div>
             </div>
+
+            <div class="form-group">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9">
+                        <div class="radio-inline i-checks">
+                                <label>
+                                {!! Form::radio('course_level', 'Top - Up',true); !!}
+                                <i></i>
+                                Top - Up
+                                </label>
+                             </div>
+                           <div class="radio-inline i-checks">
+                              <label>
+                              {!! Form::radio('course_level', 'Advanced Entry'); !!}
+                              <i></i>
+                              Advanced Entry
+                              </label>
+                           </div>
+
+                        </div>
+                     </div>
             <div class="form-inline">
 
             </div>
@@ -1763,6 +1787,47 @@ $(function() {
  $( "#occupation_container_3" ).hide();
 
 
+
+$( "#san" ).keydown(function() {console.log('df');
+    $('#top_san_display').html('SAN : '+this.value);
+ // $('#top_san_display').append($(this).val());
+
+});
+$( "#ls_student_number" ).keydown(function() {
+    $('#top_lssn_display').html('LS SN : '+this.value);
+ // $('#top_lssn_display').append($(this).val());
+});
+
+/*
+$.ajax({
+                  url: "{{ url('index.php/intake_month/dropdown')}}",
+                  data: {token: $('[name="_token"]').val(),option: $('#intake_year').val()},
+                  success: function (data) {
+                  $('[name="intake_month"]').empty();
+
+                      var model = $('[name="intake_month"]');
+                        model.empty();
+
+                        $.each(data, function(index, element) {
+
+                            model.append("<option value='"+ index +"'>" + element + "</option>");
+                        });
+                        $('[name="intake_month"]').trigger("chosen:updated");
+                       },
+                          type: "GET"
+
+                });
+*/
+/*
+$( "#san" ).keypress(function() {
+    $('#top_san_display').html('SAN : ');
+  $('#top_san_display').append($(this).val());
+});*/
+
+
+$('[name="agent_names"]').prepend("<option value=''>Not Applicable</option>");
+ $('[name="agent_names"]').trigger("chosen:updated");
+
 $('[name="qualification_1"]').append("<option value='0'>Other</option>");
 $('[name="qualification_1"]').trigger("chosen:updated");
 $('[name="qualification_1_other"]').hide();
@@ -1883,4 +1948,10 @@ $( "#add_more_occupations_2" ).click(function() {
   <!-- parsley -->
 <script src="js/parsley/parsley.min.js"></script>
 <script src="js/parsley/parsley.extend.js"></script>
+@stop
+
+
+@section('san')
+<span id="top_san_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24">SAN : </span>
+<span id="top_lssn_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24">LS SN : </span>
 @stop
