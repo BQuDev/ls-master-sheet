@@ -8,5 +8,5 @@
                   </div>
 
                 <br><br>
-                  <a href="{!! URL::to('/') !!}" class="btn btn-s-md btn-primary">Primary</a>
+                  <a href="{!! URL::to('/') !!}" class="btn btn-s-md btn-primary">Add New Application</a>
 @stop
