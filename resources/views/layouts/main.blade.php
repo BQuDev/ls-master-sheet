@@ -23,7 +23,7 @@
         </a>
         <a href="index.html" class="navbar-brand">
           <img src="images/logo.png" class="m-r-sm" alt="scale">
-          <span class="hidden-nav-xs">BQu IT</span>
+
         </a>
         <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
           <i class="fa fa-cog"></i>

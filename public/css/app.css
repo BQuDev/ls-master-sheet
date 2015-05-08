@@ -800,9 +800,11 @@ body.container {
   text-decoration: none;
 }
 .navbar-brand img {
-  max-height: 20px;
-  margin-top: -4px;
+  /*max-height: 20px;
+  margin-top: -4px;  edited*/
+  margin-top: 5px;
   vertical-align: middle;
+  margin-bottom: 10px;
 }
 .nav-primary li > a > i {
   margin: -8px -10px;
@@ -980,7 +982,8 @@ body.container {
     line-height: 60px;
   }
   .header-md .navbar-brand img {
-    max-height: 30px;
+   /* max-height: 30px; edited */
+    max-height: 50px;
   }
   .header-md .navbar-nav > li > a {
     padding: 20px;
