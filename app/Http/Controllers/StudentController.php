@@ -351,7 +351,7 @@ class StudentController extends Controller {
         $bqu_application_data->save();
 
 
-
+        return view('admissions.index');
 
 
 
