@@ -5,7 +5,7 @@
 <div class="row" style="min-height: 50px;"></div>
 <div class="row">
    <div class="col-sm-12">
-      {!! Form::open(array('url' =>URL::to("/").'/index.php/student',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) !!}
+      {!! Form::open(array('url' =>URL::to("/").'/student',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) !!}
       <div class="form-group">
          {!! Form::label('san', 'Student Application Number (SAN)', array('class' => 'col-sm-3 control-label'));  !!}
          <div class="col-sm-9">{!! Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true']); !!}</div>
