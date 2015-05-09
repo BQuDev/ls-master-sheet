@@ -11,6 +11,13 @@
 |
 */
 
+
+//form login
+Route::get('/login', 'UsersController@login');
+Route::post('/login', 'UsersController@authenticate');
+
+Route::group(array('before' => 'members_auth'), function()
+{
 //Route::get('/', 'WelcomeController@index');
 Route::get('/', 'WelcomeController@index');
 Route::resource('student', 'StudentController');
@@ -28,5 +35,10 @@ Route::get('agent_type/dropdown', function(){
     return Response::eloquent($models->get(['id','name']));
 });*/
 
-Route::get('agent_type/dropdown', 'WelcomeController@agents_laps');
+Route::get('agent_type/dropdown', 'WelcomeController@admission_managers');
+Route::get('admission_manager/dropdown', 'WelcomeController@agents_laps');
+//Route::get('agent_type/dropdown', 'WelcomeController@agents_laps');
 Route::get('intake_month/dropdown', 'WelcomeController@intake_month');
+Route::get('/logout', 'UsersController@logout');
+
+});

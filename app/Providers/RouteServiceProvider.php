@@ -1,13 +1,14 @@
 <?php namespace App\Providers;
 
 
- use Cartalyst\Sentry\Facades\Laravel\Sentry;
+
  use Illuminate\Routing\Router;
  use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
  use Illuminate\Support\Facades\Route;
+ use Cartalyst\Sentry\Facades\Laravel\Sentry;
+ use Illuminate\View\View;
 
-
-class RouteServiceProvider extends ServiceProvider {
+ class RouteServiceProvider extends ServiceProvider {
 
 	/**
 	 * This namespace is applied to the controller routes in your routes file.
@@ -33,14 +34,14 @@ class RouteServiceProvider extends ServiceProvider {
 		/***** Larave sentry ****/
 		
 		// Check if someone is already logged in
-        /*Route::filter('members_auth',function(){
+        Route::filter('members_auth',function(){
 			
         //If already logged in go to dashboard or else login
             if(!Sentry::check()){
             	//new
-                return Redirect::to('/student');
+                return View('/login');
             }
-        });*/
+        });
 		
 		/***** Larave sentry ****/
 	}
