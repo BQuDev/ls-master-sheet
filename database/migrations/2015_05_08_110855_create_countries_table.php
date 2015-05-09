@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdmissionManagersTable extends Migration {
+class CreateCountriesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,12 @@ class CreateAdmissionManagersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('admission_managers', function(Blueprint $table)
+		Schema::create('countries', function(Blueprint $table)
 		{
 			$table->increments('id');
             $table->string('name');
-            $table->integer('source_id');
+            $table->string('code');
+            $table->string('aru_code');
 			$table->timestamps();
 		});
 	}
@@ -28,7 +29,7 @@ class CreateAdmissionManagersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('admission_managers');
+		Schema::drop('countries');
 	}
 
 }
