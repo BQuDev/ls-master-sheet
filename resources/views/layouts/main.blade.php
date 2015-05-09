@@ -152,7 +152,7 @@
             <span class="thumb-sm avatar pull-left">
               <img src="images/a0.png" alt="...">
             </span>
-            Jacques.deCock <b class="caret"></b>
+            {!! Sentry::getUser()->first_name !!}&nbsp;&nbsp;{!! Sentry::getUser()->last_name !!}  <b class="caret"></b>
           </a>
           <ul class="dropdown-menu animated fadeInRight">
             <!--<li>
@@ -173,7 +173,7 @@
             </li>
             <li class="divider"></li>
             <li>
-              <a href="modal.lockme.html" data-toggle="ajaxModal" >Logout</a>
+              <a href="{!! URL::to('/').'/logout' !!}" >Logout</a>
             </li>
           </ul>
         </li>
@@ -195,7 +195,7 @@
                       </span>
                       <span class="hidden-nav-xs clear">
                         <span class="block m-t-xs">
-                          <strong class="font-bold text-lt">Jacques.deCock</strong>
+                          <strong class="font-bold text-lt">{!! Sentry::getUser()->first_name !!}&nbsp;&nbsp;{!! Sentry::getUser()->last_name !!} </strong>
                           <b class="caret"></b>
                         </span>
                         <span class="text-muted text-xs block">CEO</span>
@@ -220,7 +220,7 @@
                       </li>
                       <li class="divider"></li>
                       <li>
-                        <a href="modal.lockme.html" data-toggle="ajaxModal" >Logout</a>
+                        <a href="{!! URL::to('/').'/logout' !!}" >Logout</a>
                       </li>
                     </ul>
                   </div>

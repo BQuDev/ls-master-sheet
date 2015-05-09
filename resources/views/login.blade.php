@@ -27,7 +27,7 @@
                 <strong>Administration</strong>
               </header>
 
-        {!! Form::open(array('url' =>URL::to("/login"),  'class'=>'form-horizontal','method' => 'post')) !!}
+        {!! Form::open(array('url' =>URL::to("/").'/login',  'class'=>'form-horizontal','method' => 'post')) !!}
           <div class="list-group">
             <div class="list-group-item">
               <input type="email" id="email" name="email" placeholder="Email" class="form-control no-border">
@@ -37,10 +37,10 @@
             </div>
           </div>
           <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-          <div class="text-center m-t m-b"><a href="#"><small>Forgot password?</small></a></div>
+         <!-- <div class="text-center m-t m-b"><a href="#"><small>Forgot password?</small></a></div>-->
           <div class="line line-dashed"></div>
           <p class="text-muted text-center"><small>Do not have an account?</small></p>
-          <a href="signup.html" class="btn btn-lg btn-default btn-block">Create an account</a>
+          <a href="signup.html" class="btn btn-lg btn-default btn-block">Contact Us</a>
         {!! Form::close() !!}
       </section>
     </div>
@@ -49,7 +49,7 @@
   <footer id="footer">
     <div class="text-center padder">
       <p>
-        <small>Web app framework base on Bootstrap<br>&copy; 2013</small>
+        <small>Privacy policy | Terms of use | Copyright &copy; {!! Date('Y') !!} BQu</small>
       </p>
     </div>
   </footer>
