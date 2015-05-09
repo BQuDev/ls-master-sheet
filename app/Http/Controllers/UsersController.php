@@ -105,7 +105,7 @@ class UsersController extends Controller {
             $user = Sentry::authenticate($credentials, false);
             // return View::make('containerTrackingDetails.index');
             //return redirect()->action('WelcomeController@index');
-            return Redirect::action('UsersController@login');
+            return redirect('/');
             //return Redirect::route('/');
             // return Redirect::action('DashboardsController@index');
             // return View::make('containers.index');
@@ -119,6 +119,7 @@ class UsersController extends Controller {
 
     public function logout(){
         Sentry::logout();
+		return redirect('/');
     }
 
 }
