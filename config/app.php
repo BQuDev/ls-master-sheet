@@ -148,6 +148,8 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		
+		'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider',
 
 	],
 
