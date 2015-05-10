@@ -1,4 +1,4 @@
-@extends('layouts.main');
+@extends('layouts.main')
 @section('content')
 <link rel="stylesheet" href="js/datepicker/datepicker.css" type="text/css" />
 <link rel="stylesheet" href="js/chosen/chosen.css" type="text/css" />
@@ -1266,12 +1266,6 @@ $('[name="qualification_3_other"]').hide();
 
 });
 
-
-var el = document.getElementById('myCoolForm');
-
-el.addEventListener('submit', function(){
-return confirm('Are you sure you want to submit this form?');
-}, false);
 
 
 
