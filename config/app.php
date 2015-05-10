@@ -138,6 +138,7 @@ return [
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         /*'Collective\Html\HtmlServiceProvider',*/
         'Illuminate\Html\HtmlServiceProvider',
+        'Cartalyst\Sentry\SentryServiceProvider',
 
         /*
          * Application Service Providers...
@@ -199,6 +200,7 @@ return [
         'Html'      => 'Collective\Html\HtmlFacade',*/
         'Form'      => 'Illuminate\Html\FormFacade',
         'Html'      => 'Illuminate\Html\HtmlFacade',
+		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 	],
 
 ];
