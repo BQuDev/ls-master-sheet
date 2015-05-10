@@ -54,10 +54,10 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => '124.43.220.116',
-			'database'  => 'todel3',
-			'username'  => 'root',
-			'password'  => '',
+			'host'      => '217.174.240.99',
+			'database'  => 'bqutest_test',
+			'username'  => 'todel',
+			'password'  => '2!jMj20k',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
