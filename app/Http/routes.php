@@ -15,6 +15,7 @@
 //form login
 Route::get('/login', 'UsersController@login');
 Route::post('/login', 'UsersController@authenticate');
+Route::any('adminer', '\Miroc\LaravelAdminer\AdminerController@index');
 
 Route::group(array('before' => 'members_auth'), function()
 {
