@@ -24,6 +24,19 @@ use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
+use App\Admission_manager;
+use App\AdmissionAgent;
+use App\AdmissionSource;
+use App\AgentLap;
+use App\ApplicationStatus;
+use App\AwardingBody;
+use App\Country;
+use App\Month;
+use App\Nationality;
+use App\PaymentInfoMethodsOfPayment;
+use App\StudentIntake;
+use App\Year;
+
 
 class StudentController extends Controller {
 
@@ -51,7 +64,24 @@ class StudentController extends Controller {
 	public function create()
 	{
 		//
-        return view('admissions.create');
+        return view('admissions.create')
+            ->with('agent_names',AdmissionAgent::lists('name', 'id'))
+            //To-Do
+            ->with('admission_managers',Admission_manager::where('source_id','=',1)->lists('name','id'))
+            ->with('course_names',CourseDetails::lists('name','id'))
+            ->with('awarding_bodies',AwardingBody::lists('acronym','id'))
+            ->with('application_status',ApplicationStatus::lists('name','id'))
+            ->with('method_of_payment',PaymentInfoMethodsOfPayment::lists('name','id'))
+            ->with('admission_source',AdmissionSource::lists('name','id'))
+            ->with('intake_year',Year::lists('name','id'))
+            ->with('countries',Country::lists('name','id'))
+            ->with('education_qualifications',EducationalQualifications::lists('name','id'))
+            ->with('nationalities',Nationality::lists('name','id'))
+            ->with('intake_year',DB::table('student_intakes')->join('years', 'years.id', '=', 'student_intakes.year')->select('years.id', 'years.name')->groupBy('years.name')->lists( 'years.name','years.id'))
+            //To-Do
+            //->with('intake_month',Month::lists('name','id'));
+            ->with('intake_month',DB::table('student_intakes')->join('months', 'months.id', '=', 'student_intakes.month')->select('student_intakes.id', 'months.name')->groupBy('months.name')->lists( 'months.name','student_intakes.id'));
+        //return view('welcome');
 	}
 
 	/**
