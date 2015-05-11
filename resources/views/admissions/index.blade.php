@@ -20,35 +20,36 @@
         </div>
       </form>
               </div>
+
               <br>
-              <section class="panel panel-default">
-                <header class="panel-heading">
+              <header class="panel-heading">
+                                DataTables
+                                <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
+                              </header>
+                              <div class="table-responsive">
+                                <table class="table table-striped m-b-none" data-ride="datatables">
+                                  <thead>
+                                    <tr>
+                                      <th width="20%">Rendering engine</th>
+                                      <th width="25%">Browser</th>
+                                      <th width="25%">Platform(s)</th>
+                                      <th width="15%">Engine version</th>
+                                      <th width="15%">CSS grade</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                  @foreach ($students as $student)
+                                      <tr>
+                                      <td>{!! $student->san !!}</td>
+                                      <td>{!! $student->ls_student_number !!}</td>
+                                      <td>{!! $student->title.' '.$student->initials_1.' '.$student->initials_2.' '.$student->initials_3.' '.$student->forename_1.' '.$student->forename_2.' '.$student->forename_3.' '.$student->surname!!}</td>
+                                      </tr>
+                                  @endforeach
+                                  </tbody>
+                                </table>
+           </div>
 
-                  <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
-                </header>
-                <div class="table-responsive">
-                  <table class="table table-striped m-b-none" data-ride="datatables" id="student_datatable">
-                    <thead>
-                      <tr>
 
-<th>SAN</th>
-<th>LS SN</th>
-<th>Name</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-@foreach ($students as $student)
-    <tr>
-    <td>{!! $student->san !!}</td>
-    <td>{!! $student->ls_student_number !!}</td>
-    <td>{!! $student->title.' '.$student->initials_1.' '.$student->initials_2.' '.$student->initials_3.' '.$student->forename_1.' '.$student->forename_2.' '.$student->forename_3.' '.$student->surname!!}</td>
-    </tr>
-@endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </section>
 
 @stop
 
