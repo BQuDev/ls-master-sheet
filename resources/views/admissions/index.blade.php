@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('post_css')
+ @section('post_css')
    <link rel="stylesheet" href="js/datatables/datatables.css" type="text/css"/>
 @stop
 
@@ -37,7 +37,7 @@
 
 <th>SAN</th>
 <th>LS SN</th>
-<th>Name</th>
+<th>NAME</th>
                       </tr>
                     </thead>
                     <tbody>
