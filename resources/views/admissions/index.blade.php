@@ -35,9 +35,9 @@
                     <thead>
                       <tr>
 
-<th>san</th>
-<th>ls_student_number</th>
-<th>name</th>
+<th>SAN</th>
+<th>LS SN</th>
+<th>Name</th>
                       </tr>
                     </thead>
                     <tbody>
