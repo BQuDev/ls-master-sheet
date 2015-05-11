@@ -31,11 +31,11 @@ class StudentController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		//
-        return 'index';
-	}
-
+    {
+        //
+        return view('admissions.index')
+            ->with('students',Student::all());
+}
 	/**
 	 * Show the form for creating a new resource.
 	 *
