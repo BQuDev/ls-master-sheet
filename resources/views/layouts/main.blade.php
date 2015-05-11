@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="css/icon.css" type="text/css" />
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
+    @section('post_css')
+   @show
 </head>
 
 
