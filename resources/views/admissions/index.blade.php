@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('post_css')
-   <link rel="stylesheet" href="js/datatables/datatables.css" type="text/css"/>
+   <link rel="stylesheet" href="{!! URL::to("/") !!}/js/datatables/datatables.css" type="text/css"/>
 @stop
 
 @section('content')
@@ -51,7 +51,7 @@
 
  @section('post_scripts')
 
-<script src="js/datatables/jquery.dataTables.min.js"></script>
+<script src="{!! URL::to("/") !!}/js/datatables/jquery.dataTables.min.js"></script>
 <script>
 
   $('#student_datatable').dataTable();

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
-<link rel="stylesheet" href="js/datepicker/datepicker.css" type="text/css" />
-<link rel="stylesheet" href="js/chosen/chosen.css" type="text/css" />
+<link rel="stylesheet" href="{!! URL::to("/") !!}/js/datepicker/datepicker.css" type="text/css" />
+<link rel="stylesheet" href="{!! URL::to("/") !!}/js/chosen/chosen.css" type="text/css" />
 <div class="row" style="min-height: 50px;"></div>
 <div class="row">
    <div class="col-sm-12">
@@ -1294,8 +1294,8 @@ $( "#add_more_occupations_2" ).click(function() {
 </script>
 
   <!-- parsley -->
-<script src="js/parsley/parsley.min.js"></script>
-<script src="js/parsley/parsley.extend.js"></script>
+<script src="{!! URL::to("/") !!}/js/parsley/parsley.min.js"></script>
+<script src="{!! URL::to("/") !!}/js/parsley/parsley.extend.js"></script>
 @stop
 
 

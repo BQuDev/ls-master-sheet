@@ -5,12 +5,12 @@
   <title>Scale | Web Application</title>
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/icon.css" type="text/css" />
-  <link rel="stylesheet" href="css/font.css" type="text/css" />
-  <link rel="stylesheet" href="css/app.css" type="text/css" />  
+  <link rel="stylesheet" href="{!! URL::to("/") !!}/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="{!! URL::to("/") !!}/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="{!! URL::to("/") !!}/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="{!! URL::to("/") !!}/css/icon.css" type="text/css" />
+  <link rel="stylesheet" href="{!! URL::to("/") !!}/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="{!! URL::to("/") !!}/css/app.css" type="text/css" />
     <!--[if lt IE 9]>
     <script src="js/ie/html5shiv.js"></script>
     <script src="js/ie/respond.min.js"></script>
@@ -54,12 +54,12 @@
     </div>
   </footer>
   <!-- / footer -->
-  <script src="js/jquery.min.js"></script>
+  <script src="{!! URL::to("/") !!}/js/jquery.min.js"></script>
   <!-- Bootstrap -->
-  <script src="js/bootstrap.js"></script>
+  <script src="j{!! URL::to("/") !!}/s/bootstrap.js"></script>
   <!-- App -->
-  <script src="js/app.js"></script>  
-  <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="js/app.plugin.js"></script>
+  <script src="{!! URL::to("/") !!}/js/app.js"></script>
+  <script src="{!! URL::to("/") !!}/js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="{!! URL::to("/") !!}/js/app.plugin.js"></script>
 </body>
 </html>
