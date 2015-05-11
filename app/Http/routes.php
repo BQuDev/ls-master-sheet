@@ -20,7 +20,7 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::group(array('before' => 'members_auth'), function()
 {
 //Route::get('/', 'WelcomeController@index');
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'StudentController@index');
 Route::resource('student', 'StudentController');
 Route::get('home', 'HomeController@index');
 
