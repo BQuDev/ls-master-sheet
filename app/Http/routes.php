@@ -15,7 +15,6 @@
 //form login
 Route::get('/login', 'UsersController@login');
 Route::post('/login', 'UsersController@authenticate');
-Route::any('adminer', '\Miroc\LaravelAdminer\AdminerController@index');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::group(array('before' => 'members_auth'), function()
