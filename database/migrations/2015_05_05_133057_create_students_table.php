@@ -27,6 +27,8 @@ class CreateStudentsTable extends Migration {
             $table->string('date_of_birth');
             $table->string('nationality');
             $table->string('passport');
+            $table->string('san');
+            $table->string('ls_student_number');
 			$table->timestamps();
 		});
 	}
