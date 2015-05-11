@@ -425,7 +425,7 @@
                                             <i class="i i-docs icon">
                                             </i>
                                             <span class="font-bold">Admissions</span>
-                                          </a>
+                                          </a> 
                                           <ul class="nav dk">
                                             <li >
                                               <a href="{!! URL::to('/student') !!}">
