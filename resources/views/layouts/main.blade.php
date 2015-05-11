@@ -426,7 +426,16 @@
                                             </i>
                                             <span class="font-bold">Admissions</span>
                                           </a> 
-                                          <ul class="nav dk">
+                                          <a href="{!! URL::to('/') !!}"">
+                                            <span class="pull-right text-muted">
+                                              <i class="i i-circle-sm-o text"></i>
+                                              <i class="i i-circle-sm text-active"></i>
+                                            </span>
+                                            <i class="i i-docs icon">
+                                            </i>
+                                            <span class="font-bold">Add Admission</span>
+                                          </a> 
+                                          <!--<ul class="nav dk">
                                             <li >
                                               <a href="{!! URL::to('/') !!}">
                                                 <i class="i i-dot"></i>
@@ -435,7 +444,7 @@
                                               </a>
                                             </li>
                                             </ul>
-                                            <!--<li >
+                                            <li >
                                               <a href="invoice.html" class="auto">
                                                 <i class="i i-dot"></i>
 
