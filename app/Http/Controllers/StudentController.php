@@ -18,10 +18,12 @@ use App\StudentContactInformationType;
 use App\StudentEducationalQualification;
 use App\StudentSource;
 use App\WorkExperience;
+use Illuminate\Support\Facades\DB;
 use Input;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
+
 
 class StudentController extends Controller {
 
@@ -31,11 +33,14 @@ class StudentController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-    {
-        //
-        return view('admissions.index')
-            ->with('students',Student::all());
-}
+	{
+	 $unique_student_list = DB::table('students')->groupBy('san')->lists('san');
+
+       // return $unique_student_list;
+$students_array =  Array();
+        DB::table('files')->orderBy('upload_time', 'desc')->first();
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -84,6 +89,12 @@ class StudentController extends Controller {
             $student->date_of_birth = Input::get('date_of_birth_date') . '-' . Input::get('date_of_birth_month') . '-' . Input::get('date_of_birth_year');
             $student->nationality = Input::get('nationality');
             $student->passport = Input::get('passport');
+
+
+            $student->san = Input::get('san');
+            $student->ls_student_number = Input::get('ls_student_number');
+
+
             $student->save();
 
             $student_id = $student->id;
@@ -402,5 +413,8 @@ class StudentController extends Controller {
 	{
 		//
 	}
+
+
+
 
 }
