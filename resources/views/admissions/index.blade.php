@@ -29,6 +29,7 @@
                                       <th width="20%">SAN</th>
                                       <th width="25%">LS SN</th>
                                       <th width="25%">Name</th>
+                                      <th width="5%">Action</th>
                                     </tr>
                                   </thead>
                                   <tbody>
