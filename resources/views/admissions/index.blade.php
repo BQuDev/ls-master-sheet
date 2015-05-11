@@ -9,7 +9,6 @@
    <div class="m-b-md">
 	<form class="navbar-form navbar-left " role="search">
         <div class="form-group">
-        <h3 class="m-b-none">Students Admissions</h3><br/>
           <div class="input-group">
             <span class="input-group-btn">
               <span class="btn btn-sm bg-white b-white btn-icon" style="min-height:50px;font-size:24px;"><i class="fa fa-search"></i></span>
@@ -19,22 +18,17 @@
 
         </div>
       </form>
-              </div>
+      </div>
 
               <br>
-              <header class="panel-heading">
-                                DataTables
-                                <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
-                              </header>
+
                               <div class="table-responsive">
-                                <table class="table table-striped m-b-none" data-ride="datatables">
+                                <table class="table table-striped m-b-none" data-ride="datatables" id="student_datatable">
                                   <thead>
                                     <tr>
-                                      <th width="20%">Rendering engine</th>
-                                      <th width="25%">Browser</th>
-                                      <th width="25%">Platform(s)</th>
-                                      <th width="15%">Engine version</th>
-                                      <th width="15%">CSS grade</th>
+                                      <th width="20%">SAN</th>
+                                      <th width="25%">LS SN</th>
+                                      <th width="25%">Name</th>
                                     </tr>
                                   </thead>
                                   <tbody>
