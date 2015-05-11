@@ -13,5 +13,11 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('users.login');
 });
+Route::resource('students','StudentsController');
+
+Route::get('/login', 'UsersController@login');
+Route::get('/logout', 'UsersController@logout');
+Route::post('/login', 'UsersController@authenticate');
+

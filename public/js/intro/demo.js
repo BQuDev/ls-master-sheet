@@ -6,7 +6,7 @@
     intro.setOptions({
       steps: [
       {
-        element: '#nav .nav-users',
+        element: '#nav .nav-user',
           intro: '<p class="h4 text-uc"><strong>1: User settings</strong></p><p>Start edit your info here.</p>',
           position: 'bottom'
         },
