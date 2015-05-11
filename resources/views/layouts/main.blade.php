@@ -40,7 +40,7 @@
             <div class="row m-l-none m-r-none m-t m-b text-center">
               <div class="col-xs-4">
                 <div class="padder-v">
-                  <a href="{!! URL::to('/student/create') !!}">
+                  <a href="{!! URL::to('/') !!}">
                     <span class="m-b-xs block">
                       <i class="i i-docs i-2x text-primary-lt"></i>
                     </span>
