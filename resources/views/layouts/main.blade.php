@@ -200,7 +200,7 @@
                           <strong class="font-bold text-lt">{!! Sentry::getUser()->first_name !!}&nbsp;&nbsp;{!! Sentry::getUser()->last_name !!} </strong>
                           <b class="caret"></b>
                         </span>
-                        <span class="text-muted text-xs block">CEO</span>
+                        <span class="text-muted text-xs block"></span>
                       </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
