@@ -44,7 +44,7 @@
                     <span class="m-b-xs block">
                       <i class="i i-docs i-2x text-primary-lt"></i>
                     </span>
-                    <small class="text-muted">Admissions</small>
+                    <small class="text-muted">Add Admissions</small>
                   </a>
                 </div>
               </div>
