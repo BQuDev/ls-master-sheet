@@ -417,7 +417,7 @@
                                           </ul>
                                         </li>-->
                                         <li >
-                                          <a href="#" class="auto">
+                                          <a href="{!! URL::to('/student') !!}"">
                                             <span class="pull-right text-muted">
                                               <i class="i i-circle-sm-o text"></i>
                                               <i class="i i-circle-sm text-active"></i>
@@ -428,7 +428,7 @@
                                           </a>
                                           <ul class="nav dk">
                                             <li >
-                                              <a href="profile.html" class="auto">
+                                              <a href="{!! URL::to('/student/create') !!}">
                                                 <i class="i i-dot"></i>
 
                                                 <span>New Admission</span>
