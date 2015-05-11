@@ -26,10 +26,10 @@
                                 <table class="table table-striped m-b-none" data-ride="datatables" id="student_datatable">
                                   <thead>
                                     <tr>
-                                      <th width="20%">SAN</th>
-                                      <th width="25%">LS SN</th>
-                                      <th width="25%">Name</th>
-                                      <th width="5%">Action</th>
+                                      <th width="15%">SAN</th>
+                                      <th width="15%">LS SN</th>
+                                      <th width="35%">Name</th>
+                                      <th width="10%">Action</th>
                                     </tr>
                                   </thead>
                                   <tbody>
