@@ -37,7 +37,8 @@
                                       <td>{!! $student->san !!}</td>
                                       <td>{!! $student->ls_student_number !!}</td>
                                       <td>{!! $student->title.' '.$student->initials_1.' '.$student->initials_2.' '.$student->initials_3.' '.$student->forename_1.' '.$student->forename_2.' '.$student->forename_3.' '.$student->surname!!}</td>
-                                      </tr>
+                                       <td><a href="#" class="btn btn-default btn-sm">Edit</a></td>
+									  </tr>
                                   @endforeach
                                   </tbody>
                                 </table>
@@ -61,5 +62,6 @@ $('#search_text').keyup(function(){
        oTable.fnFilter($(this).val());
 })
 
+$('#student_datatable_filter').hide();
 </script>
 @stop
