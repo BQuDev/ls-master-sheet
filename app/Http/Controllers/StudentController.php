@@ -51,7 +51,7 @@ class StudentController extends Controller {
 	public function create()
 	{
 		//
-        return 'index';
+        return view('admissions.create');
 	}
 
 	/**
