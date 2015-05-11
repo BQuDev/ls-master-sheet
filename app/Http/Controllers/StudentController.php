@@ -34,11 +34,13 @@ class StudentController extends Controller {
 	 */
 	public function index()
 	{
-	 $unique_student_list = DB::table('students')->groupBy('san')->lists('san');
+	// $unique_student_list = DB::table('students')->groupBy('san')->lists('san');
 
        // return $unique_student_list;
-$students_array =  Array();
-        DB::table('files')->orderBy('upload_time', 'desc')->first();
+//$students_array =  Array();
+     //   DB::table('files')->orderBy('upload_time', 'desc')->first();
+	 return view('admissions.index')
+            ->with('students',Student::all());
 	}
 
 	/**
