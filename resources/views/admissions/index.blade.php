@@ -7,9 +7,6 @@
 
 
    <div class="m-b-md">
-
-
-
 	<form class="navbar-form navbar-left " role="search">
         <div class="form-group">
         <h3 class="m-b-none">Students Admissions</h3><br/>
@@ -22,9 +19,8 @@
 
         </div>
       </form>
-
-
               </div>
+              <br>
               <section class="panel panel-default">
                 <header class="panel-heading">
 
