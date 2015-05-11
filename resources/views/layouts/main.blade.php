@@ -40,24 +40,24 @@
             <div class="row m-l-none m-r-none m-t m-b text-center">
               <div class="col-xs-4">
                 <div class="padder-v">
-                  <a href="#">
+                  <a href="{!! URL::to('/student/create') !!}">
                     <span class="m-b-xs block">
                       <i class="i i-docs i-2x text-primary-lt"></i>
                     </span>
                     <small class="text-muted">Admissions</small>
                   </a>
                 </div>
-              </div><!--
+              </div>
               <div class="col-xs-4">
                 <div class="padder-v">
-                  <a href="#">
+                  <a href="{!! URL::to('/student') !!}">
                     <span class="m-b-xs block">
                       <i class="i i-calendar i-2x text-danger-lt"></i>
                     </span>
-                    <small class="text-muted">Calendar</small>
+                    <small class="text-muted">View Admissions</small>
                   </a>
                 </div>
-              </div>
+              </div><!--
               <div class="col-xs-4">
                 <div class="padder-v">
                   <a href="#">
