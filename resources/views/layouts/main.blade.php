@@ -428,7 +428,7 @@
                                           </a>
                                           <ul class="nav dk">
                                             <li >
-                                              <a href="{!! URL::to('/student/create') !!}">
+                                              <a href="{!! URL::to('/student') !!}">
                                                 <i class="i i-dot"></i>
 
                                                 <span>New Admission</span>
