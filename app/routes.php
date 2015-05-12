@@ -20,4 +20,5 @@ Route::resource('students','StudentsController');
 Route::get('/login', 'UsersController@login');
 Route::get('/logout', 'UsersController@logout');
 Route::post('/login', 'UsersController@authenticate');
+Route::get('/export', 'StudentsController@export');
 

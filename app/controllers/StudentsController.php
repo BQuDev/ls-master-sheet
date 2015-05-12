@@ -336,6 +336,10 @@ return View::make('students.index')->with('students',Student::all());
     {
         //return Student::where('id','=',$id)->first();
         //
+		//$user = new Student();
+		// accessor
+		//var_dump($user->lastRecordBySAN('a123'));
+
         return View::make('students.edit')
             ->with('information_sources',ApplicationSource::lists('name','id'))
             ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
@@ -390,6 +394,20 @@ return View::make('students.index')->with('students',Student::all());
     public function destroy($id)
     {
         //
+    }
+
+    public function export()
+    {
+	
+        return Excel::create('New file', function($excel) {
+
+			$excel->sheet('New sheet', function($sheet) {
+
+				$sheet->loadView('export.master_sheet');
+
+			});
+
+		})->download('xls');
     }
 
 }

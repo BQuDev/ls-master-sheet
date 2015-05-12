@@ -89,4 +89,13 @@
                </a>
 
              </li>
+                 <li >
+              <a href="{{ URL::to('/export') }}/">
+
+                 <i class="i i-stack icon">
+                 </i>
+                 <span class="font-bold">Export</span>
+               </a>
+
+             </li>
  @stop
