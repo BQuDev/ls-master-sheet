@@ -7,7 +7,7 @@
 <div class="row" style="min-height: 50px;"></div>
 <div class="row">
    <div class="col-sm-12">
-      {{ Form::open(array('url' =>URL::to("/").'/student',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) }}
+      {{ Form::open(array('url' =>URL::to("/").'/students',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) }}
 <div class="form-group">
          {{ Form::label('san', 'Student Application Number (SAN)', array('class' => 'col-sm-3 control-label'));  }}
          <div class="col-sm-9">{{ Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true']); }}</div>
@@ -1106,7 +1106,7 @@
 @stop
 
 @section('post_js')<script type="text/javascript">
-/*
+
 $(function() {
  $( "#qualification_container_2" ).hide();
  $( "#qualification_container_3" ).hide();
@@ -1274,7 +1274,7 @@ $( "#add_more_occupations_2" ).click(function() {
       $( "#add_more_occupations_2" ).hide();
   });
 
-*/
+
 
 </script>
 
@@ -1284,3 +1284,21 @@ $( "#add_more_occupations_2" ).click(function() {
 {{ HTML::script('js/parsley/parsley.extend.js'); }}
 @stop
 
+@section('main_menu')
+ <li >
+                      <a href="{{ URL::to('/students') }}/">
+                        <i class="i i-statistics icon">
+                        </i>
+                        <span class="font-bold">All Admissions</span>
+                      </a>
+                    </li>
+                 <li >
+              <a href="{{ URL::to('/students/create') }}/">
+
+                 <i class="i i-stack icon">
+                 </i>
+                 <span class="font-bold">New Admission</span>
+               </a>
+
+             </li>
+ @stop

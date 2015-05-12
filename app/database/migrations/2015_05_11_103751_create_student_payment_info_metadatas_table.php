@@ -15,6 +15,7 @@ class CreateStudentPaymentInfoMetadatasTable extends Migration {
 		Schema::create('student_payment_info_metadatas', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->string('course_fees');
             $table->string('payment_status');
             $table->string('total_fee');
             $table->string('late_admin_fee');

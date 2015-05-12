@@ -29,7 +29,6 @@ class CreateStudentsTable extends Migration {
             $table->string('passport');
             $table->string('ls_student_number');
             $table->string('san');
-            $table->integer('student_id');
             $table->integer('is_verified');
             $table->integer('created_by');
             $table->softDeletes();

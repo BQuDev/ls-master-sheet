@@ -126,8 +126,10 @@
                 <!-- nav -->
                 <nav class="nav-primary hidden-xs">
                   <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Main menu</div>
+                  <ul class="nav nav-main" data-ride="collapse">
                     @section('main_menu')
                     @show
+                   </ul>
                   <div class="line dk hidden-nav-xs"></div>
                   <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Lables</div>
                   <ul class="nav">
