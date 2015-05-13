@@ -40,7 +40,7 @@
                            <td>{{ $student->san }}</td>
                            <td>{{ $student->ls_student_number }}</td>
                            <td>{{ $student->title.' '.$student->initials_1.' '.$student->initials_2.' '.$student->initials_3.' '.$student->forename_1.' '.$student->forename_2.' '.$student->forename_3.' '.$student->surname }}</td>
-                           <td><a class="btn btn-sm btn-primary" href="{{ URL::to('/students/'.$student->id.'/edit') }}">More</a></td>
+                           <td><a class="btn btn-sm btn-primary disabled" href="{{ URL::to('/students/'.$student->id.'/edit') }}">More</a></td>
                          </tr>
                     @endforeach
 
