@@ -29,7 +29,7 @@
         <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
           <i class="fa fa-bars"></i>
         </a>
-        <a href="index.html" class="navbar-brand">
+        <a href="{{ URL::to('/') }}" class="navbar-brand">
           <img src="{{asset('images/logo.png')}}" class="m-r-sm" alt="scale">
 
         </a>

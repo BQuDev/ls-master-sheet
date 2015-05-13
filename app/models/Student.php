@@ -5,7 +5,9 @@ class Student extends \Eloquent {
     protected $fillable = [];
     protected $table = 'students';
 	
-	public function lastRecordBySAN($san) {
-        return DB::table('students')->where('san','=',$san)->orderBy('id', 'desc')->first();
+	public function scopeLastRecordBySAN($query,$san) {
+       // return DB::table('students')->where('san','=',$san)->orderBy('id', 'desc')->first();
+        return $query->where('san','=',$san)->orderBy('id', 'desc')->first();
     }
+
 }

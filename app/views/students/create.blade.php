@@ -52,14 +52,13 @@
 
                       </div>
                    </div>
-                  <div class="form-group">
-                     {{ Form::label('agents_laps', 'Agent/LAP', array('class' => 'col-sm-3 control-label'));  }}
-                     <div class="col-sm-9">
 
-                        {{ Form::select('agents_laps', $agents_laps,'',['class'=>'chosen-select col-sm-4']);  }}
 
-                     </div>
-                  </div>
+<div class="form-group">
+             {{ Form::label('agents_laps', 'Agent/LAP', array('class' => 'col-sm-3 control-label'));  }}
+             <div class="col-sm-4">{{ Form::select('agents_laps', $agents_laps,'',['class'=>'chosen-select','style'=>'width:150px !important']);  }}</div>
+                              <div class="col-sm-4">{{ Form::text('agents_laps_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
+                           </div>
 
                </div>
             </section>
@@ -222,7 +221,7 @@
                           <label class="col-sm-1 control-label"></label>
                           <label class="col-sm-2 control-label">Country</label>
                           <div class="col-sm-9">
-                             {{ Form::select('tt_country', $countries,'',['class'=>'chosen-select col-sm-4']);  }}
+                             {{ Form::select('tt_country', $countries,'',['class'=>'chosen-select col-sm-4'],236);  }}
                           </div>
                        </div>
                        <div class="form-group">
@@ -1055,7 +1054,7 @@
                                  {{ Form::label('supervisor', 'Supervisor ', array('class' => 'col-sm-3 control-label'));  }}
                                  <div class="col-sm-9">{{ Form::text('supervisor', '',['placeholder'=>'Supervisor ','class'=>'form-control']); }}</div>
                               </div>
-                              <div class="form-group">
+                              <!--<div class="form-group">
                                  {{ Form::label('date_of_birth', 'Applicant verified by BQu date', array('class' => 'col-sm-3 control-label'));  }}
                                  <div class="col-sm-3"><div class="form-inline">
                                                 {{ Form::text('applicant_verified_by_bqu_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
@@ -1063,7 +1062,7 @@
                                                 {{ Form::text('applicant_verified_by_bqu_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}
                                              </div>
                                              </div>
-                                             </div>
+                                             </div>-->
                               <div class="form-group">
                                  <label class="col-sm-1 control-label"></label>
                                  <label class="col-sm-2 control-label">Status </label>
@@ -1105,9 +1104,17 @@
 {{ HTML::style('js/chosen/chosen.css'); }}
 @stop
 
-@section('post_js')<script type="text/javascript">
+@section('post_js')
+<script type="text/javascript">
 
 $(function() {
+
+/*
+document.getElementById('tt_country').value = '236';
+
+$('#tt_country').trigger('chosen:updated');
+
+*/
  $( "#qualification_container_2" ).hide();
  $( "#qualification_container_3" ).hide();
  $( "#occupation_container_2" ).hide();
@@ -1127,22 +1134,35 @@ $( "#ls_student_number" ).keydown(function() {
 
 
 
+$('[name="agents_laps"]').append("<option value='1000'>Other</option>");
+$('[name="agents_laps"]').prepend("<option value='0'>Not Applicable</option>");
+ $('[name="agents_laps"]').trigger("chosen:updated");
 
-$('[name="agent_names"]').prepend("<option value='0'>Not Applicable</option>");
- $('[name="agent_names"]').trigger("chosen:updated");
-
-$('[name="admssion_manager"]').prepend("<option value='0'>Not Applicable</option>");
- $('[name="admssion_manager"]').trigger("chosen:updated");
+$('[name="admission_manager"]').prepend("<option value='0'>Not Applicable</option>");
+ $('[name="admission_manager"]').trigger("chosen:updated");
 
 $('[name="qualification_1"]').append("<option value='0'>Other</option>");
 $('[name="qualification_1"]').trigger("chosen:updated");
+
+
+//$('[name="agent_laps"]').trigger("chosen:updated");
+
 $('[name="qualification_1_other"]').hide();
+$('[name="agents_laps_other"]').hide();
 
     $('[name="qualification_1"]').change(function(){
         if($(this).val() == 0){
             $('[name="qualification_1_other"]').show();
         }else{
             $('[name="qualification_1_other"]').hide();
+        }
+ });
+
+    $('[name="agents_laps"]').change(function(){
+        if($(this).val() == 1000){
+            $('[name="agents_laps_other"]').show();
+        }else{
+            $('[name="agents_laps_other"]').hide();
         }
  });
 
@@ -1301,4 +1321,13 @@ $( "#add_more_occupations_2" ).click(function() {
                </a>
 
              </li>
+                 <li >
+                           <a href="{{ URL::to('/export') }}/">
+
+                              <i class="i i-stack icon">
+                              </i>
+                              <span class="font-bold">Export</span>
+                            </a>
+
+                          </li>
  @stop

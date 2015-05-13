@@ -22,7 +22,7 @@ class CreateStudentContactInformationKinDetailesTable extends Migration {
             $table->string('next_of_kin_email');
             $table->string('san');
             $table->integer('student_id');
-            $table->integer('is_verified');
+            $table->integer('record_status');
             $table->integer('created_by');
             $table->softDeletes();
             $table->timestamps();

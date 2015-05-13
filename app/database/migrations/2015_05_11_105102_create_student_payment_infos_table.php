@@ -21,7 +21,7 @@ class CreateStudentPaymentInfosTable extends Migration {
             $table->integer('payment_info_type');
             $table->string('san');
             $table->integer('student_id');
-            $table->integer('is_verified');
+            $table->integer('record_status');
             $table->integer('created_by');
             $table->softDeletes();
             $table->timestamps();

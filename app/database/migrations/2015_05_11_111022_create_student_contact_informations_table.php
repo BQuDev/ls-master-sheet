@@ -26,7 +26,7 @@ class CreateStudentContactInformationsTable extends Migration {
             $table->integer('student_contact_information_type');
             $table->string('san');
             $table->integer('student_id');
-            $table->integer('is_verified');
+            $table->integer('record_status');
             $table->integer('created_by');
             $table->softDeletes();
             $table->timestamps();

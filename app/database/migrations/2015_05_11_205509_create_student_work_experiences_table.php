@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateStudentBquDataTable extends Migration {
+class CreateStudentWorkExperiencesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,16 @@ class CreateStudentBquDataTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('student_bqu_data', function(Blueprint $table)
+		Schema::create('student_work_experiences', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->string('application_received_date');
-            $table->string('application_input_by');
-            $table->string('supervisor');
-            $table->string('verified_date');
-            $table->string('status');
+            $table->string('occupation');
+            $table->string('institution');
+            $table->string('company_name');
+            $table->string('main_duties');
+            $table->string('occupation_start_date');
+            $table->string('occupation_end_date');
+            $table->string('currently_working');
             $table->string('san');
             $table->integer('student_id');
             $table->integer('record_status');
@@ -37,7 +39,7 @@ class CreateStudentBquDataTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('student_bqu_data');
+		Schema::drop('student_work_experiences');
 	}
 
 }

@@ -19,10 +19,11 @@ class CreateStudentSourcesTable extends Migration {
             $table->string('ams_date');
             $table->string('source');
             $table->string('agent_lap');
+            $table->string('agents_laps_other');
             $table->string('admission_manager');
             $table->string('san');
             $table->integer('student_id');
-            $table->integer('is_verified');
+            $table->integer('record_status');
             $table->integer('created_by');
             $table->softDeletes();
             $table->timestamps();

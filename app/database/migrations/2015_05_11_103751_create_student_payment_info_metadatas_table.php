@@ -22,7 +22,7 @@ class CreateStudentPaymentInfoMetadatasTable extends Migration {
             $table->string('late_fee');
             $table->string('san');
             $table->integer('student_id');
-            $table->integer('is_verified');
+            $table->integer('record_status');
             $table->integer('created_by');
             $table->softDeletes();
             $table->timestamps();

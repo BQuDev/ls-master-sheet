@@ -3,7 +3,7 @@
 // Composer: "fzaninotto/faker": "v1.3.0"
 
 
-class SantryUserTableSeeder extends Seeder {
+class SantryUserTableSeeder1 extends Seeder {
 
 	public function run()
 	{
@@ -15,7 +15,7 @@ class SantryUserTableSeeder extends Seeder {
         try
         {
             $group = Sentry::createGroup(array(
-                'name'        => 'LS Administrator',
+                'name'        => 'Administrator',
                 'permissions' => array(
                     'admin' => 1,
                     'users' => 1,
@@ -32,7 +32,7 @@ class SantryUserTableSeeder extends Seeder {
         {
             // Create the user
             $user = Sentry::createUser(array(
-                'email'=> 'lsadmin@lseducationgroup.com',
+                'email'     => 'lsadmin@lseducationgroup.com',
                 'password'  => 'pass123',
                 'activated' => true,
                 'first_name'=> 'LS',

@@ -23,7 +23,7 @@ class CreateStudentContactInformationOnlinesTable extends Migration {
             $table->string('other_social');
             $table->string('san');
             $table->integer('student_id');
-            $table->integer('is_verified');
+            $table->integer('record_status');
             $table->integer('created_by');
             $table->softDeletes();
             $table->timestamps();
