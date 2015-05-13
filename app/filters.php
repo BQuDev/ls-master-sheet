@@ -14,10 +14,7 @@
 App::before(function($request)
 {
 	//
-	if( ! Request::secure())
-    {
-        return Redirect::secure(Request::path());
-    }
+
 });
 
 
@@ -91,4 +88,6 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+
+
 });
