@@ -131,12 +131,12 @@
                     @show
                    </ul>
                   <div class="line dk hidden-nav-xs"></div>
-                  <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Lables</div>
+                  <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm"></div>
                   <ul class="nav">
                     @section('sub_menu')
                     @show
                   </ul>
-                  <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Circles</div>
+                  <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm"></div>
                   <ul class="nav">
 
                   </ul>
