@@ -34,8 +34,7 @@
 
         </a>
         <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
-          <i class="fa fa-cog"></i>
-        </a>
+          <i class="fa fa-cog"></i></a>
       </div>
       <ul class="nav navbar-nav hidden-xs">
         <li class="dropdown">

@@ -27,10 +27,10 @@ class StudentsController extends \BaseController {
             ->with('information_sources',ApplicationSource::lists('name','id'))
             //->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
             //To-Do
-             ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
+            ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
 
             //->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))
-			
+
             ->with('agents_laps',array_merge(ApplicationAgent::lists('name','id'), ApplicationLap::lists('name','id')))
             ->with('nationalities',StaticNationality::lists('name','id'))
             ->with('countries',StaticCountry::lists('name','id'))
@@ -89,8 +89,12 @@ class StudentsController extends \BaseController {
         $student_source->app_date =  Input::get('app_date_date') . '-' . Input::get('app_date_month') . '-' . Input::get('app_date_year');
         $student_source->ams_date =  Input::get('ams_date_date') . '-' . Input::get('ams_date_month') . '-' . Input::get('ams_date_year');
         $student_source->source = Input::get('information_source');
+
         $student_source->agent_lap = Input::get('agents_laps');
+        $student_source->agents_laps_other = Input::get('agents_laps_other');
+
         $student_source->admission_manager = Input::get('admission_manager');
+        $student_source->admission_managers_other = Input::get('admission_managers_other');
         $student_source->san = Input::get('san');
         $student_source->student_id = $student_id;
         $student_source->save();
@@ -164,9 +168,12 @@ class StudentsController extends \BaseController {
         $educational_qualifications1 = $educational_qualifications->replicate();
         $educational_qualifications2 = $educational_qualifications->replicate();
 
-        if(Input::get('qualification_1') == '0'){$educational_qualifications->qualification = Input::get('qualification_1_other');}else{$educational_qualifications->qualification = Input::get('qualification_1');}
-        if(Input::get('qualification_2') == '0'){$educational_qualifications1->qualification = Input::get('qualification_2_other');}else{$educational_qualifications1->qualification = Input::get('qualification_2');}
-        if(Input::get('qualification_3') == '0'){$educational_qualifications2->qualification = Input::get('qualification_3_other');}else{$educational_qualifications2->qualification = Input::get('qualification_3');}
+        $educational_qualifications->qualification_other = Input::get('qualification_1_other');
+        $educational_qualifications->qualification = Input::get('qualification_1');
+        $educational_qualifications1->qualification_other = Input::get('qualification_2_other');
+        $educational_qualifications1->qualification = Input::get('qualification_2');
+        $educational_qualifications2->qualification_other = Input::get('qualification_3_other');
+        $educational_qualifications2->qualification = Input::get('qualification_3');
 
         //$educational_qualifications->qualification = Input::get('qualification_1_other');
         $educational_qualifications->institution = Input::get('institution_1');
@@ -209,6 +216,8 @@ class StudentsController extends \BaseController {
 
         $work_experience_1->occupation = Input::get('occupation_1');
         $work_experience_1->institution = Input::get('institution_1');
+        $work_experience_1->company_name = Input::get('company_name_1');
+        $work_experience_1->main_duties = Input::get('main_duties_and_responsibilities_1');
         $work_experience_1->occupation_start_date = Input::get('occupation_start_date_1').'-'.Input::get('occupation_start_month_1').'-'.Input::get('occupation_start_year_1');
         $work_experience_1->occupation_end_date = Input::get('occupation_end_date_1').'-'.Input::get('occupation_end_month_1').'-'.Input::get('occupation_end_year_1');
         //To-do
@@ -220,6 +229,9 @@ class StudentsController extends \BaseController {
 
         $work_experience_2->occupation = Input::get('occupation_2');
         $work_experience_2->institution = Input::get('institution_2');
+
+        $work_experience_2->company_name = Input::get('company_name_2');
+        $work_experience_2->main_duties = Input::get('main_duties_and_responsibilities_2');
         $work_experience_2->occupation_start_date = Input::get('occupation_start_date_2').'-'.Input::get('occupation_start_month_2').'-'.Input::get('occupation_start_year_2');
         $work_experience_2->occupation_end_date = Input::get('occupation_end_date_2').'-'.Input::get('occupation_end_month_2').'-'.Input::get('occupation_end_year_2');
         //To-do
@@ -231,6 +243,8 @@ class StudentsController extends \BaseController {
 
         $work_experience_3->occupation = Input::get('occupation_3');
         $work_experience_3->institution = Input::get('institution_3');
+        $work_experience_3->company_name = Input::get('company_name_3');
+        $work_experience_3->main_duties = Input::get('main_duties_and_responsibilities_3');
         $work_experience_3->occupation_start_date = Input::get('occupation_start_date_3').'-'.Input::get('occupation_start_month_3').'-'.Input::get('occupation_start_year_3');
         $work_experience_3->occupation_end_date = Input::get('occupation_end_date_3').'-'.Input::get('occupation_end_month_3').'-'.Input::get('occupation_end_year_3');
         //To-do
@@ -251,6 +265,8 @@ class StudentsController extends \BaseController {
         $payment_info_metadata->total_fee = Input::get('total_fee');
         $payment_info_metadata->late_admin_fee = Input::get('late_admin_fee');
         $payment_info_metadata->late_fee = Input::get('late_fee');
+        $payment_info_metadata->san = Input::get('san');
+        $payment_info_metadata->student_id = $student_id;
         $payment_info_metadata->save();
 
         $payment_info_metadata_id = $payment_info_metadata->id;
@@ -264,7 +280,7 @@ class StudentsController extends \BaseController {
 
         $payment_info->payment_amount = Input::get('deposit');
         $payment_info->date = Input::get('deposit_date').'-'.Input::get('deposit_month').'-'.Input::get('deposit_year');
-        $payment_info->method = Input::get('deposit');
+        $payment_info->method = Input::get('deposit_payment_method_1');
         $payment_info->san = Input::get('san');
         $payment_info->student_id = $student_id;
         //To-Do
@@ -338,6 +354,10 @@ return View::make('students.index')->with('students',Student::all());
     {
         //return Student::where('id','=',$id)->first();
         //
+		//$user = new Student();
+		// accessor
+		//var_dump($user->lastRecordBySAN('a123'));
+
         return View::make('students.edit')
             ->with('information_sources',ApplicationSource::lists('name','id'))
             ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
@@ -392,6 +412,30 @@ return View::make('students.index')->with('students',Student::all());
     public function destroy($id)
     {
         //
+    }
+
+    public function export()
+    {
+	
+        return Excel::create('New file', function($excel) {
+
+			$excel->sheet('New sheet', function($sheet) {
+
+				$sheet->loadView('export.master_sheet');
+
+			});
+
+		})->download('xls');
+    }
+    public function checkSanAvailability()
+    {
+	
+       $clanCount = Student::where('san', '=', Input::get('option'))->count();
+        if ($clanCount == 0) {
+            return 'Available';
+        } else {
+            return 'Not Available';
+        }
     }
 
 }

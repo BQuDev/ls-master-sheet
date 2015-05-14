@@ -10,7 +10,7 @@
       {{ Form::open(array('url' =>URL::to("/").'/students',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) }}
 <div class="form-group">
          {{ Form::label('san', 'Student Application Number (SAN)', array('class' => 'col-sm-3 control-label'));  }}
-         <div class="col-sm-9">{{ Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true']); }}</div>
+         <div class="col-sm-9">{{ Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true','minlength'=>"5",'onBlur'=>'checkSanAvailability()']); }}<span id="san_available"></span><span style="color: red" id="san_not_available"> SAN is already in the database </span> </div>
       </div>
 
       <div class="form-group">
@@ -44,22 +44,20 @@
 
                      </div>
                   </div>
-                   <div class="form-group">
-                      {{ Form::label('admission_manager', 'Admission manager', array('class' => 'col-sm-3 control-label'));  }}
-                      <div class="col-sm-9 ">
 
-                          {{ Form::select('admission_manager', $admission_managers,'',['class'=>'chosen-select col-sm-4']);  }}
 
-                      </div>
-                   </div>
-                  <div class="form-group">
-                     {{ Form::label('agents_laps', 'Agent/LAP', array('class' => 'col-sm-3 control-label'));  }}
-                     <div class="col-sm-9">
+<div class="form-group">
+             {{ Form::label('admission_manager', 'Admission manager', array('class' => 'col-sm-3 control-label'));  }}
+             <div class="col-sm-4">{{ Form::select('admission_manager',  $admission_managers,'',['class'=>'chosen-select','style'=>'width:259px !important']);  }}</div>
+                              <div class="col-sm-4">{{ Form::text('admission_managers_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
+                           </div>
 
-                        {{ Form::select('agents_laps', $agents_laps,'',['class'=>'chosen-select col-sm-4']);  }}
 
-                     </div>
-                  </div>
+<div class="form-group">
+             {{ Form::label('agents_laps', 'Agent/LAP', array('class' => 'col-sm-3 control-label'));  }}
+             <div class="col-sm-4">{{ Form::select('agents_laps', $agents_laps,'',['class'=>'chosen-select','style'=>'width:259px !important']);  }}</div>
+                              <div class="col-sm-4">{{ Form::text('agents_laps_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
+                           </div>
 
                </div>
             </section>
@@ -222,7 +220,7 @@
                           <label class="col-sm-1 control-label"></label>
                           <label class="col-sm-2 control-label">Country</label>
                           <div class="col-sm-9">
-                             {{ Form::select('tt_country', $countries,'',['class'=>'chosen-select col-sm-4']);  }}
+                             {{ Form::select('tt_country', $countries,'',['class'=>'chosen-select col-sm-4'],236);  }}
                           </div>
                        </div>
                        <div class="form-group">
@@ -231,9 +229,9 @@
                           <div class="col-sm-9">
                              <div class="form-inline">
                                +&nbsp;&nbsp;
-                               {{ Form::text('tt_mobile_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                               {{ Form::text('tt_mobile_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                               {{ Form::text('tt_mobile_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
+                               {{ Form::text('tt_mobile_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); }}
+                               {{ Form::text('tt_mobile_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); }}
+                               {{ Form::text('tt_mobile_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); }}
                                {{ Form::text('tt_mobile', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); }}
                              </div>
                           </div>
@@ -244,10 +242,10 @@
                           <div class="col-sm-9">
                              <div class="form-inline">
                                                  +&nbsp;&nbsp;
-                                                 {{ Form::text('tt_landline_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                 {{ Form::text('tt_landline_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                 {{ Form::text('tt_landline_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                 {{ Form::text('tt_landline', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); }}
+                                                 {{ Form::text('tt_landline_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits','data-parsley-type'=>'digits']); }}
+                                                 {{ Form::text('tt_landline_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits','data-parsley-type'=>'digits']); }}
+                                                 {{ Form::text('tt_landline_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits','data-parsley-type'=>'digits']); }}
+                                                 {{ Form::text('tt_landline', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits','data-parsley-type'=>'digits']); }}
                                                </div>
                           </div>
 
@@ -422,7 +420,7 @@
                </div>
                <div class="form-group">
                   {{ Form::label('next_of_kin_email', 'Email ', array('class' => 'col-sm-3 control-label'));  }}
-                  <div class="col-sm-9">{{ Form::text('next_of_kin_email', '',['placeholder'=>'Email','class'=>'form-control']); }}</div>
+                  <div class="col-sm-9">{{ Form::text('next_of_kin_email', '',['placeholder'=>'Email','class'=>'form-control','data-parsley-type'=>'email']); }}</div>
                </div>
             </section>
 
@@ -1109,6 +1107,13 @@
 <script type="text/javascript">
 
 $(function() {
+
+/*
+document.getElementById('tt_country').value = '236';
+
+$('#tt_country').trigger('chosen:updated');
+
+*/
  $( "#qualification_container_2" ).hide();
  $( "#qualification_container_3" ).hide();
  $( "#occupation_container_2" ).hide();
@@ -1116,7 +1121,7 @@ $(function() {
 
 
 
-$( "#san" ).keydown(function() {console.log('df');
+$( "#san" ).keydown(function() {
     $('#top_san_display').html('SAN : '+this.value);
  // $('#top_san_display').append($(this).val());
 
@@ -1128,16 +1133,48 @@ $( "#ls_student_number" ).keydown(function() {
 
 
 
-
+$('[name="agents_laps"]').append("<option value='1000'>Other</option>");
 $('[name="agents_laps"]').prepend("<option value='0'>Not Applicable</option>");
  $('[name="agents_laps"]').trigger("chosen:updated");
+
+$('[name="admission_manager"]').append("<option value='1000'>Other</option>");
+ $('[name="admission_manager"]').trigger("chosen:updated");
 
 $('[name="admission_manager"]').prepend("<option value='0'>Not Applicable</option>");
  $('[name="admission_manager"]').trigger("chosen:updated");
 
 $('[name="qualification_1"]').append("<option value='0'>Other</option>");
 $('[name="qualification_1"]').trigger("chosen:updated");
+
+$('[name="tt_country"]').prepend("<option value='0'>Please select a country</option>");
+$('[name="tt_country"]').val("Please select a country");
+$('[name="tt_country"]').trigger("chosen:updated");
+
+$('[name="country"]').prepend("<option value='0'>Please select a country</option>");
+$('[name="country"]').val("Please select a country");
+$('[name="country"]').trigger("chosen:updated");
+
+    $('[name="agents_laps"]').change(function(){
+        if($(this).val() == 1000){
+            $('[name="agents_laps_other"]').show();
+        }else{
+            $('[name="agents_laps_other"]').hide();
+        }
+ });
+
+    $('[name="admission_manager"]').change(function(){
+        if($(this).val() == 1000){
+            $('[name="admission_managers_other"]').show();
+        }else{
+            $('[name="admission_managers_other"]').hide();
+        }
+ });
+
+//$('[name="agent_laps"]').trigger("chosen:updated");
+
 $('[name="qualification_1_other"]').hide();
+$('[name="agents_laps_other"]').hide();
+$('[name="admission_managers_other"]').hide();
 
     $('[name="qualification_1"]').change(function(){
         if($(this).val() == 0){
@@ -1146,6 +1183,7 @@ $('[name="qualification_1_other"]').hide();
             $('[name="qualification_1_other"]').hide();
         }
  });
+
 
 
 $('[name="qualification_2"]').append("<option value='0'>Other</option>");
@@ -1164,7 +1202,7 @@ $('[name="qualification_3"]').append("<option value='0'>Other</option>");
 $('[name="qualification_3"]').trigger("chosen:updated");
 $('[name="qualification_3_other"]').hide();
 
-    $('[name="qualification_1"]').change(function(){
+    $('[name="qualification_3"]').change(function(){
         if($(this).val() == 0){
             $('[name="qualification_3_other"]').show();
         }else{
@@ -1276,6 +1314,41 @@ $( "#add_more_occupations_2" ).click(function() {
   });
 
 
+$( "#san" ).keydown(function() {
+    $('#top_san_display').html('SAN : '+this.value);
+ // $('#top_san_display').append($(this).val());
+
+});
+$( "#ls_student_number" ).keydown(function() {
+    $('#top_lssn_display').html('LS SN : '+this.value);
+ // $('#top_lssn_display').append($(this).val());
+});
+function checkSanAvailability(){
+	if(!isEmpty($('#san').val())){
+					$.ajax({
+                  url: "{{ url('checkSanAvailability')}}",
+                  data: {token: $('[name="_token"]').val(),option: $('#san').val()},
+                  success: function (data) {
+                  console.log(data);
+				  if(data =='Available'){
+					  $('#san').removeClass("parsley-error").addClass( "parsley-success" );
+					  $('#san_not_available').hide();
+
+				  }else{
+					  $('#san').removeClass("parsley-success").addClass( "parsley-error" );
+					   $('#san_not_available').show();
+				  }
+                       },
+                          type: "GET"
+
+                });}
+}
+ $('#san_not_available').hide();
+
+ function isEmpty(str) {
+    // return (!str || 0 === str.length);
+    return (!str || /^\s*$/.test(str));
+ }
 
 </script>
 
@@ -1283,10 +1356,24 @@ $( "#add_more_occupations_2" ).click(function() {
   <!-- parsley -->
 {{ HTML::script('js/parsley/parsley.min.js'); }}
 {{ HTML::script('js/parsley/parsley.extend.js'); }}
+<style>
+#san.parsley-success{
+  color: #468847;
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;
+}
+
+#san.parsley-error {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+</style>
 @stop
 
 @section('main_menu')
- <li >
+ <li>
                       <a href="{{ URL::to('/students') }}/">
                         <i class="i i-statistics icon">
                         </i>
@@ -1302,4 +1389,18 @@ $( "#add_more_occupations_2" ).click(function() {
                </a>
 
              </li>
+                 <li >
+                           <a href="{{ URL::to('/export') }}/">
+
+                              <i class="i i-stack icon">
+                              </i>
+                              <span class="font-bold">Export</span>
+                            </a>
+
+                          </li>
+ @stop
+
+ @section('san')
+ <span id="top_san_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">SAN : </span>
+ <span id="top_lssn_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">LS SN : </span>
  @stop
