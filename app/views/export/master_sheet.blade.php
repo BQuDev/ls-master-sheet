@@ -124,19 +124,51 @@ function objectToArray($d) {
  return $d;
  }
  }
+
+ $arrayx = array('jr59jr7z','uxcgk59z'
+,'b9wgp59z'
+,'kxymae9z'
+,'opzfff7z'
+,'ncwdxj8z'
+,'idplb87z'
+,'3d2ntv7z'
+,'80qggl9z'
+,'347z9l9z'
+,'tr1x449z'
+,'pxxex39z'
+,'i3ew049z'
+,'7kruy39z'
+,'m8wez39z'
+,'9hark59z'
+,'064f049z'
+,'117rz39z'
+,'64w1df9z'
+,'6h0g2b9z'
+,'emhhdl8z'
+,'fkdc7e9z'
+,'j9pmtj9z'
+,'pbuwgl9z'
+,'pt0f449z'
+,'s3ea8b9z'
+,'wzt8be9z'
+,'kwoagh8z');
+//$students = DB::table('students')->select('*')->get();
+///$sub = array();
 ?>
-@foreach(DB::table('students')->select('*')->get() as $main_student)
+
+
+@foreach( $arrayx  as $main_student)
 <?php
 
 
 
 
-    $studentSource = DB::table('student_sources')->where('san','=',$main_student->san)->orderBy('id', 'desc')->first();
+    $studentSource = DB::table('student_sources')->where('san','=',$main_student)->orderBy('id', 'desc')->first();
     $studentSourceArray = objectToArray($studentSource);
 
 ?>
 <tr>
-<td>{{ Student::lastRecordBySAN($main_student->san)->san; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->san; }}</td>
 <td>{{ $studentSourceArray['app_date']; }}</td>
 <td>{{ $studentSourceArray['ams_date']; }}</td>
 <td>To -Do</td>
@@ -151,48 +183,48 @@ function objectToArray($d) {
 
 </td>
 
-<td>{{ Student::lastRecordBySAN($main_student->san)->title; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->initials_1; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->initials_2; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->initials_3; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->forename_1; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->forename_2; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->forename_3; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->surname; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->gender; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student->san)->date_of_birth; }}</td>
-<td>{{ StaticNationality::getNameByID(Student::lastRecordBySAN($main_student->san)->nationality); }}</td><!--To-Do-->
-<td>{{ Student::lastRecordBySAN($main_student->san)->passport; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->title; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->initials_1; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->initials_2; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->initials_3; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->forename_1; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->forename_2; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->forename_3; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->surname; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->gender; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->date_of_birth; }}</td>
+<td>{{ StaticNationality::getNameByID(Student::lastRecordBySAN($main_student)->nationality); }}</td><!--To-Do-->
+<td>{{ Student::lastRecordBySAN($main_student)->passport; }}</td>
 
-<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student->san)->address_1; }}</td>
-<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student->san)->address_2; }}</td>
-<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student->san)->city; }}</td>
-<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student->san)->post_code; }}</td>
-<td>{{ StaticCountry::getNameByID(StudentContactInformation::lastUKRecordBySAN($main_student->san)->country); }}</td>
-<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student->san)->mobile; }}</td>
-<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student->san)->landline; }}</td>
-<td>{{ StudentContactInformation::lastRecordBySAN($main_student->san)->address_1; }}</td>
-<td>{{ StudentContactInformation::lastRecordBySAN($main_student->san)->address_2; }}</td>
-<td>{{ StudentContactInformation::lastRecordBySAN($main_student->san)->city; }}</td>
-<td>{{ StudentContactInformation::lastRecordBySAN($main_student->san)->post_code; }}</td>
-<td>{{ StaticCountry::getNameByID(StudentContactInformation::lastRecordBySAN($main_student->san)->country); }}</td>
-<td>{{ StudentContactInformation::lastRecordBySAN($main_student->san)->mobile; }}</td>
-<td>{{ StudentContactInformation::lastRecordBySAN($main_student->san)->landline; }}</td>
-<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student->san)->email; }}</td>
-<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student->san)->alternative_email; }}</td>
-<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student->san)->facebook; }}</td>
-<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student->san)->linkedin; }}</td>
-<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student->san)->twitter; }}</td>
-<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student->san)->other_social; }}</td>
+<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->address_1; }}</td>
+<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->address_2; }}</td>
+<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->city; }}</td>
+<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->post_code; }}</td>
+<td>{{ StaticCountry::getNameByID(StudentContactInformation::lastUKRecordBySAN($main_student)->country); }}</td>
+<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->mobile; }}</td>
+<td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->landline; }}</td>
+<td>{{ StudentContactInformation::lastRecordBySAN($main_student)->address_1; }}</td>
+<td>{{ StudentContactInformation::lastRecordBySAN($main_student)->address_2; }}</td>
+<td>{{ StudentContactInformation::lastRecordBySAN($main_student)->city; }}</td>
+<td>{{ StudentContactInformation::lastRecordBySAN($main_student)->post_code; }}</td>
+<td>{{ StaticCountry::getNameByID(StudentContactInformation::lastRecordBySAN($main_student)->country); }}</td>
+<td>{{ StudentContactInformation::lastRecordBySAN($main_student)->mobile; }}</td>
+<td>{{ StudentContactInformation::lastRecordBySAN($main_student)->landline; }}</td>
+<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->email; }}</td>
+<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->alternative_email; }}</td>
+<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->facebook; }}</td>
+<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->linkedin; }}</td>
+<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->twitter; }}</td>
+<td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->other_social; }}</td>
 
-<td>{{ StudentCourseEnrolment::lastRecordBySAN($main_student->san)->course_level; }}</td>
-<td>{{ ApplicationAwardingBody::getNameByID(StudentCourseEnrolment::lastRecordBySAN($main_student->san)->awarding_body); }}</td>
-<td>{{ ApplicationCourse::getNameByID(StudentCourseEnrolment::lastRecordBySAN($main_student->san)->course_name); }}</td>
+<td>{{ StudentCourseEnrolment::lastRecordBySAN($main_student)->course_level; }}</td>
+<td>{{ ApplicationAwardingBody::getNameByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->awarding_body); }}</td>
+<td>{{ ApplicationCourse::getNameByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->course_name); }}</td>
 <td>
 
-{{ StaticYear::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student->san)->intake)->year).'-'.StaticMonth::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student->san)->intake)->month); }}</td><!--To-Do-->
-<td>{{ StudentCourseEnrolment::lastRecordBySAN($main_student->san)->study_mode; }}</td>
-@foreach(StudentEducationalQualification::lastThreeRecordsBySAN($main_student->san) as $student)
+{{ StaticYear::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->intake)->year).'-'.StaticMonth::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->intake)->month); }}</td><!--To-Do-->
+<td>{{ StudentCourseEnrolment::lastRecordBySAN($main_student)->study_mode; }}</td>
+@foreach(StudentEducationalQualification::lastThreeRecordsBySAN($main_student) as $student)
 <td>
 
 </td>
@@ -201,7 +233,7 @@ function objectToArray($d) {
 <td>{{ $student->qualification_end_date; }}</td>
 <td>{{ $student->qualification_grade; }}</td>
 @endforeach
-@foreach(StudentWorkExperience::lastThreeRecordsBySAN($main_student->san) as $studentWorkExperience)
+@foreach(StudentWorkExperience::lastThreeRecordsBySAN($main_student) as $studentWorkExperience)
 <td>{{ $studentWorkExperience->occupation; }}</td>
 <td>{{ $studentWorkExperience->company_name; }}</td>
 <td>{{ $studentWorkExperience->occupation_start_date; }}</td>
@@ -212,7 +244,7 @@ function objectToArray($d) {
 
 
 
-@foreach(StudentPaymentInfo::lastFourRecordsBySAN($main_student->san) as $studentPaymentInfo)
+@foreach(StudentPaymentInfo::lastFourRecordsBySAN($main_student) as $studentPaymentInfo)
 <td>{{ $studentPaymentInfo->payment_amount; }}</td>
 <td>{{ $studentPaymentInfo->date; }}</td>
 <td>{{ $studentPaymentInfo->method; }}</td>
@@ -221,12 +253,12 @@ function objectToArray($d) {
 <td> To-Do </td>
 <td>To-Do </td>
 
-<td>{{ StudentBquData::lastRecordBySAN($main_student->san)->application_received_date; }}</td>
-<td>{{ StudentBquData::lastRecordBySAN($main_student->san)->application_input_by; }}</td>
-<td>{{ StudentBquData::lastRecordBySAN($main_student->san)->verified_date; }}</td>
-<td>{{ StudentBquData::lastRecordBySAN($main_student->san)->status; }}</td>
+<td>{{ StudentBquData::lastRecordBySAN($main_student)->application_received_date; }}</td>
+<td>{{ StudentBquData::lastRecordBySAN($main_student)->application_input_by; }}</td>
+<td>{{ StudentBquData::lastRecordBySAN($main_student)->verified_date; }}</td>
+<td>{{ StudentBquData::lastRecordBySAN($main_student)->status; }}</td>
 
-<td>{{ Student::lastRecordBySAN($main_student->san)->ls_student_number; }}</td>
+<td>{{ Student::lastRecordBySAN($main_student)->ls_student_number; }}</td>
 
 
 </tr>
