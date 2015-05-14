@@ -6,12 +6,12 @@
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  {{ HTML::style('css/bootstrap.css') }}
-  {{  HTML::style('css/animate.css') }}
-  {{  HTML::style('css/font-awesome.min.css') }}
-  {{  HTML::style('css/icon.css') }}
-  {{  HTML::style('css/font.css') }}
-  {{  HTML::style('css/app.css') }}
+  {{ HTML::style('css/bootstrap.css', array(), true) }}
+  {{  HTML::style('css/animate.css', array(), true) }}
+  {{  HTML::style('css/font-awesome.min.css', array(), true) }}
+  {{  HTML::style('css/icon.css', array(), true) }}
+  {{  HTML::style('css/font.css', array(), true) }}
+  {{  HTML::style('css/app.css', array(), true) }}
     <!--[if lt IE 9]>
     <script src="js/ie/html5shiv.js"></script>
     <script src="js/ie/respond.min.js"></script>
@@ -55,12 +55,12 @@
     </div>
   </footer>
   <!-- / footer -->
-  {{  HTML::script('js/jquery.min.js'); }}
+  {{  HTML::script('js/jquery.min.js', array(), true); }}
   <!-- Bootstrap -->
-    {{  HTML::script('js/bootstrap.js'); }}
+    {{  HTML::script('js/bootstrap.js', array(), true); }}
   <!-- App -->
-	    {{  HTML::script('js/app.js'); }}
-		{{  HTML::script('js/slimscroll/jquery.slimscroll.min.js'); }}
-		{{  HTML::script('js/app.plugin.js'); }}
+	    {{  HTML::script('js/app.js', array(), true); }}
+		{{  HTML::script('js/slimscroll/jquery.slimscroll.min.js', array(), true); }}
+		{{  HTML::script('js/app.plugin.js', array(), true); }}
 </body>
 </html>
