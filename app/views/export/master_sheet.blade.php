@@ -125,8 +125,20 @@ function objectToArray($d) {
  }
  }
 
- $arrayx = array('jr59jr7z','uxcgk59z'
-,'b9wgp59z'
+
+//$students = DB::table('students')->select('*')->get();
+///$sub = array();
+
+$results =  DB::table('students')->select('san')->get();
+   // return $results;
+    $rr = array();
+    foreach($results as $result){
+        $rr[] = $result->san;
+    }
+
+    $rr = array_flatten($rr);
+/*
+ $rr = array('jr59jr7z','uxcgk59z','b9wgp59z'
 ,'kxymae9z'
 ,'opzfff7z'
 ,'ncwdxj8z'
@@ -152,12 +164,11 @@ function objectToArray($d) {
 ,'s3ea8b9z'
 ,'wzt8be9z'
 ,'kwoagh8z');
-//$students = DB::table('students')->select('*')->get();
-///$sub = array();
+*/
 ?>
 
 
-@foreach( $arrayx  as $main_student)
+@foreach( $rr  as $main_student)
 <?php
 
 

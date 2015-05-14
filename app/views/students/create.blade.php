@@ -220,7 +220,7 @@
                           <label class="col-sm-1 control-label"></label>
                           <label class="col-sm-2 control-label">Country</label>
                           <div class="col-sm-9">
-                             {{ Form::select('tt_country', $countries,'',['class'=>'chosen-select col-sm-4'],236);  }}
+                             {{ Form::select('tt_country', $countries,'',['class'=>'chosen-select col-sm-4']);  }}
                           </div>
                        </div>
                        <div class="form-group">
@@ -1147,11 +1147,11 @@ $('[name="qualification_1"]').append("<option value='0'>Other</option>");
 $('[name="qualification_1"]').trigger("chosen:updated");
 
 $('[name="tt_country"]').prepend("<option value='0'>Please select a country</option>");
-$('[name="tt_country"]').val("Please select a country");
+
 $('[name="tt_country"]').trigger("chosen:updated");
 
 $('[name="country"]').prepend("<option value='0'>Please select a country</option>");
-$('[name="country"]').val("Please select a country");
+
 $('[name="country"]').trigger("chosen:updated");
 
     $('[name="agents_laps"]').change(function(){

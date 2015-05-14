@@ -57,7 +57,7 @@ class StudentsController extends \BaseController {
      */
     public function store()
     {
-       // return Input::all();
+        //return Input::all();
         //
         $student = new Student();
         $student->title = Input::get('title');

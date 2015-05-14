@@ -26,3 +26,13 @@ Route::get('/export', 'StudentsController@export');
 Route::get('/logout', 'UsersController@logout');
 Route::resource('students','StudentsController');
 });
+
+Route::get('/test', function(){
+    $results =  DB::table('students')->select('san')->get();
+   // return $results;
+    $rr = array();
+    foreach($results as $result){
+        $array[] = $result->san;
+    }
+    return $array;
+});
