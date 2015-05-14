@@ -15,7 +15,7 @@ class SantryUserTableSeeder extends Seeder {
         try
         {
             $group = Sentry::createGroup(array(
-                'name'        => 'LS Administrator',
+                'name'        => 'Super Administrator',
                 'permissions' => array(
                     'admin' => 1,
                     'users' => 1,
@@ -32,10 +32,10 @@ class SantryUserTableSeeder extends Seeder {
         {
             // Create the user
             $user = Sentry::createUser(array(
-                'email'=> 'lsadmin@lseducationgroup.com',
-                'password'  => 'pass123',
+                'email'=> 'admin@bqu.com',
+                'password'  => '123',
                 'activated' => true,
-                'first_name'=> 'LS',
+                'first_name'=> 'BQu',
                 'last_name'=> 'Administrator'
             ));
 

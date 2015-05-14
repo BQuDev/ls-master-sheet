@@ -68,6 +68,8 @@
           </div>
         </div>
       </form>
+      	  @section('san')
+            @show
       <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
 
         <li class="dropdown">

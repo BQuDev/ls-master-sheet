@@ -103,19 +103,59 @@
  <th>App verified by	Status	</th>
  <th>LSM Student number</th>
 </tr>
+<?php
+function objectToArray($d) {
+ if (is_object($d)) {
+ // Gets the properties of the given object
+ // with get_object_vars function
+ $d = get_object_vars($d);
+ }
+
+ if (is_array($d)) {
+ /*
+ * Return array converted to object
+ * Using __FUNCTION__ (Magic constant)
+ * for recursive call
+ */
+ return array_map(__FUNCTION__, $d);
+ }
+ else {
+ // Return array
+ return $d;
+ }
+ }
+?>
 @foreach(DB::table('students')->select('*')->get() as $main_student)
+<?php
+
+
+
+
+    $studentSource = DB::table('student_sources')->where('san','=',$main_student->san)->orderBy('id', 'desc')->first();
+    $studentSourceArray = objectToArray($studentSource);
+
+?>
 <tr>
 <td>{{ Student::lastRecordBySAN($main_student->san)->san; }}</td>
-<td></td>
-<td></td>
-<td></td>
+<td>{{ $studentSourceArray['app_date']; }}</td>
+<td>{{ $studentSourceArray['ams_date']; }}</td>
+<td>To -Do</td>
 <td>
-
+    @if($studentSourceArray['admission_manager'] ==0)
+    {{ 'Other' }}
+    @else
+    {{ ApplicationAdmissionManager::getNameByID($studentSourceArray['admission_manager']); }}
+    @endif
 </td>
 <td>
-
+ @if($studentSourceArray['agent_lap'] ==0)
+    {{ 'Other' }}
+    @elseif($studentSourceArray['admission_manager'] == 6)
+{{ ApplicationLap::getNameByID($studentSourceArray['agent_lap'])   }}
+    @else
+{{ ApplicationAgent::getNameByID($studentSourceArray['agent_lap'])   }}
+@endif
 </td>
-
 
 <td>{{ Student::lastRecordBySAN($main_student->san)->title; }}</td>
 <td>{{ Student::lastRecordBySAN($main_student->san)->initials_1; }}</td>

@@ -230,9 +230,9 @@
                           <div class="col-sm-9">
                              <div class="form-inline">
                                +&nbsp;&nbsp;
-                               {{ Form::text('tt_mobile_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                               {{ Form::text('tt_mobile_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                               {{ Form::text('tt_mobile_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
+                               {{ Form::text('tt_mobile_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); }}
+                               {{ Form::text('tt_mobile_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); }}
+                               {{ Form::text('tt_mobile_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits']); }}
                                {{ Form::text('tt_mobile', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); }}
                              </div>
                           </div>
@@ -243,10 +243,10 @@
                           <div class="col-sm-9">
                              <div class="form-inline">
                                                  +&nbsp;&nbsp;
-                                                 {{ Form::text('tt_landline_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                 {{ Form::text('tt_landline_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                 {{ Form::text('tt_landline_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                 {{ Form::text('tt_landline', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits']); }}
+                                                 {{ Form::text('tt_landline_1', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits','data-parsley-type'=>'digits']); }}
+                                                 {{ Form::text('tt_landline_2', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits','data-parsley-type'=>'digits']); }}
+                                                 {{ Form::text('tt_landline_3', '',['placeholder'=>'','class'=>'form-control','style'=>'width:40px !important','maxlength'=>'1','data-parsley-type'=>'digits','data-parsley-type'=>'digits']); }}
+                                                 {{ Form::text('tt_landline', '',['placeholder'=>'','class'=>'form-control','style'=>'width:350px !important','data-parsley-type'=>'digits','data-parsley-type'=>'digits']); }}
                                                </div>
                           </div>
 
@@ -421,7 +421,7 @@
                </div>
                <div class="form-group">
                   {{ Form::label('next_of_kin_email', 'Email ', array('class' => 'col-sm-3 control-label'));  }}
-                  <div class="col-sm-9">{{ Form::text('next_of_kin_email', '',['placeholder'=>'Email','class'=>'form-control']); }}</div>
+                  <div class="col-sm-9">{{ Form::text('next_of_kin_email', '',['placeholder'=>'Email','class'=>'form-control','data-parsley-type'=>'email']); }}</div>
                </div>
             </section>
 
@@ -1144,6 +1144,14 @@ $('[name="admission_manager"]').prepend("<option value='0'>Not Applicable</optio
 $('[name="qualification_1"]').append("<option value='0'>Other</option>");
 $('[name="qualification_1"]').trigger("chosen:updated");
 
+$('[name="tt_country"]').prepend("<option value='0'>Please select a country</option>");
+$('[name="tt_country"]').val("Please select a country");
+$('[name="tt_country"]').trigger("chosen:updated");
+
+$('[name="country"]').prepend("<option value='0'>Please select a country</option>");
+$('[name="country"]').val("Please select a country");
+$('[name="country"]').trigger("chosen:updated");
+
 
 //$('[name="agent_laps"]').trigger("chosen:updated");
 
@@ -1295,6 +1303,15 @@ $( "#add_more_occupations_2" ).click(function() {
   });
 
 
+$( "#san" ).keydown(function() {console.log('df');
+    $('#top_san_display').html('SAN : '+this.value);
+ // $('#top_san_display').append($(this).val());
+
+});
+$( "#ls_student_number" ).keydown(function() {
+    $('#top_lssn_display').html('LS SN : '+this.value);
+ // $('#top_lssn_display').append($(this).val());
+});
 
 </script>
 
@@ -1330,4 +1347,9 @@ $( "#add_more_occupations_2" ).click(function() {
                             </a>
 
                           </li>
+ @stop
+
+ @section('san')
+ <span id="top_san_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">SAN : </span>
+ <span id="top_lssn_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">LS SN : </span>
  @stop
