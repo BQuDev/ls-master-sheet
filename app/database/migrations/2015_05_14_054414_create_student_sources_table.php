@@ -21,6 +21,7 @@ class CreateStudentSourcesTable extends Migration {
             $table->string('agent_lap');
             $table->string('agents_laps_other');
             $table->string('admission_manager');
+            $table->string('admission_managers_other');
             $table->string('san');
             $table->integer('student_id');
             $table->integer('record_status');

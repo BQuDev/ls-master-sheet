@@ -84,7 +84,7 @@
             </li>
             <li class="divider"></li>
             <li>
-              <a href="modal.lockme.html" data-toggle="ajaxModal" >Logout</a>
+              <a href="{{ URL::to('/').'/logout' }}" data-toggle="ajaxModal" >Logout</a>
             </li>
           </ul>
         </li>
@@ -101,7 +101,8 @@
                   <div class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <span class="thumb avatar pull-left m-r">
-                        <img src="images/a0.png" class="dker" alt="...">
+                        <img src="{{ URL::to('/').'/images/a0.png' }}"  alt="">
+						
                         <i class="on md b-black"></i>
                       </span>
                       <span class="hidden-nav-xs clear">
@@ -118,7 +119,7 @@
                       </li>
                       <li class="divider"></li>
                       <li>
-                        <a href="modal.lockme.html" data-toggle="ajaxModal" >Logout</a>
+                        <a href="{{ URL::to('/').'/logout' }}" data-toggle="ajaxModal" >Logout</a>
                       </li>
                     </ul>
                   </div>
@@ -148,7 +149,7 @@
             </section>
 
             <footer class="footer hidden-xs no-padder text-center-nav-xs">
-              <a href="modal.lockme.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+              <a href="{{ URL::to('/').'/logout' }}" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
                 <i class="i i-logout"></i>
               </a>
               <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">

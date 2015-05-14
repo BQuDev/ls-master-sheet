@@ -11,14 +11,18 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('users.login');
-});
-Route::resource('students','StudentsController');
 
+Route::get('checkSanAvailability','StudentsController@checkSanAvailability');
+Route::get('/', 'UsersController@login');
 Route::get('/login', 'UsersController@login');
-Route::get('/logout', 'UsersController@logout');
+
 Route::post('/login', 'UsersController@authenticate');
+
+Route::group(array('before' => 'members_auth'), function()
+{
+	
 Route::get('/export', 'StudentsController@export');
 
+Route::get('/logout', 'UsersController@logout');
+Route::resource('students','StudentsController');
+});

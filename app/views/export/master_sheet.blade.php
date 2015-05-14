@@ -148,13 +148,7 @@ function objectToArray($d) {
     @endif
 </td>
 <td>
- @if($studentSourceArray['agent_lap'] ==0)
-    {{ 'Other' }}
-    @elseif($studentSourceArray['admission_manager'] == 6)
-{{ ApplicationLap::getNameByID($studentSourceArray['agent_lap'])   }}
-    @else
-{{ ApplicationAgent::getNameByID($studentSourceArray['agent_lap'])   }}
-@endif
+
 </td>
 
 <td>{{ Student::lastRecordBySAN($main_student->san)->title; }}</td>

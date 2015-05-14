@@ -94,6 +94,7 @@ class StudentsController extends \BaseController {
         $student_source->agents_laps_other = Input::get('agents_laps_other');
 
         $student_source->admission_manager = Input::get('admission_manager');
+        $student_source->admission_managers_other = Input::get('admission_managers_other');
         $student_source->san = Input::get('san');
         $student_source->student_id = $student_id;
         $student_source->save();
@@ -265,6 +266,7 @@ class StudentsController extends \BaseController {
         $payment_info_metadata->late_admin_fee = Input::get('late_admin_fee');
         $payment_info_metadata->late_fee = Input::get('late_fee');
         $payment_info_metadata->san = Input::get('san');
+        $payment_info_metadata->student_id = $student_id;
         $payment_info_metadata->save();
 
         $payment_info_metadata_id = $payment_info_metadata->id;
@@ -424,6 +426,16 @@ return View::make('students.index')->with('students',Student::all());
 			});
 
 		})->download('xls');
+    }
+    public function checkSanAvailability()
+    {
+	
+       $clanCount = Student::where('san', '=', Input::get('option'))->count();
+        if ($clanCount == 0) {
+            return 'Available';
+        } else {
+            return 'Not Available';
+        }
     }
 
 }
