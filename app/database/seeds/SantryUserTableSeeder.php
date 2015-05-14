@@ -11,7 +11,7 @@ class SantryUserTableSeeder extends Seeder {
 
 
         // Creating admin group
-/*
+
         try
         {
             $group = Sentry::createGroup(array(
@@ -26,13 +26,13 @@ class SantryUserTableSeeder extends Seeder {
         {
             echo 'Login field is required.';
         }
-*/
+
         // Creating Admin
         try
         {
             // Create the user
             $user = Sentry::createUser(array(
-                'email'=> 'ijay@bqu.com',
+                'email'=> 'admin@bqu.com',
                 'password'  => '123',
                 'activated' => true,
                 'first_name'=> 'BQu',
