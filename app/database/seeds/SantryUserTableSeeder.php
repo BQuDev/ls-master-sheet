@@ -522,4 +522,4 @@ class SantryUserTableSeeder extends Seeder {
 		
 		
 
-}
+}}
