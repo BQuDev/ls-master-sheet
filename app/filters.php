@@ -14,13 +14,17 @@
 App::before(function($request)
 {
 	//
-
+	if( !Request::secure() && App::environment() !== 'local')
+		{
+		//return Redirect::secure(Request::getRequestUri());
+		}
 });
 
 
 App::after(function($request, $response)
 {
 	//
+
 });
 
 /*
