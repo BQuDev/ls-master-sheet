@@ -28,7 +28,7 @@
                 <strong>Administration</strong>
               </header>
 
-        {{ Form::open(array('url' =>URL::to("/", array(), true).'/login',  'class'=>'form-horizontal','method' => 'post')) }}
+        {{ Form::open(array('url' =>URL::to("/").'/login',  'class'=>'form-horizontal','method' => 'post')) }}
           <div class="list-group">
             <div class="list-group-item">
               <input type="email" id="email" name="email" placeholder="Email" class="form-control no-border">
