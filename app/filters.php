@@ -12,11 +12,12 @@
 */
 
 App::before(function($request)
-{
+{ Request::setTrustedProxies([$request->getClientIp()]);
 	//
+	/*
 	if( !Request::secure())
 		{
-           // Request::setTrustedProxies([$request->getClientIp()]);
+           //
 		//$request->setTrustedProxies( [ $request->getClientIp() ] ); 
 		Request::setTrustedProxies(array(
     '199.27.128.0/21',
@@ -34,7 +35,12 @@ App::before(function($request)
 ));
 
 		return Redirect::secure(Request::getRequestUri());
-		}
+		}*/
+		
+		if( ! Request::secure())
+    {
+        return Redirect::secure(Request::path());
+    }
 });
 
 
