@@ -2,11 +2,12 @@
 
 <tr>
 <th>SAN</th>
- <th>App date</th>
- <th>AMS date</th>
- <th>Agent type</th>
+ <th>App Date</th>
+ <th>AMS Date</th>
+ <th>Source</th>
+ <th>Agent /LAP</th>
  <th>Admission Manager	</th>
- <th>Agent name</th>
+
 
  <th>Title</th>
   <th>	Initial 1	</th>
@@ -137,34 +138,7 @@ $results =  DB::table('students')->select('san')->get();
     }
 
     $rr = array_flatten($rr);
-/*
- $rr = array('jr59jr7z','uxcgk59z','b9wgp59z'
-,'kxymae9z'
-,'opzfff7z'
-,'ncwdxj8z'
-,'idplb87z'
-,'3d2ntv7z'
-,'80qggl9z'
-,'347z9l9z'
-,'tr1x449z'
-,'pxxex39z'
-,'i3ew049z'
-,'7kruy39z'
-,'m8wez39z'
-,'9hark59z'
-,'064f049z'
-,'117rz39z'
-,'64w1df9z'
-,'6h0g2b9z'
-,'emhhdl8z'
-,'fkdc7e9z'
-,'j9pmtj9z'
-,'pbuwgl9z'
-,'pt0f449z'
-,'s3ea8b9z'
-,'wzt8be9z'
-,'kwoagh8z');
-*/
+
 ?>
 
 
@@ -184,15 +158,16 @@ $results =  DB::table('students')->select('san')->get();
 <td>{{ $studentSourceArray['ams_date']; }}</td>
 <td>To -Do</td>
 <td>
+
+</td>
+<td>
     @if($studentSourceArray['admission_manager'] ==0)
     {{ 'Other' }}
     @else
     {{ ApplicationAdmissionManager::getNameByID($studentSourceArray['admission_manager']); }}
     @endif
 </td>
-<td>
 
-</td>
 
 <td>{{ Student::lastRecordBySAN($main_student)->title; }}</td>
 <td>{{ Student::lastRecordBySAN($main_student)->initials_1; }}</td>
