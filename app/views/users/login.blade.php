@@ -22,7 +22,7 @@
 <body class="">
   <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
     <div class="container aside-xl">
-      <a class="navbar-brand block" href="index.html"><img src="{{ asset('images/logo.png') }}" class="m-r-sm" alt="scale"></a>
+      <a class="navbar-brand block" href="index.html"><img src="{{ asset('images/logo.png', array(), true) }}" class="m-r-sm" alt="scale"></a>
       <section class="m-b-lg">
        <header class="wrapper text-center">
                 <strong>Administration</strong>
