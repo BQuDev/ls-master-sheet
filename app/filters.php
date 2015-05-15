@@ -14,7 +14,7 @@
 App::before(function($request)
 {
 	//
-	if( !Request::secure() && App::environment() !== 'local')
+	if( !Request::secure())
 		{
            // Request::setTrustedProxies([$request->getClientIp()]);
 		//$request->setTrustedProxies( [ $request->getClientIp() ] ); 
