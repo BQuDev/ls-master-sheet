@@ -16,7 +16,7 @@ App::before(function($request)
 	//
 	if( !Request::secure() && App::environment() !== 'local')
 		{
-		//return Redirect::secure(Request::getRequestUri());
+		return Redirect::secure(Request::getRequestUri());
 		}
 });
 
