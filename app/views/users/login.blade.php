@@ -6,12 +6,12 @@
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  {{ HTML::style('css/bootstrap.css', array(), true) }}
-  {{  HTML::style('css/animate.css', array(), true) }}
-  {{  HTML::style('css/font-awesome.min.css', array(), true) }}
-  {{  HTML::style('css/icon.css', array(), true) }}
-  {{  HTML::style('css/font.css', array(), true) }}
-  {{  HTML::style('css/app.css', array(), true) }}
+  {{ HTML::style('css/bootstrap.css') }}
+  {{  HTML::style('css/animate.css') }}
+  {{  HTML::style('css/font-awesome.min.css') }}
+  {{  HTML::style('css/icon.css') }}
+  {{  HTML::style('css/font.css') }}
+  {{  HTML::style('css/app.css') }}
     <!--[if lt IE 9]>
     <script src="js/ie/html5shiv.js"></script>
     <script src="js/ie/respond.min.js"></script>
@@ -22,7 +22,7 @@
 <body class="">
   <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
     <div class="container aside-xl">
-      <a class="navbar-brand block" href="index.html"><img src="{{ secure_asset('images/logo.png', array(), true) }}" class="m-r-sm" alt="scale"></a>
+      <a class="navbar-brand block" href="index.html"><img src="{{ secure_asset('images/logo.png') }}" class="m-r-sm" alt="scale"></a>
       <section class="m-b-lg">
        <header class="wrapper text-center">
                 <strong>Administration</strong>
@@ -55,12 +55,12 @@
     </div>
   </footer>
   <!-- / footer -->
-  {{  HTML::script('js/jquery.min.js', array(), true) }}
+  {{  HTML::script('js/jquery.min.js') }}
   <!-- Bootstrap -->
-    {{  HTML::script('js/bootstrap.js', array(), true) }}
+    {{  HTML::script('js/bootstrap.js') }}
   <!-- App -->
-	    {{  HTML::script('js/app.js', array(), true) }}
-		{{  HTML::script('js/slimscroll/jquery.slimscroll.min.js', array(), true) }}
-		{{  HTML::script('js/app.plugin.js', array(), true) }}
+	    {{  HTML::script('js/app.js') }}
+		{{  HTML::script('js/slimscroll/jquery.slimscroll.min.js') }}
+		{{  HTML::script('js/app.plugin.js') }}
 </body>
 </html>
