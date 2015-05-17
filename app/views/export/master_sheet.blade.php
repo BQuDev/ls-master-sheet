@@ -282,8 +282,8 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 <td>To-Do </td>
 
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->application_received_date; }}</td>
-<td>{{ StudentBquData::lastRecordBySAN($main_student)->application_input_by; }}</td>
-<td>{{ StudentBquData::lastRecordBySAN($main_student)->supervisor; }}</td>
+<td>{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->application_input_by); }}</td>
+<td>{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->supervisor); }}</td>
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->verified_date; }}</td>
 <td>{{ ApplicationStatus::getNameByID(StudentBquData::lastRecordBySAN($main_student)->status); }}</td>
 
