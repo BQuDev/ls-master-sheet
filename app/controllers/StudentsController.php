@@ -23,6 +23,22 @@ class StudentsController extends \BaseController {
     public function create()
     {
         //
+        try
+        {
+            $bqu_group = Sentry::findGroupByName('BQu');
+        }
+        catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
+        {
+            echo 'Group was not found.';
+        }
+
+        $supervisors = DB::table('users')
+            ->join('users_groups', 'users.id', '=', 'users_groups.user_id')
+            ->where('users_groups.group_id', '=', $bqu_group->id)
+            ->select('users.id', 'users.first_name', 'users.last_name')
+            ->get();
+
+
         return View::make('students.create')
             ->with('information_sources',ApplicationSource::lists('name','id'))
             //->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
@@ -41,7 +57,8 @@ class StudentsController extends \BaseController {
             ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
             ->with('application_status',ApplicationStatus::lists('name','id'))
             ->with('intake_year',StaticYear::lists('name','id'))
-            ->with('intake_month',StaticMonth::lists('name','id'));
+            ->with('intake_month',StaticMonth::lists('name','id'))
+            ->with('supervisors',$supervisors);
       //  ->with('intake_year',DB::table('application_intakes')->join('intake_year', 'intake_year.id', '=', 'application_intakes.year')->select('intake_year.id', 'intake_year.name')->groupBy('intake_year.name')->lists( 'intake_year.name','years.id'));
         //To-Do
         //->with('intake_month',Month::lists('name','id'));
@@ -215,41 +232,41 @@ class StudentsController extends \BaseController {
         $work_experience_3 = $work_experience_1->replicate();
 
         $work_experience_1->occupation = Input::get('occupation_1');
-        $work_experience_1->institution = Input::get('institution_1');
+        //$work_experience_1->institution = Input::get('institution_1');
         $work_experience_1->company_name = Input::get('company_name_1');
         $work_experience_1->main_duties = Input::get('main_duties_and_responsibilities_1');
         $work_experience_1->occupation_start_date = Input::get('occupation_start_date_1').'-'.Input::get('occupation_start_month_1').'-'.Input::get('occupation_start_year_1');
         $work_experience_1->occupation_end_date = Input::get('occupation_end_date_1').'-'.Input::get('occupation_end_month_1').'-'.Input::get('occupation_end_year_1');
         //To-do
-        //$work_experience_1->currently_working = Input::get('currently_working_1');
-        $work_experience_1->currently_working = 'currently_working';
+        $work_experience_1->currently_working = Input::get('currently_working_1', false);
+        //$work_experience_1->currently_working = 'currently_working';
         $work_experience_1->san = Input::get('san');
         $work_experience_1->student_id = $student_id;
         $work_experience_1->save();
 
         $work_experience_2->occupation = Input::get('occupation_2');
-        $work_experience_2->institution = Input::get('institution_2');
+        //$work_experience_2->institution = Input::get('institution_2');
 
         $work_experience_2->company_name = Input::get('company_name_2');
         $work_experience_2->main_duties = Input::get('main_duties_and_responsibilities_2');
         $work_experience_2->occupation_start_date = Input::get('occupation_start_date_2').'-'.Input::get('occupation_start_month_2').'-'.Input::get('occupation_start_year_2');
         $work_experience_2->occupation_end_date = Input::get('occupation_end_date_2').'-'.Input::get('occupation_end_month_2').'-'.Input::get('occupation_end_year_2');
         //To-do
-        //$work_experience_2->currently_working = Input::get('currently_working_1');
-        $work_experience_2->currently_working = 'currently_working';
+        $work_experience_2->currently_working = Input::get('currently_working_2', false);
+        //$work_experience_2->currently_working = 'currently_working';
         $work_experience_2->san = Input::get('san');
         $work_experience_2->student_id = $student_id;
         $work_experience_2->save();
 
         $work_experience_3->occupation = Input::get('occupation_3');
-        $work_experience_3->institution = Input::get('institution_3');
+        //$work_experience_3->institution = Input::get('institution_3');
         $work_experience_3->company_name = Input::get('company_name_3');
         $work_experience_3->main_duties = Input::get('main_duties_and_responsibilities_3');
         $work_experience_3->occupation_start_date = Input::get('occupation_start_date_3').'-'.Input::get('occupation_start_month_3').'-'.Input::get('occupation_start_year_3');
         $work_experience_3->occupation_end_date = Input::get('occupation_end_date_3').'-'.Input::get('occupation_end_month_3').'-'.Input::get('occupation_end_year_3');
         //To-do
-        //$work_experience_3->currently_working = Input::get('currently_working_1');
-        $work_experience_3->currently_working = 'currently_working';
+        $work_experience_3->currently_working = Input::get('currently_working_3', false);
+        //$work_experience_3->currently_working = 'currently_working';
         $work_experience_3->san = Input::get('san');
         $work_experience_3->student_id = $student_id;
         $work_experience_3->save();
@@ -350,7 +367,7 @@ return View::make('students.index')->with('students',Student::all());
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($san)
     {
         //return Student::where('id','=',$id)->first();
         //
@@ -376,15 +393,18 @@ return View::make('students.index')->with('students',Student::all());
             ->with('intake_year',StaticYear::lists('name','id'))
             ->with('intake_month',StaticMonth::lists('name','id'))
             // Getting Saved DATA
-            ->with('student',Student::where('id','=',$id)->first())
-            ->with('studentSource',StudentSource::where('student_id','=',$id)->first())
+            ->with('student',Student::where('san','=',$san)->first())
+            ->with('studentSource',StudentSource::where('san','=',$san)->first())
             ->with('ttStudentContactInformation',DB::table('student_contact_informations')
                 ->where('student_contact_information_type','=',1)
-                ->where('student_id','=',$id)
+                ->where('san','=',$san)
                 ->first())
             ->with('studentContactInformation',DB::table('student_contact_informations')
                 ->where('student_contact_information_type','=',2)
-                ->where('student_id','=',$id)
+                ->where('san','=',$san)
+                ->first())
+            ->with('studentContactInformationOnline',DB::table('student_contact_information_onlines')
+                ->where('san','=',$san)
                 ->first())
             ;
     }

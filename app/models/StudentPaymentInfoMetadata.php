@@ -6,7 +6,9 @@ class StudentPaymentInfoMetadata extends \Eloquent {
     protected $fillable = [];
     protected $table = 'student_payment_info_metadatas';
 
-    public function scopeLastRecordBySAN($query,$san) {
+    public function scopeGetLastRecordBySAN($query,$san) {
+       /* if(StudentPaymentInfoMetadata::where('san','=',$san)->count()>0){
+        return $query->where('san','=',$san)->orderBy('id', 'desc')->first();}else{return '';}*/
         return $query->where('san','=',$san)->orderBy('id', 'desc')->first();
     }
 }

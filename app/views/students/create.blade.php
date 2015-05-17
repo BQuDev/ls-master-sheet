@@ -750,7 +750,7 @@
                                  <div class="col-sm-9">
                                     <div class="checkbox i-checks">
                                        <label>
-                                      {{ Form::checkbox('currently_working_1', '1',false); }}
+                                      {{ Form::checkbox('currently_working_1', 'Yes',false); }}
                                        <i></i>
                                        Currently working
                                        </label>
@@ -804,7 +804,7 @@
                                  <div class="col-sm-9">
                                     <div class="checkbox i-checks">
                                        <label>
-                                      {{ Form::checkbox('currently_working_2', '1',false); }}
+                                      {{ Form::checkbox('currently_working_2', 'Yes',false); }}
                                        <i></i>
                                        Currently working
                                        </label>
@@ -859,7 +859,7 @@
                                  <div class="col-sm-9">
                                     <div class="checkbox i-checks">
                                        <label>
-                                      {{ Form::checkbox('currently_working_3', '1',false); }}
+                                      {{ Form::checkbox('currently_working_3', 'Yes',false); }}
                                        <i></i>
                                        Currently working
                                        </label>
@@ -1047,11 +1047,20 @@
                                             </div>
                               <div class="form-group">
                                  {{ Form::label('application_input_by', 'Application input by', array('class' => 'col-sm-3 control-label'));  }}
-                                 <div class="col-sm-9">{{ Form::text('application_input_by', '',['placeholder'=>'Application input by','class'=>'form-control']); }}</div>
+                                 <div class="col-sm-9">{{ Form::hidden('application_input_by', Sentry::getUser()->id) }} {{Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name}}</div>
                               </div>
                               <div class="form-group">
                                  {{ Form::label('supervisor', 'Supervisor ', array('class' => 'col-sm-3 control-label'));  }}
-                                 <div class="col-sm-9">{{ Form::text('supervisor', '',['placeholder'=>'Supervisor ','class'=>'form-control']); }}</div>
+
+                                 <div class="col-sm-9">
+
+
+                                 <select data-placeholder="Choose a Supervisors" class="chosen-select col-sm-12" >
+                                @foreach($supervisors as $supervisor)
+                                <option value="{{ $supervisor->id }}">{{ $supervisor->first_name.' '.$supervisor->last_name }}</option>
+                                @endforeach
+                                </select>
+                                 </div>
                               </div>
                               <!--<div class="form-group">
                                  {{ Form::label('date_of_birth', 'Applicant verified by BQu date', array('class' => 'col-sm-3 control-label'));  }}

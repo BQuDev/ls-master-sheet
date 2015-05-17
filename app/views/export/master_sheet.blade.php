@@ -13,42 +13,49 @@
   <th>	Initial 1	</th>
  <th>Initial 2</th>
  <th>Initial 3</th>
- <th>Forename1</th>
- <th>Forename2	</th>
- <th>Forename3	</th>
+ <th>Forename 1</th>
+ <th>Forename 2	</th>
+ <th>Forename 3	</th>
  <th>Surname	</th>
  <th>Gender	</th>
  <th>Date of birth (DD/MM/YY)	</th>
  <th>Nationality	</th>
- <th>Passport	</th>
- <th>UK - Address -  Address 1</th>
- <th>UK - Address -  Address 2</th>
- <th>UK - Address - Town/City	</th>
- <th>UK - Address - Post Code	</th>
- <th>UK - Address - Country	</th>
- <th>UK - Mobile</th>
-  <th>UK- Land line	</th>
- <th>Country of origin - Address 1	</th>
- <th>Country of origin - Address 2	</th>
- <th>Country of origin - Town/City	</th>
- <th>Country of origin - Post code	</th>
- <th>Country of origin - Country	</th>
- <th>Country of origin - Telephone - mobile</th>
+ <th>Passport number</th>
+ <th>Term time - Address - street</th>
+ <th>Term time - Address - Address 2</th> <!-- To-Do -->
+ <th>Term time - Address - Town/City</th>
+ <th>Term time - Address - Post code	</th>
+ <th>Term time - Address - Country	</th>
+ <th>Term time - Mobile</th>
+  <th>Term time - Landline	</th>
+ <th>Permanent - Address line 1	</th>
+ <th>Permanent - Address line 2	</th>
+ <th>Permanent - Town/City	</th>
+ <th>Permanent - Post code	</th>
+ <th>Permanent - Country	</th>
+ <th>Permanent - Telephone - mobile</th>
  <th>Country of origin - Telephone - Land line</th>
  <th>Email 1</th>
- <th>Email 2	</th>
+ <th>Alternative Email	</th>
  <th>Social Accounts - Facebook	</th>
  <th>Social Accounts - LinkedIn	</th>
  <th>Social Accounts - Twitter	</th>
  <th>Social Accounts - Other Social Media	</th>
 
+  <th>Title	</th>
+   <th>Forename	</th>
+    <th>Surname		</th>
+     <th>Telephone	</th>
+      <th>Email</th>
 
 
+ <th>Course Name	</th>
  <th>Top up / Advanced entry	</th>
  <th>Awarding body	</th>
- <th>Course Name	</th>
- <th>Start date (dd/mm/yy)	</th>
+
+ <th>Intake	</th>
  <th>Study mode	</th>
+ <th>English language level</th>
  <th>Qualification 3	</th>
  <th>	Institutuion	</th>
  <th>	Start date (dd/mm/yy)	</th>
@@ -66,22 +73,23 @@
  <th>	Grade	</th>
  <th>Occupation 3	</th>
  <th>	Company Name - Address	</th>
+  <th>	Duties and responsibilities	</th>
  <th>	start date (dd/mm/yy)	</th>
  <th>	end date (dd/mm/yy)	</th>
  <th>	Curently working	</th>
- <th>	Duties and responsibilities	</th>
+
  <th>Occupation 2	</th>
- <th>	Company Name - Address	</th>
+ <th>	Company Name - Address	</th> <th>	Duties and responsibilities	</th>
  <th>	start date (dd/mm/yy)	</th>
  <th>	end date (dd/mm/yy)	</th>
  <th>	Curently working	</th>
- <th>	Duties and responsibilities	</th>
+
  <th>Occupation 1	</th>
- <th>	Company Name - Address	</th>
+ <th>	Company Name - Address	</th> <th>	Duties and responsibilities	</th>
  <th>	start date (dd/mm/yy)	</th>
  <th>	end date (dd/mm/yy)	</th>
  <th>	Curently working	</th>
- <th>	Duties and responsibilities	</th>
+
 
  <th>Installment 3	</th>
  <th>Date of payment	</th>
@@ -100,6 +108,7 @@
  <th>Late Fee	</th>
  <th>App received to Bqu date (dd/mm/yy)	</th>
  <th>App input by	</th>
+ <th>Supervisor	</th>
  <th>App verified date (dd/mm/yy)	</th>
  <th>App verified by	Status	</th>
  <th>LSM Student number</th>
@@ -146,7 +155,7 @@ $results =  DB::table('students')->select('san')->get();
 <?php
 
 
-
+Log::info('enter'.$main_student);
 
     $studentSource = DB::table('student_sources')->where('san','=',$main_student)->orderBy('id', 'desc')->first();
     $studentSourceArray = objectToArray($studentSource);
@@ -156,14 +165,24 @@ $results =  DB::table('students')->select('san')->get();
 <td>{{ Student::lastRecordBySAN($main_student)->san; }}</td>
 <td>{{ $studentSourceArray['app_date']; }}</td>
 <td>{{ $studentSourceArray['ams_date']; }}</td>
-<td>To -Do</td>
 <td>
-
+@if(intval($studentSourceArray['source'])>0) {{
+ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
+ @endif
+ </td>
+<td>
+@if(intval($studentSourceArray['agent_lap']) == 1000)
+{{ $studentSourceArray['agents_laps_other'] }}
+ @elseif(($studentSourceArray['admission_manager'] ==6)&(intval($studentSourceArray['agent_lap'])>0))
+ {{ ApplicationLap::getNameByID($studentSourceArray['agent_lap'])  }}
+ @elseif(intval($studentSourceArray['agent_lap'])>0)
+ {{ApplicationAgent::getNameByID($studentSourceArray['agent_lap']) }}
+ @endif
 </td>
 <td>
-    @if($studentSourceArray['admission_manager'] ==0)
-    {{ 'Other' }}
-    @else
+    @if(intval($studentSourceArray['admission_manager']) == 1000)
+    {{ $studentSourceArray['admission_managers_other'] }}
+    @elseif(intval($studentSourceArray['admission_manager']) >0)
     {{ ApplicationAdmissionManager::getNameByID($studentSourceArray['admission_manager']); }}
     @endif
 </td>
@@ -203,16 +222,33 @@ $results =  DB::table('students')->select('san')->get();
 <td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->twitter; }}</td>
 <td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->other_social; }}</td>
 
+
+<td>{{ StudentContactInformationKinDetail::lastRecordBySAN($main_student)->next_of_kin_title }}</td>
+<td>{{ StudentContactInformationKinDetail::lastRecordBySAN($main_student)->next_of_kin_forename; }}</td>
+<td>{{ StudentContactInformationKinDetail::lastRecordBySAN($main_student)->next_of_kin_surname; }}</td>
+<td>{{ StudentContactInformationKinDetail::lastRecordBySAN($main_student)->next_of_kin_telephone; }}</td>
+<td>{{ StudentContactInformationKinDetail::lastRecordBySAN($main_student)->next_of_kin_email; }}</td>
+
+
+<td>{{ ApplicationCourse::getNameByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->course_name); }}</td>
 <td>{{ StudentCourseEnrolment::lastRecordBySAN($main_student)->course_level; }}</td>
 <td>{{ ApplicationAwardingBody::getNameByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->awarding_body); }}</td>
-<td>{{ ApplicationCourse::getNameByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->course_name); }}</td>
+
 <td>
 
 {{ StaticYear::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->intake)->year).'-'.StaticMonth::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->intake)->month); }}</td><!--To-Do-->
 <td>{{ StudentCourseEnrolment::lastRecordBySAN($main_student)->study_mode; }}</td>
+<td>
+@if(StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level != 'null')
+{{ StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level; }}
+@endif</td>
 @foreach(StudentEducationalQualification::lastThreeRecordsBySAN($main_student) as $student)
 <td>
-
+@if(intval($student->qualification) == 0)
+{{ $student->qualification_other }}
+@elseif(intval($student->qualification) > 0)
+{{ ApplicationEducationalQualification::getNameByID($student->qualification) }}
+@endif
 </td>
 <td>{{ $student->institution; }}</td>
 <td>{{ $student->qualification_start_date; }}</td>
@@ -222,10 +258,11 @@ $results =  DB::table('students')->select('san')->get();
 @foreach(StudentWorkExperience::lastThreeRecordsBySAN($main_student) as $studentWorkExperience)
 <td>{{ $studentWorkExperience->occupation; }}</td>
 <td>{{ $studentWorkExperience->company_name; }}</td>
+<td>{{ $studentWorkExperience->main_duties; }}</td>
 <td>{{ $studentWorkExperience->occupation_start_date; }}</td>
 <td>{{ $studentWorkExperience->occupation_end_date; }}</td>
 <td>{{ $studentWorkExperience->currently_working; }}</td>
-<td>{{ $studentWorkExperience->main_duties; }}</td>
+
 @endforeach
 
 
@@ -233,20 +270,29 @@ $results =  DB::table('students')->select('san')->get();
 @foreach(StudentPaymentInfo::lastFourRecordsBySAN($main_student) as $studentPaymentInfo)
 <td>{{ $studentPaymentInfo->payment_amount; }}</td>
 <td>{{ $studentPaymentInfo->date; }}</td>
-<td>{{ $studentPaymentInfo->method; }}</td>
+<td>
+@if(intval($studentPaymentInfo->method)>0)
+{{ ApplicationPaymentInfoMethodsOfPayment::getNameByID($studentPaymentInfo->method); }}
+@endif</td>
 @endforeach
 
-<td> To-Do </td>
+<td> To-Do
+
+ </td>
 <td>To-Do </td>
 
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->application_received_date; }}</td>
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->application_input_by; }}</td>
+<td>{{ StudentBquData::lastRecordBySAN($main_student)->supervisor; }}</td>
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->verified_date; }}</td>
-<td>{{ StudentBquData::lastRecordBySAN($main_student)->status; }}</td>
+<td>{{ ApplicationStatus::getNameByID(StudentBquData::lastRecordBySAN($main_student)->status); }}</td>
 
 <td>{{ Student::lastRecordBySAN($main_student)->ls_student_number; }}</td>
 
 
 </tr>
+<?php
+Log::info('out'.$main_student);
+?>
 @endforeach
 </html>

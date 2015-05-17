@@ -16,7 +16,7 @@ class CreateStudentWorkExperiencesTable extends Migration {
 		{
             $table->increments('id');
             $table->string('occupation');
-            $table->string('institution');
+            //$table->string('institution');
             $table->string('company_name');
             $table->string('main_duties');
             $table->string('occupation_start_date');

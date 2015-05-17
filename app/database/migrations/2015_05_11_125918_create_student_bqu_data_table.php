@@ -19,6 +19,8 @@ class CreateStudentBquDataTable extends Migration {
             $table->string('application_input_by');
             $table->string('supervisor');
             $table->string('verified_date');
+            $table->string('verified_by');
+            $table->string('notes');
             $table->string('status');
             $table->string('san');
             $table->integer('student_id');
