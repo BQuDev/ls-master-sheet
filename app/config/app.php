@@ -125,6 +125,7 @@ return array(
         'Cartalyst\Sentry\SentryServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider',
 	),
 
 	/*

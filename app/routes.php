@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('checkSanAvailability','StudentsController@checkSanAvailability');
 Route::get('/', 'UsersController@login');
 Route::get('/login', 'UsersController@login');

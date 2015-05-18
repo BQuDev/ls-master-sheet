@@ -9,7 +9,8 @@
 		"way/generators": "~2.0",
 		"cartalyst/sentry": "2.1.*",
 		"barryvdh/laravel-ide-helper": "~1.11",
-		"maatwebsite/excel": "1.*"
+		"maatwebsite/excel": "1.*",
+		"rap2hpoutre/laravel-log-viewer": "0.2.*"
 	},
 	"autoload": {
 		"classmap": [
