@@ -276,10 +276,19 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 @endif</td>
 @endforeach
 
-<td> To-Do
+<td> <?php  $late_admin_fee = DB::table('student_payment_info_metadatas')->where('san','=',$main_student)->select('late_admin_fee')->orderBy('id', 'desc')->take(1)->get();
 
+ ?>
+ @if($late_admin_fee != null)
+ {{ $late_admin_fee[0]->late_admin_fee }}
+@endif
  </td>
-<td>To-Do </td>
+<td><?php  $late_fee = DB::table('student_payment_info_metadatas')->where('san','=',$main_student)->select('late_fee')->orderBy('id', 'desc')->take(1)->get();
+
+     ?>
+     @if($late_fee != null)
+     {{ $late_fee[0]->late_fee }}
+    @endif </td>
 
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->application_received_date; }}</td>
 <td>{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->application_input_by); }}</td>
