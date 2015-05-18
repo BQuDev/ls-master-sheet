@@ -129,6 +129,31 @@
                 <nav class="nav-primary hidden-xs">
                   <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Main menu</div>
                   <ul class="nav nav-main" data-ride="collapse">
+                   <li>
+                                        <a href="{{ URL::to('/students') }}/">
+                                          <i class="i i-statistics icon">
+                                          </i>
+                                          <span class="font-bold">All Admissions</span>
+                                        </a>
+                                      </li>
+                                   <li >
+                                <a href="{{ URL::to('/students/create') }}/">
+
+                                   <i class="i i-stack icon">
+                                   </i>
+                                   <span class="font-bold">New Admission</span>
+                                 </a>
+
+                               </li>
+                                   <li >
+                                             <a href="{{ URL::to('/export') }}/">
+
+                                                <i class="i i-stack icon">
+                                                </i>
+                                                <span class="font-bold">Export</span>
+                                              </a>
+
+                                            </li>
                     @section('main_menu')
                     @show
                    </ul>

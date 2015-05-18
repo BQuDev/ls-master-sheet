@@ -35,7 +35,7 @@
  <th>Permanent - Country	</th>
  <th>Permanent - Telephone - mobile</th>
  <th>Country of origin - Telephone - Land line</th>
- <th>Email 1</th>
+ <th>Email</th>
  <th>Alternative Email	</th>
  <th>Social Accounts - Facebook	</th>
  <th>Social Accounts - LinkedIn	</th>
@@ -56,7 +56,7 @@
  <th>Intake	</th>
  <th>Study mode	</th>
  <th>English language level</th>
- <th>Qualification 3	</th>
+ <th>Qualification 1	</th>
  <th>	Institutuion	</th>
  <th>	Start date (dd/mm/yy)	</th>
  <th>	end date (dd/mm/yy)</th>
@@ -66,12 +66,12 @@
  <th>	Start date (dd/mm/yy)	</th>
  <th>	end date (dd/mm/yy)	</th>
  <th>	Grade	</th>
- <th>Qualification 1	</th>
+ <th>Qualification 3	</th>
  <th>	Institutuion	</th>
  <th>	Start date (dd/mm/yy)	</th>
  <th>	end date (dd/mm/yy)	</th>
  <th>	Grade	</th>
- <th>Occupation 3	</th>
+ <th>Occupation 1	</th>
  <th>	Company Name - Address	</th>
   <th>	Duties and responsibilities	</th>
  <th>	start date (dd/mm/yy)	</th>
@@ -84,7 +84,7 @@
  <th>	end date (dd/mm/yy)	</th>
  <th>	Curently working	</th>
 
- <th>Occupation 1	</th>
+ <th>Occupation 3	</th>
  <th>	Company Name - Address	</th> <th>	Duties and responsibilities	</th>
  <th>	start date (dd/mm/yy)	</th>
  <th>	end date (dd/mm/yy)	</th>
@@ -198,21 +198,32 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 <td>{{ Student::lastRecordBySAN($main_student)->surname; }}</td>
 <td>{{ Student::lastRecordBySAN($main_student)->gender; }}</td>
 <td>{{ Student::lastRecordBySAN($main_student)->date_of_birth; }}</td>
-<td>{{ StaticNationality::getNameByID(Student::lastRecordBySAN($main_student)->nationality); }}</td><!--To-Do-->
+<td>
+@if(Student::lastRecordBySAN($main_student)->nationality > 0)
+{{ StaticNationality::getNameByID(Student::lastRecordBySAN($main_student)->nationality); }}
+@endif</td><!--To-Do-->
 <td>{{ Student::lastRecordBySAN($main_student)->passport; }}</td>
 
 <td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->address_1; }}</td>
 <td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->address_2; }}</td>
 <td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->city; }}</td>
 <td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->post_code; }}</td>
-<td>{{ StaticCountry::getNameByID(StudentContactInformation::lastUKRecordBySAN($main_student)->country); }}</td>
+<td>
+@if(StudentContactInformation::lastUKRecordBySAN($main_student)->country >0)
+{{ StaticCountry::getNameByID(StudentContactInformation::lastUKRecordBySAN($main_student)->country); }}
+@endif
+</td>
 <td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->mobile; }}</td>
 <td>{{ StudentContactInformation::lastUKRecordBySAN($main_student)->landline; }}</td>
 <td>{{ StudentContactInformation::lastRecordBySAN($main_student)->address_1; }}</td>
 <td>{{ StudentContactInformation::lastRecordBySAN($main_student)->address_2; }}</td>
 <td>{{ StudentContactInformation::lastRecordBySAN($main_student)->city; }}</td>
 <td>{{ StudentContactInformation::lastRecordBySAN($main_student)->post_code; }}</td>
-<td>{{ StaticCountry::getNameByID(StudentContactInformation::lastRecordBySAN($main_student)->country); }}</td>
+<td>
+@if(StudentContactInformation::lastRecordBySAN($main_student)->country >0)
+{{ StaticCountry::getNameByID(StudentContactInformation::lastRecordBySAN($main_student)->country); }}
+@endif
+</td>
 <td>{{ StudentContactInformation::lastRecordBySAN($main_student)->mobile; }}</td>
 <td>{{ StudentContactInformation::lastRecordBySAN($main_student)->landline; }}</td>
 <td>{{ StudentContactInformationOnline::lastRecordBySAN($main_student)->email; }}</td>
@@ -240,11 +251,21 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 <td>{{ StudentCourseEnrolment::lastRecordBySAN($main_student)->study_mode; }}</td>
 <td>
 @if(StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level != 'null')
-{{ StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level; }}
+<?php
+$english_language_level =StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level;
+
+//$english_language_level = str_replace('"]]','"\']',$english_language_level);
+?>
+{{ $english_language_level }}
 @endif</td>
-@foreach(StudentEducationalQualification::lastThreeRecordsBySAN($main_student) as $student)
+<?php
+$students = StudentEducationalQualification::lastThreeRecordsBySAN($main_student)->reverse();
+?>
+@foreach($students as $student)
 <td>
-@if(intval($student->qualification) == 0)
+@if(intval($student->qualification) == 1000)
+
+@elseif(intval($student->qualification) == 0)
 {{ $student->qualification_other }}
 @elseif(intval($student->qualification) > 0)
 {{ ApplicationEducationalQualification::getNameByID($student->qualification) }}
@@ -255,13 +276,20 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 <td>{{ $student->qualification_end_date; }}</td>
 <td>{{ $student->qualification_grade; }}</td>
 @endforeach
-@foreach(StudentWorkExperience::lastThreeRecordsBySAN($main_student) as $studentWorkExperience)
+<?php
+$studentWorkExperiences = StudentWorkExperience::lastThreeRecordsBySAN($main_student)->reverse();
+?>
+@foreach($studentWorkExperiences as $studentWorkExperience)
 <td>{{ $studentWorkExperience->occupation; }}</td>
 <td>{{ $studentWorkExperience->company_name; }}</td>
 <td>{{ $studentWorkExperience->main_duties; }}</td>
 <td>{{ $studentWorkExperience->occupation_start_date; }}</td>
 <td>{{ $studentWorkExperience->occupation_end_date; }}</td>
-<td>{{ $studentWorkExperience->currently_working; }}</td>
+<td>
+@if($studentWorkExperience->currently_working != 0)
+{{ $studentWorkExperience->currently_working; }}
+@endif
+</td>
 
 @endforeach
 
@@ -271,7 +299,9 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 <td>{{ $studentPaymentInfo->payment_amount; }}</td>
 <td>{{ $studentPaymentInfo->date; }}</td>
 <td>
-@if(intval($studentPaymentInfo->method)>0)
+@if(intval($studentPaymentInfo->method)==1000)
+
+@elseif(intval($studentPaymentInfo->method)>0)
 {{ ApplicationPaymentInfoMethodsOfPayment::getNameByID($studentPaymentInfo->method); }}
 @endif</td>
 @endforeach
@@ -292,9 +322,14 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->application_received_date; }}</td>
 <td>{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->application_input_by); }}</td>
-<td>{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->supervisor); }}</td>
+<td>
+@if(StudentBquData::lastRecordBySAN($main_student)->supervisor ==1000)
+@elseif(StudentBquData::lastRecordBySAN($main_student)->supervisor >0)
+{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->supervisor); }}
+@endif
+</td>
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->verified_date; }}</td>
-<td>{{ ApplicationStatus::getNameByID(StudentBquData::lastRecordBySAN($main_student)->status); }}</td>
+<td>{{ StaticDataStatus::getNameByID(StudentBquData::lastRecordBySAN($main_student)->status); }}</td>
 
 <td>{{ Student::lastRecordBySAN($main_student)->ls_student_number; }}</td>
 

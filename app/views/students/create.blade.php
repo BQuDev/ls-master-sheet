@@ -1055,7 +1055,7 @@
                                  <div class="col-sm-9">
 
 
-                                 <select data-placeholder="Choose a Supervisors" class="chosen-select col-sm-12" >
+                                 <select data-placeholder="Choose a Supervisors" class="chosen-select col-sm-12" id="supervisor" name="supervisor">
                                 @foreach($supervisors as $supervisor)
                                 <option value="{{ $supervisor->id }}">{{ $supervisor->first_name.' '.$supervisor->last_name }}</option>
                                 @endforeach
@@ -1075,8 +1075,8 @@
                                  <label class="col-sm-1 control-label"></label>
                                  <label class="col-sm-2 control-label">Status </label>
                                  <div class="col-sm-9">
-
-                                    {{ Form::select('admission_status', $application_status,'',['class'=>'chosen-select col-sm-12']);  }}
+{{ Form::hidden('admission_status','1') }}
+Added ( Pending for verification )
 
                                  </div>
                               </div>
@@ -1117,6 +1117,20 @@
 
 $(function() {
 
+
+$('#supervisor').prepend("<option value='1000'>Please Select a Supervisor</option>");
+$('#supervisor').val('1000').trigger("chosen:updated");
+
+
+$('[name="deposit_payment_method_1"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
+$('[name="deposit_payment_method_1"]').val('1000').trigger("chosen:updated");
+$('[name="instalment_payment_method_1"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
+$('[name="instalment_payment_method_1"]').val('1000').trigger("chosen:updated");
+$('[name="instalment_payment_method_2"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
+$('[name="instalment_payment_method_2"]').val('1000').trigger("chosen:updated");
+$('[name="instalment_payment_method_3"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
+$('[name="instalment_payment_method_3"]').val('1000').trigger("chosen:updated");
+
 /*
 document.getElementById('tt_country').value = '236';
 
@@ -1142,25 +1156,41 @@ $( "#ls_student_number" ).keydown(function() {
 
 
 
+$('[name="nationality"]').prepend("<option value='0'>Please Select an Option</option>");
+$('[name="nationality"]').val('0').trigger("chosen:updated");
+ $('[name="nationality"]').trigger("chosen:updated");
+
+
+$('[name="information_source"]').prepend("<option value='0'>Please Select an Option</option>");
+$('[name="information_source"]').val('0').trigger("chosen:updated");
+ $('[name="information_source"]').trigger("chosen:updated");
+
+
 $('[name="agents_laps"]').append("<option value='1000'>Other</option>");
-$('[name="agents_laps"]').prepend("<option value='0'>Not Applicable</option>");
+
+$('[name="agents_laps"]').prepend("<option value='0'>Please Select an Option</option>");
+$('[name="agents_laps"]').val('0').trigger("chosen:updated");
  $('[name="agents_laps"]').trigger("chosen:updated");
 
 $('[name="admission_manager"]').append("<option value='1000'>Other</option>");
  $('[name="admission_manager"]').trigger("chosen:updated");
 
-$('[name="admission_manager"]').prepend("<option value='0'>Not Applicable</option>");
+$('[name="admission_manager"]').prepend("<option value='0'>Please Select an Option</option>");
+$('[name="admission_manager"]').val('0').trigger("chosen:updated");
  $('[name="admission_manager"]').trigger("chosen:updated");
 
 $('[name="qualification_1"]').append("<option value='0'>Other</option>");
 $('[name="qualification_1"]').trigger("chosen:updated");
+$('[name="qualification_1"]').prepend("<option value='1000'>Please Select an Option</option>");
+$('[name="qualification_1"]').val('1000').trigger("chosen:updated");
+
 
 $('[name="tt_country"]').prepend("<option value='0'>Please select a country</option>");
-
+$('[name="tt_country"]').val('0').trigger("chosen:updated");
 $('[name="tt_country"]').trigger("chosen:updated");
 
 $('[name="country"]').prepend("<option value='0'>Please select a country</option>");
-
+$('[name="country"]').val('0').trigger("chosen:updated");
 $('[name="country"]').trigger("chosen:updated");
 
     $('[name="agents_laps"]').change(function(){
@@ -1197,6 +1227,10 @@ $('[name="admission_managers_other"]').hide();
 
 $('[name="qualification_2"]').append("<option value='0'>Other</option>");
 $('[name="qualification_2"]').trigger("chosen:updated");
+
+$('[name="qualification_2"]').prepend("<option value='1000'>Please Select an Option</option>");
+$('[name="qualification_2"]').val('1000').trigger("chosen:updated");
+
 $('[name="qualification_2_other"]').hide();
 
     $('[name="qualification_2"]').change(function(){
@@ -1209,6 +1243,10 @@ $('[name="qualification_2_other"]').hide();
 
 $('[name="qualification_3"]').append("<option value='0'>Other</option>");
 $('[name="qualification_3"]').trigger("chosen:updated");
+
+$('[name="qualification_3"]').prepend("<option value='1000'>Please Select an Option</option>");
+$('[name="qualification_3"]').val('1000').trigger("chosen:updated");
+
 $('[name="qualification_3_other"]').hide();
 
     $('[name="qualification_3"]').change(function(){
@@ -1382,31 +1420,7 @@ function checkSanAvailability(){
 @stop
 
 @section('main_menu')
- <li>
-                      <a href="{{ URL::to('/students') }}/">
-                        <i class="i i-statistics icon">
-                        </i>
-                        <span class="font-bold">All Admissions</span>
-                      </a>
-                    </li>
-                 <li >
-              <a href="{{ URL::to('/students/create') }}/">
 
-                 <i class="i i-stack icon">
-                 </i>
-                 <span class="font-bold">New Admission</span>
-               </a>
-
-             </li>
-                 <li >
-                           <a href="{{ URL::to('/export') }}/">
-
-                              <i class="i i-stack icon">
-                              </i>
-                              <span class="font-bold">Export</span>
-                            </a>
-
-                          </li>
  @stop
 
  @section('san')

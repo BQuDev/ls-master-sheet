@@ -89,8 +89,8 @@ class StudentsController extends \BaseController {
         $student->date_of_birth = Input::get('date_of_birth_date') . '-' . Input::get('date_of_birth_month') . '-' . Input::get('date_of_birth_year');
         $student->nationality = Input::get('nationality');
         $student->passport = Input::get('passport');
-
-
+        $student->created_by = Sentry::getUser()->id;
+        $student->record_status = '1';
         $student->san = Input::get('san');
         $student->ls_student_number = Input::get('ls_student_number');
 
@@ -114,6 +114,8 @@ class StudentsController extends \BaseController {
         $student_source->admission_managers_other = Input::get('admission_managers_other');
         $student_source->san = Input::get('san');
         $student_source->student_id = $student_id;
+        $student_source->record_status = '1';
+        $student_source->created_by = Sentry::getUser()->id;
         $student_source->save();
 
         // Saving contact details
@@ -130,6 +132,8 @@ class StudentsController extends \BaseController {
         $contact_details->student_contact_information_type = 1;
         $contact_details->san = Input::get('san');
         $contact_details->student_id = $student_id;
+        $contact_details->record_status = '1';
+        $contact_details->created_by = Sentry::getUser()->id;
         $contact_details->save();
 
         $contact_details_1->address_1 = Input::get('address_1');
@@ -142,6 +146,8 @@ class StudentsController extends \BaseController {
         $contact_details_1->student_contact_information_type = 2;
         $contact_details_1->san = Input::get('san');
         $contact_details_1->student_id = $student_id;
+        $contact_details_1->record_status = '1';
+        $contact_details_1->created_by = Sentry::getUser()->id;
         $contact_details_1->save();
 
         $contact_details_online = new StudentContactInformationOnline();
@@ -153,6 +159,8 @@ class StudentsController extends \BaseController {
         $contact_details_online->other_social = Input::get('other_social');
         $contact_details_online->san = Input::get('san');
         $contact_details_online->student_id = $student_id;
+        $contact_details_online->record_status = '1';
+        $contact_details_online->created_by = Sentry::getUser()->id;
         $contact_details_online->save();
 
         $contact_details_kin = new StudentContactInformationKinDetail();
@@ -163,6 +171,8 @@ class StudentsController extends \BaseController {
         $contact_details_kin->next_of_kin_email = Input::get('next_of_kin_email');
         $contact_details_kin->san = Input::get('san');
         $contact_details_kin->student_id = $student_id;
+        $contact_details_kin->record_status = '1';
+        $contact_details_kin->created_by = Sentry::getUser()->id;
         $contact_details_kin->save();
 
 
@@ -179,6 +189,8 @@ class StudentsController extends \BaseController {
 
         $course_enrolment->san = Input::get('san');
         $course_enrolment->student_id = $student_id;
+        $course_enrolment->record_status = '1';
+        $course_enrolment->created_by = Sentry::getUser()->id;
         $course_enrolment->save();
 
         $educational_qualifications = new StudentEducationalQualification();
@@ -199,6 +211,8 @@ class StudentsController extends \BaseController {
         $educational_qualifications->qualification_grade = Input::get('qualification_grade_1');
         $educational_qualifications->san = Input::get('san');
         $educational_qualifications->student_id = $student_id;
+        $educational_qualifications->record_status = '1';
+        $educational_qualifications->created_by = Sentry::getUser()->id;
         $educational_qualifications->save();
 
         //$educational_qualifications1->qualification = Input::get('qualification_2');
@@ -208,6 +222,8 @@ class StudentsController extends \BaseController {
         $educational_qualifications1->qualification_grade = Input::get('qualification_grade_2');
         $educational_qualifications1->san = Input::get('san');
         $educational_qualifications1->student_id = $student_id;
+        $educational_qualifications1->record_status = '1';
+        $educational_qualifications1->created_by = Sentry::getUser()->id;
         $educational_qualifications1->save();
 
         //$educational_qualifications2->qualification = Input::get('qualification_3');
@@ -217,6 +233,8 @@ class StudentsController extends \BaseController {
         $educational_qualifications2->qualification_grade = Input::get('qualification_grade_3');
         $educational_qualifications2->san = Input::get('san');
         $educational_qualifications2->student_id = $student_id;
+        $educational_qualifications2->record_status = '1';
+        $educational_qualifications2->created_by = Sentry::getUser()->id;
         $educational_qualifications2->save();
 
         $english_language_level = new StudentEnglishLangLevels();
@@ -225,6 +243,8 @@ class StudentsController extends \BaseController {
         $english_language_level->english_language_level_other = Input::get('english_language_level_other');
         $english_language_level->san = Input::get('san');
         $english_language_level->student_id = $student_id;
+        $english_language_level->record_status = '1';
+        $english_language_level->created_by = Sentry::getUser()->id;
         $english_language_level->save();
 
         $work_experience_1 = new StudentWorkExperience();
@@ -242,6 +262,8 @@ class StudentsController extends \BaseController {
         //$work_experience_1->currently_working = 'currently_working';
         $work_experience_1->san = Input::get('san');
         $work_experience_1->student_id = $student_id;
+        $work_experience_1->record_status = '1';
+        $work_experience_1->created_by = Sentry::getUser()->id;
         $work_experience_1->save();
 
         $work_experience_2->occupation = Input::get('occupation_2');
@@ -256,6 +278,8 @@ class StudentsController extends \BaseController {
         //$work_experience_2->currently_working = 'currently_working';
         $work_experience_2->san = Input::get('san');
         $work_experience_2->student_id = $student_id;
+        $work_experience_2->record_status = '1';
+        $work_experience_2->created_by = Sentry::getUser()->id;
         $work_experience_2->save();
 
         $work_experience_3->occupation = Input::get('occupation_3');
@@ -269,6 +293,8 @@ class StudentsController extends \BaseController {
         //$work_experience_3->currently_working = 'currently_working';
         $work_experience_3->san = Input::get('san');
         $work_experience_3->student_id = $student_id;
+        $work_experience_3->record_status = '1';
+        $work_experience_3->created_by = Sentry::getUser()->id;
         $work_experience_3->save();
 
         $payment_info_metadata = new StudentPaymentInfoMetadata();
@@ -284,6 +310,8 @@ class StudentsController extends \BaseController {
         $payment_info_metadata->late_fee = Input::get('late_fee');
         $payment_info_metadata->san = Input::get('san');
         $payment_info_metadata->student_id = $student_id;
+        $payment_info_metadata->record_status = '1';
+        $payment_info_metadata->created_by = Sentry::getUser()->id;
         $payment_info_metadata->save();
 
         $payment_info_metadata_id = $payment_info_metadata->id;
@@ -302,6 +330,8 @@ class StudentsController extends \BaseController {
         $payment_info->student_id = $student_id;
         //To-Do
         $payment_info->payment_info_type = 1;
+        $payment_info->record_status = '1';
+        $payment_info->created_by = Sentry::getUser()->id;
         $payment_info->save();
 
 
@@ -312,6 +342,8 @@ class StudentsController extends \BaseController {
         $payment_info_installment_1->student_id = $student_id;
         //To-Do
         $payment_info_installment_1->payment_info_type = 2;
+        $payment_info_installment_1->record_status = '1';
+        $payment_info_installment_1->created_by = Sentry::getUser()->id;
         $payment_info_installment_1->save();
 
 
@@ -322,6 +354,8 @@ class StudentsController extends \BaseController {
         $payment_info_installment_2->student_id = $student_id;
         //To-Do
         $payment_info_installment_2->payment_info_type = 2;
+        $payment_info_installment_2->record_status = '1';
+        $payment_info_installment_2->created_by = Sentry::getUser()->id;
         $payment_info_installment_2->save();
 
 
@@ -332,6 +366,8 @@ class StudentsController extends \BaseController {
         $payment_info_installment_3->student_id = $student_id;
         //To-Do
         $payment_info_installment_3->payment_info_type = 2;
+        $payment_info_installment_3->record_status = '1';
+        $payment_info_installment_3->created_by = Sentry::getUser()->id;
         $payment_info_installment_3->save();
 
         $bqu_application_data = new StudentBquData();
@@ -342,6 +378,8 @@ class StudentsController extends \BaseController {
         $bqu_application_data->status =Input::get('admission_status');
         $bqu_application_data->san = Input::get('san');
         $bqu_application_data->student_id = $student_id;
+        $bqu_application_data->record_status = '1';
+        $bqu_application_data->created_by = Sentry::getUser()->id;
         $bqu_application_data->save();
 
 return View::make('students.index')->with('students',Student::all());
@@ -437,9 +475,9 @@ return View::make('students.index')->with('students',Student::all());
     public function export()
     {
 	
-        return Excel::create('New file', function($excel) {
+        return Excel::create('Mastersheet BQu version', function($excel) {
 
-			$excel->sheet('New sheet', function($sheet) {
+			$excel->sheet('Mastersheet BQu version', function($sheet) {
 
 				$sheet->loadView('export.master_sheet');
 

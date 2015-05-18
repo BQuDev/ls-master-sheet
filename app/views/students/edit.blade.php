@@ -1094,31 +1094,7 @@
 
 
 @section('main_menu')
- <li>
-                      <a href="{{ URL::to('/students') }}/">
-                        <i class="i i-statistics icon">
-                        </i>
-                        <span class="font-bold">All Admissions</span>
-                      </a>
-                    </li>
-                 <li >
-              <a href="{{ URL::to('/students/create') }}/">
 
-                 <i class="i i-stack icon">
-                 </i>
-                 <span class="font-bold">New Admission</span>
-               </a>
-
-             </li>
-                 <li >
-               <a href="{{ URL::to('/export') }}/">
-
-                  <i class="i i-stack icon">
-                  </i>
-                  <span class="font-bold">Export</span>
-                </a>
-
-              </li>
  @stop
 
 
