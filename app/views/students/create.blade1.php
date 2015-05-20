@@ -476,15 +476,15 @@
                         <div class="col-sm-9">
                            <div class="form-group">
                              <div class="form-inline">
-                             <div class="col-sm-3">
-                                              {{ Form::label('intake_year', 'Year', array('class' => 'col-sm-3 control-label'));  }}
-                                                <div class="col-sm-2">
+                             <div class="col-sm-4">
+                                              {{ Form::label('intake_year', 'Year', array('class' => 'col-sm-1 control-label'));  }}
+                                                <div class="col-sm-3">
 
                                                    {{ Form::select('intake_year', $intake_year,'',['class'=>'chosen-select','style'=>'width:150px !important']);  }}
                                                 </div>
                              </div>
                              <div class="col-sm-4">
-                                              {{ Form::label('intake_month', 'Month', array('class' => 'col-sm-3 control-label'));  }}
+                                              {{ Form::label('intake_month', 'Month', array('class' => 'col-sm-2 control-label'));  }}
                                                 <div class="col-sm-9">
 
                                                    {{ Form::select('intake_month', $intake_month,'',['class'=>'chosen-select','style'=>'width:150px !important']);  }}
@@ -578,7 +578,7 @@
 
                               <div class="form-group">
                                  {{ Form::label('qualification_1', 'Qualification 1', array('class' => 'col-sm-3 control-label'));  }}
-                                 <div class="col-sm-4">{{ Form::select('qualification_1', $education_qualifications,'',['class'=>'chosen-select','style'=>'width:350px !important']);  }}</div>
+                                 <div class="col-sm-4">{{ Form::select('qualification_1', $education_qualifications,'',['class'=>'chosen-select','style'=>'width:150px !important']);  }}</div>
                                                   <div class="col-sm-4">{{ Form::text('qualification_1_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
                                                </div>
                               <div class="form-group">
@@ -625,7 +625,7 @@
                   <div id="qualification_container_2">
                               <div class="form-group">
                                  {{ Form::label('qualification_2', 'Qualification 2', array('class' => 'col-sm-3 control-label'));  }}
-                                 <div class="col-sm-4">{{ Form::select('qualification_2', $education_qualifications,'',['style'=>'width:350px !important','class'=>'chosen-select']);  }}</div>
+                                 <div class="col-sm-4">{{ Form::select('qualification_2', $education_qualifications,'',['style'=>'width:150px !important','class'=>'chosen-select']);  }}</div>
                                    <div class="col-sm-4">{{ Form::text('qualification_2_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
                                 </div>
                               <div class="form-group">
@@ -671,7 +671,7 @@
                   <div id="qualification_container_3">
                               <div class="form-group">
                                  {{ Form::label('qualification_3', 'Qualification 3', array('class' => 'col-sm-3 control-label'));  }}
-                                 <div class="col-sm-4">{{ Form::select('qualification_3', $education_qualifications,'',['class'=>'chosen-select','style'=>'width:350px !important']);  }}</div>
+                                 <div class="col-sm-4">{{ Form::select('qualification_3', $education_qualifications,'',['class'=>'chosen-select','style'=>'width:150px !important']);  }}</div>
                                  <div class="col-sm-4">{{ Form::text('qualification_3_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
                               </div>
                               <div class="form-group">
@@ -952,10 +952,10 @@
                               <div class="line line-dashed b-b line-lg pull-in"></div>
                               <div class="form-group">
                                  <div class="form-inline">
-                                    {{ Form::label('deposit', 'Deposit', array('class' => 'col-sm-3 control-label'));  }}
+                                    {{ Form::label('deposit', 'Deposit', array('class' => 'col-sm-2 control-label'));  }}
                                     <div class="col-sm-2">{{ Form::text('deposit', '',['placeholder'=>'Deposit','class'=>'form-control']); }}</div>
                                     {{ Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  }}
-                                    <div class="col-sm-2"><div class="form-inline">
+                                    <div class="col-sm-3"><div class="form-inline">
                                                                   {{ Form::text('deposit_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
                                                                   {{ Form::text('deposit_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
                                                                   {{ Form::text('deposit_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}
@@ -970,10 +970,10 @@
                               </div>
                               <div class="form-group">
                                  <div class="form-inline">
-                                    {{ Form::label('forename_3', 'Instalment 1', array('class' => 'col-sm-3 control-label'));  }}
+                                    {{ Form::label('forename_3', 'Instalment 1', array('class' => 'col-sm-2 control-label'));  }}
                                     <div class="col-sm-2">{{ Form::text('instalment_1', '',['placeholder'=>'Instalment 1','class'=>'form-control']); }}</div>
                                     {{ Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  }}
-                                    <div class="col-sm-2"><div class="form-inline">
+                                    <div class="col-sm-3"><div class="form-inline">
                                                                   {{ Form::text('instalment_1_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
                                                                   {{ Form::text('instalment_1_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
                                                                   {{ Form::text('instalment_1_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}
@@ -988,10 +988,10 @@
                               </div>
                               <div class="form-group">
                                  <div class="form-inline">
-                                    {{ Form::label('forename_3', 'Instalment 2', array('class' => 'col-sm-3 control-label'));  }}
+                                    {{ Form::label('forename_3', 'Instalment 2', array('class' => 'col-sm-2 control-label'));  }}
                                     <div class="col-sm-2">{{ Form::text('instalment_2', '',['placeholder'=>'Instalment 2','class'=>'form-control']); }}</div>
                                     {{ Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  }}
-                                    <div class="col-sm-2"><div class="form-inline">
+                                    <div class="col-sm-3"><div class="form-inline">
                                                                   {{ Form::text('instalment_2_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
                                                                   {{ Form::text('instalment_2_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
                                                                   {{ Form::text('instalment_2_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}
@@ -1006,10 +1006,10 @@
                               </div>
                               <div class="form-group">
                                  <div class="form-inline">
-                                    {{ Form::label('forename_3', 'Instalment 3', array('class' => 'col-sm-3 control-label'));  }}
+                                    {{ Form::label('forename_3', 'Instalment 3', array('class' => 'col-sm-2 control-label'));  }}
                                     <div class="col-sm-2">{{ Form::text('instalment_3', '',['placeholder'=>'Instalment 3','class'=>'form-control']); }}</div>
                                     {{ Form::label('date_of_birth', 'Date', array('class' => 'col-sm-1 control-label'));  }}
-                                    <div class="col-sm-2"><div class="form-inline">
+                                    <div class="col-sm-3"><div class="form-inline">
                                                                   {{ Form::text('instalment_3_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
                                                                   {{ Form::text('instalment_3_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
                                                                   {{ Form::text('instalment_3_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}

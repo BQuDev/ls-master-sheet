@@ -45,11 +45,11 @@
             <div class="row m-l-none m-r-none m-t m-b text-center">
               <div class="col-xs-4">
                 <div class="padder-v">
-                  <a href="{{ URL::to('/students') }}/">
+                  <a href="#">
                     <span class="m-b-xs block">
-                      <i class="i  i-docs i-2x text-primary-lt"></i>
+                      <i class="i i-mail i-2x text-primary-lt"></i>
                     </span>
-                    <small class="text-muted">Admissions</small>
+                    <small class="text-muted">Mailbox</small>
                   </a>
                 </div>
               </div>
@@ -57,7 +57,7 @@
           </section>
         </li>
       </ul>
-      <!--<form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+      <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-btn">
@@ -66,7 +66,7 @@
             <input type="text" class="form-control input-sm no-border" placeholder="Search apps, projects...">
           </div>
         </div>
-      </form>-->
+      </form>
       	  @section('san')
             @show
       <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
@@ -131,7 +131,7 @@
                   <ul class="nav nav-main" data-ride="collapse">
                    <li>
                                         <a href="{{ URL::to('/students') }}/">
-                                          <i class="i i-docs icon">
+                                          <i class="i i-statistics icon">
                                           </i>
                                           <span class="font-bold">All Admissions</span>
                                         </a>
@@ -139,74 +139,32 @@
                                    <li >
                                 <a href="{{ URL::to('/students/create') }}/">
 
-                                   <i class="i i-pencil2 icon">
+                                   <i class="i i-stack icon">
                                    </i>
                                    <span class="font-bold">New Admission</span>
                                  </a>
 
                                </li>
-                                   <li >
+                                   <li>
+                                             <a href="{{ URL::to('/verify') }}/">
+                                                <i class="i i-stack icon">
+                                                </i>
+                                                <span class="font-bold">Verify Admissions</span>
+                                              </a>
+
+                                            </li>
+                                   <li>
                                              <a href="{{ URL::to('/export') }}/">
 
-                                                <i class="i i-file-excel icon">
+                                                <i class="i i-stack icon">
                                                 </i>
                                                 <span class="font-bold">Export</span>
                                               </a>
 
                                             </li>
-                                   <li >
-                                             <a href="{{ URL::to('students/verify') }}">
-
-                                                <i class="i  i-checked icon">
-                                                </i>
-                                                <span class="font-bold">Verify</span>
-                                              </a>
-
-                                            </li>
 
 
-                                            <li >
-                                                                  <a class="auto">
-                                                                    <span class="pull-right text-muted">
-                                                                      <i class="i i-circle-sm-o text"></i>
-                                                                      <i class="i i-circle-sm text-active"></i>
-                                                                    </span>
-                                                                    <b class="badge bg-danger pull-right">4</b>
-                                                                    <i class="i i-stack icon">
-                                                                    </i>
-                                                                    <span class="font-bold">Layouts</span>
-                                                                  </a>
-                                                                  <ul class="nav dk">
-                                                                    <li >
-                                                                      <a href="layout-color.html" class="auto">
-                                                                        <i class="i i-dot"></i>
 
-                                                                        <span>Color option</span>
-                                                                      </a>
-                                                                    </li>
-                                                                    <li >
-                                                                      <a href="layout-hbox.html" class="auto">
-                                                                        <i class="i i-dot"></i>
-
-                                                                        <span>Hbox layout</span>
-                                                                      </a>
-                                                                    </li>
-                                                                    <li >
-                                                                      <a href="layout-boxed.html" class="auto">
-                                                                        <i class="i i-dot"></i>
-
-                                                                        <span>Boxed layout</span>
-                                                                      </a>
-                                                                    </li>
-                                                                    <li >
-                                                                      <a href="layout-fluid.html" class="auto">
-                                                                        <i class="i i-dot"></i>
-
-                                                                        <span>Fluid layout</span>
-                                                                      </a>
-                                                                    </li>
-                                                                  </ul>
-                                                                </li>
                     @section('main_menu')
                     @show
                    </ul>

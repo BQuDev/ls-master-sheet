@@ -392,9 +392,59 @@ return View::make('students.index')->with('students',Student::all());
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($san)
     {
-        //
+
+        return View::make('students.more')
+            ->with('information_sources',ApplicationSource::lists('name','id'))
+            ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
+            //To-Do
+            // ->with('admission_managers',ApplicationAdmissionManager::where('source_id','=',1)->lists('name','id'))
+
+            ->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))
+            ->with('nationalities',StaticNationality::lists('name','id'))
+            ->with('countries',StaticCountry::lists('name','id'))
+            ->with('course_names',ApplicationCourse::lists('name','id'))
+            ->with('awarding_bodies',ApplicationAwardingBody::lists('name','id'))
+
+            ->with('education_qualifications',ApplicationEducationalQualification::lists('name','id'))
+            ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
+            ->with('application_status',ApplicationStatus::lists('name','id'))
+            ->with('intake_year',StaticYear::lists('name','id'))
+            ->with('intake_month',StaticMonth::lists('name','id'))
+            // Getting Saved DATA
+            ->with('student',Student::where('san','=',$san)->first())
+            ->with('studentSource',StudentSource::where('san','=',$san)->first())
+            ->with('ttStudentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',1)
+                ->where('san','=',$san)
+                ->first())
+            ->with('studentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',2)
+                ->where('san','=',$san)
+                ->first())
+            ->with('studentContactInformationOnline',DB::table('student_contact_information_onlines')
+                ->where('san','=',$san)
+                ->first())
+            ->with('student_contact_information_kin_detailes',DB::table('student_contact_information_kin_detailes')
+                ->where('san','=',$san)
+                ->first())
+            ->with('student_course_enrolments',DB::table('student_course_enrolments')
+                ->where('san','=',$san)
+                ->first())
+            ->with('student_educational_qualifications',StudentEducationalQualification::lastThreeRecordsBySAN($san)->reverse())
+            ->with('student_english_lang_levels',DB::table('student_english_lang_levels')
+                ->where('san','=',$san)
+                ->first())
+            ->with('student_work_experiences',StudentWorkExperience::lastThreeRecordsBySAN($san)->reverse())
+            ->with('student_payment_info_metadata',DB::table('student_payment_info_metadatas')
+                ->where('san','=',$san)
+                ->first())
+            ->with('studentPaymentInfos',StudentPaymentInfo::lastFourRecordsBySAN($san)->reverse())
+            ->with('student_bqu_data',DB::table('student_bqu_data')
+                ->where('san','=',$san)
+                ->first())
+            ;
 
     }
 
@@ -407,12 +457,69 @@ return View::make('students.index')->with('students',Student::all());
      */
     public function edit($san)
     {
+
+        try
+        {
+            $bqu_group = Sentry::findGroupByName('BQu');
+        }
+        catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
+        {
+            echo 'Group was not found.';
+        }
+
+        $supervisors = DB::table('users')
+            ->join('users_groups', 'users.id', '=', 'users_groups.user_id')
+            ->where('users_groups.group_id', '=', $bqu_group->id)
+            ->select('users.id', 'users.first_name', 'users.last_name')
+            ->get();
+
+
+        return View::make('students.edit')
+            ->with('information_sources',ApplicationSource::lists('name','id'))
+            //->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
+            //To-Do
+            ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
+
+            //->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))
+
+            ->with('agents_laps',array_merge(ApplicationAgent::lists('name','id'), ApplicationLap::lists('name','id')))
+            ->with('nationalities',StaticNationality::lists('name','id'))
+            ->with('countries',StaticCountry::lists('name','id'))
+            ->with('course_names',ApplicationCourse::lists('name','id'))
+            ->with('awarding_bodies',ApplicationAwardingBody::lists('name','id'))
+
+            ->with('education_qualifications',ApplicationEducationalQualification::lists('name','id'))
+            ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
+            ->with('application_status',ApplicationStatus::lists('name','id'))
+            ->with('intake_year',StaticYear::lists('name','id'))
+            ->with('intake_month',StaticMonth::lists('name','id'))
+            ->with('supervisors',$supervisors)
+
+            // Data
+
+            // Getting Saved DATA
+            ->with('data_student',Student::where('san','=',$san)->first())
+            ->with('data_studentSource',StudentSource::where('san','=',$san)->first())
+            ->with('data_ttStudentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',1)
+                ->where('san','=',$san)
+                ->first())
+            ->with('data_studentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',2)
+                ->where('san','=',$san)
+                ->first())
+            ->with('data_studentContactInformationOnline',DB::table('student_contact_information_onlines')
+                ->where('san','=',$san)
+                ->first())
+            ;
+
+
         //return Student::where('id','=',$id)->first();
         //
 		//$user = new Student();
 		// accessor
 		//var_dump($user->lastRecordBySAN('a123'));
-
+/*
         return View::make('students.edit')
             ->with('information_sources',ApplicationSource::lists('name','id'))
             ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
@@ -444,8 +551,14 @@ return View::make('students.index')->with('students',Student::all());
             ->with('studentContactInformationOnline',DB::table('student_contact_information_onlines')
                 ->where('san','=',$san)
                 ->first())
-            ;
+            ;*/
     }
+
+    public function verify(){
+        return View::make('students.verify')
+            ->with('students',Student::all());
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -482,6 +595,10 @@ return View::make('students.index')->with('students',Student::all());
 				$sheet->loadView('export.master_sheet');
 
 			});
+            $excel->setcreator('BQu');
+            $excel->setlastModifiedBy('BQu');
+            $excel->setcompany('BQuServices(PVT)LTD');
+            $excel->setmanager('Rajitha');
 
 		})->download('xls');
     }
@@ -494,6 +611,49 @@ return View::make('students.index')->with('students',Student::all());
         } else {
             return 'Not Available';
         }
+    }
+
+
+    public function amendment($san)
+    {
+        //return Student::where('id','=',$id)->first();
+        //
+        //$user = new Student();
+        // accessor
+        //var_dump($user->lastRecordBySAN('a123'));
+
+        return View::make('students.amendment')
+            ->with('information_sources',ApplicationSource::lists('name','id'))
+            ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
+            //To-Do
+            // ->with('admission_managers',ApplicationAdmissionManager::where('source_id','=',1)->lists('name','id'))
+
+            ->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))
+            ->with('nationalities',StaticNationality::lists('name','id'))
+            ->with('countries',StaticCountry::lists('name','id'))
+            ->with('course_names',ApplicationCourse::lists('name','id'))
+            ->with('awarding_bodies',ApplicationAwardingBody::lists('name','id'))
+
+            ->with('education_qualifications',ApplicationEducationalQualification::lists('name','id'))
+            ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
+            ->with('application_status',ApplicationStatus::lists('name','id'))
+            ->with('intake_year',StaticYear::lists('name','id'))
+            ->with('intake_month',StaticMonth::lists('name','id'))
+            // Getting Saved DATA
+            ->with('student',Student::where('san','=',$san)->first())
+            ->with('studentSource',StudentSource::where('san','=',$san)->first())
+            ->with('ttStudentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',1)
+                ->where('san','=',$san)
+                ->first())
+            ->with('studentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',2)
+                ->where('san','=',$san)
+                ->first())
+            ->with('studentContactInformationOnline',DB::table('student_contact_information_onlines')
+                ->where('san','=',$san)
+                ->first())
+            ;
     }
 
 }

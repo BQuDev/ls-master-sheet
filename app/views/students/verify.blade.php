@@ -12,7 +12,6 @@
             </span>
             <input type="text" style="min-height:50px;font-size:24px;" id="search_text" class="form-control input-sm no-border" placeholder="Search SAN , LS SN , Name ...">
           </div>
-
         </div>
       </form>
       </div>
@@ -40,11 +39,7 @@
                            <td>{{ $student->san }}</td>
                            <td>{{ $student->ls_student_number }}</td>
                            <td>{{ $student->title.' '.$student->initials_1.' '.$student->initials_2.' '.$student->initials_3.' '.$student->forename_1.' '.$student->forename_2.' '.$student->forename_3.' '.$student->surname }}</td>
-                           <td style="min-width: 120px;">
-                           <a class="btn btn-sm btn-default" href="{{ URL::to('/students/'.$student->san.'/edit') }}">Edit</a>&nbsp;
-                           <a class="btn btn-sm btn-primary" href="{{ URL::to('/students/'.$student->san) }}">More</a>
-
-                           </td>
+                           <td><a class="btn btn-sm btn-primary" href="{{ URL::to('/students/'.$student->san.'/amendment') }}">More</a></td>
                          </tr>
                     @endforeach
 
@@ -63,9 +58,7 @@
   {{ HTML::script('js/datatables/jquery.dataTables.min.js'); }}
   <script>
 
-    $('#student_datatable').dataTable({
-"sPaginationType": "full_numbers"
-    });
+    $('#student_datatable').dataTable();
 
 
     oTable = $('#student_datatable').dataTable();

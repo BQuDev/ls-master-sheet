@@ -91,17 +91,17 @@
  <th>	Curently working	</th>
 
 
- <th>Installment 3	</th>
+  <th>Deposit</th>
  <th>Date of payment	</th>
  <th>Method of payment	</th>
- <th>Installment 2	</th>
+ <th>Installment 1	</th>
  <th>Date of payment	</th>
  <th>Method of payment	</th>
 
-  <th>Installment 1	</th>
+  <th>Installment 2	</th>
   <th>Date of payment	</th>
   <th>Method of payment	</th>
-  <th>Deposit</th>
+ <th>Installment 3	</th>
   <th>	Date of payment	</th>
   <th>Method of payment	</th>
  <th>Late admin fee	</th>
@@ -293,9 +293,11 @@ $studentWorkExperiences = StudentWorkExperience::lastThreeRecordsBySAN($main_stu
 
 @endforeach
 
+<?php
+$studentPaymentInfos = StudentPaymentInfo::lastFourRecordsBySAN($main_student)->reverse();
+?>
 
-
-@foreach(StudentPaymentInfo::lastFourRecordsBySAN($main_student) as $studentPaymentInfo)
+@foreach($studentPaymentInfos as $studentPaymentInfo)
 <td>{{ $studentPaymentInfo->payment_amount; }}</td>
 <td>{{ $studentPaymentInfo->date; }}</td>
 <td>
