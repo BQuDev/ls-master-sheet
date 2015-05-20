@@ -163,50 +163,27 @@
                                               </a>
 
                                             </li>
+                                   <li >
+                                             <a href="">
+
+                                                <i class="i  i-checked icon">
+                                                </i>
+                                                <span class="font-bold">User Management</span>
+                                              </a>
+
+                                            </li>
+                                   <li >
+                                             <a href="">
+
+                                                <i class="i  i-checked icon">
+                                                </i>
+                                                <span class="font-bold">System Health</span>
+                                              </a>
+
+                                            </li>
 
 
-                                            <li >
-                                                                  <a class="auto">
-                                                                    <span class="pull-right text-muted">
-                                                                      <i class="i i-circle-sm-o text"></i>
-                                                                      <i class="i i-circle-sm text-active"></i>
-                                                                    </span>
-                                                                    <b class="badge bg-danger pull-right">4</b>
-                                                                    <i class="i i-stack icon">
-                                                                    </i>
-                                                                    <span class="font-bold">Layouts</span>
-                                                                  </a>
-                                                                  <ul class="nav dk">
-                                                                    <li >
-                                                                      <a href="layout-color.html" class="auto">
-                                                                        <i class="i i-dot"></i>
 
-                                                                        <span>Color option</span>
-                                                                      </a>
-                                                                    </li>
-                                                                    <li >
-                                                                      <a href="layout-hbox.html" class="auto">
-                                                                        <i class="i i-dot"></i>
-
-                                                                        <span>Hbox layout</span>
-                                                                      </a>
-                                                                    </li>
-                                                                    <li >
-                                                                      <a href="layout-boxed.html" class="auto">
-                                                                        <i class="i i-dot"></i>
-
-                                                                        <span>Boxed layout</span>
-                                                                      </a>
-                                                                    </li>
-                                                                    <li >
-                                                                      <a href="layout-fluid.html" class="auto">
-                                                                        <i class="i i-dot"></i>
-
-                                                                        <span>Fluid layout</span>
-                                                                      </a>
-                                                                    </li>
-                                                                  </ul>
-                                                                </li>
                     @section('main_menu')
                     @show
                    </ul>
