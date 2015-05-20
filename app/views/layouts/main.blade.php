@@ -252,7 +252,7 @@
   </section>
   {{ HTML::script('js/jquery.min.js'); }}
    {{ HTML::script('js/chosen/chosen.jquery.min.js'); }}
-   {{ HTML::script('js/app.js'); }}
+
   <!-- Bootstrap -->
   {{ HTML::script('js/bootstrap.js'); }}
   {{ HTML::script('js/app.plugin.js'); }}
