@@ -562,7 +562,7 @@
                                              Other
                                              </label>
                                           </div>
-                                          {{ Form::text('english_language_level_other', '',['placeholder'=>'','class'=>'form-control']); }}
+                                          {{ Form::text('english_language_level_other', $data_student_english_lang_levels->english_language_level_other,['placeholder'=>'','class'=>'form-control']); }}
                                        </div>
                                        </div>
                                     </div>
@@ -575,7 +575,7 @@
                               <div class="form-group">
                                  {{ Form::label('qualification_1', 'Qualification 1', array('class' => 'col-sm-3 control-label'));  }}
                                  <div class="col-sm-4">{{ Form::select('qualification_1', $education_qualifications,$data_student_educational_qualifications[0]->qualification,['class'=>'chosen-select','style'=>'width:350px !important']);  }}</div>
-                                                  <div class="col-sm-4">{{ Form::text('qualification_1_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
+                                                  <div class="col-sm-4">{{ Form::text('qualification_1_other', $data_student_educational_qualifications[0]->qualification_other,['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
                                                </div>
                               <div class="form-group">
                                  {{ Form::label('institution_1', 'Institution', array('class' => 'col-sm-3 control-label'));  }}
@@ -621,7 +621,7 @@
                               <div class="form-group">
                                  {{ Form::label('qualification_2', 'Qualification 2', array('class' => 'col-sm-3 control-label'));  }}
                                  <div class="col-sm-4">{{ Form::select('qualification_2', $education_qualifications,'',['style'=>'width:350px !important','class'=>'chosen-select']);  }}</div>
-                                   <div class="col-sm-4">{{ Form::text('qualification_2_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
+                                   <div class="col-sm-4">{{ Form::text('qualification_2_other', $data_student_educational_qualifications[1]->qualification_other,['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
                                 </div>
                               <div class="form-group">
                                  {{ Form::label('institution_2', 'Institution', array('class' => 'col-sm-3 control-label'));  }}
@@ -667,7 +667,7 @@
                               <div class="form-group">
                                  {{ Form::label('qualification_3', 'Qualification 3', array('class' => 'col-sm-3 control-label'));  }}
                                  <div class="col-sm-4">{{ Form::select('qualification_3', $education_qualifications,'',['class'=>'chosen-select','style'=>'width:350px !important']);  }}</div>
-                                 <div class="col-sm-4">{{ Form::text('qualification_3_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
+                                 <div class="col-sm-4">{{ Form::text('qualification_3_other', $data_student_educational_qualifications[2]->qualification_other,['placeholder'=>'Please Specify','class'=>'form-control']); }}</div>
                               </div>
                               <div class="form-group">
                                  {{ Form::label('institution_3', 'Institution', array('class' => 'col-sm-3 control-label'));  }}
@@ -1103,7 +1103,7 @@ Validated
 
                               <div class="form-group">
                                                                {{ Form::label('notes', 'Notes', array('class' => 'col-sm-3 control-label'));  }}
-                                                               <div class="col-sm-9">{{ Form::textarea('notes', '',['placeholder'=>'','class'=>'form-control']); }}</div>
+                                                               <div class="col-sm-9">{{ Form::textarea('notes', $data_student_bqu_data->notes,['placeholder'=>'','class'=>'form-control']); }}</div>
                                                             </div>
 
                            </div>

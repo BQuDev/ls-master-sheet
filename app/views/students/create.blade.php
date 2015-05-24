@@ -1076,6 +1076,7 @@
                                  <label class="col-sm-2 control-label">Status </label>
                                  <div class="col-sm-9">
 {{ Form::hidden('admission_status','1') }}
+{{ Form::hidden('notes','') }}
 Added ( Pending for validation )
 
                                  </div>

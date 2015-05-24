@@ -389,11 +389,17 @@ class StudentsController extends \BaseController {
         $bqu_application_data->supervisor =Input::get('supervisor');
         $bqu_application_data->verified_date =Input::get('applicant_verified_by_bqu_date').'-'.Input::get('applicant_verified_by_bqu_month').'-'.Input::get('applicant_verified_by_bqu_year');
         $bqu_application_data->status =Input::get('admission_status');
+        $bqu_application_data->notes = Input::get('notes');
         $bqu_application_data->san = Input::get('san');
         $bqu_application_data->student_id = $student_id;
         $bqu_application_data->record_status = '1';
         $bqu_application_data->created_by = Sentry::getUser()->id;
         $bqu_application_data->save();
+
+        return View::make('students.index')
+            ->with('students',DB::table('students')->select(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number ,san'))
+                ->groupBy('san')
+                ->get());
 
 return View::make('students.index')->with('students',Student::all());
     }
