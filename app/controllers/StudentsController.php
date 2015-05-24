@@ -593,7 +593,15 @@ return View::make('students.index')->with('students',Student::all());
 
     public function verify(){
         return View::make('students.verify')
-            ->with('students',Student::all());
+            ->with('students',DB::table('students')->select(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number ,san'))
+                ->groupBy('san')
+                ->get());
+    }
+    public function validate(){
+        return View::make('students.validate')
+            ->with('students',DB::table('students')->select(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number ,san'))
+                ->groupBy('san')
+                ->get());
     }
 
 
@@ -668,7 +676,11 @@ return View::make('students.index')->with('students',Student::all());
         }
 
 
-
+        $supervisors = DB::table('users')
+            ->join('users_groups', 'users.id', '=', 'users_groups.user_id')
+            ->where('users_groups.group_id', '=', $bqu_group->id)
+            ->select('users.id', 'users.first_name', 'users.last_name')
+            ->get();
 
         return View::make('students.amendment')
             ->with('information_sources',ApplicationSource::lists('name','id'))
@@ -688,38 +700,39 @@ return View::make('students.index')->with('students',Student::all());
             ->with('intake_year',StaticYear::lists('name','id'))
             ->with('intake_month',StaticMonth::lists('name','id'))
             // Getting Saved DATA
-            ->with('data_student',Student::where('san','=',$san)->first())
-            ->with('data_studentSource',StudentSource::where('san','=',$san)->first())
+            ->with('data_student',Student::where('san','=',$san)->orderBy('id','desc')->first())
+            ->with('data_studentSource',StudentSource::where('san','=',$san)->orderBy('id','desc')->first())
             ->with('data_ttStudentContactInformation',DB::table('student_contact_informations')
                 ->where('student_contact_information_type','=',1)
-                ->where('san','=',$san)
+                ->where('san','=',$san)->orderBy('id','desc')
                 ->first())
             ->with('data_studentContactInformation',DB::table('student_contact_informations')
                 ->where('student_contact_information_type','=',2)
-                ->where('san','=',$san)
+                ->where('san','=',$san)->orderBy('id','desc')
                 ->first())
             ->with('data_studentContactInformationOnline',DB::table('student_contact_information_onlines')
-                ->where('san','=',$san)
+                ->where('san','=',$san)->orderBy('id','desc')
                 ->first())
 
             ->with('data_student_contact_information_kin_detailes',DB::table('student_contact_information_kin_detailes')
-                ->where('san','=',$san)
+                ->where('san','=',$san)->orderBy('id','desc')
                 ->first())
             ->with('data_student_course_enrolments',DB::table('student_course_enrolments')
-                ->where('san','=',$san)
+                ->where('san','=',$san)->orderBy('id','desc')
                 ->first())
             ->with('data_student_educational_qualifications',StudentEducationalQualification::lastThreeRecordsBySAN($san)->reverse())
             ->with('data_student_english_lang_levels',DB::table('student_english_lang_levels')
-                ->where('san','=',$san)
+                ->where('san','=',$san)->orderBy('id','desc')
                 ->first())
             ->with('data_student_work_experiences',StudentWorkExperience::lastThreeRecordsBySAN($san)->reverse())
             ->with('data_student_payment_info_metadata',DB::table('student_payment_info_metadatas')
-                ->where('san','=',$san)
+                ->where('san','=',$san)->orderBy('id','desc')
                 ->first())
             ->with('data_studentPaymentInfos',StudentPaymentInfo::lastFourRecordsBySAN($san)->reverse())
             ->with('data_student_bqu_data',DB::table('student_bqu_data')
-                ->where('san','=',$san)
+                ->where('san','=',$san)->orderBy('id','desc')
                 ->first())
+            ->with('supervisors',$supervisors);
 
             ;
     }

@@ -159,28 +159,20 @@
 
                                                 <i class="i  i-checked icon">
                                                 </i>
-                                                <span class="font-bold">Verify</span>
+                                                <span class="font-bold">Verify Admissions</span>
                                               </a>
 
                                             </li>
                                    <li >
-                                             <a href="">
+                                             <a href="{{ URL::to('students/validate') }}">
 
                                                 <i class="i  i-checked icon">
                                                 </i>
-                                                <span class="font-bold">User Management</span>
+                                                <span class="font-bold">Validate Admissions</span>
                                               </a>
 
                                             </li>
-                                   <li >
-                                             <a href="">
 
-                                                <i class="i  i-checked icon">
-                                                </i>
-                                                <span class="font-bold">System Health</span>
-                                              </a>
-
-                                            </li>
 
 
 

@@ -32,6 +32,7 @@ Route::get('/export', 'StudentsController@export');
 Route::get('/logout', 'UsersController@logout');
     Route::get('/students/{san}/more','StudentsController@more');
     Route::get('/students/verify','StudentsController@verify');
+    Route::get('/students/validate','StudentsController@validate');
     Route::get('/students/{san}/amendment','StudentsController@amendment');
 
 Route::resource('students','StudentsController');

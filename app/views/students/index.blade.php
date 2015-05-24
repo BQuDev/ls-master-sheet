@@ -45,7 +45,7 @@
                            <td>{{ $s->ls_student_number }}</td>
                            <td>{{ $s->title.' '.$s->initials_1.' '.$s->initials_2.' '.$s->initials_3.' '.$s->forename_1.' '.$s->forename_2.' '.$s->forename_3.' '.$s->surname }}</td>
                            <td style="min-width: 120px;">
-                           <a class="btn btn-sm btn-default" href="{{ URL::to('/students/'.$s->san.'/edit') }}">Edit</a>&nbsp;
+
                            <a class="btn btn-sm btn-primary" href="{{ URL::to('/students/'.$s->san) }}">More</a>
 
                            </td>

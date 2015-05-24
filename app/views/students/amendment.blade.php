@@ -2,6 +2,7 @@
 
 
 @section('content')
+{{ Form::open(array('url' =>URL::to("/").'/students',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) }}
 <div class="row" style="min-height: 50px;"></div>
 <div class="row">
    <div class="col-sm-12">
@@ -710,10 +711,15 @@
   <tr>
     <td>+&nbsp;&nbsp; <td> {{ Form::text('next_of_kin_telephone', $data_student_contact_information_kin_detailes->next_of_kin_telephone,['placeholder'=>'','class'=>'form-control','style'=>'width:180px !important','data-parsley-type'=>'digits']); }}</td>
   </tr>
+
 </table>
 </td>
-  </tr>
+  </tr>    <tr>
+             <td width="30%">{{ Form::label('next_of_kin_email', 'Email ', array('class' => 'control-label'));  }}</td>
+             <td>{{ Form::text('next_of_kin_email', $data_student_contact_information_kin_detailes->next_of_kin_email,['placeholder'=>'Email','class'=>'form-control','data-parsley-type'=>'email']); }}</td>
+           </tr>
 </table>
+
                                     
                                      <div class="form-group">
                                         
@@ -846,6 +852,10 @@
             @endif&nbsp;</td>
   </tr>
   <tr>
+    <td width="30%">{{ Form::label('english_language_level1', 'Other', array('class' => 'control-label'));  }}</td>
+    <td> {{ $data_student_english_lang_levels->english_language_level_other }}</td>
+  </tr>
+  <tr>
     <td width="30%"> {{ Form::label('qualification_1', 'Qualification 1', array('class' => 'control-label'));  }}</td>
     <td>@if(intval($data_student_educational_qualifications[0]->qualification) == 1000)
                           @elseif(intval($data_student_educational_qualifications[0]->qualification) == 0)
@@ -970,10 +980,19 @@
 
     </td>
   </tr>
+
+  <tr>
+    <td width="30%">{{ Form::label('english_language_level1', 'Other', array('class' => 'control-label'));  }}</td>
+    <td> {{ Form::text('english_language_level_other', $data_student_english_lang_levels->english_language_level_other,['placeholder'=>'','class'=>'form-control']); }}</td>
+  </tr>
   <tr>
     <td width="30%">{{ Form::label('qualification_1', 'Qualification 1', array('class' => 'control-label'));  }}
             </td>
     <td>{{ Form::select('qualification_1', $education_qualifications,$data_student_educational_qualifications[0]->qualification,['class'=>'chosen-select col-sm-12']);  }}</td>
+  </tr>
+  <tr>
+    <td width="30%"> {{ Form::label('qualification_other_1', 'Other', array('class' => 'control-label'));  }}</td>
+    <td>{{ Form::text('qualification_1_other', $data_student_educational_qualifications[0]->qualification_other,['placeholder'=>'Other Qualifications','class'=>'form-control']); }}</td>
   </tr>
   <tr>
     <td width="30%"> {{ Form::label('institution_1', 'Institution', array('class' => 'control-label'));  }}</td>
@@ -984,9 +1003,13 @@
     <td> 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td>
-  
-       {{ Form::text('qualification_start_year_1', $data_student_educational_qualifications[0]->qualification_start_date,['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}</td>
+     <td>
+       <?php
+                                                       $qualification_start_date = explode('-',$data_student_educational_qualifications[0]->qualification_start_date)
+                                          ?>
+       {{ Form::text('qualification_start_date_1', $qualification_start_date[0],['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }} </td>
+       <td> {{ Form::text('qualification_start_month_1',$qualification_start_date[1],['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}</td>
+       <td>  {{ Form::text('qualification_start_year_1', $qualification_start_date[2],['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}</td>
   </tr>
 </table>
 </td>
@@ -1022,8 +1045,8 @@
     <td>{{ Form::select('qualification_2', $education_qualifications,$data_student_educational_qualifications[1]->qualification,['style'=>'width:250px !important','class'=>'chosen-select']);  }}</td>
   </tr>
   <tr>
-    <td>{{ Form::label('other', 'Other', array('class' => 'control-label'));  }}</td>
-    <td>{{ Form::text('qualification_2_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</td>
+    <td width="30%"> {{ Form::label('qualification_other_2', 'Other', array('class' => 'control-label'));  }}</td>
+    <td>{{ Form::text('qualification_2_other', $data_student_educational_qualifications[1]->qualification_other,['placeholder'=>'Other Qualifications','class'=>'form-control']); }}</td>
   </tr>
   <tr>
     <td>{{ Form::label('institution_2', 'Institution', array('class' => 'control-label'));  }}</td>
@@ -1037,9 +1060,7 @@
     <?php
                                                     $qualification_start_date = explode('-',$data_student_educational_qualifications[1]->qualification_start_date)
                                        ?>
-    {{ Form::text('qualification_start_date_2', $qualification_start_date[0],['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                                     
-                                                                    </td>
+    {{ Form::text('qualification_start_date_2', $qualification_start_date[0],['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }} </td>
     <td> {{ Form::text('qualification_start_month_2',$qualification_start_date[1],['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}</td>
     <td>  {{ Form::text('qualification_start_year_2', $qualification_start_date[2],['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}</td>
   </tr>
@@ -1073,6 +1094,10 @@
   <tr>
     <td>{{ Form::label('qualification_3', 'Qualification 3', array('class' => 'control-label'));  }}</td>
     <td>{{ Form::select('qualification_3', $education_qualifications,$data_student_educational_qualifications[2]->qualification,['class'=>'chosen-select','style'=>'width:250px !important']);  }}{{ Form::text('qualification_3_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</td>
+  </tr>
+  <tr>
+    <td width="30%"> {{ Form::label('qualification_other_3', 'Other', array('class' => 'control-label'));  }}</td>
+    <td>{{ Form::text('qualification_3_other', $data_student_educational_qualifications[2]->qualification_other,['placeholder'=>'Other Qualifications','class'=>'form-control']); }}</td>
   </tr>
   <tr>
     <td>{{ Form::label('institution_3', 'Institution', array('class' => 'control-label'));  }}</td>
@@ -1714,25 +1739,47 @@
                                   <td> {{ $data_student_bqu_data->application_received_date }}</td>
                                   </tr>
                                   <tr>
-                                  <td>Application input by</td>
+                                  <td>Application amendment by</td>
                                   <td></td>
-                                  <td>{{ Form::hidden('application_input_by', Sentry::getUser()->id) }} {{Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name}}</td>
-                                  </tr>
+                                  <td>{{ Form::hidden('application_input_by', Sentry::getUser()->id) }}
+                                  <?php
+                                                $application_input_user = DB::table('student_bqu_data')->select('application_input_by')->where('san','=',$data_student->san)->where('status','=','1')->first();
+
+                                                ?>
+                                                 @if($application_input_user != null)
+                                                {{ User::getFirstNameByID($application_input_user->application_input_by).' '.User::getLastNameByID($application_input_user->application_input_by) }}
+                                 @endif
+                                  </td></tr>
                                   <tr>
                                   <td> Supervisor</td>
                                   <td></td>
-                                  <td></td>
+                                  <td>
+
+                                  <?php
+                                                  $applicatin_supervised_user = DB::table('student_bqu_data')->select('application_input_by')->where('san','=',$data_student->san)->where('status','=','2')->first();
+
+                                                  ?>
+                                                  @if($applicatin_supervised_user!= null))
+                                                  {{ User::getFirstNameByID($applicatin_supervised_user->application_input_by).' '.User::getLastNameByID($applicatin_supervised_user->application_input_by) }}
+                                  @endif
+                                  </td>
                                   </tr>
                                   <tr>
                                   <td>Applicant verified by BQu date</td>
                                   <td></td>
-                                  <td>     </td>
+                                  <td>  {{ $data_student_bqu_data->verified_date }}   </td>
                                   </tr>
                                   <tr>
                                   <td> Status </td>
                                   <td></td>
-                                  <td></td>
+                                  <td>{{ Form::hidden('admission_status','4') }}
+                                      Validated</td>
                                   </tr>
+                                  <tr>
+                                                                    <td> Notes </td>
+                                                                    <td></td>
+                                                                    <td>{{ $data_student_bqu_data->notes }}</td>
+                                                                    </tr>
                                   </table>
 
 
@@ -1770,7 +1817,9 @@
                                   <td> Supervisor</td>
                                   <td></td>
                                   <td> <select data-placeholder="Choose a Supervisors" class="chosen-select col-sm-12" id="supervisor" name="supervisor">
-
+@foreach($supervisors as $supervisor)
+                                <option value="{{ $supervisor->id }}">{{ $supervisor->first_name.' '.$supervisor->last_name }}</option>
+                                @endforeach
                                                                                                              </select>
                                                                                                              </td>
                                   </tr>
@@ -1788,6 +1837,11 @@
                                   <td></td>
                                   <td>{{ Form::hidden('admission_status','1') }}
                                                                              Added ( Pending for verification )</td>
+                                  </tr>
+                                  <tr>
+                                  <td> Notes </td>
+                                  <td></td>
+                                  <td>{{ Form::textarea('notes', $data_student_bqu_data->notes,['placeholder'=>'','class'=>'form-control']); }}</td>
                                   </tr>
                                   </table>
 
@@ -1821,6 +1875,7 @@
                                                                                                 </div>
                               </div>
                             </div>
+          {{ Form::close() }}
  @stop
 
 
@@ -1852,6 +1907,20 @@
  <script type="text/javascript">
 
  $(function() {
+
+
+$('[name="deposit_payment_method_1"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
+$('[name="deposit_payment_method_1"]').trigger("chosen:updated");
+$('[name="deposit_payment_method_1"]').val('{{ $data_studentPaymentInfos[0]->method }}').trigger("chosen:updated");
+$('[name="instalment_payment_method_1"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
+$('[name="instalment_payment_method_1"]').trigger("chosen:updated");
+$('[name="instalment_payment_method_1"]').val('{{ $data_studentPaymentInfos[1]->method }}').trigger("chosen:updated");
+$('[name="instalment_payment_method_2"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
+$('[name="instalment_payment_method_2"]').trigger("chosen:updated");
+$('[name="instalment_payment_method_2"]').val('{{ $data_studentPaymentInfos[2]->method }}').trigger("chosen:updated");
+$('[name="instalment_payment_method_3"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
+$('[name="instalment_payment_method_3"]').trigger("chosen:updated");
+$('[name="instalment_payment_method_3"]').val('{{ $data_studentPaymentInfos[3]->method }}').trigger("chosen:updated");
 
  /*
  document.getElementById('tt_country').value = '236';
@@ -1917,7 +1986,7 @@
 
  //$('[name="agent_laps"]').trigger("chosen:updated");
 
- $('[name="qualification_1_other"]').hide();
+// $('[name="qualification_1_other"]').hide();
  $('[name="agents_laps_other"]').hide();
  $('[name="admission_managers_other"]').hide();
 
@@ -1933,7 +2002,7 @@
 
  $('[name="qualification_2"]').append("<option value='0'>Other</option>");
  $('[name="qualification_2"]').trigger("chosen:updated");
- $('[name="qualification_2_other"]').hide();
+ //$('[name="qualification_2_other"]').hide();
 
      $('[name="qualification_2"]').change(function(){
          if($(this).val() == 0){
@@ -1945,7 +2014,7 @@
 
  $('[name="qualification_3"]').append("<option value='0'>Other</option>");
  $('[name="qualification_3"]').trigger("chosen:updated");
- $('[name="qualification_3_other"]').hide();
+ //$('[name="qualification_3_other"]').hide();
 
      $('[name="qualification_3"]').change(function(){
          if($(this).val() == 0){

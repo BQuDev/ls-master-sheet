@@ -10,7 +10,7 @@
       {{ Form::open(array('url' =>URL::to("/").'/students',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) }}
 <div class="form-group">
          {{ Form::label('san', 'Student Application Number (SAN)', array('class' => 'col-sm-3 control-label'));  }}
-         <div class="col-sm-9">{{ Form::text('san', $data_student->san ,['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true','minlength'=>"5"]); }}<span id="san_available"></span><span style="color: red" id="san_not_available"> SAN is already in the database </span> </div>
+         <div class="col-sm-9">{{ Form::text('san', $data_student->san ,['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true','minlength'=>"5"]); }} </div>
       </div>
 
       <div class="form-group">
@@ -1066,8 +1066,22 @@
                                             </div>
                                             </div>
                               <div class="form-group">
-                                 {{ Form::label('application_input_by', 'Application input by', array('class' => 'col-sm-3 control-label'));  }}
-                                 <div class="col-sm-9">{{ Form::hidden('application_input_by', Sentry::getUser()->id) }} {{Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name}}</div>
+                                 {{ Form::label('application_input_by', 'Application added by', array('class' => 'col-sm-3 control-label'));  }}
+                                 <div class="col-sm-9">
+                                 <?php
+                                 $applicatin_input_user = DB::table('student_bqu_data')->select('application_input_by')->where('san','=',$data_student->san)->where('status','=','1')->first();
+
+                                 ?>
+                                 @if($applicatin_input_user != null))
+                                 {{ User::getFirstNameByID($applicatin_input_user->application_input_by).' '.User::getLastNameByID($applicatin_input_user->application_input_by) }}</div>
+                             @endif
+                              </div>
+
+                               <div class="form-group">
+                                 {{ Form::label('application_input_by', 'Application edited by', array('class' => 'col-sm-3 control-label'));  }}
+                                 <div class="col-sm-9">{{ Form::hidden('application_input_by', Sentry::getUser()->id) }}
+
+                                 {{Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name}}</div>
                               </div>
                               <div class="form-group">
                                  {{ Form::label('supervisor', 'Supervisor ', array('class' => 'col-sm-3 control-label'));  }}
@@ -1095,7 +1109,7 @@
                                  <label class="col-sm-1 control-label"></label>
                                  <label class="col-sm-2 control-label">Status </label>
                                  <div class="col-sm-9">
-{{ Form::hidden('admission_status','7') }}
+{{ Form::hidden('admission_status','2') }}
 Validated
 
                                  </div>
@@ -1150,12 +1164,16 @@ $('#supervisor').trigger("chosen:updated");
 
 $('[name="deposit_payment_method_1"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
 $('[name="deposit_payment_method_1"]').trigger("chosen:updated");
+$('[name="deposit_payment_method_1"]').val('{{ $data_studentPaymentInfos[0]->method }}').trigger("chosen:updated");
 $('[name="instalment_payment_method_1"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
 $('[name="instalment_payment_method_1"]').trigger("chosen:updated");
+$('[name="instalment_payment_method_1"]').val('{{ $data_studentPaymentInfos[1]->method }}').trigger("chosen:updated");
 $('[name="instalment_payment_method_2"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
 $('[name="instalment_payment_method_2"]').trigger("chosen:updated");
+$('[name="instalment_payment_method_2"]').val('{{ $data_studentPaymentInfos[2]->method }}').trigger("chosen:updated");
 $('[name="instalment_payment_method_3"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
 $('[name="instalment_payment_method_3"]').trigger("chosen:updated");
+$('[name="instalment_payment_method_3"]').val('{{ $data_studentPaymentInfos[3]->method }}').trigger("chosen:updated");
 
 /*
 document.getElementById('tt_country').value = '236';
@@ -1221,16 +1239,6 @@ $('[name="country"]').trigger("chosen:updated");
 $('[name="qualification_1_other"]').hide();
 //$('[name="agents_laps_other"]').hide();
 //$('[name="admission_managers_other"]').hide();
-
-        if('{{ $data_studentSource->admission_manager }}' == '1000'){
-            $('[name="admission_managers_other"]').show();
-        }else{
-            $('[name="admission_managers_other"]').hide();
-        }
-
-
-//$('[name="agent_laps"]').trigger("chosen:updated");
-
 
 
     $('[name="qualification_1"]').change(function(){
@@ -1426,6 +1434,6 @@ function checkSanAvailability(){
  @stop
 
  @section('san')
- <span id="top_san_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">SAN : </span>
- <span id="top_lssn_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">LS SN : </span>
+ <span id="top_san_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">SAN : {{ $data_student->san }}</span>
+ <span id="top_lssn_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">LS SN : {{ $data_student->ls_student_number }}</span>
  @stop
