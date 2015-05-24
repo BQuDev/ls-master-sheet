@@ -15,6 +15,12 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('checkSanAvailability','StudentsController@checkSanAvailability');
 Route::get('/', 'UsersController@login');
 Route::get('/login', 'UsersController@login');
+Route::get('/privacy-policy', function(){
+    return View::make('static/privacy');
+});
+Route::get('/terms-of-use', function(){
+    return View::make('static/terms');
+});
 
 Route::post('/login', 'UsersController@authenticate');
 

@@ -55,7 +55,7 @@
     <td>
     @if(intval($studentSource->agent_lap) == 1000)
     {{ $studentSource->agents_laps_other }}
-     @elseif(($studentSource->admission_manager ==6)&(intval($studentSource->agent_lap)>0))
+     @elseif((intval($studentSource->source) == 2)&(intval($studentSource->agent_lap)>0))
      {{ ApplicationLap::getNameByID($studentSource->agent_lap)  }}
      @elseif(intval($studentSource->agent_lap)>0)
      {{ApplicationAgent::getNameByID($studentSource->agent_lap) }}
@@ -156,10 +156,6 @@
     </td>
   </tr>
   <tr>
-    <td width="50%" align="right"><label class="control-label">Telephone</label></td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
     <td width="50%" align="right"><label class="control-label">Mobile</label></td>
     <td>{{ $ttStudentContactInformation->mobile }}</td>
   </tr>
@@ -200,10 +196,6 @@
         {{ StaticCountry::getNameByID($studentContactInformation->country); }}
         @endif
     </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right"><label class="control-label">Telephone</label></td>
-    <td>&nbsp;</td>
   </tr>
   <tr>
     <td width="50%" align="right"> <label class="control-label">Mobile</label></td>
@@ -464,7 +456,9 @@
   <tr>
     <td width="50%" align="right">{{ Form::label('application_input_by', 'Application verified by', array('class' => 'control-label'));  }}</td>
     <td>
+    @if(intval($student_bqu_data->verified_by)>0)
     {{ User::getFirstNameByID( $student_bqu_data->verified_by); }}
+    @endif
     </td>
   </tr>
   <tr>

@@ -542,7 +542,7 @@
                                        <div class="col-sm-2 ">
                                           <div class="checkbox i-checks">
                                              <label>
-                                             {{ Form::checkbox('english_language_level[]', 'IELTS',false); }}
+                                             {{ Form::checkbox('admission_managersh_language_level[]', 'IELTS',false); }}
                                              <i></i>
                                              IELTS
                                              </label>
@@ -1076,7 +1076,7 @@
                                  <label class="col-sm-2 control-label">Status </label>
                                  <div class="col-sm-9">
 {{ Form::hidden('admission_status','1') }}
-Added ( Pending for verification )
+Added ( Pending for validation )
 
                                  </div>
                               </div>

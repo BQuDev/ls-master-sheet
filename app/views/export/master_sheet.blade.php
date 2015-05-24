@@ -90,8 +90,9 @@
  <th>	end date (dd/mm/yy)	</th>
  <th>	Curently working	</th>
 
-
+ <th>Total Fee</th>
   <th>Deposit</th>
+
  <th>Date of payment	</th>
  <th>Method of payment	</th>
  <th>Installment 1	</th>
@@ -109,9 +110,11 @@
  <th>App received to Bqu date (dd/mm/yy)	</th>
  <th>App input by	</th>
  <th>Supervisor	</th>
+ <th>App verified by</th>
  <th>App verified date (dd/mm/yy)	</th>
- <th>App verified by	Status	</th>
+ <th>Status	</th>
  <th>LSM Student number</th>
+ <th>Notes</th>
 </tr>
 <?php
 function objectToArray($d) {
@@ -253,10 +256,24 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 @if(StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level != 'null')
 <?php
 $english_language_level =StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level;
+$english_language_level_export = '';
+if(strpos($english_language_level,'CITY & GUILDS')!==false){
+$english_language_level_export = $english_language_level_export.', CITY & GUILDS';
+}
+if(strpos($english_language_level,'IELTS')!==false){
+$english_language_level_export = $english_language_level_export.', IELTS';
+}
+if(strpos($english_language_level,'ESOL')!==false){
+$english_language_level_export = $english_language_level_export.', ESOL';
+}
+if(strpos($english_language_level,'Other')!==false){
+$english_language_level_export = $english_language_level_export.', '.StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level_other;
+}
+$english_language_level_export= ltrim ($english_language_level_export, ',');
 
 //$english_language_level = str_replace('"]]','"\']',$english_language_level);
 ?>
-{{ $english_language_level }}
+{{ $english_language_level_export }}
 @endif</td>
 <?php
 $students = StudentEducationalQualification::lastThreeRecordsBySAN($main_student)->reverse();
@@ -286,12 +303,20 @@ $studentWorkExperiences = StudentWorkExperience::lastThreeRecordsBySAN($main_stu
 <td>{{ $studentWorkExperience->occupation_start_date; }}</td>
 <td>{{ $studentWorkExperience->occupation_end_date; }}</td>
 <td>
-@if($studentWorkExperience->currently_working != 0)
+@if($studentWorkExperience->currently_working == 'Yes')
 {{ $studentWorkExperience->currently_working; }}
 @endif
 </td>
 
 @endforeach
+
+<td><?php  $total_fee = DB::table('student_payment_info_metadatas')->where('san','=',$main_student)->select('total_fee')->orderBy('id', 'desc')->take(1)->get();
+
+         ?>
+         @if($total_fee != null)
+         {{ $total_fee[0]->total_fee }}
+         @endif
+         </td>
 
 <?php
 $studentPaymentInfos = StudentPaymentInfo::lastFourRecordsBySAN($main_student)->reverse();
@@ -329,13 +354,20 @@ $studentPaymentInfos = StudentPaymentInfo::lastFourRecordsBySAN($main_student)->
 @elseif(StudentBquData::lastRecordBySAN($main_student)->supervisor >0)
 {{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->supervisor); }}
 @endif
-</td>
+</td><td>
+     @if(StudentBquData::lastRecordBySAN($main_student)->verified_by >0)
+     {{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->verified_by); }}
+     @endif
+     </td>
 <td>{{ StudentBquData::lastRecordBySAN($main_student)->verified_date; }}</td>
+
+
+
 <td>{{ StaticDataStatus::getNameByID(StudentBquData::lastRecordBySAN($main_student)->status); }}</td>
 
 <td>{{ Student::lastRecordBySAN($main_student)->ls_student_number; }}</td>
 
-
+<td>{{ StudentBquData::lastRecordBySAN($main_student)->notes; }}</td>
 </tr>
 <?php
 Log::info('out'.$main_student);

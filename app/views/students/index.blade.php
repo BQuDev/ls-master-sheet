@@ -36,13 +36,17 @@
                     <tbody>
 
                     @foreach ($students as $student)
+                    <?php
+                    $s = DB::table('students')->where('id','=',$student->id)->first();
+
+                    ?>
                        <tr>
-                           <td>{{ $student->san }}</td>
-                           <td>{{ $student->ls_student_number }}</td>
-                           <td>{{ $student->title.' '.$student->initials_1.' '.$student->initials_2.' '.$student->initials_3.' '.$student->forename_1.' '.$student->forename_2.' '.$student->forename_3.' '.$student->surname }}</td>
+                           <td>{{ $s->san }}</td>
+                           <td>{{ $s->ls_student_number }}</td>
+                           <td>{{ $s->title.' '.$s->initials_1.' '.$s->initials_2.' '.$s->initials_3.' '.$s->forename_1.' '.$s->forename_2.' '.$s->forename_3.' '.$s->surname }}</td>
                            <td style="min-width: 120px;">
-                           <a class="btn btn-sm btn-default" href="{{ URL::to('/students/'.$student->san.'/edit') }}">Edit</a>&nbsp;
-                           <a class="btn btn-sm btn-primary" href="{{ URL::to('/students/'.$student->san) }}">More</a>
+                           <a class="btn btn-sm btn-default" href="{{ URL::to('/students/'.$s->san.'/edit') }}">Edit</a>&nbsp;
+                           <a class="btn btn-sm btn-primary" href="{{ URL::to('/students/'.$s->san) }}">More</a>
 
                            </td>
                          </tr>

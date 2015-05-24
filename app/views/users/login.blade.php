@@ -50,7 +50,7 @@
   <footer id="footer">
     <div class="text-center padder">
       <p>
-        <small>Privacy policy | Terms of use | Copyright &copy; {{ Date('Y') }} BQu</small>
+        <small><a href="{{ URL::to("/privacy-policy") }}">Privacy policy </a>|<a href="{{ URL::to("/terms-of-use") }}"> Terms of use </a>| Copyright &copy; {{ Date('Y') }} BQu</small>
       </p>
     </div>
   </footer>
