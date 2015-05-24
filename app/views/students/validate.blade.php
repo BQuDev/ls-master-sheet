@@ -63,6 +63,11 @@
 {{ HTML::style('js/datatables/datatables.css'); }}
 @stop
 
+@section('breadcrumb')
+   <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
+   <li class="active"><a href="{{ URL::to('/students/validate') }}">Validate Admissions</a></li>
+ @stop
+
 @section('post_js')
   {{ HTML::script('js/datatables/jquery.dataTables.min.js'); }}
   <script>

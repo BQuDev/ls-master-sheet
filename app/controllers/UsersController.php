@@ -84,7 +84,12 @@ class UsersController extends \BaseController {
 		//
 	}
     public function login(){
-        return View::make('users.login');
+
+        if(!Sentry::check()){
+            return View::make('users.login');
+        }
+
+        return Redirect::intended('students/create');
     }
 
     public function authenticate(){
@@ -100,7 +105,7 @@ class UsersController extends \BaseController {
             // Authenticate the user
             $user = Sentry::authenticate($credentials, false);
             // return View::make('containerTrackingDetails.index');
-            return Redirect::intended('students');
+            return Redirect::intended('students/create');
             //return Redirect::route('/dashboards');
             // return Redirect::action('DashboardsController@index');
             // return View::make('containers.index');

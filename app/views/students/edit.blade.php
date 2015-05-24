@@ -1236,7 +1236,7 @@ $('[name="country"]').prepend("<option value='0'>Please select a country</option
 $('[name="country"]').trigger("chosen:updated");
 
 
-$('[name="qualification_1_other"]').hide();
+//$('[name="qualification_1_other"]').hide();
 //$('[name="agents_laps_other"]').hide();
 //$('[name="admission_managers_other"]').hide();
 
@@ -1257,7 +1257,7 @@ $('[name="qualification_2"]').trigger("chosen:updated");
 $('[name="qualification_2"]').prepend("<option value='1000'>Please Select an Option</option>");
 $('[name="qualification_2"]').val('1000').trigger("chosen:updated");
 
-$('[name="qualification_2_other"]').hide();
+//$('[name="qualification_2_other"]').hide();
 
     $('[name="qualification_2"]').change(function(){
         if($(this).val() == 0){
@@ -1273,7 +1273,7 @@ $('[name="qualification_3"]').trigger("chosen:updated");
 $('[name="qualification_3"]').prepend("<option value='1000'>Please Select an Option</option>");
 $('[name="qualification_3"]').val('1000').trigger("chosen:updated");
 
-$('[name="qualification_3_other"]').hide();
+//$('[name="qualification_3_other"]').hide();
 
     $('[name="qualification_3"]').change(function(){
         if($(this).val() == 0){

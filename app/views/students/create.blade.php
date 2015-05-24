@@ -1109,6 +1109,12 @@ Added ( Pending for validation )
 @stop
 
 
+ @section('breadcrumb')
+   <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
+   <li class="active"><a href="{{ URL::to('/students/create') }}">New Admission</a></li>
+ @stop
+
+
 @section('post_css')
 {{ HTML::style('js/chosen/chosen.css'); }}
 @stop

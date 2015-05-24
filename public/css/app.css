@@ -120,6 +120,8 @@ a:hover .caret-white {
   border: 1px solid #eaeef1;
   padding-left: 10px;
   margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 .breadcrumb > li + li:before,
 .breadcrumb > .active {
@@ -529,7 +531,7 @@ a.list-group-item:focus {
 .header,
 .footer {
   min-height: 50px;
-  padding: 0 15px;
+  padding: 5px 15px;
 }
 .header > p,
 .footer > p {
@@ -858,7 +860,8 @@ body.container {
 .bg-black .nav-primary > ul.nav-main > li:focus > a,
 .bg-black .nav-primary > ul.nav-main > li:active > a,
 .bg-black .nav-primary > ul.nav-main > li.active > a {
-  background-color: #1aae88;
+  /*background-color: #1aae88;*/
+  background-color: #0052ba;
 }
 @media (min-width: 768px) {
   .visible-nav-xs {
@@ -1274,8 +1277,10 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #fff !important;
-  background-color: #177bbb;
-  border-color: #177bbb;
+  /*background-color: #177bbb;
+  border-color: #177bbb;*/
+  background-color: #0052ba;
+  border-color: #0052ba;
 }
 .btn-primary:hover,
 .btn-primary:focus,

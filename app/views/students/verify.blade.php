@@ -57,6 +57,11 @@
               </section>
 @stop
 
+ @section('breadcrumb')
+   <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
+   <li class="active"><a href="{{ URL::to('/students/verify') }}">Verify Admissions</a></li>
+ @stop
+
 
 @section('post_css')
 {{ HTML::style('js/datatables/datatables.css'); }}

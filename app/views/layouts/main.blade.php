@@ -145,15 +145,7 @@
                                  </a>
 
                                </li>
-                                   <li >
-                                             <a href="{{ URL::to('/export') }}/">
 
-                                                <i class="i i-file-excel icon">
-                                                </i>
-                                                <span class="font-bold">Export</span>
-                                              </a>
-
-                                            </li>
                                    <li >
                                              <a href="{{ URL::to('students/verify') }}">
 
@@ -172,9 +164,22 @@
                                               </a>
 
                                             </li>
+<li >
+                                             <a href="{{ URL::to('/export') }}/">
 
+                                                <i class="i i-file-excel icon">
+                                                </i>
+                                                <span class="font-bold">Export</span>
+                                              </a>
 
+                                            </li>
 
+<li style="position: absolute; bottom: 5px;width: 100%">
+                      <a href="{{ URL::to('/contact-developer') }}/">
+                        <i class="i i-circle-sm text-danger-dk"></i>
+                        <span>Contact BQu</span>
+                      </a>
+                    </li>
 
                     @section('main_menu')
                     @show
@@ -208,7 +213,21 @@
         <!-- /.aside -->
         <section id="content">
           <section class="vbox">
+             <header class="header bg-light dk">
+                <div class="row">
+                              <div class="col-lg-12">
+                                <!-- .breadcrumb -->
+                                <ul class="breadcrumb">
+                                  <li><a href="{{ URL::to('/') }}"><i class="fa fa-home"></i> Home</a></li>
+                                  @section('breadcrumb')
+                                  @show
+                                </ul>
+                                <!-- / .breadcrumb -->
+                              </div>
+                              </div>
+            </header>
             <section class="scrollable wrapper">
+
 
               @yield('content')
 
