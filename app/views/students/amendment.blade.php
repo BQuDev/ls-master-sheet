@@ -393,7 +393,7 @@
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Country</label></td>
-    <td> {{ $data_ttStudentContactInformation->country  }}</td>
+    <td> {{ StaticCountry::getNameByID($data_ttStudentContactInformation->country)  }}</td>
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Mobile</label></td>
@@ -433,7 +433,7 @@
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Country</label></td>
-    <td> {{ $data_studentContactInformation->country  }}</td>
+    <td> {{ StaticCountry::getNameByID($data_studentContactInformation->country)  }}</td>
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Mobile</label></td>
@@ -445,7 +445,7 @@
   </tr>
   <tr>
     <td width="30%">{{ Form::label('email', 'Email ', array('class' => 'control-label'));  }}</td>
-    <td>+ {{ $data_studentContactInformationOnline->email  }}</td>
+    <td> {{ $data_studentContactInformationOnline->email  }}</td>
   </tr>
   <tr>
     <td width="30%">{{ Form::label('alternative_email', 'Alternative Email', array('class' => 'control-label'));  }}</td>
@@ -847,9 +847,28 @@
                       <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td width="30%">{{ Form::label('english_language_level1', 'English language level', array('class' => 'control-label'));  }}</td>
-    <td>@if($data_student_english_lang_levels->english_language_level != 'null')
-            {{ $data_student_english_lang_levels->english_language_level }}
-            @endif&nbsp;</td>
+    <td>@if(StudentEnglishLangLevels::lastRecordBySAN($data_student->san)->english_language_level != 'null')
+        <?php
+        $english_language_level =StudentEnglishLangLevels::lastRecordBySAN($data_student->san)->english_language_level;
+        $english_language_level_export = '';
+        if(strpos($english_language_level,'CITY & GUILDS')!==false){
+        $english_language_level_export = $english_language_level_export.', CITY & GUILDS';
+        }
+        if(strpos($english_language_level,'IELTS')!==false){
+        $english_language_level_export = $english_language_level_export.', IELTS';
+        }
+        if(strpos($english_language_level,'ESOL')!==false){
+        $english_language_level_export = $english_language_level_export.', ESOL';
+        }
+        if(strpos($english_language_level,'Other')!==false){
+        $english_language_level_export = $english_language_level_export.', '.StudentEnglishLangLevels::lastRecordBySAN($data_student->san)->english_language_level_other;
+        }
+        $english_language_level_export= ltrim ($english_language_level_export, ',');
+
+        //$english_language_level = str_replace('"]]','"\']',$english_language_level);
+        ?>
+        {{ $english_language_level_export }}
+        @endif &nbsp;</td>
   </tr>
   <tr>
     <td width="30%">{{ Form::label('english_language_level1', 'Other', array('class' => 'control-label'));  }}</td>

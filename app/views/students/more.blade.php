@@ -304,8 +304,27 @@
   <tr>
     <td width="50%" align="right">{{ Form::label('english_language_level1', 'English language level', array('class' => 'control-label'));  }}</td>
     <td>
-    @if($student_english_lang_levels->english_language_level != 'null')
-    {{ $student_english_lang_levels->english_language_level }}
+    @if(StudentEnglishLangLevels::lastRecordBySAN($student->san)->english_language_level != 'null')
+    <?php
+    $english_language_level =StudentEnglishLangLevels::lastRecordBySAN($student->san)->english_language_level;
+    $english_language_level_export = '';
+    if(strpos($english_language_level,'CITY & GUILDS')!==false){
+    $english_language_level_export = $english_language_level_export.', CITY & GUILDS';
+    }
+    if(strpos($english_language_level,'IELTS')!==false){
+    $english_language_level_export = $english_language_level_export.', IELTS';
+    }
+    if(strpos($english_language_level,'ESOL')!==false){
+    $english_language_level_export = $english_language_level_export.', ESOL';
+    }
+    if(strpos($english_language_level,'Other')!==false){
+    $english_language_level_export = $english_language_level_export.', '.StudentEnglishLangLevels::lastRecordBySAN($student->san)->english_language_level_other;
+    }
+    $english_language_level_export= ltrim ($english_language_level_export, ',');
+
+    //$english_language_level = str_replace('"]]','"\']',$english_language_level);
+    ?>
+    {{ $english_language_level_export }}
     @endif
     </td>
   </tr>

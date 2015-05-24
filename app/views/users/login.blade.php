@@ -24,9 +24,9 @@
     <div class="container aside-xl">
       <a class="navbar-brand block" href="index.html">  <img src="{{asset('images/logo.png')}}" class="m-r-sm" alt="scale"></a>
       <section class="m-b-lg">
-       <header class="wrapper text-center">
+       <!--<header class="wrapper text-center">
                 <strong>Administration</strong>
-              </header>
+              </header>-->
 
         {{ Form::open(array('url' =>URL::to("/").'/login',  'class'=>'form-horizontal','method' => 'post')) }}
           <div class="list-group">

@@ -12,6 +12,7 @@ class UsersController extends \BaseController {
 	{
 		//
 
+
 	}
 
 	/**
@@ -23,6 +24,7 @@ class UsersController extends \BaseController {
 	public function create()
 	{
 		//
+        return View::make('users.create')->with('groups',DB::table('groups')->lists('name','id'));
 	}
 
 	/**
@@ -34,6 +36,40 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		//
+        try
+        {
+            // Create the user
+            $user = Sentry::createUser(array(
+                'email'     => Input::get('email'),
+                'password'  => Input::get('password'),
+                'activated' => true,
+            ));
+
+            // Find the group using the group id
+            $adminGroup = Sentry::findGroupById(1);
+
+            // Assign the group to the user
+            $user->addGroup($adminGroup);
+
+            return View::make('users.create')->with('groups',DB::table('groups')->lists('name','id'));
+        }
+        catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+        {
+            echo 'Login field is required.';
+        }
+        catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+        {
+            echo 'Password field is required.';
+        }
+        catch (Cartalyst\Sentry\Users\UserExistsException $e)
+        {
+            echo 'User with this login already exists.';
+        }
+        catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
+        {
+            echo 'Group was not found.';
+        }
+
 	}
 
 	/**

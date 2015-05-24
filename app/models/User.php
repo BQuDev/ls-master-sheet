@@ -29,4 +29,5 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function scopeGetLastNameByID($query,$id) {
         return $query->where('id','=',$id)->first()->last_name;
     }
+
 }

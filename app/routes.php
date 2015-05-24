@@ -36,6 +36,7 @@ Route::get('/logout', 'UsersController@logout');
     Route::get('/students/{san}/amendment','StudentsController@amendment');
 
 Route::resource('students','StudentsController');
+Route::resource('users','UsersController');
 
 
 

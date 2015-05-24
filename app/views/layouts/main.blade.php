@@ -129,13 +129,16 @@
                 <nav class="nav-primary hidden-xs">
                   <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Main menu</div>
                   <ul class="nav nav-main" data-ride="collapse">
+                  <?php if (Sentry::getUser()->hasAccess('students.index')){  ?>
                    <li>
-                                        <a href="{{ URL::to('/students') }}/">
-                                          <i class="i i-docs icon">
-                                          </i>
-                                          <span class="font-bold">All Admissions</span>
-                                        </a>
-                                      </li>
+                    <a href="{{ URL::to('/students') }}/">
+                      <i class="i i-docs icon">
+                      </i>
+                      <span class="font-bold">All Admissions</span>
+                    </a>
+                  </li>
+                  <?php } ?>
+                           <?php if (Sentry::getUser()->hasAccess('students.create')){  ?>
                                    <li >
                                 <a href="{{ URL::to('/students/create') }}/">
 
@@ -145,7 +148,7 @@
                                  </a>
 
                                </li>
-
+ <?php } ?>   <?php if (Sentry::getUser()->hasAccess('students.verify')){  ?>
                                    <li >
                                              <a href="{{ URL::to('students/verify') }}">
 
@@ -155,6 +158,7 @@
                                               </a>
 
                                             </li>
+                                             <?php } ?>   <?php if (Sentry::getUser()->hasAccess('students.validate')){  ?>
                                    <li >
                                              <a href="{{ URL::to('students/validate') }}">
 
@@ -164,6 +168,7 @@
                                               </a>
 
                                             </li>
+                                             <?php } ?>   <?php if (Sentry::getUser()->hasAccess('students.export')){  ?>
 <li >
                                              <a href="{{ URL::to('/export') }}/">
 
@@ -173,9 +178,10 @@
                                               </a>
 
                                             </li>
+                                             <?php } ?>
 
 <li style="position: absolute; bottom: 5px;width: 100%">
-                      <a href="{{ URL::to('/contact-developer') }}/">
+                      <a href="{{ URL::to('/contact-bqu') }}/">
                         <i class="i i-circle-sm text-danger-dk"></i>
                         <span>Contact BQu</span>
                       </a>

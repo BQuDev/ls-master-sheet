@@ -14,16 +14,19 @@ class StudentsController extends \BaseController {
             ->with('students',Student::all());*/
 
         //return DB::table('students')->select(array(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number,san')))->get();
+        if (Sentry::getUser()->hasAccess('students.index')){
+            return View::make('students.index')
+                ->with('students', DB::table('students')->select(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number ,san'))
+                    ->groupBy('san')
+                    ->get());
+    }else{
+            return View::make('static.no_access');
+        }
 
-        return View::make('students.index')
-            ->with('students',DB::table('students')->select(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number ,san'))
-                ->groupBy('san')
-                ->get());
-
-        return View::make('students.index')
+        /*return View::make('students.index')
             ->with('students',DB::table('students')->select(DB::raw('max(id) as id,max(title) as title,max(initials_1) as initials_1,max(initials_2) as initials_2,max(initials_3) as initials_3,max(forename_1) as forename_1,max(forename_2) as forename_2,max(forename_3) as forename_3,max(surname) as surname,max(ls_student_number) as ls_student_number,san'))
                 ->groupBy('san')
-                ->get());
+                ->get());*/
 
     }
 
@@ -476,7 +479,7 @@ return View::make('students.index')->with('students',Student::all());
      */
     public function edit($san)
     {
-
+        if (Sentry::getUser()->hasAccess('students.validate')){
         try
         {
             $bqu_group = Sentry::findGroupByName('BQu');
@@ -589,6 +592,9 @@ return View::make('students.index')->with('students',Student::all());
                 ->where('san','=',$san)
                 ->first())
             ;*/
+        }else{
+            return View::make('static.no_access');
+        }
     }
 
     public function verify(){
@@ -666,6 +672,7 @@ return View::make('students.index')->with('students',Student::all());
         //$user = new Student();
         // accessor
         //var_dump($user->lastRecordBySAN('a123'));
+        if (Sentry::getUser()->hasAccess('students.amendment')){
         try
         {
             $bqu_group = Sentry::findGroupByName('BQu');
@@ -734,7 +741,9 @@ return View::make('students.index')->with('students',Student::all());
                 ->first())
             ->with('supervisors',$supervisors);
 
-            ;
+            ;}else{
+            return View::make('static.no_access');
+        }
     }
 
 }
