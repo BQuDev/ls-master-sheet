@@ -547,7 +547,7 @@ return View::make('students.index')->with('students',Student::all());
 
         $supervisors = DB::table('users')
             ->join('users_groups', 'users.id', '=', 'users_groups.user_id')
-            ->where('users_groups.group_id', '=', $bqu_group->id)
+           /* ->where('users_groups.group_id', '=', $bqu_group->id)*/
             ->select('users.id', 'users.first_name', 'users.last_name')
             ->get();
 

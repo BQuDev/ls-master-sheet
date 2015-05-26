@@ -109,10 +109,11 @@
  <th>Late Fee	</th>
  <th>App received to Bqu date (dd/mm/yy)	</th>
  <th>App input by	</th>
+ <th>App input date	</th>
+ <th>Added / Validated	</th>
  <th>Supervisor	</th>
  <th>App verified by</th>
  <th>App verified date (dd/mm/yy)	</th>
- <th>Added / Validated	</th>
  <th>Applicant Status</th>
  <th>LSM Student number</th>
  <th>Notes</th>
@@ -415,8 +416,25 @@ $application_received_date = explode('-', StudentBquData::lastRecordBySAN($main_
 {{ sprintf("%02d", $application_received_date[0]).'/'.sprintf("%02d", $application_received_date[1]).'/'.$application_received_date[2] }}
 @endif
 </td>
-
 <td>{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->application_input_by); }}</td>
+<td>
+    <?php
+    $application_created_at= date_parse(StudentBquData::lastRecordBySAN($main_student)->created_at);
+    ?>
+    {{ sprintf("%02d", $application_created_at["day"]).'/'.sprintf("%02d", $application_created_at["month"]).'/'.$application_created_at["year"] }}
+   </td>
+
+    <td>
+    @if(StudentBquData::lastRecordBySAN($main_student)->status == 1 )
+    Added
+    @else
+    Validated
+    @endif
+
+    </td>
+
+
+
 <td>
 @if(StudentBquData::lastRecordBySAN($main_student)->supervisor ==1000)
 @elseif(StudentBquData::lastRecordBySAN($main_student)->supervisor >0)
@@ -439,14 +457,7 @@ $application_verified_date = explode('-', StudentBquData::lastRecordBySAN($main_
 </td>
 
 
-<td>
-@if(StudentBquData::lastRecordBySAN($main_student)->status == 1 )
-Added
-@else
-Validated
-@endif
 
-</td>
 
 <td>
 @if(intval(StudentBquData::lastRecordBySAN($main_student)->status) == 3 )

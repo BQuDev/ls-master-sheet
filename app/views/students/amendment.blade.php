@@ -1855,7 +1855,7 @@
                                   <td> Status </td>
                                   <td></td>
                                   <td>{{ Form::hidden('admission_status','3') }}
-                                                                             Verified)</td>
+                                                                             </td>
                                   </tr>
                                   <tr>
                                   <td> Notes </td>
