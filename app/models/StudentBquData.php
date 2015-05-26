@@ -7,5 +7,8 @@ class StudentBquData extends \Eloquent {
     public function scopeLastRecordBySAN($query,$san) {
         return $query->where('san','=',$san)->orderBy('id', 'desc')->first();
     }
+    public function scopeGetNameByID($query,$id) {
+        return $query->where('id','=',$id)->first()->name;
+    }
 
 }

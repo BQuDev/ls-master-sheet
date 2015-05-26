@@ -1791,8 +1791,8 @@
                                   <tr>
                                   <td> Status </td>
                                   <td></td>
-                                  <td>{{ Form::hidden('admission_status','4') }}
-                                      Validated</td>
+                                  <td>{{  StaticDataStatus::getNameByID($data_student_bqu_data->status) }}
+                                      </td>
                                   </tr>
                                   <tr>
                                                                     <td> Notes </td>
@@ -1854,8 +1854,8 @@
                                   <tr>
                                   <td> Status </td>
                                   <td></td>
-                                  <td>{{ Form::hidden('admission_status','1') }}
-                                                                             Added ( Pending for verification )</td>
+                                  <td>{{ Form::hidden('admission_status','3') }}
+                                                                             Verified)</td>
                                   </tr>
                                   <tr>
                                   <td> Notes </td>
