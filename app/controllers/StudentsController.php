@@ -395,7 +395,7 @@ class StudentsController extends \BaseController {
         $bqu_application_data->notes = Input::get('notes');
         $bqu_application_data->san = Input::get('san');
         $bqu_application_data->student_id = $student_id;
-        $bqu_application_data->record_status = '1';
+        $bqu_application_data->record_status = Input::get('admission_status');
         $bqu_application_data->created_by = Sentry::getUser()->id;
         $bqu_application_data->save();
 
