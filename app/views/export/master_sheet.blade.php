@@ -112,7 +112,8 @@
  <th>Supervisor	</th>
  <th>App verified by</th>
  <th>App verified date (dd/mm/yy)	</th>
- <th>Status	</th>
+ <th>Added / Validated	</th>
+ <th>Applicant Status</th>
  <th>LSM Student number</th>
  <th>Notes</th>
 </tr>
@@ -438,7 +439,28 @@ $application_verified_date = explode('-', StudentBquData::lastRecordBySAN($main_
 </td>
 
 
-<td>{{ StaticDataStatus::getNameByID(StudentBquData::lastRecordBySAN($main_student)->status); }}</td>
+<td>
+@if(StudentBquData::lastRecordBySAN($main_student)->status == 1 )
+Added
+@else
+Validated
+@endif
+
+</td>
+
+<td>
+@if(intval(StudentBquData::lastRecordBySAN($main_student)->status) == 3 )
+Verified
+@elseif(StudentBquData::lastRecordBySAN($main_student)->status == 4)
+Updated
+@elseif(StudentBquData::lastRecordBySAN($main_student)->status == 5)
+Rejected
+@elseif(StudentBquData::lastRecordBySAN($main_student)->status == 6)
+Cancelled by student
+@elseif(StudentBquData::lastRecordBySAN($main_student)->status == 7)
+Pending
+@endif
+</td>
 
 <td>{{ Student::lastRecordBySAN($main_student)->ls_student_number; }}</td>
 

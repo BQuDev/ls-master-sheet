@@ -469,6 +469,62 @@ return View::make('students.index')->with('students',Student::all());
             ;
 
     }
+    public function reject($san)
+    {
+
+        return View::make('students.reject')
+            ->with('information_sources',ApplicationSource::lists('name','id'))
+            ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
+            //To-Do
+            // ->with('admission_managers',ApplicationAdmissionManager::where('source_id','=',1)->lists('name','id'))
+
+            ->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))
+            ->with('nationalities',StaticNationality::lists('name','id'))
+            ->with('countries',StaticCountry::lists('name','id'))
+            ->with('course_names',ApplicationCourse::lists('name','id'))
+            ->with('awarding_bodies',ApplicationAwardingBody::lists('name','id'))
+
+            ->with('education_qualifications',ApplicationEducationalQualification::lists('name','id'))
+            ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
+            ->with('application_status',ApplicationStatus::lists('name','id'))
+            ->with('intake_year',StaticYear::lists('name','id'))
+            ->with('intake_month',StaticMonth::lists('name','id'))
+            // Getting Saved DATA
+            ->with('student',Student::where('san','=',$san)->orderBy('id','desc')->first())
+            ->with('studentSource',StudentSource::where('san','=',$san)->orderBy('id','desc')->first())
+            ->with('ttStudentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',1)
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',2)
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentContactInformationOnline',DB::table('student_contact_information_onlines')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_contact_information_kin_detailes',DB::table('student_contact_information_kin_detailes')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_course_enrolments',DB::table('student_course_enrolments')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_educational_qualifications',StudentEducationalQualification::lastThreeRecordsBySAN($san)->reverse())
+            ->with('student_english_lang_levels',DB::table('student_english_lang_levels')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_work_experiences',StudentWorkExperience::lastThreeRecordsBySAN($san)->reverse())
+            ->with('student_payment_info_metadata',DB::table('student_payment_info_metadatas')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentPaymentInfos',StudentPaymentInfo::lastFourRecordsBySAN($san)->reverse())
+            ->with('student_bqu_data',DB::table('student_bqu_data')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ;
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -631,9 +687,23 @@ return View::make('students.index')->with('students',Student::all());
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($san)
     {
         //
+        $student = Student::where('san','=',$san)->orderBy('id','desc')->first()->replicate();
+        $student->record_status = 5;
+        $student->save();
+
+        $student_bqu_data = StudentBquData::where('san','=',$san)->orderBy('id','desc')->first()->replicate();
+        $student_bqu_data->notes = Input::get('notes');
+        $student_bqu_data->record_status = 5;
+        $student_bqu_data->status = 5;
+        $student_bqu_data->save();
+
+        return View::make('students.index')
+            ->with('students', DB::table('students')->select(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number ,san'))
+                ->groupBy('san')
+                ->get());
     }
 
     public function export()
@@ -743,6 +813,15 @@ return View::make('students.index')->with('students',Student::all());
 
             ;}else{
             return View::make('static.no_access');
+        }
+    }
+
+    public function information_source_dropdown(){
+        $source = Input::get('option');
+        if(intval($source) == 1)
+            return ApplicationAgent::lists('name','id');
+        else{
+            return ApplicationLap::lists('name','id');
         }
     }
 

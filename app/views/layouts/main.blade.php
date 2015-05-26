@@ -180,12 +180,12 @@
                                             </li>
                                              <?php } ?>
 
-<li style="position: absolute; bottom: 5px;width: 100%">
+<!--<li style="position: absolute; bottom: 5px;width: 100%">
                       <a href="{{ URL::to('/contact-bqu') }}/">
                         <i class="i i-circle-sm text-danger-dk"></i>
                         <span>Contact BQu</span>
                       </a>
-                    </li>
+                    </li>-->
 
                     @section('main_menu')
                     @show

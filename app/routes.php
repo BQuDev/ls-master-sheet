@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('information_source/dropdown','StudentsController@information_source_dropdown');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('checkSanAvailability','StudentsController@checkSanAvailability');
 Route::get('/', 'UsersController@login');
@@ -34,6 +35,7 @@ Route::get('/logout', 'UsersController@logout');
     Route::get('/students/verify','StudentsController@verify');
     Route::get('/students/validate','StudentsController@validate');
     Route::get('/students/{san}/amendment','StudentsController@amendment');
+    Route::get('/students/{san}/reject','StudentsController@reject');
 
 Route::resource('students','StudentsController');
 Route::resource('users','UsersController');

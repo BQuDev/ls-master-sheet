@@ -42,6 +42,8 @@ class UsersController extends \BaseController {
             $user = Sentry::createUser(array(
                 'email'     => Input::get('email'),
                 'password'  => Input::get('password'),
+                'first_name'  => Input::get('first_name'),
+                'last_name'  => Input::get('last_name'),
                 'activated' => true,
             ));
 
