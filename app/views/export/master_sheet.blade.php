@@ -142,7 +142,7 @@ function objectToArray($d) {
 //$students = DB::table('students')->select('*')->get();
 ///$sub = array();
 
-$results =  DB::table('students')->select('san')->get();
+$results =  DB::table('students')->select('san')->groupBy('san')->get();
    // return $results;
     $rr = array();
     foreach($results as $result){
@@ -166,8 +166,24 @@ Log::info('enter'.$main_student);
 ?>
 <tr>
 <td>{{ Student::lastRecordBySAN($main_student)->san; }}</td>
-<td>{{ $studentSourceArray['app_date']; }}</td>
-<td>{{ $studentSourceArray['ams_date']; }}</td>
+<td>
+@if(intval($studentSourceArray['app_date'])>0)
+<?php
+$app_date = explode('-',$studentSourceArray['app_date']);
+?>
+
+{{ sprintf("%02d", $app_date[0]).'/'.sprintf("%02d", $app_date[1]).'/'.$app_date[2] }}
+
+@endif
+</td>
+<td>
+@if(intval($studentSourceArray['ams_date'])>0)
+<?php
+$ams_date = explode('-',$studentSourceArray['ams_date']);
+?>
+{{ sprintf("%02d", $ams_date[0]).'/'.sprintf("%02d", $ams_date[1]).'/'.$ams_date[2] }}
+@endif
+</td>
 <td>
 @if(intval($studentSourceArray['source'])>0) {{
 ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
@@ -200,7 +216,14 @@ ApplicationSource::getNameByID(intval($studentSourceArray['source'])) }}
 <td>{{ Student::lastRecordBySAN($main_student)->forename_3; }}</td>
 <td>{{ Student::lastRecordBySAN($main_student)->surname; }}</td>
 <td>{{ Student::lastRecordBySAN($main_student)->gender; }}</td>
-<td>{{ Student::lastRecordBySAN($main_student)->date_of_birth; }}</td>
+<td>
+@if(intval(Student::lastRecordBySAN($main_student)->date_of_birth)>0)
+<?php
+$date_of_birth = explode('-', Student::lastRecordBySAN($main_student)->date_of_birth);
+?>
+{{  sprintf("%02d", $date_of_birth[0]).'/'. sprintf("%02d", $date_of_birth[1]).'/'.$date_of_birth[2] }}
+@endif
+</td>
 <td>
 @if(Student::lastRecordBySAN($main_student)->nationality > 0)
 {{ StaticNationality::getNameByID(Student::lastRecordBySAN($main_student)->nationality); }}
@@ -289,8 +312,22 @@ $students = StudentEducationalQualification::lastThreeRecordsBySAN($main_student
 @endif
 </td>
 <td>{{ $student->institution; }}</td>
-<td>{{ $student->qualification_start_date; }}</td>
-<td>{{ $student->qualification_end_date; }}</td>
+<td>
+@if(intval($student->qualification_start_date)>0)
+<?php
+$qualification_start_date = explode('-', $student->qualification_start_date);
+?>
+{{ sprintf("%02d", $qualification_start_date[0]).'/'.sprintf("%02d", $qualification_start_date[1]).'/'.$qualification_start_date[2] }}
+@endif
+</td>
+<td>
+@if(intval($student->qualification_end_date)>0)
+<?php
+$qualification_end_date = explode('-', $student->qualification_end_date);
+?>
+{{ sprintf("%02d", $qualification_end_date[0]).'/'.sprintf("%02d", $qualification_end_date[1]).'/'.$qualification_end_date[2] }}
+@endif
+</td>
 <td>{{ $student->qualification_grade; }}</td>
 @endforeach
 <?php
@@ -300,8 +337,22 @@ $studentWorkExperiences = StudentWorkExperience::lastThreeRecordsBySAN($main_stu
 <td>{{ $studentWorkExperience->occupation; }}</td>
 <td>{{ $studentWorkExperience->company_name; }}</td>
 <td>{{ $studentWorkExperience->main_duties; }}</td>
-<td>{{ $studentWorkExperience->occupation_start_date; }}</td>
-<td>{{ $studentWorkExperience->occupation_end_date; }}</td>
+<td>
+@if(intval($studentWorkExperience->occupation_start_date)>0)
+<?php
+$occupation_start_date = explode('-', $studentWorkExperience->occupation_start_date);
+?>
+{{ sprintf("%02d", $occupation_start_date[0]).'/'.sprintf("%02d", $occupation_start_date[1]).'/'.$occupation_start_date[2] }}
+@endif
+</td>
+<td>
+@if(intval($studentWorkExperience->occupation_end_date)>0)
+<?php
+$occupation_end_date = explode('-', $studentWorkExperience->occupation_end_date);
+?>
+{{ sprintf("%02d", $occupation_end_date[0]).'/'.sprintf("%02d", $occupation_end_date[1]).'/'.$occupation_end_date[2] }}
+@endif
+</td>
 <td>
 @if($studentWorkExperience->currently_working == 'Yes')
 {{ $studentWorkExperience->currently_working; }}
@@ -324,7 +375,15 @@ $studentPaymentInfos = StudentPaymentInfo::lastFourRecordsBySAN($main_student)->
 
 @foreach($studentPaymentInfos as $studentPaymentInfo)
 <td>{{ $studentPaymentInfo->payment_amount; }}</td>
-<td>{{ $studentPaymentInfo->date; }}</td>
+
+<td>
+@if(intval($studentPaymentInfo->date)>0)
+<?php
+$studentPaymentInfoDate = explode('-', $studentPaymentInfo->date);
+?>
+{{ sprintf("%02d", $studentPaymentInfoDate[0]).'/'.sprintf("%02d", $studentPaymentInfoDate[1]).'/'.$studentPaymentInfoDate[2] }}
+@endif
+</td>
 <td>
 @if(intval($studentPaymentInfo->method)==1000)
 
@@ -347,7 +406,15 @@ $studentPaymentInfos = StudentPaymentInfo::lastFourRecordsBySAN($main_student)->
      {{ $late_fee[0]->late_fee }}
     @endif </td>
 
-<td>{{ StudentBquData::lastRecordBySAN($main_student)->application_received_date; }}</td>
+<td>
+@if(intval( StudentBquData::lastRecordBySAN($main_student)->application_received_date)>0)
+<?php
+$application_received_date = explode('-', StudentBquData::lastRecordBySAN($main_student)->application_received_date);
+?>
+{{ sprintf("%02d", $application_received_date[0]).'/'.sprintf("%02d", $application_received_date[1]).'/'.$application_received_date[2] }}
+@endif
+</td>
+
 <td>{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->application_input_by); }}</td>
 <td>
 @if(StudentBquData::lastRecordBySAN($main_student)->supervisor ==1000)
@@ -359,8 +426,16 @@ $studentPaymentInfos = StudentPaymentInfo::lastFourRecordsBySAN($main_student)->
      {{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->verified_by); }}
      @endif
      </td>
-<td>{{ StudentBquData::lastRecordBySAN($main_student)->verified_date; }}</td>
 
+
+<td>
+@if(intval( StudentBquData::lastRecordBySAN($main_student)->verified_date))
+<?php
+$application_verified_date = explode('-', StudentBquData::lastRecordBySAN($main_student)->verified_date);
+?>
+{{ sprintf("%02d", $application_verified_date[0]).'/'.sprintf("%02d", $application_verified_date[1]).'/'.$application_verified_date[2] }}
+@endif
+</td>
 
 
 <td>{{ StaticDataStatus::getNameByID(StudentBquData::lastRecordBySAN($main_student)->status); }}</td>
