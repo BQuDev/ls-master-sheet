@@ -1779,9 +1779,9 @@
 
                                                   ?>
                                                   @if($applicatin_supervised_user!= null))
-                                                  {{ User::getFirstNameByID($applicatin_supervised_user->application_input_by).' '.User::getLastNameByID($applicatin_supervised_user->application_input_by) }}
+
                                   @endif
-                                  </td>
+                                   {{ User::getFirstNameByID($data_student_bqu_data->supervisor).' '.User::getLastNameByID($data_student_bqu_data->supervisor) }}</td>
                                   </tr>
                                   <tr>
                                   <td>Applicant verified by BQu date</td>
@@ -1845,9 +1845,15 @@
                                   <tr>
                                   <td>Applicant verified by BQu date</td>
                                   <td></td>
-                                  <td>    {{ Form::text('applicant_verified_by_bqu_date', '',['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                                                                                               {{ Form::text('applicant_verified_by_bqu_month', '',['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
-                                                                                                                               {{ Form::text('applicant_verified_by_bqu_year', '',['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}
+                                  <td>                    <?php
+                                           $applicant_verified_by_bqu_date = explode('-',$data_student_bqu_data->verified_date)
+                              ?>
+                                           <div class="form-inline"> {{ Form::text('applicant_verified_by_bqu_date', $applicant_verified_by_bqu_date[0],['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
+                                            {{ Form::text('applicant_verified_by_bqu_month', $applicant_verified_by_bqu_date[1],['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>'2','data-parsley-type'=>'digits']); }}
+                                            {{ Form::text('applicant_verified_by_bqu_year', $applicant_verified_by_bqu_date[2],['placeholder'=>'YYYY','class'=>'form-control','style'=>'width:60px !important','data-type'=>'number','maxlength'=>'4','data-parsley-type'=>'digits']); }}
+</div>
+
+
 
                                                                                                                             </td>
                                   </tr>
@@ -1926,6 +1932,9 @@
  <script type="text/javascript">
 
  $(function() {
+$('#supervisor').prepend("<option value='1000'>Please Select a Supervisor</option>");
+$('#supervisor').trigger("chosen:updated");
+  $('#supervisor').val('{{ $data_student_bqu_data->supervisor }}').trigger("chosen:updated");
 
 
 $('[name="deposit_payment_method_1"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");

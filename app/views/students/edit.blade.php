@@ -1161,7 +1161,6 @@ $(function() {
 $('#supervisor').prepend("<option value='1000'>Please Select a Supervisor</option>");
 $('#supervisor').trigger("chosen:updated");
   $('#supervisor').val('{{ $data_student_bqu_data->supervisor }}').trigger("chosen:updated");
-  
 
 $('[name="deposit_payment_method_1"]').prepend("<option value='1000'>Please Select an Option</option>").trigger("chosen:updated");
 $('[name="deposit_payment_method_1"]').trigger("chosen:updated");
