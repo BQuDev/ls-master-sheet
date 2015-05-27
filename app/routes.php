@@ -36,6 +36,7 @@ Route::get('/logout', 'UsersController@logout');
     Route::get('/students/validate','StudentsController@validate');
     Route::get('/students/{san}/amendment','StudentsController@amendment');
     Route::get('/students/{san}/reject','StudentsController@reject');
+    Route::get('/students/{san}/v','StudentsController@new_validate');
 
 Route::resource('students','StudentsController');
 Route::resource('users','UsersController');

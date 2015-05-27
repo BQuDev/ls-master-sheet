@@ -10,7 +10,7 @@
       {{ Form::open(array('url' =>URL::to("/").'/students',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley','id'=>'student_create')) }}
 <div class="form-group">
          {{ Form::label('san', 'Student Application Number (SAN)', array('class' => 'col-sm-3 control-label'));  }}
-         <div class="col-sm-9">{{ Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true','minlength'=>"5",'onBlur'=>'checkSanAvailability()']); }}<span id="san_available"></span><span style="color: red" id="san_not_available"> SAN is already in the database </span> </div>
+         <div class="col-sm-9">{{ Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true','minlength'=>"5",'onBlur'=>'checkSanAvailability()']); }}<span id="san_available"></span><span style="color: red;visibility: hidden" id="san_not_available"> SAN is already in the database </span> </div>
       </div>
 
       <div class="form-group">
@@ -542,7 +542,7 @@
                                        <div class="col-sm-2 ">
                                           <div class="checkbox i-checks">
                                              <label>
-                                             {{ Form::checkbox('admission_managersh_language_level[]', 'IELTS',false); }}
+                                             {{ Form::checkbox('english_language_level[]', 'IELTS',false); }}
                                              <i></i>
                                              IELTS
                                              </label>
@@ -1110,8 +1110,8 @@ Added ( Pending for validation )
 
 
  @section('breadcrumb')
-   <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
-   <li class="active"><a href="{{ URL::to('/students/create') }}">New Admission</a></li>
+   <li><a href="{{ URL::to('/students') }}">Application</a></li>
+   <li class="active"><a href="{{ URL::to('/students/create') }}">Add New Application</a></li>
  @stop
 
 

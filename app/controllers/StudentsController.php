@@ -845,4 +845,9 @@ return View::make('students.index')->with('students',Student::all());
         }
     }
 
+    public function new_validate(){
+
+        return View::make('students.v');
+    }
+
 }

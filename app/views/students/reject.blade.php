@@ -408,11 +408,54 @@
          <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td width="50%" align="right"> {{ Form::label('date_of_birth', 'Course fees', array('class' => 'control-label'));  }}</td>
-    <td>{{ $student_payment_info_metadata->course_fees }}</td>
+    <td>
+
+    @if($student_payment_info_metadata->course_fees != 'null')
+            <?php
+            $course_fees =$student_payment_info_metadata->course_fees;
+            $course_fees_export = '';
+            if(strpos($course_fees,'Self funded')!==false){
+            $course_fees_export = $course_fees_export.', Self funded';
+            }
+            if(strpos($course_fees,'Sponsored by the Company')!==false){
+            $course_fees_export = $course_fees_export.', Sponsored by the Company';
+            }
+            if(strpos($course_fees,'Bank Loan')!==false){
+            $course_fees_export = $course_fees_export.', Bank Loan';
+            }
+
+            $course_fees_export= ltrim ($course_fees_export, ',');
+
+            //$english_language_level = str_replace('"]]','"\']',$english_language_level);
+            ?>
+            {{ $course_fees_export }}
+            @endif
+    </td>
   </tr>
   <tr>
     <td width="50%" align="right"> {{ Form::label('date_of_birth', 'Payment Status', array('class' => 'control-label'));  }}</td>
-    <td> {{ $student_payment_info_metadata->payment_status }}</td>
+    <td>
+    @if($student_payment_info_metadata->payment_status  != 'null')
+                 <?php
+                 $payment_status =$student_payment_info_metadata->payment_status ;
+                 $payment_status_export = '';
+                 if(strpos($payment_status,'Paid in full')!==false){
+                 $payment_status_export = $payment_status_export.', Paid in full';
+                 }
+                 if(strpos($payment_status,'Unpaid')!==false){
+                 $payment_status_export = $payment_status_export.', Unpaid';
+                 }
+                 if(strpos($payment_status,'Deposit paid')!==false){
+                 $payment_status_export = $payment_status_export.', Deposit paid';
+                 }
+
+                 $payment_status_export= ltrim ($payment_status_export, ',');
+
+                 //$english_language_level = str_replace('"]]','"\']',$english_language_level);
+                 ?>
+                 {{ $payment_status_export }}
+                 @endif
+    </td>
   </tr>
   <tr>
     <td width="50%" align="right">{{ Form::label('total_fee', 'Total fee', array('class' => 'control-label'));  }}</td>
@@ -597,8 +640,8 @@
 @stop
 
  @section('breadcrumb')
-    <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
-    <li>Reject Admissions</li>
+    <li><a href="{{ URL::to('/students') }}">Application</a></li>
+    <li>Reject Application</li>
     <li class="active">{{ $student->san }}</li>
   @stop
 

@@ -134,7 +134,7 @@
                     <a href="{{ URL::to('/students') }}/">
                       <i class="i i-docs icon">
                       </i>
-                      <span class="font-bold">All Admissions</span>
+                      <span class="font-bold">All Applications</span>
                     </a>
                   </li>
                   <?php } ?>
@@ -144,31 +144,31 @@
 
                                    <i class="i i-pencil2 icon">
                                    </i>
-                                   <span class="font-bold">New Admission</span>
+                                   <span class="font-bold">Add New Application</span>
                                  </a>
 
                                </li>
- <?php } ?>   <?php if (Sentry::getUser()->hasAccess('students.verify')){  ?>
+ <?php } ?>  <?php if (Sentry::getUser()->hasAccess('students.validate')){  ?>
+                                                <li >
+                                                          <a href="{{ URL::to('students/validate') }}">
+
+                                                             <i class="i  i-checked icon">
+                                                             </i>
+                                                             <span class="font-bold">Validate Admissions</span>
+                                                           </a>
+
+                                                         </li>
+                                                          <?php } ?>  <?php if (Sentry::getUser()->hasAccess('students.verify')){  ?>
                                    <li >
                                              <a href="{{ URL::to('students/verify') }}">
 
                                                 <i class="i  i-checked icon">
                                                 </i>
-                                                <span class="font-bold">Verify Admissions</span>
+                                                <span class="font-bold">Amendments</span>
                                               </a>
 
                                             </li>
-                                             <?php } ?>   <?php if (Sentry::getUser()->hasAccess('students.validate')){  ?>
-                                   <li >
-                                             <a href="{{ URL::to('students/validate') }}">
-
-                                                <i class="i  i-checked icon">
-                                                </i>
-                                                <span class="font-bold">Validate Admissions</span>
-                                              </a>
-
-                                            </li>
-                                             <?php } ?>   <?php if (Sentry::getUser()->hasAccess('students.export')){  ?>
+                                             <?php } ?>     <?php if (Sentry::getUser()->hasAccess('students.export')){  ?>
 <li >
                                              <a href="{{ URL::to('/export') }}/">
 

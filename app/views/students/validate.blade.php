@@ -44,9 +44,9 @@
                            <td>{{ $s->san }}</td>
                            <td>{{ $s->ls_student_number }}</td>
                            <td>{{ $s->title.' '.$s->initials_1.' '.$s->initials_2.' '.$s->initials_3.' '.$s->forename_1.' '.$s->forename_2.' '.$s->forename_3.' '.$s->surname }}</td>
-                           <td style="min-width: 190px;">
+                           <td style="min-width: 210px;">
                            @if (Sentry::getUser()->hasAccess('students.validate'))
-                           <a class="btn btn-sm btn-default" href="{{ URL::to('/students/'.$s->san.'/edit') }}">Edit</a>
+                           <a class="btn btn-sm btn-default" href="{{ URL::to('/students/'.$s->san.'/edit') }}">Validate</a>
                            @endif &nbsp;
                            @if (Sentry::getUser()->hasAccess('students.more'))
                                                       <a class="btn btn-sm btn-primary" href="{{ URL::to('/students/'.$s->san) }}">More</a>
@@ -71,8 +71,8 @@
 @stop
 
 @section('breadcrumb')
-   <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
-   <li class="active"><a href="{{ URL::to('/students/validate') }}">Validate Admissions</a></li>
+   <li><a href="{{ URL::to('/students') }}">Application</a></li>
+   <li class="active"><a href="{{ URL::to('/students/validate') }}">Validate Application</a></li>
  @stop
 
 @section('post_js')

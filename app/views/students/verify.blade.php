@@ -65,8 +65,8 @@
 @stop
 
  @section('breadcrumb')
-   <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
-   <li class="active"><a href="{{ URL::to('/students/verify') }}">Verify Admissions</a></li>
+   <li><a href="{{ URL::to('/students') }}">Applications</a></li>
+   <li class="active"><a href="{{ URL::to('/students/verify') }}">Amend Applications</a></li>
  @stop
 
 

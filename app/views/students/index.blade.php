@@ -87,6 +87,6 @@
  @stop
 
  @section('breadcrumb')
-   <li class="active"><a href="{{ URL::to('/students') }}">Admissions</a></li>
+   <li class="active"><a href="{{ URL::to('/students') }}">Applications</a></li>
 
  @stop
