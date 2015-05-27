@@ -596,4 +596,10 @@
 <span id="top_lssn_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">LS SN : </span>
 @stop
 
+ @section('breadcrumb')
+    <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
+    <li>Reject Admissions</li>
+    <li class="active">{{ $student->san }}</li>
+  @stop
+
 

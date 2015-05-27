@@ -165,8 +165,8 @@
     <td width="30%"> {{ Form::label('agents_laps', 'Agent/LAP', array('class' => 'control-label'));  }}</td>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td>{{ Form::select('agents_laps', $agents_laps,'',['class'=>'chosen-select col-sm-12']);  }} </td>
-    <td>{{ Form::text('agents_laps_other', '',['placeholder'=>'Please Specify','class'=>'form-control']); }}</td>
+    <td>{{ Form::select('agents_laps', $agents_laps,$data_studentSource->agent_lap,['class'=>'chosen-select col-sm-12','style'=>'width:165px']);  }} </td>
+    <td>{{ Form::text('agents_laps_other', $data_studentSource->agents_laps_other,['placeholder'=>'Please Specify','class'=>'form-control']); }}</td>
   </tr>
 </table>
 </td>
@@ -1975,9 +1975,10 @@ $('[name="instalment_payment_method_3"]').val('{{ $data_studentPaymentInfos[3]->
 
 
 
- $('[name="agents_laps"]').append("<option value='1000'>Other</option>");
- $('[name="agents_laps"]').prepend("<option value='0'>Not Applicable</option>");
-  $('[name="agents_laps"]').trigger("chosen:updated");
+$('[name="agents_laps"]').append("<option value='1000'>Other</option>");
+$('[name="agents_laps"]').prepend("<option value='0'>Please Select an Option</option>");
+ $('[name="agents_laps"]').trigger("chosen:updated");
+  $('[name="agents_laps"]').val('{{ $data_studentSource->agent_lap }}').trigger("chosen:updated");
 
  $('[name="admission_manager"]').append("<option value='1000'>Other</option>");
   $('[name="admission_manager"]').trigger("chosen:updated");
@@ -2015,8 +2016,8 @@ $('[name="instalment_payment_method_3"]').val('{{ $data_studentPaymentInfos[3]->
  //$('[name="agent_laps"]').trigger("chosen:updated");
 
 // $('[name="qualification_1_other"]').hide();
- $('[name="agents_laps_other"]').hide();
- $('[name="admission_managers_other"]').hide();
+// $('[name="agents_laps_other"]').hide();
+ //$('[name="admission_managers_other"]').hide();
 
      $('[name="qualification_1"]').change(function(){
          if($(this).val() == 0){
@@ -2052,6 +2053,32 @@ $('[name="instalment_payment_method_3"]').val('{{ $data_studentPaymentInfos[3]->
          }
   });
 
+   $('#information_source').change(function(){
+
+				$.ajax({
+                  url: "{{ url('information_source/dropdown')}}",
+                  data: {token: $('[name="_token"]').val(),option: $('#information_source').val()},
+                  success: function (data) {console.log('success');
+                  $('[name="agent_names"]').empty();
+
+                      var model = $('[name="agents_laps"]');
+                        model.empty();
+                         model.append("<option value='0'>Please Select an Option</option>");
+
+
+                        $.each(data, function(index, element) {
+
+                            model.append("<option value='"+ index +"'>" + element + "</option>");
+                        });
+
+ model.append("<option value='1000'>Other</option>");
+
+                        $('[name="agents_laps"]').trigger("chosen:updated");
+                       },
+                          type: "GET"
+
+                });
+		});
 
 
      $('#admssion_manager').change(function(){
@@ -2213,3 +2240,10 @@ $('[name="instalment_payment_method_3"]').val('{{ $data_studentPaymentInfos[3]->
 
  </style>
  @stop
+
+
+  @section('breadcrumb')
+     <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
+     <li><a href="{{ URL::to('/students/verify') }}">Verify Admissions</a></li>
+     <li class="active">{{ $data_student->san }}</li>
+   @stop

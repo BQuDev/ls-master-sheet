@@ -1284,6 +1284,32 @@ $('[name="qualification_3"]').val('1000').trigger("chosen:updated");
  });
 
 
+   $('#information_source').change(function(){
+
+				$.ajax({
+                  url: "{{ url('information_source/dropdown')}}",
+                  data: {token: $('[name="_token"]').val(),option: $('#information_source').val()},
+                  success: function (data) {console.log('success');
+                  $('[name="agent_names"]').empty();
+
+                      var model = $('[name="agents_laps"]');
+                        model.empty();
+                         model.append("<option value='0'>Please Select an Option</option>");
+
+
+                        $.each(data, function(index, element) {
+
+                            model.append("<option value='"+ index +"'>" + element + "</option>");
+                        });
+
+ model.append("<option value='1000'>Other</option>");
+
+                        $('[name="agents_laps"]').trigger("chosen:updated");
+                       },
+                          type: "GET"
+
+                });
+		});
 
     $('#admssion_manager').change(function(){
 
@@ -1437,3 +1463,10 @@ function checkSanAvailability(){
  <span id="top_san_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">SAN : {{ $data_student->san }}</span>
  <span id="top_lssn_display" class="nav navbar-nav navbar-center input-s-lg m-t m-l-n-xs" style="color: black;font-size: 24px !important">LS SN : {{ $data_student->ls_student_number }}</span>
  @stop
+
+
+ @section('breadcrumb')
+    <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
+    <li><a href="{{ URL::to('/students/validate') }}">Validate Admissions</a></li>
+    <li class="active">{{ $data_student->san }}</li>
+  @stop

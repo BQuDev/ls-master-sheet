@@ -6,13 +6,12 @@
 <div class="m-b-md">
 	<form class="navbar-form navbar-left " role="search">
         <div class="form-group">
-          <div class="input-group col-lg-12" >
-            <span class="input-group-btn">
-              <span class="btn btn-sm bg-white b-white btn-icon" style="min-height:50px;font-size:24px;"><i class="fa fa-search"></i></span>
-            </span>
-
-            <input type="text" style="min-height:50px;font-size:24px;" id="search_text" class="form-control  input-sm no-border" placeholder="Search SAN , LS SN , Name ...">
-          </div>
+             <div class="input-group" style="min-width:1080px;">
+                     <span class="input-group-btn">
+                       <span class="btn btn-sm bg-white b-white btn-icon" style="min-height:50px;font-size:24px;"><i class="fa fa-search"></i></span>
+                     </span>
+                     <input type="text" style="min-height:50px;font-size:24px;" id="search_text" class="form-control input-sm no-border" placeholder="Search SAN , LS SN , Name ...">
+                   </div>
 
         </div>
       </form>

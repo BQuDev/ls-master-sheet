@@ -423,7 +423,11 @@ return View::make('students.index')->with('students',Student::all());
             //To-Do
             // ->with('admission_managers',ApplicationAdmissionManager::where('source_id','=',1)->lists('name','id'))
 
-            ->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))
+            /*->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))*/
+
+            ->with('application_agents',ApplicationAgent::lists('name','id'))
+            ->with('application_laps',ApplicationLap::lists('name','id'))
+
             ->with('nationalities',StaticNationality::lists('name','id'))
             ->with('countries',StaticCountry::lists('name','id'))
             ->with('course_names',ApplicationCourse::lists('name','id'))
@@ -535,23 +539,27 @@ return View::make('students.index')->with('students',Student::all());
      */
     public function edit($san)
     {
-        if (Sentry::getUser()->hasAccess('students.validate')){
-        try
-        {
-            $bqu_group = Sentry::findGroupByName('BQu');
-        }
-        catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
-        {
-            echo 'Group was not found.';
-        }
+        if (Sentry::getUser()->hasAccess('students.validate')) {
+            try {
+                $bqu_group = Sentry::findGroupByName('BQu');
+            } catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e) {
+                echo 'Group was not found.';
+            }
 
-        $supervisors = DB::table('users')
-            ->join('users_groups', 'users.id', '=', 'users_groups.user_id')
-           /* ->where('users_groups.group_id', '=', $bqu_group->id)*/
-            ->select('users.id', 'users.first_name', 'users.last_name')
-            ->get();
+            $supervisors = DB::table('users')
+                ->join('users_groups', 'users.id', '=', 'users_groups.user_id')
+                /* ->where('users_groups.group_id', '=', $bqu_group->id)*/
+                ->select('users.id', 'users.first_name', 'users.last_name')
+                ->get();
 
-
+            $applicationSource = StudentSource::where('san', '=', $san)->where('san', '=', $san)->orderBy('id', 'desc')->first();
+            $information_sources = $applicationSource->source;
+            $agents_laps = ApplicationAgent::lists('name', 'id');
+            if ($information_sources == 1){
+                $agents_laps = ApplicationAgent::lists('name', 'id');}
+            elseif ($information_sources == 2){
+                $agents_laps = ApplicationLap::lists('name', 'id');
+            }
         return View::make('students.edit')
             ->with('information_sources',ApplicationSource::lists('name','id'))
             //->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
@@ -560,7 +568,9 @@ return View::make('students.index')->with('students',Student::all());
 
             //->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))
 
-            ->with('agents_laps',array_merge(ApplicationAgent::lists('name','id'), ApplicationLap::lists('name','id')))
+            ->with('agents_laps',$agents_laps)
+            ->with('application_agents',ApplicationAgent::lists('name','id'))
+            ->with('application_laps',ApplicationLap::lists('name','id'))
             ->with('nationalities',StaticNationality::lists('name','id'))
             ->with('countries',StaticCountry::lists('name','id'))
             ->with('course_names',ApplicationCourse::lists('name','id'))
@@ -751,6 +761,14 @@ return View::make('students.index')->with('students',Student::all());
         {
             echo 'Group was not found.';
         }
+            $applicationSource = StudentSource::where('san', '=', $san)->where('san', '=', $san)->orderBy('id', 'desc')->first();
+            $information_sources = $applicationSource->source;
+            $agents_laps = ApplicationAgent::lists('name', 'id');
+            if ($information_sources == 1){
+                $agents_laps = ApplicationAgent::lists('name', 'id');}
+            elseif ($information_sources == 2){
+                $agents_laps = ApplicationLap::lists('name', 'id');
+            }
 
 
         $supervisors = DB::table('users')
@@ -764,8 +782,10 @@ return View::make('students.index')->with('students',Student::all());
             ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
             //To-Do
             // ->with('admission_managers',ApplicationAdmissionManager::where('source_id','=',1)->lists('name','id'))
-
-            ->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))
+            ->with('agents_laps',$agents_laps)
+            ->with('application_agents',ApplicationAgent::lists('name','id'))
+            ->with('application_laps',ApplicationLap::lists('name','id'))
+            /*->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))*/
             ->with('nationalities',StaticNationality::lists('name','id'))
             ->with('countries',StaticCountry::lists('name','id'))
             ->with('course_names',ApplicationCourse::lists('name','id'))

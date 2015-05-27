@@ -563,3 +563,8 @@
 @stop
 
 
+  @section('breadcrumb')
+     <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
+     <li class="active">{{ $student->san }}</li>
+   @stop
+

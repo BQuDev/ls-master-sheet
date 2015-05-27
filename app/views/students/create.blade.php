@@ -7,7 +7,7 @@
 <div class="row" style="min-height: 50px;"></div>
 <div class="row">
    <div class="col-sm-12">
-      {{ Form::open(array('url' =>URL::to("/").'/students',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley')) }}
+      {{ Form::open(array('url' =>URL::to("/").'/students',  'class'=>'form-horizontal','method' => 'post','data-validate'=>'parsley','id'=>'student_create')) }}
 <div class="form-group">
          {{ Form::label('san', 'Student Application Number (SAN)', array('class' => 'col-sm-3 control-label'));  }}
          <div class="col-sm-9">{{ Form::text('san', '',['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true','minlength'=>"5",'onBlur'=>'checkSanAvailability()']); }}<span id="san_available"></span><span style="color: red" id="san_not_available"> SAN is already in the database </span> </div>
@@ -1125,6 +1125,9 @@ Added ( Pending for validation )
 $(function() {
 
 
+  $('#student_create').parsley();
+
+
 $('#supervisor').prepend("<option value='1000'>Please Select a Supervisor</option>");
 $('#supervisor').val('1000').trigger("chosen:updated");
 
@@ -1266,26 +1269,27 @@ $('[name="qualification_3_other"]').hide();
 
 
 
-    $('#admssion_manager').change(function(){
+    $('#information_source').change(function(){
 
 				$.ajax({
-                  url: "{{ url('index.php/admission_manager/dropdown')}}",
-                  data: {token: $('[name="_token"]').val(),option: $('#admssion_manager').val()},
+                  url: "{{ url('information_source/dropdown')}}",
+                  data: {token: $('[name="_token"]').val(),option: $('#information_source').val()},
                   success: function (data) {console.log('success');
                   $('[name="agent_names"]').empty();
 
-                      var model = $('[name="agent_names"]');
+                      var model = $('[name="agents_laps"]');
                         model.empty();
-                         model.append("<option value=''>Not Applicable</option>");
+                         model.append("<option value='0'>Please Select an Option</option>");
+
 
                         $.each(data, function(index, element) {
 
                             model.append("<option value='"+ index +"'>" + element + "</option>");
                         });
 
+ model.append("<option value='1000'>Other</option>");
 
-
-                        $('[name="agent_names"]').trigger("chosen:updated");
+                        $('[name="agents_laps"]').trigger("chosen:updated");
                        },
                           type: "GET"
 
