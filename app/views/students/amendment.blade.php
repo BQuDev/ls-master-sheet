@@ -56,7 +56,11 @@
   <tr>
     <td>
      <?php
-                    $app_date = explode('-',$data_studentSource->app_date)
+                    $app_date = explode('-',$data_studentSource->app_date);
+
+
+                    if(count($app_date)==1){ $app_date=  array('','','');
+                    }
                 ?>
     {{ Form::text('app_date_date',$app_date[0],['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); }}</td>
     <td> {{ Form::text('app_date_month',$app_date[1],['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); }}</td>
@@ -75,7 +79,10 @@
   <tr>
     <td>
      <?php
-                     $ams_date = explode('-',$data_studentSource->ams_date)
+                     $ams_date = explode('-',$data_studentSource->ams_date);
+
+                     if(count($ams_date)==1){ $ams_date=  array('','','');
+                                         }
                  ?>
 
      {{ Form::text('ams_date_date', $ams_date[0],['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); }}</td>
