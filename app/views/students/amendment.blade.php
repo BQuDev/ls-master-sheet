@@ -219,7 +219,11 @@
   </tr>
   <tr>
     <td width="30%">{{ Form::label('nationality', 'Nationality', array('class' => 'control-label'));  }}</td>
-    <td>{{ StaticNationality::getNameByID($data_student->nationality)  }}</td>
+    <td>
+    @if(intval($data_student->nationality)>0)
+    {{ StaticNationality::getNameByID($data_student->nationality)  }}
+    @endif
+    </td>
   </tr>
   <tr>
     <td width="30%">{{ Form::label('passport', 'Passport number', array('class' => 'control-label'));  }}</td>
@@ -393,7 +397,11 @@
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Country</label></td>
-    <td> {{ StaticCountry::getNameByID($data_ttStudentContactInformation->country)  }}</td>
+    <td>
+    @if(intval($data_ttStudentContactInformation->country))
+    {{ StaticCountry::getNameByID($data_ttStudentContactInformation->country)  }}
+    @endif
+    </td>
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Mobile</label></td>
@@ -433,7 +441,10 @@
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Country</label></td>
-    <td> {{ StaticCountry::getNameByID($data_studentContactInformation->country)  }}</td>
+    <td>
+    @if(intval($data_studentContactInformation->country))
+    {{ StaticCountry::getNameByID($data_studentContactInformation->country)  }}
+    @endif</td>
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Mobile</label></td>
