@@ -143,7 +143,7 @@ class UsersController extends \BaseController {
             // Authenticate the user
             $user = Sentry::authenticate($credentials, false);
             // return View::make('containerTrackingDetails.index');
-            return Redirect::intended('students/create');
+            return Redirect::intended('students');
             //return Redirect::route('/dashboards');
             // return Redirect::action('DashboardsController@index');
             // return View::make('containers.index');
