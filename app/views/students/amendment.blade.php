@@ -772,7 +772,7 @@
   </tr>
   <tr>
     <td width="30%">{{ Form::label('intake1', 'Intake', array('class' => 'control-label'));  }}</td>
-    <td>{{ StaticYear::getNameByID(ApplicationIntake::getRowByID($data_student_course_enrolments->intake)->year).'-'.StaticMonth::getNameByID(ApplicationIntake::getRowByID($data_student_course_enrolments->intake)->month); }}
+    <td>{{ StaticYear::getNameByID(ApplicationIntake::getRowByID($data_student_course_enrolments->intake)->year).'-'.ApplicationIntake::getRowByID($data_student_course_enrolments->intake)->name; }}
            &nbsp;</td>
   </tr>
   <tr>
@@ -826,8 +826,8 @@
   <tr>
     <td>{{ Form::label('intake_year', 'Year', array('class' => 'control-label'));  }}</td>
     <td> {{ Form::select('intake_year', $intake_year,ApplicationIntake::getRowByID($data_student_course_enrolments->intake)->year,['class'=>'chosen-select']);  }}</td>
-    <td>{{ Form::label('intake_month', 'Month', array('class' => 'control-label'));  }}</td>
-    <td>{{ Form::select('intake_month', $intake_month,ApplicationIntake::getRowByID($data_student_course_enrolments->intake)->month,['class'=>'chosen-select']);  }}</td>
+    <td>{{ Form::label('intake_month', 'Intake', array('class' => 'control-label'));  }}</td>
+    <td>{{ Form::select('intake_month', $intake_month,$data_student_course_enrolments->intake,['class'=>'chosen-select']);  }}</td>
   </tr>
 </table>
 </td>
