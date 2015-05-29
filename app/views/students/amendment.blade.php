@@ -1821,7 +1821,7 @@
                                   <td > {{ $data_student_bqu_data->application_received_date }}</td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label>Application amendment by</label></td>
+                                  <td width="30%"><label>Application input by</label></td>
                                   <td>{{ Form::hidden('application_input_by', Sentry::getUser()->id) }}
                                   <?php
                                                 $application_input_user = DB::table('student_bqu_data')->select('application_input_by')->where('san','=',$data_student->san)->where('status','=','1')->first();
@@ -1839,10 +1839,10 @@
                                                   $applicatin_supervised_user = DB::table('student_bqu_data')->select('application_input_by')->where('san','=',$data_student->san)->where('status','=','2')->first();
 
                                                   ?>
-                                                  @if($applicatin_supervised_user!= null))
+                                                  @if($applicatin_supervised_user!= null)
+ {{ User::getFirstNameByID($data_student_bqu_data->supervisor).' '.User::getLastNameByID($data_student_bqu_data->supervisor) }}</td>
 
                                   @endif
-                                   {{ User::getFirstNameByID($data_student_bqu_data->supervisor).' '.User::getLastNameByID($data_student_bqu_data->supervisor) }}</td>
                                   </tr>
                                   <tr>
                                   <td width="30%"><label>Applicant verified by BQu date</label></td>
@@ -1885,7 +1885,7 @@
                                              </div></td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label>Application input by</label></td>
+                                  <td width="30%"><label>Application amend by</label></td>
                                   <td>{{ Form::hidden('application_input_by', Sentry::getUser()->id) }} {{Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name}}</td>
                                   </tr>
                                   <tr>
