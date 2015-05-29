@@ -92,6 +92,7 @@
 
  <th>Total Fee</th>
   <th>Deposit</th>
+  <th>Payment status</th>
 
  <th>Date of payment	</th>
  <th>Method of payment	</th>
@@ -364,19 +365,39 @@ $occupation_end_date = explode('-', $studentWorkExperience->occupation_end_date)
 @endforeach
 
 <td><?php  $total_fee = DB::table('student_payment_info_metadatas')->where('san','=',$main_student)->select('total_fee')->orderBy('id', 'desc')->take(1)->get();
-
+$student_payment_info_metadatas = DB::table('student_payment_info_metadatas')->where('san','=',$main_student)->select('*')->orderBy('id', 'desc')->first();
          ?>
          @if($total_fee != null)
          {{ $total_fee[0]->total_fee }}
          @endif
          </td>
+<td>
+@if($student_payment_info_metadatas->payment_status != 'null')
+<?php
+$payment_status_export = '';
+if(strpos($student_payment_info_metadatas->payment_status,'Paid in full')!==false){
+$payment_status_export = $payment_status_export.', Paid in full';
+}
+if(strpos($student_payment_info_metadatas->payment_status,'Unpaid')!==false){
+$payment_status_export = $payment_status_export.', Unpaid';
+}
+if(strpos($student_payment_info_metadatas->payment_status,'Deposit paid')!==false){
+$payment_status_export = $payment_status_export.', Deposit paid';
+}
+$payment_status_export= ltrim ($payment_status_export, ',');
 
+
+?>
+{{ $payment_status_export }}
+@endif
+</td>
 <?php
 $studentPaymentInfos = StudentPaymentInfo::lastFourRecordsBySAN($main_student)->reverse();
 ?>
 
 @foreach($studentPaymentInfos as $studentPaymentInfo)
 <td>{{ $studentPaymentInfo->payment_amount; }}</td>
+
 
 <td>
 @if(intval($studentPaymentInfo->date)>0)
