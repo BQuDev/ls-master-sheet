@@ -2038,6 +2038,8 @@ $('[name="agents_laps"]').prepend("<option value='0'>Please Select an Option</op
  $('[name="admission_manager"]').prepend("<option value='0'>Not Applicable</option>");
   $('[name="admission_manager"]').trigger("chosen:updated");
 
+ $('[name="admission_manager"]').val('{{ $data_studentSource->admission_manager }}').trigger("chosen:updated");
+
  $('[name="qualification_1"]').append("<option value='0'>Other</option>");
  $('[name="qualification_1"]').trigger("chosen:updated");
 
