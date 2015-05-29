@@ -12,6 +12,7 @@
 */
 
 Route::get('information_source/dropdown','StudentsController@information_source_dropdown');
+Route::get('intake_month/dropdown','StudentsController@intake_month_dropdown');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('checkSanAvailability','StudentsController@checkSanAvailability');
 Route::get('/', 'UsersController@login');

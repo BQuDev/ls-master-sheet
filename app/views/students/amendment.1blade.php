@@ -16,7 +16,7 @@
        <div class="panel-body">
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
-    <td width="30%" align="left">{{ Form::label('san', 'Student Application Number (SAN)', array('class' => 'control-label'));  }}</td>
+    <td width="30%">{{ Form::label('san', 'Student Application Number (SAN)', array('class' => 'control-label'));  }}</td>
     <td width="53%">{{ $data_student->san  }}</td>
   </tr>
   <tr>
@@ -43,7 +43,7 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td width="30%"> {{ Form::label('san', 'Student Application Number (SAN)', array('class' => 'control-label'));  }}</td>
-    <td>{{  $data_student->san }} {{ Form::hidden('san', $data_student->san ) }} </td>
+    <td>{{ Form::text('san',  $data_student->san ,['placeholder'=>'Student Application Number (SAN)','class'=>'form-control','data-required'=>'true','minlength'=>"5"]); }}</td>
   </tr>
   <tr>
     <td width="30%">{{ Form::label('ls_student_number', 'LS Student Number', array('class' => 'control-label'));  }}</td>
@@ -56,11 +56,7 @@
   <tr>
     <td>
      <?php
-                    $app_date = explode('-',$data_studentSource->app_date);
-
-
-                    if(count($app_date)==1){ $app_date=  array('','','');
-                    }
+                    $app_date = explode('-',$data_studentSource->app_date)
                 ?>
     {{ Form::text('app_date_date',$app_date[0],['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); }}</td>
     <td> {{ Form::text('app_date_month',$app_date[1],['placeholder'=>'MM','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); }}</td>
@@ -79,10 +75,7 @@
   <tr>
     <td>
      <?php
-                     $ams_date = explode('-',$data_studentSource->ams_date);
-
-                     if(count($ams_date)==1){ $ams_date=  array('','','');
-                                         }
+                     $ams_date = explode('-',$data_studentSource->ams_date)
                  ?>
 
      {{ Form::text('ams_date_date', $ams_date[0],['placeholder'=>'DD','class'=>'form-control','style'=>'width:50px !important','data-type'=>'number','maxlength'=>"2",'data-parsley-type'=>'digits']); }}</td>
@@ -226,11 +219,7 @@
   </tr>
   <tr>
     <td width="30%">{{ Form::label('nationality', 'Nationality', array('class' => 'control-label'));  }}</td>
-    <td>
-    @if(intval($data_student->nationality)>0)
-    {{ StaticNationality::getNameByID($data_student->nationality)  }}
-    @endif
-    </td>
+    <td>{{ StaticNationality::getNameByID($data_student->nationality)  }}</td>
   </tr>
   <tr>
     <td width="30%">{{ Form::label('passport', 'Passport number', array('class' => 'control-label'));  }}</td>
@@ -404,11 +393,7 @@
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Country</label></td>
-    <td>
-    @if(intval($data_ttStudentContactInformation->country))
-    {{ StaticCountry::getNameByID($data_ttStudentContactInformation->country)  }}
-    @endif
-    </td>
+    <td> {{ StaticCountry::getNameByID($data_ttStudentContactInformation->country)  }}</td>
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Mobile</label></td>
@@ -448,10 +433,7 @@
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Country</label></td>
-    <td>
-    @if(intval($data_studentContactInformation->country))
-    {{ StaticCountry::getNameByID($data_studentContactInformation->country)  }}
-    @endif</td>
+    <td> {{ StaticCountry::getNameByID($data_studentContactInformation->country)  }}</td>
   </tr>
   <tr>
     <td width="30%"><label class="control-label">Mobile</label></td>
@@ -1464,57 +1446,11 @@
                       <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td> {{ Form::label('date_of_birth', 'Course fees', array('class' => 'control-label'));  }}</td>
-    <td>
-
-
-     @if( $data_student_payment_info_metadata->course_fees != 'null')
-            <?php
-            $course_fees = $data_student_payment_info_metadata->course_fees;
-            $course_fees_export = '';
-            if(strpos($course_fees,'Self funded')!==false){
-            $course_fees_export = $course_fees_export.', Self funded';
-            }
-            if(strpos($course_fees,'Sponsored by the Company')!==false){
-            $course_fees_export = $course_fees_export.', Sponsored by the Company';
-            }
-            if(strpos($course_fees,'Bank Loan')!==false){
-            $course_fees_export = $course_fees_export.', Bank Loan';
-            }
-
-            $course_fees_export= ltrim ($course_fees_export, ',');
-
-            //$english_language_level = str_replace('"]]','"\']',$english_language_level);
-            ?>
-            {{ $course_fees_export }}
-            @endif
-
-    &nbsp;</td>
+    <td>{{ $data_student_payment_info_metadata->course_fees }}&nbsp;</td>
   </tr>
   <tr>
     <td> {{ Form::label('date_of_birth', 'Payment Status', array('class' => 'control-label'));  }}</td>
-    <td>
-    @if($data_student_payment_info_metadata->payment_status  != 'null')
-                 <?php
-                 $payment_status =$data_student_payment_info_metadata->payment_status ;
-                 $payment_status_export = '';
-                 if(strpos($payment_status,'Paid in full')!==false){
-                 $payment_status_export = $payment_status_export.', Paid in full';
-                 }
-                 if(strpos($payment_status,'Unpaid')!==false){
-                 $payment_status_export = $payment_status_export.', Unpaid';
-                 }
-                 if(strpos($payment_status,'Deposit paid')!==false){
-                 $payment_status_export = $payment_status_export.', Deposit paid';
-                 }
-
-                 $payment_status_export= ltrim ($payment_status_export, ',');
-
-                 //$english_language_level = str_replace('"]]','"\']',$english_language_level);
-                 ?>
-                 {{ $payment_status_export }}
-                 @endif
-
-    &nbsp;</td>
+    <td>{{ $data_student_payment_info_metadata->payment_status }}&nbsp;</td>
   </tr>
   <tr>
     <td>{{ Form::label('total_fee', 'Total fee', array('class' => 'control-label'));  }}</td>
@@ -1815,13 +1751,15 @@
        <section class="panel panel-default">
                                   <header class="panel-heading font-bold">BQu only</header>
                                   <div class="panel-body">
-                                  <table cellpadding="5">
+                                  <table>
                                   <tr>
-                                  <td width="30%"><label>Application received to BQu date</label></td>
-                                  <td > {{ $data_student_bqu_data->application_received_date }}</td>
+                                  <td width="260">Application received to BQu date </td>
+                                  <td></td>
+                                  <td> {{ $data_student_bqu_data->application_received_date }}</td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label>Application input by</label></td>
+                                  <td>Application amendment by</td>
+                                  <td></td>
                                   <td>{{ Form::hidden('application_input_by', Sentry::getUser()->id) }}
                                   <?php
                                                 $application_input_user = DB::table('student_bqu_data')->select('application_input_by')->where('san','=',$data_student->san)->where('status','=','1')->first();
@@ -1832,29 +1770,33 @@
                                  @endif
                                   </td></tr>
                                   <tr>
-                                  <td width="30%"> <label>Supervisor</label></td>
+                                  <td> Supervisor</td>
+                                  <td></td>
                                   <td>
 
                                   <?php
                                                   $applicatin_supervised_user = DB::table('student_bqu_data')->select('application_input_by')->where('san','=',$data_student->san)->where('status','=','2')->first();
 
                                                   ?>
-                                                  @if($applicatin_supervised_user!= null)
- {{ User::getFirstNameByID($data_student_bqu_data->supervisor).' '.User::getLastNameByID($data_student_bqu_data->supervisor) }}</td>
+                                                  @if($applicatin_supervised_user!= null))
 
                                   @endif
+                                   {{ User::getFirstNameByID($data_student_bqu_data->supervisor).' '.User::getLastNameByID($data_student_bqu_data->supervisor) }}</td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label>Applicant verified by BQu date</label></td>
+                                  <td>Applicant verified by BQu date</td>
+                                  <td></td>
                                   <td>  {{ $data_student_bqu_data->verified_date }}   </td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label> Status </label></td>
+                                  <td> Status </td>
+                                  <td></td>
                                   <td>{{  StaticDataStatus::getNameByID($data_student_bqu_data->status) }}
                                       </td>
                                   </tr>
                                   <tr>
-                                                                    <td width="30%"><label> Notes</label> </td>
+                                                                    <td> Notes </td>
+                                                                    <td></td>
                                                                     <td>{{ $data_student_bqu_data->notes }}</td>
                                                                     </tr>
                                   </table>
@@ -1872,9 +1814,10 @@
 
 
 <div class="panel-body">
-                                  <table cellpadding="5">
+                                  <table>
                                   <tr>
-                                  <td width="30%"><label>Application received to BQu date</label> </td>
+                                  <td width="260">Application received to BQu date </td>
+                                  <td></td>
                                   <td><div class="form-inline">
                                     <?php
                                                $application_received_date = explode('-',$data_student_bqu_data->application_received_date)
@@ -1885,11 +1828,13 @@
                                              </div></td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label>Application amend by</label></td>
+                                  <td>Application input by</td>
+                                  <td></td>
                                   <td>{{ Form::hidden('application_input_by', Sentry::getUser()->id) }} {{Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name}}</td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label> Supervisor</label></td>
+                                  <td> Supervisor</td>
+                                  <td></td>
                                   <td> <select data-placeholder="Choose a Supervisors" class="chosen-select col-sm-12" id="supervisor" name="supervisor">
 @foreach($supervisors as $supervisor)
                                 <option value="{{ $supervisor->id }}">{{ $supervisor->first_name.' '.$supervisor->last_name }}</option>
@@ -1898,7 +1843,8 @@
                                                                                                              </td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label>Applicant verified by BQu date</label></td>
+                                  <td>Applicant verified by BQu date</td>
+                                  <td></td>
                                   <td>                    <?php
                                            $applicant_verified_by_bqu_date = explode('-',$data_student_bqu_data->verified_date)
                               ?>
@@ -1912,12 +1858,14 @@
                                                                                                                             </td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"> <label>Status</label> </td>
-                                  <td>{{ Form::hidden('admission_status','3') }}{{ Form::select('admission_status', $application_data_status,$data_student_bqu_data->status,['class'=> 'chosen-select col-sm-12']);  }}
+                                  <td> Status </td>
+                                  <td></td>
+                                  <td>{{ Form::hidden('admission_status','3') }}
                                                                              </td>
                                   </tr>
                                   <tr>
-                                  <td width="30%"><label> Notes</label> </td>
+                                  <td> Notes </td>
+                                  <td></td>
                                   <td>{{ Form::textarea('notes', $data_student_bqu_data->notes,['placeholder'=>'','class'=>'form-control']); }}</td>
                                   </tr>
                                   </table>
@@ -1938,7 +1886,7 @@
                                                                               <label>
                                                                              {{ Form::checkbox('confirm_save', '1',false,array('data-required'=>'true')); }}
                                                                               <i></i>
-                                                                              Confirm Amendment
+                                                                              Confirm Save
                                                                               </label>
                                                                            </div>
                                                                         </div>
@@ -1947,7 +1895,7 @@
                                                                                                 <div class="form-group">
                                                                                                    <label class="col-sm-3 control-label"> </label>
                                                                                                    <div class="col-sm-9">
-                                                                                                   {{ Form::submit('Amend', array('class' => 'btn btn-s-md btn-primary')) }}
+                                                                                                   {{ Form::submit('Save', array('class' => 'btn btn-s-md btn-primary')) }}
                                                                                                    </div>
                                                                                                 </div>
                               </div>
@@ -2037,8 +1985,6 @@ $('[name="agents_laps"]').prepend("<option value='0'>Please Select an Option</op
 
  $('[name="admission_manager"]').prepend("<option value='0'>Not Applicable</option>");
   $('[name="admission_manager"]').trigger("chosen:updated");
-
- $('[name="admission_manager"]').val('{{ $data_studentSource->admission_manager }}').trigger("chosen:updated");
 
  $('[name="qualification_1"]').append("<option value='0'>Other</option>");
  $('[name="qualification_1"]').trigger("chosen:updated");
@@ -2297,7 +2243,7 @@ $('[name="agents_laps"]').prepend("<option value='0'>Please Select an Option</op
 
 
   @section('breadcrumb')
-     <li><a href="{{ URL::to('/students') }}">Application</a></li>
-     <li><a href="{{ URL::to('/students/verify') }}">Amendment Application</a></li>
+     <li><a href="{{ URL::to('/students') }}">Admissions</a></li>
+     <li><a href="{{ URL::to('/students/verify') }}">Amendment Applications</a></li>
      <li class="active">{{ $data_student->san }}</li>
    @stop

@@ -73,7 +73,8 @@ class StudentsController extends \BaseController {
             ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
             ->with('application_status',ApplicationStatus::lists('name','id'))
             ->with('intake_year',StaticYear::lists('name','id'))
-            ->with('intake_month',StaticMonth::lists('name','id'))
+            /*->with('intake_month',StaticMonth::lists('name','id'))*/
+            ->with('intake_month',ApplicationIntake::lists('name','id'))
             ->with('supervisors',$supervisors);
       //  ->with('intake_year',DB::table('application_intakes')->join('intake_year', 'intake_year.id', '=', 'application_intakes.year')->select('intake_year.id', 'intake_year.name')->groupBy('intake_year.name')->lists( 'intake_year.name','years.id'));
         //To-Do
@@ -794,6 +795,7 @@ return View::make('students.index')->with('students',Student::all());
             ->with('education_qualifications',ApplicationEducationalQualification::lists('name','id'))
             ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
             ->with('application_status',ApplicationStatus::lists('name','id'))
+            ->with('application_data_status',StaticDataStatus::lists('name','id'))
             ->with('intake_year',StaticYear::lists('name','id'))
             ->with('intake_month',StaticMonth::lists('name','id'))
             // Getting Saved DATA
@@ -843,6 +845,11 @@ return View::make('students.index')->with('students',Student::all());
         else{
             return ApplicationLap::lists('name','id');
         }
+    }
+    public function intake_month_dropdown(){
+        $year = Input::get('option');
+       return ApplicationIntake::where('year','=',$year)->lists('name','id');
+      // return DB::table('application_intakes')->select('name','id')->where('year','=',$year)->get();
     }
 
     public function new_validate(){

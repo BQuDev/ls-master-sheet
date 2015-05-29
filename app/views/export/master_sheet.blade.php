@@ -91,9 +91,9 @@
  <th>	Curently working	</th>
 
  <th>Total Fee</th>
-  <th>Deposit</th>
-  <th>Payment status</th>
 
+  <th>Payment status</th>
+<th>Deposit</th>
  <th>Date of payment	</th>
  <th>Method of payment	</th>
  <th>Installment 1	</th>
