@@ -54,6 +54,7 @@
  <th>Awarding body	</th>
 
  <th>Intake	</th>
+ <th>Intake	Year</th>
  <th>Study mode	</th>
  <th>English language level</th>
  <th>Qualification 1	</th>
@@ -276,8 +277,11 @@ $date_of_birth = explode('-', Student::lastRecordBySAN($main_student)->date_of_b
 
 <td>
 
-{{ StaticYear::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->intake)->year).'-'.StaticMonth::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->intake)->month); }}</td><!--To-Do-->
+{{ ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->intake)->name; }}</td><!--To-Do-->
+
+<td>{{ StaticYear::getNameByID(ApplicationIntake::getRowByID(StudentCourseEnrolment::lastRecordBySAN($main_student)->intake)->year) }}</td>
 <td>{{ StudentCourseEnrolment::lastRecordBySAN($main_student)->study_mode; }}</td>
+
 <td>
 @if(StudentEnglishLangLevels::lastRecordBySAN($main_student)->english_language_level != 'null')
 <?php
