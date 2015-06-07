@@ -852,9 +852,146 @@ return View::make('students.index')->with('students',Student::all());
       // return DB::table('application_intakes')->select('name','id')->where('year','=',$year)->get();
     }
 
-    public function new_validate(){
+    public function new_validate($san){
 
-        return View::make('students.v');
+       // return View::make('students.v');
+        return View::make('students.more_validate')     ->with('information_sources',ApplicationSource::lists('name','id'))
+            ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
+            //To-Do
+            // ->with('admission_managers',ApplicationAdmissionManager::where('source_id','=',1)->lists('name','id'))
+
+            /*->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))*/
+
+            ->with('application_agents',ApplicationAgent::lists('name','id'))
+            ->with('application_laps',ApplicationLap::lists('name','id'))
+
+            ->with('nationalities',StaticNationality::lists('name','id'))
+            ->with('countries',StaticCountry::lists('name','id'))
+            ->with('course_names',ApplicationCourse::lists('name','id'))
+            ->with('awarding_bodies',ApplicationAwardingBody::lists('name','id'))
+
+            ->with('education_qualifications',ApplicationEducationalQualification::lists('name','id'))
+            ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
+            ->with('application_status',ApplicationStatus::lists('name','id'))
+            ->with('intake_year',StaticYear::lists('name','id'))
+            ->with('intake_month',StaticMonth::lists('name','id'))
+            // Getting Saved DATA
+            ->with('student',Student::where('san','=',$san)->orderBy('id','desc')->first())
+            ->with('studentSource',StudentSource::where('san','=',$san)->orderBy('id','desc')->first())
+            ->with('ttStudentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',1)
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',2)
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentContactInformationOnline',DB::table('student_contact_information_onlines')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_contact_information_kin_detailes',DB::table('student_contact_information_kin_detailes')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_course_enrolments',DB::table('student_course_enrolments')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_educational_qualifications',StudentEducationalQualification::lastThreeRecordsBySAN($san)->reverse())
+            ->with('student_english_lang_levels',DB::table('student_english_lang_levels')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_work_experiences',StudentWorkExperience::lastThreeRecordsBySAN($san)->reverse())
+            ->with('student_payment_info_metadata',DB::table('student_payment_info_metadatas')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentPaymentInfos',StudentPaymentInfo::lastFourRecordsBySAN($san)->reverse())
+            ->with('student_bqu_data',DB::table('student_bqu_data')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first());
+    }
+
+    public function new_validate_post(){
+        $student=StudentBquData::where('san','=',Input::get('san'))->orderBy('id','desc')
+            ->first()->replicate();
+
+        $student->status = 2;
+        $student->created_by = Sentry::getUser()->id;
+        $student->save();
+        return View::make('students.index')
+            ->with('students', DB::table('students')->select(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number ,san'))
+                ->groupBy('san')
+                ->get());
+    }
+
+    public function new_verify($san){
+
+       // return View::make('students.v');
+        return View::make('students.more_verify')     ->with('information_sources',ApplicationSource::lists('name','id'))
+            ->with('admission_managers',ApplicationAdmissionManager::lists('name','id'))
+            //To-Do
+            // ->with('admission_managers',ApplicationAdmissionManager::where('source_id','=',1)->lists('name','id'))
+
+            /*->with('agents_laps',ApplicationAdmissionManager::lists('name','id'))*/
+
+            ->with('application_agents',ApplicationAgent::lists('name','id'))
+            ->with('application_laps',ApplicationLap::lists('name','id'))
+
+            ->with('nationalities',StaticNationality::lists('name','id'))
+            ->with('countries',StaticCountry::lists('name','id'))
+            ->with('course_names',ApplicationCourse::lists('name','id'))
+            ->with('awarding_bodies',ApplicationAwardingBody::lists('name','id'))
+
+            ->with('education_qualifications',ApplicationEducationalQualification::lists('name','id'))
+            ->with('method_of_payment',ApplicationPaymentInfoMethodsOfPayment::lists('name','id'))
+            ->with('application_status',ApplicationStatus::lists('name','id'))
+            ->with('intake_year',StaticYear::lists('name','id'))
+            ->with('intake_month',StaticMonth::lists('name','id'))
+            // Getting Saved DATA
+            ->with('student',Student::where('san','=',$san)->orderBy('id','desc')->first())
+            ->with('studentSource',StudentSource::where('san','=',$san)->orderBy('id','desc')->first())
+            ->with('ttStudentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',1)
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentContactInformation',DB::table('student_contact_informations')
+                ->where('student_contact_information_type','=',2)
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentContactInformationOnline',DB::table('student_contact_information_onlines')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_contact_information_kin_detailes',DB::table('student_contact_information_kin_detailes')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_course_enrolments',DB::table('student_course_enrolments')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_educational_qualifications',StudentEducationalQualification::lastThreeRecordsBySAN($san)->reverse())
+            ->with('student_english_lang_levels',DB::table('student_english_lang_levels')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('student_work_experiences',StudentWorkExperience::lastThreeRecordsBySAN($san)->reverse())
+            ->with('student_payment_info_metadata',DB::table('student_payment_info_metadatas')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first())
+            ->with('studentPaymentInfos',StudentPaymentInfo::lastFourRecordsBySAN($san)->reverse())
+            ->with('student_bqu_data',DB::table('student_bqu_data')
+                ->where('san','=',$san)->orderBy('id','desc')
+                ->first());
+    }
+
+    public function new_verify_post(){
+
+
+        $student=StudentBquData::where('san','=',Input::get('san'))->orderBy('id','desc')
+            ->first()->replicate();
+
+        $student->status = 3;
+        $student->created_by = Sentry::getUser()->id;
+        $student->save();
+        return View::make('students.index')
+            ->with('students', DB::table('students')->select(DB::raw('max(id) as id,title,initials_1,initials_2,initials_3,forename_1,forename_2,forename_3,surname,ls_student_number ,san'))
+                ->groupBy('san')
+                ->get());
     }
 
 }
