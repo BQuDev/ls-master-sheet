@@ -14,7 +14,7 @@
                         <div class="form-group">
                           <label class="col-lg-2 control-label">LS Student Number</label>
                           <div class="col-lg-10">
-                             {{ Form::select('ls_student_number', $ls_student_numbers,'',['class'=>'chosen-select col-sm-12']);  }}
+                             {{ Form::select('ls_student_number', $ls_student_numbers,Request::segment(3),['class'=>'chosen-select col-sm-12']);  }}
                           </div>
                         </div>
                         <div class="form-group">

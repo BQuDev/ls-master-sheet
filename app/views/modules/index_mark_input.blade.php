@@ -46,9 +46,7 @@
                            <td>{{ $s->title.' '.$s->initials_1.' '.$s->initials_2.' '.$s->initials_3.' '.$s->forename_1.' '.$s->forename_2.' '.$s->forename_3.' '.$s->surname }}</td>
 
                                      <td style="min-width: 160px;">
-                          @if (Sentry::getUser()->hasAccess('modules.show_marks_input'))
-                                                     <a class="btn btn-sm btn-primary" href="{{ URL::to('/modules/marks-input/'.$s->ls_student_number) }}">More</a>&nbsp;&nbsp;
-                          @endif
+
                           @if (Sentry::getUser()->hasAccess('modules.create_marks_input'))
                                                      <a class="btn btn-sm btn-warning" href="{{ URL::to('/modules/marks-input/create') }}">Add Marks</a>&nbsp;&nbsp;
                           @endif
