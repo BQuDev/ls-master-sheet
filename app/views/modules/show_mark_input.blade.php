@@ -36,6 +36,6 @@
  @section('breadcrumb')
    <li><a href="{{ URL::to('/modules') }}">Modules</a></li>
    <li><a href="{{ URL::to('/modules/marks-input/') }}">Marks - Input</a></li>
-   <li class="active"><a href="#">ls-sn</a></li>
+   <li class="active"><a href="#"></a></li>
 
  @stop

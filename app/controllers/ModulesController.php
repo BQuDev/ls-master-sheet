@@ -117,7 +117,7 @@ class ModulesController extends \BaseController {
         $ls_student_number = Input::get('ls_student_number');
         $element = Input::get('element');
         //$student_module_marks = DB::table('student_module_marks_input')->select('*')->where('ls_student_number','=',$ls_student_number)->where('element','=',$element)->get();
-        $student_module_marks = StudentModuleMarksInput::where('ls_student_number','=',$ls_student_number)->where('element','=',$element)->first()->toArray();
+        $student_module_marks = StudentModuleMarksInput::where('ls_student_number','=',$ls_student_number)->where('element','=',$element)->orderBy('id', 'desc')->first()->toArray();
         return $student_module_marks;
     }
 
@@ -134,7 +134,7 @@ class ModulesController extends \BaseController {
         $student_module_marks_input->retake_remark = Input::get('retake_remark');
         $student_module_marks_input->element = Input::get('element');
         $student_module_marks_input->comments = Input::get('comments');
-
+        $student_module_marks_input->created_by = Sentry::getUser()->id;
         if($student_module_marks_input->save()){
             return 'Added';
         }else{

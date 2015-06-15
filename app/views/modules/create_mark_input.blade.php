@@ -336,6 +336,6 @@ var stack_bottomright = {"dir1": "down", "dir2": "left"};
  @section('breadcrumb')
    <li><a href="{{ URL::to('/modules') }}">Modules</a></li>
    <li><a href="{{ URL::to('/modules/marks-input/') }}">Marks - Input</a></li>
-   <li class="active"><a href="{{ URL::to('/modules/marks-input/reate') }}">Add Marks</a></li>
+   <li class="active">Add Marks</li>
 
  @stop
