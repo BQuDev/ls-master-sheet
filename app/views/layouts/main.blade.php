@@ -179,7 +179,17 @@
 
                                             </li>
                                              <?php } ?>
+ <?php if (Sentry::getUser()->hasAccess('modules.index_marks_input')){  ?>
+                                                                                               <li >
+                                                                                            <a href="{{ URL::to('/modules/marks-input') }}/">
 
+                                                                                               <i class="i i-pencil2 icon">
+                                                                                               </i>
+                                                                                               <span class="font-bold">Marks Input</span>
+                                                                                             </a>
+
+                                                                                           </li>
+                                                             <?php } ?>
 <!--<li style="position: absolute; bottom: 5px;width: 100%">
                       <a href="{{ URL::to('/contact-bqu') }}/">
                         <i class="i i-circle-sm text-danger-dk"></i>

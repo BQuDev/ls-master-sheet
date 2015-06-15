@@ -441,12 +441,21 @@ $application_received_date = explode('-', StudentBquData::lastRecordBySAN($main_
 {{ sprintf("%02d", $application_received_date[0]).'/'.sprintf("%02d", $application_received_date[1]).'/'.$application_received_date[2] }}
 @endif
 </td>
-<td>{{ User::getFirstNameByID(StudentBquData::lastRecordBySAN($main_student)->application_input_by); }}</td>
 <td>
+<?php  $app_input_data = DB::table('student_bqu_data')->where('san','=',$main_student)->where('status','=','1')->select('*')->orderBy('id', 'desc')->first();
+
+ ?>
+@if($app_input_data != null)
+{{ User::getFirstNameByID(intval($app_input_data->application_input_by)); }}
+@endif
+</td>
+<td>
+@if($app_input_data != null)
     <?php
-    $application_created_at= date_parse(StudentBquData::lastRecordBySAN($main_student)->created_at);
+    $application_created_at= date_parse($app_input_data->created_at);
     ?>
     {{ sprintf("%02d", $application_created_at["day"]).'/'.sprintf("%02d", $application_created_at["month"]).'/'.$application_created_at["year"] }}
+  @endif
    </td>
 
     <td>

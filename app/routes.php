@@ -42,9 +42,19 @@ Route::get('/logout', 'UsersController@logout');
     Route::get('/students/{san}/ve','StudentsController@new_verify');
     Route::post('/students/verify','StudentsController@new_verify_post');
 
+    Route::get('/modules/marks-input/create','ModulesController@markInputCreate');
+    Route::post('/modules/marks-input/create','ModulesController@saveMarkInputs');
+    Route::get('modules/marks-input/create/module/dropdown','ModulesController@getModulesByLsStudentNumber');
+    Route::get('modules/marks-input/create/elements/dropdown','ModulesController@getElementsByModuleID');
+    Route::get('modules/marks-input/get_student_marks','ModulesController@getStudentMarks');
+
+    Route::get('/modules/marks-input','ModulesController@markInputIndex');
+    Route::get('/modules/marks-input/{ls_student_number}','ModulesController@markInputShow');
+
+
 Route::resource('students','StudentsController');
 Route::resource('users','UsersController');
-
+    Route::resource('modules','ModulesController');
 
 
 });
