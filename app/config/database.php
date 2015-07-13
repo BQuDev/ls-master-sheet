@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'todel_6',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'forge',
+			'username'  => 'forge',
+			'password'  => '5LcXCjP89hqjX03O6dXg',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
