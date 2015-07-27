@@ -63,12 +63,12 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
 				$mark2 = (.9 * $mark1) + (.2*rand ( 0, 1 ));
 				
 				
-				$mark_update = DB::table('students_marks_IM_A_01_glanced')
+				$mark_update = DB::table('students_marks_IM_a_01_glanced')
                 ->where('san', $san)
                 ->update(array('m1' => $mark1,'m2' => $mark2));
 				return 1;
 			}else{
-				$mark_update = DB::table('students_marks_IM_A_01_glanced')
+				$mark_update = DB::table('students_marks_IM_a_01_glanced')
                 ->where('san', $san)
                 ->update(array('m1' => null,'m2' => null));
 			}
@@ -76,7 +76,7 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
 			
 				
         }else{ 
-			// If there are no row in 'students_marks_IM_A_01_glanced'
+			// If there are no row in 'students_marks_IM_a_01_glanced'
 			$mark_update = new StudentMarksIMA01Glanced();
             $mark_update->san = $san;
             $mark_update->ls_student_number = $ls_student_number;
