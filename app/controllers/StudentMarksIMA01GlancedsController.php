@@ -101,7 +101,7 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
 			
 $pdf->loadHTML('<table width="75%" align="center" border="1" cellspacing="1" cellpadding="2">
   <tr>
-    <td  colspan="5" ><p style="text-align:center"><img src="/images/top_img.jpg" width="711" height="auto" /></p></td>
+    <td  colspan="5" ><p style="text-align:center"><img src="https://lsadmin.net/images/top_img.jpg" width="711" height="auto" /></p></td>
   </tr>
   </table>
   <br />
@@ -226,7 +226,7 @@ $content = '<html xmlns="http://www.w3.org/1999/xhtml">
 
 <table width="75%" align="center" border="1" cellspacing="1" cellpadding="2">
   <tr>
-    <td  colspan="5" ><p style="text-align:center"><img src="/images/top_img.jpg" width="711" height="auto" /></p></td>
+    <td  colspan="5" ><p style="text-align:center"><img src="https://lsadmin.net/images/top_img.jpg" width="711" height="auto" /></p></td>
   </tr>
   </table>
   <br />
