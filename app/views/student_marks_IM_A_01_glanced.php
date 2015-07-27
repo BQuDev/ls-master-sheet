@@ -165,7 +165,7 @@
                                              <?php } ?>
  <?php if (Sentry::getUser()->hasAccess('modules.index_marks_input')){  ?>
                                                                                                <li >
-                                                                                            <a href="/marks-input">
+                                                                                            <a href="/student-marks-IM-A-01-glanced">
 
                                                                                                <i class="i i-pencil2 icon">
                                                                                                </i>
