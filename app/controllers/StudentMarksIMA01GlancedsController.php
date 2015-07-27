@@ -35,14 +35,14 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
 /*
         ;*/
 
-        $has_row = DB::table('students_marks_IM_A_01_glanced')->where('san','=',$san)->get();
+        $has_row = DB::table('students_marks_IM_a_01_glanced')->where('san','=',$san)->get();
         if($has_row){
 			
-            $mark_update = DB::table('students_marks_IM_A_01_glanced')
+            $mark_update = DB::table('students_marks_IM_a_01_glanced')
                 ->where('san', $san)
                 ->update(array($col => $val));
 				
-			$row = DB::table('students_marks_IM_A_01_glanced')->where('san','=',$san)->first();
+			$row = DB::table('students_marks_IM_a_01_glanced')->where('san','=',$san)->first();
 			
 			
 			//Calculate marks
