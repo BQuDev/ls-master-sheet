@@ -241,7 +241,7 @@
         <!-- /.aside -->
         <section id="content">
           <section class="vbox">          
-            
+            <section class="scrollable wrapper">
 
 
 <head>
@@ -269,6 +269,7 @@
 <div ng-controller="MainCtrl">
 
 <br>
+
 <div class="row">
 
 <div class="col-sm-12">
@@ -353,7 +354,6 @@
         </section>
       </section>
     </section>
-  </section>
   <script src="../js/jquery.min.js"></script>
   <!-- Bootstrap -->
   <script src="../js/bootstrap.js"></script>
