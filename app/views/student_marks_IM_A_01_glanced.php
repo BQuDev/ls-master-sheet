@@ -27,7 +27,7 @@
           <i class="fa fa-bars"></i>
         </a>
         <a href="/" class="navbar-brand">
-          <img src="/images/logo.png" class="m-r-sm" alt="lsadmin.net">
+          <img src="https://lsadmin.net/images/logo.png" class="m-r-sm" alt="lsadmin.net">
         </a>
         <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
           <i class="fa fa-cog"></i>
