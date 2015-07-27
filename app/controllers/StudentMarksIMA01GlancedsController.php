@@ -17,7 +17,7 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
     public function students_for_marks_IM_A_01_glanced(){
         //return Student::all();
         return DB::table('students')
-            ->leftJoin('students_marks_IM_a_01_glanced','students.san','=','students_marks_IM_a_01_glanced.san')
+            ->leftJoin('xxx','students.san','=','xxx.san')
             ->select('students.san','students.ls_student_number','c1','c2','c3','c4','c5','c6','m1','m2','ageed_mark')
             ->where('students.ls_student_number','>',0)
             ->groupBy('students.san')
@@ -35,14 +35,14 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
 /*
         ;*/
 
-        $has_row = DB::table('students_marks_IM_a_01_glanced')->where('san','=',$san)->get();
+        $has_row = DB::table('xxx')->where('san','=',$san)->get();
         if($has_row){
 			
-            $mark_update = DB::table('students_marks_IM_a_01_glanced')
+            $mark_update = DB::table('xxx')
                 ->where('san', $san)
                 ->update(array($col => $val));
 				
-			$row = DB::table('students_marks_IM_a_01_glanced')->where('san','=',$san)->first();
+			$row = DB::table('xxx')->where('san','=',$san)->first();
 			
 			
 			//Calculate marks
@@ -63,12 +63,12 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
 				$mark2 = (.9 * $mark1) + (.2*rand ( 0, 1 ));
 				
 				
-				$mark_update = DB::table('students_marks_IM_a_01_glanced')
+				$mark_update = DB::table('xxx')
                 ->where('san', $san)
                 ->update(array('m1' => $mark1,'m2' => $mark2));
 				return 1;
 			}else{
-				$mark_update = DB::table('students_marks_IM_a_01_glanced')
+				$mark_update = DB::table('xxx')
                 ->where('san', $san)
                 ->update(array('m1' => null,'m2' => null));
 			}
@@ -90,7 +90,7 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
 		$san               = Input::get('san');
 		$export_type               = Input::get('export_type');
 		//return Input::get('export_type');
-			$student_data = DB::table('students_marks_im_a_01_glanced')->where('san','=',$san)->get(); 
+			$student_data = DB::table('xxx')->where('san','=',$san)->get(); 
 		
 		if($export_type === 'pdf'){
 			
