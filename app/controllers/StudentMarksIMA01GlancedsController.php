@@ -17,7 +17,7 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
     public function students_for_marks_IM_A_01_glanced(){
         //return Student::all();
         return DB::table('students')
-            ->leftJoin('students_marks_IM_A_01_glanced','students.san','=','students_marks_IM_A_01_glanced.san')
+            ->leftJoin('students_marks_IM_a_01_glanced','students.san','=','students_marks_IM_a_01_glanced.san')
             ->select('students.san','students.ls_student_number','c1','c2','c3','c4','c5','c6','m1','m2','ageed_mark')
             ->where('students.ls_student_number','>',0)
             ->groupBy('students.san')
