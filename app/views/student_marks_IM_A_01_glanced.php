@@ -172,7 +172,7 @@
                                                                                                <span class="font-bold">Marks Input</span>
                                                                                              </a>
 
-                                                                                           </li>
+                                                                                           </li><?php } ?>
                     
                    </ul>
                   
