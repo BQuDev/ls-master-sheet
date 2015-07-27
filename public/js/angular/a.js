@@ -120,7 +120,25 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
         $http.get('students_for_marks_IM_A_01_glanced')
             .success(function(data) {
                 $scope.gridOptions.data = data;
+                
+                		new PNotify({
+                        title: 'Marks calculated',
+                        text: 'Marks successfully calculated with given data.',
+                        notice:'success',
+                        type : 'success',
+                        buttons: {
+                            closer: true,
+                            sticker: true
+                        },
+                        animate_speed: 100,
+                        opacity: .9,
+                        hide: true,
+                        stack: stack_bottomright
+                    });
+                    
             });
+            
+            
     }
     $scope.edit = function(san){
 
