@@ -1,0 +1,1 @@
+C:\wamp\www\ls-master-sheet\app/views/marks/show.blade.php

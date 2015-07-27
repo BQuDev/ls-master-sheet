@@ -181,7 +181,7 @@
                                              <?php } ?>
  <?php if (Sentry::getUser()->hasAccess('modules.index_marks_input')){  ?>
                                                                                                <li >
-                                                                                            <a href="{{ URL::to('/modules/marks-input') }}/">
+                                                                                            <a href="/save_marks_for_IM_A_01_glanced_word">
 
                                                                                                <i class="i i-pencil2 icon">
                                                                                                </i>

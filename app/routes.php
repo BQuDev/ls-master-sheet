@@ -50,8 +50,12 @@ Route::get('/logout', 'UsersController@logout');
 
     Route::get('/modules/marks-input','ModulesController@markInputIndex');
     Route::get('/modules/marks-input/{ls_student_number}','ModulesController@markInputShow');
+    Route::get('students_for_marks_IM_A_01_glanced','StudentMarksIMA01GlancedsController@students_for_marks_IM_A_01_glanced');
+    Route::post('save_marks_for_IM_A_01_glanced','StudentMarksIMA01GlancedsController@save_marks_for_IM_A_01_glanced');
+   
 
-
+    Route::get('save_marks_for_IM_A_01_glanced_word', 'StudentMarksIMA01GlancedsController@to_word');
+ Route::resource('student-marks-IM-A-01-glanced', 'StudentMarksIMA01GlancedsController');
 Route::resource('students','StudentsController');
 Route::resource('users','UsersController');
     Route::resource('modules','ModulesController');
