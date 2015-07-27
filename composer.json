@@ -10,7 +10,8 @@
 		"cartalyst/sentry": "2.1.*",
 		"barryvdh/laravel-ide-helper": "~1.11",
 		"maatwebsite/excel": "1.*",
-		"rap2hpoutre/laravel-log-viewer": "0.2.*"
+		"rap2hpoutre/laravel-log-viewer": "0.2.*",
+		"barryvdh/laravel-dompdf": "0.4.*"
 	},
 	"autoload": {
 		"classmap": [
