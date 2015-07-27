@@ -10,7 +10,7 @@
 | application. Here you may also register your custom route filters.
 |
 */
-/*
+
 App::before(function($request)
 { 
 	Request::setTrustedProxies([$request->getClientIp()]);
@@ -19,7 +19,7 @@ App::before(function($request)
     {
         return Redirect::secure(Request::path());
     }
-});*/
+});
 
 
 App::after(function($request, $response)
