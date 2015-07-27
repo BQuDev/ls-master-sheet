@@ -248,9 +248,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-touch.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-animate.js"></script>
-    <script src="https://ui-grid.info/docs/grunt-scripts/csv.js"></script>
-    <script src="https://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
-    <script src="https://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
     <script src="../js/angular/ui-grid-unstable.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../js/angular/ui-grid-unstable.min.css">
