@@ -8,23 +8,25 @@ angular.module('addressFormatter', []).filter('address', function () {
 });
  
 app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
-  $scope.gridOptions = {  };
+  $scope.gridOptions = {
+	enableFiltering: true
+  };
     $scope.gridOptions.enableCellEditOnFocus = true;
 
  
   $scope.gridOptions.columnDefs = [
-    { name: 'san', enableCellEdit: false, displayName: 'SAN', width: '7%' },
+    { name: 'san', enableFiltering: false,enableCellEdit: false, displayName: 'SAN', width: '7%' },
     { name: 'ls_student_number', enableCellEdit: false, displayName: 'LSM Number', width: '10%' },
-    { name: 'c1',cellClass:'editable', displayName: 'Range and use of secondary sources', width: '10%' },
-    { name: 'c2',cellClass:'editable', displayName: 'Theoretical context' , width: '10%' },
-    { name: 'c3',cellClass:'editable', displayName: 'Brand context ', width: '10%'},
-    { name: 'c4',cellClass:'editable', displayName: 'Evaluation', width: '8%'},
-    { name: 'c5',cellClass:'editable', displayName: 'Quality of presentation', width: '10%'},
-    { name: 'c6',cellClass:'editable', displayName: 'Communication of ideas', width: '10%'},
-    { name: 'm1', displayName: 'First Marker\'s Mark',enableCellEdit: false, width: '7%'},
-    { name: 'm2',cellClass:'editable', displayName: 'Second Marker\'s Mark', width: '8%'},
-    { name: 'ageed_mark',cellClass:'editable', displayName: 'Agreed Mark', width: '5%'},
-	{name: 'edit', displayName: '', cellTemplate: '<button id="editBtn" type="button" class="btn btn-success no_padding_btn" ng-click="grid.appScope.edit(row.entity)" >Export</button> '}
+    { name: 'c1', enableFiltering: false,cellClass:'editable', displayName: 'Range and use of secondary sources', width: '10%' },
+    { name: 'c2', enableFiltering: false,cellClass:'editable', displayName: 'Theoretical context' , width: '10%' },
+    { name: 'c3', enableFiltering: false,cellClass:'editable', displayName: 'Brand context ', width: '10%'},
+    { name: 'c4', enableFiltering: false,cellClass:'editable', displayName: 'Evaluation', width: '8%'},
+    { name: 'c5', enableFiltering: false,cellClass:'editable', displayName: 'Quality of presentation', width: '10%'},
+    { name: 'c6', enableFiltering: false,cellClass:'editable', displayName: 'Communication of ideas', width: '10%'},
+    { name: 'm1', enableFiltering: false, displayName: 'First Marker\'s Mark',enableCellEdit: false, width: '7%'},
+    { name: 'm2', enableFiltering: false,cellClass:'editable', displayName: 'Second Marker\'s Mark', width: '8%'},
+    { name: 'ageed_mark', enableFiltering: false,cellClass:'editable', displayName: 'Agreed Mark', width: '5%'},
+	{name: 'edit', enableFiltering: false, displayName: '', enableCellEdit: false,cellTemplate: '<button id="editBtn" type="button" class="btn btn-success no_padding_btn" ng-click="grid.appScope.edit(row.entity)" >Export</button> '}
 	/*
 	{ name: 'san', enableCellEdit: false, displayName: 'SAN' },
     { name: 'ls_student_number', enableCellEdit: false, displayName: 'LSM Number' },
