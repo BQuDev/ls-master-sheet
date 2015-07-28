@@ -24,7 +24,7 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     { name: 'm1', displayName: 'First Marker\'s Mark',enableCellEdit: false, width: '7%'},
     { name: 'm2',cellClass:'editable', displayName: 'Second Marker\'s Mark', width: '8%'},
     { name: 'ageed_mark',cellClass:'editable', displayName: 'Agreed Mark', width: '5%'},
-	{name: 'edit', displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" class="btn btn-success" ng-click="grid.appScope.edit(row.entity)" >Export</button> '}
+	{name: 'edit', displayName: '', cellTemplate: '<button id="editBtn" type="button" class="btn btn-success no_padding_btn" ng-click="grid.appScope.edit(row.entity)" >Export</button> '}
 	/*
 	{ name: 'san', enableCellEdit: false, displayName: 'SAN' },
     { name: 'ls_student_number', enableCellEdit: false, displayName: 'LSM Number' },
@@ -137,16 +137,39 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
                     });
                     
             });
-            
-            
     }
+
+    $scope.excel_export = function(){
+
+      
+                
+                		new PNotify({
+                        title: 'Exporting Excel File',
+                        text: 'This process will take time, depending on student data',
+                        notice:'success',
+                        type : 'success',
+                        buttons: {
+                            closer: true,
+                            sticker: true
+                        },
+                        animate_speed: 100,
+                        opacity: .9,
+                        hide: true,
+                        stack: stack_bottomright
+                    });
+                    
+					 window.open("save_marks_for_IM_A_01_glanced_excel_export", '_blank');
+          
+}
+	
+	
     $scope.edit = function(san){
 
      //  console.log(Object.keys(san).map(function(k) { return san[k] })[0]);
-	 
+	 /*
 	  var formData1 = {
                   san: Object.keys(san).map(function(k) { return san[k] })[0]
-              };
+              };*/
 			  /*
 	        $.ajax({
                   type        : 'GET',
@@ -157,8 +180,10 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
                   }
               });*/
 			  console.log("save_marks_for_IM_A_01_glanced_word?san="+Object.keys(san).map(function(k) { return san[k] })[0]+"&export_type="+document.querySelector('input[name="export_type"]:checked').value);
-			  window.location = "save_marks_for_IM_A_01_glanced_word?san="+Object.keys(san).map(function(k) { return san[k] })[0]+"&export_type="+document.querySelector('input[name="export_type"]:checked').value;
-    }
+			  //window.location = "save_marks_for_IM_A_01_glanced_word?san="+Object.keys(san).map(function(k) { return san[k] })[0]+"&export_type="+document.querySelector('input[name="export_type"]:checked').value;
+
+    window.open("save_marks_for_IM_A_01_glanced_word?san="+Object.keys(san).map(function(k) { return san[k] })[0]+"&export_type="+document.querySelector('input[name="export_type"]:checked').value, '_blank');
+	}
 
 
 
