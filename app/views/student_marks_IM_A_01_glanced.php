@@ -270,9 +270,19 @@
                         </div>
                           </div>
                         </div>
-                        
+
                       </form>
                         </div>
+		                        
+<br>
+<div class="row">
+<div class="col-sm-2"></div>	
+<div class="col-sm-10">	
+    <button id="refreshButton" type="button" class="btn btn-success" ng-click="refreshData()">Calculate marks</button>	&nbsp;&nbsp;&nbsp;&nbsp;<button id="excel_export" type="button" class="btn btn-success" ng-click="excel_export()">Excel Export ( All data )</button>
+</div><div class="col-sm-2"></div>
+</div>	
+	<br><br>
+					
                       </div>
                     </div>
                   </div>
@@ -286,10 +296,6 @@
   </div>
 </div>
 
-<br>
-
-    <button id="refreshButton" type="button" class="btn btn-success" ng-click="refreshData()">Calculate marks</button>
-<br><br>
 
 	<!--<strong>Calls Pending:</strong> <span ng-bind="callsPending"></span>
     

@@ -86,12 +86,31 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
     }
 	
 	
+	public function excel_export(){
+		
+		return Excel::create('Mark Input Sheet', function($excel) {
+
+			$excel->sheet('Mark Input Sheet', function($sheet) {
+
+				$sheet->loadView('export.marks');
+
+			});
+            $excel->setcreator('BQu');
+            $excel->setlastModifiedBy('BQu');
+            $excel->setcompany('BQuServices(PVT)LTD');
+            $excel->setmanager('Damith');
+
+		})->download('xls');
+		
+	}
+	
+	
 	public function to_word(){
 		$san               = Input::get('san');
 		$export_type               = Input::get('export_type');
 		//return Input::get('export_type');
 			$student_data = DB::table('xxx')->where('san','=',$san)->get(); 
-		
+		if($student_data){
 		if($export_type === 'pdf'){
 			
 			$pdf = App::make('dompdf');
@@ -141,7 +160,7 @@ Assessment 1 – Presentation<br />
     <td align="center">Weighted Marks</td>
   </tr>
   <tr>
-    <td>Range and use of secondary sources</td>
+    <td><b>Range and use of secondary sources</b></td>
     <td>&nbsp;</td>
     <td>&nbsp;'.$student_data[0]->c1.'</td>
     <td align="center">0.1</td>
@@ -184,7 +203,7 @@ Assessment 1 – Presentation<br />
   </tr>
   <tr>
     <td colspan="4">Weighted total</td>
-    <td>&nbsp;'.(($student_data[0]->c1*.1)+($student_data[0]->c2*.2)+($student_data[0]->c3*.2)+($student_data[0]->c4*.1)+($student_data[0]->c5*.2)+($student_data[0]->c6*.2)).'</td>
+    <td>&nbsp;'.$student_data[0]->m1.'</td>
   </tr>
   </table>
     <table width="100%" border="1" cellspacing="1" cellpadding="2">
@@ -252,7 +271,7 @@ Assessment 1 – Presentation<br />
   </tr>
   <tr>
     <td colspan="3">First Marker:'.Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name.'</td>
-    <td>Suggested Mark: '.($student_data[0]->c1+$student_data[0]->c2+$student_data[0]->c3+$student_data[0]->c4+$student_data[0]->c5+$student_data[0]->c6).'%</td>
+    <td>Suggested Mark: '.$student_data[0]->m1.'%</td>
     <td>Agreed Mark: '.$student_data[0]->ageed_mark.' %</td>
   </tr>
   </table>
@@ -266,7 +285,7 @@ Assessment 1 – Presentation<br />
     <td align="center">Weighted Marks</td>
   </tr>
   <tr>
-    <td>Range and use of secondary sources</td>
+    <td><b>Range and use of secondary sources</b></td>
     <td>&nbsp;</td>
     <td>&nbsp;'.$student_data[0]->c1.'</td>
     <td align="center">0.1</td>
@@ -341,7 +360,10 @@ return Response::make($content,200, $headers);
 			
 		}
 		
-		
+		}else{
+			echo '<b>Export Failed. Please select student with marks. If you get this error continuously please contact BQu IT team.</b>';
+			
+		}
 
 
 		
