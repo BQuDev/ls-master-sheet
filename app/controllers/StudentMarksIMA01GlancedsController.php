@@ -60,8 +60,14 @@ class StudentMarksIMA01GlancedsController extends \BaseController {
 				
 				$mark1 = $c1+$c2+$c3+$c4+$c5+$c6;
 				//.9*Input1+.2*RND(0-1)
-				$mark2 = (.9 * $mark1) + $mark1*(rand( 0,20 )/100);
+				//$mark2 = (.9 * $mark1) + $mark1*(rand( 0,20 )/100);
 				
+				$mark2 = 0;
+				
+					$mark2 = (.9 * $mark1) + $mark1*(rand( 0,20 )/100);
+				if($mark2 > 100)$mark2 = (.9 * $mark1) + $mark1*(rand( 0,20 )/100);
+				if($mark2 > 100)$mark2 = (.9 * $mark1) + $mark1*(rand( 0,20 )/100);
+				if($mark2 > 100)$mark2 = (.9 * $mark1) + $mark1*(rand( 0,20 )/100);
 				
 				$mark_update = DB::table('xxx')
                 ->where('san', $san)
