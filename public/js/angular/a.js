@@ -50,7 +50,28 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
           gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
             $scope.msg.lastCellEdited = 'edited row id:' + rowEntity.id + ' Column:' + colDef.name + ' newValue:' + newValue + ' oldValue:' + oldValue ;
 
-			if(!newValue.match(/[^0-9]/)) { 
+			if(!newValue.match(/[^0-9]/)) {
+					if(newValue>100){
+						
+						new PNotify({
+                        title: 'Please enter a value less than 100',
+                        text: 'Marks cannot exceed 100.Please enter a value less than 100',
+                        notice:'error',
+                        type : 'error',
+                        buttons: {
+                            closer: true,
+                            sticker: true
+                        },
+                        animate_speed: 100,
+                        opacity: .9,
+                        hide: true,
+                        stack: stack_bottomright
+                    });
+					
+						
+						
+						
+					}else{
 
               $scope.$apply();
               // get the form data
@@ -95,7 +116,7 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
                   }
               });
 		  }
-			}else{
+					}}else{
 				new PNotify({
                                     title: 'Not a number',
                                     text: 'Please enter number for '+rowEntity.ls_student_number,
