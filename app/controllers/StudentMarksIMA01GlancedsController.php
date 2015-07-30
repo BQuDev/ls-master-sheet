@@ -226,7 +226,7 @@ Assessment 1 – Presentation<br />
     <table width="100%" border="0" cellspacing="1" cellpadding="2">
   <tr>
     <td colspan="3">First Marker:'.Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name.'</td>
-    <td colspan="2">Date:</td>
+    <td colspan="2">Date: 30-07-2015</td>
   </tr>
  
 </table>
@@ -277,7 +277,7 @@ Assessment 1 – Presentation<br />
   </tr>
   <tr>
     <td colspan="3">First Marker:'.Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name.'</td>
-    <td>Suggested Mark: '.$student_data[0]->m1.'%</td>
+    <td>Suggested Mark:</td>
     <td>Agreed Mark: '.$student_data[0]->ageed_mark.' %</td>
   </tr>
   </table>
@@ -351,7 +351,7 @@ Assessment 1 – Presentation<br />
     <table width="100%" border="0" cellspacing="1" cellpadding="2">
   <tr>
     <td colspan="3">First Marker:'.Sentry::getUser()->first_name.' '.Sentry::getUser()->last_name.'</td>
-    <td colspan="2">Date:</td>
+    <td colspan="2">Date: 30-07-2015</td>
   </tr>
  
 </table>
